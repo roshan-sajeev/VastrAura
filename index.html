@@ -668,7 +668,17 @@ const CATALOGUES = [
     blurb:"Traditional statement dupattas in soft chanderi silk, densely hand-embroidered with kantha running stitch and colourful thread florals, vines and paisleys, scattered with mirror work and sequins. Finished on all sides with playful matching pom-pom lace. Lovely over a plain kurta for festive and everyday wear.",
     spec:[["Item","Dupatta only",""],["Fabric","Chanderi silk",""],["Work","Hand kantha embroidery, mirror &amp; sequin, pom-pom lace",""],["Length","2.25 m",""]],
     sizes:null,
-    colours: sh("DM-025",[["A","Beige, Pink & Teal Floral"],["B","Beige, Orange & Blue Floral"],["C","Gold, Sunflower & Maroon Star"],["D","Red, Paisley Border"],["E","Mint Green, Red Floral"],["F","Lime Green, Pink & Teal Floral"],["G","Baby Pink, Red & Blue Floral"],["H","Navy Blue, Pink & Orange Floral"],["I","Mustard Yellow, Red Floral Medallion"]],{A:2,B:2,C:2,D:2,E:2,F:2,G:2,H:2}) }
+    colours: sh("DM-025",[["A","Beige, Pink & Teal Floral"],["B","Beige, Orange & Blue Floral"],["C","Gold, Sunflower & Maroon Star"],["D","Red, Paisley Border"],["E","Mint Green, Red Floral"],["F","Lime Green, Pink & Teal Floral"],["G","Baby Pink, Red & Blue Floral"],["H","Navy Blue, Pink & Orange Floral"],["I","Mustard Yellow, Red Floral Medallion"]],{A:2,B:2,C:2,D:2,E:2,F:2,G:2,H:2}) },
+  { code:"DM-026", type:"dm", name:"Cotton Sanganeri Print Mix & Match Suit", cover:"img/DM-026-A.jpg", coverPos:"50% 45%",
+    blurb:"Fresh everyday two-piece suit sets in soft 60/60 cotton cambric with classic Sanganeri prints. Each top carries an all-over floral jaal, from lotus fans and garden blooms to graceful magnolia vines and bold leaf outlines, paired with a coordinating bottom in a small buti or stripe print for an easy mix and match look.",
+    spec:[["Top","Cotton 60/60 cambric, Sanganeri print","2.50 m"],["Bottom","Cotton 60/60 cambric, Sanganeri print","2.50 m"]],
+    sizes:null,
+    colours: sh("DM-026",[["A","Aqua Blue, Green Lotus Jaal"],["B","Red, Pink Floral Jaal"],["C","Sage Green, White Magnolia"],["D","Wine, Pink Floral Vine"],["E","Teal Blue, Ivory Leaf & Stripe"],["F","Sky Blue, Pink & White Floral"]]) },
+  { code:"DM-027", type:"dm", name:"Chanderi Silk Bagru Hand Block Print Suit", cover:"img/DM-027-A.jpg", coverPos:"50% 50%",
+    blurb:"Graceful three-piece unstitched suits in lustrous chanderi silk, hand block printed in the Bagru tradition with natural colours. Tops carry flowing floral jaals, delicate butis and bold leaf and vine motifs, each finished with a printed border and a fine zari edge. Paired with a coordinating printed cotton bottom, from chevrons and polka dots to scrolls and butis, and a matching chanderi silk dupatta with printed borders and tassels.",
+    spec:[["Top","Chanderi silk, Bagru hand block print, natural colours","2.50 m"],["Bottom","Cotton","2.50 m"],["Dupatta","Chanderi silk","2.50 m"]],
+    sizes:null,
+    colours: sh("DM-027",[["A","Aqua Blue, Indigo Floral Vine"],["B","Purple & Green, Painted Floral"],["C","Ivory, Grey Floral Buti"],["D","Coral Pink, Tonal Floral"],["E","Sky Blue, Teal Floral Jaal"],["F","Rani Pink, Mustard Buti"],["G","Teal, Mustard Floral"],["H","Aqua, Blue Floral Buti"],["I","Bottle Green, Ivory Leaf"],["J","Maroon, Ivory Vine & Polka"],["K","Powder Blue, Orange Floral"]]) },
 ];
 /* =================================================== */
 if(window.IMGS){CATALOGUES.forEach(c=>{c.cover=IMGS[c.cover]||c.cover;c.colours.forEach(x=>{x.img=IMGS[x.img]||x.img;x.imgs=x.imgs.map(p=>IMGS[p]||p);});});}
