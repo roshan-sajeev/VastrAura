@@ -158,6 +158,32 @@ button{font:inherit;color:inherit}
 .stot{margin:0 0 12px;text-align:center;font-size:.95rem}
 .stot b{font-size:1.15rem;color:var(--wine)}
 .stot small{display:block;font-size:.75rem;color:var(--muted)}
+
+/* ---------- Checkout ---------- */
+.co{overflow:auto;max-height:92vh}
+.colist{display:flex;flex-direction:column;gap:8px}
+.ck{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;background:var(--surface);border:1px solid var(--line);cursor:pointer}
+.ck input{width:20px;height:20px;accent-color:var(--wine-deep);flex:none}
+.ck img{width:48px;height:48px;border-radius:9px;object-fit:cover;flex:none}
+.ck .t{flex:1;min-width:0;line-height:1.3}
+.ck .t b{display:block;color:var(--wine);font-weight:600;font-size:.9rem;font-variant-numeric:tabular-nums}
+.ck .t span{font-size:.78rem;color:var(--muted)}
+.ck em{font-style:normal;font-weight:700;color:var(--wine);white-space:nowrap;font-size:.92rem;text-align:right}
+.ck em.no{font-weight:400;font-style:italic;font-size:.72rem;color:var(--muted);line-height:1.2}
+.ck:has(input:not(:checked)){opacity:.55}
+.addmore{display:block;width:100%;margin-top:8px;padding:11px;border-radius:14px;border:1.5px dashed color-mix(in srgb,var(--gold) 60%,transparent);background:transparent;color:var(--wine);font:inherit;font-weight:600;font-size:.9rem;cursor:pointer}
+.cotot{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:2px 10px;margin:14px 0 4px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--gold-soft) 45%,var(--surface));border:1px solid color-mix(in srgb,var(--gold) 30%,transparent)}
+.cotot span{font-weight:600}
+.cotot b{font-size:1.35rem;color:var(--wine);font-variant-numeric:tabular-nums}
+.cotot small{grid-column:1/-1;font-size:.76rem;color:var(--muted)}
+.addr{border:0;margin:10px 0 12px;padding:0;display:flex;flex-direction:column;gap:10px}
+.addr legend{font-family:var(--display);font-size:1.25rem;margin-bottom:6px;padding:0}
+.addr label{display:flex;flex-direction:column;gap:4px;font-size:.8rem;font-weight:600;color:var(--muted)}
+.addr input,.addr textarea{font:inherit;font-size:16px;font-weight:400;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:11px 12px;outline:none;width:100%;resize:vertical}
+.addr input:focus,.addr textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 22%,transparent)}
+.addr .two{display:grid;grid-template-columns:1fr 1.3fr;gap:10px}
+.err{margin:0;color:var(--stamp);font-size:.85rem;min-height:1em}
+.co .acts{position:sticky;bottom:0;background:var(--bg);padding-top:8px}
 /* ---------- Catalogue cards ---------- */
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px;padding:16px 0 12px}
 @media (min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 18px}}
@@ -265,6 +291,11 @@ button{font:inherit;color:inherit}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:999px;padding:12px 18px;font-size:.92rem;font-weight:600;cursor:pointer;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);white-space:nowrap}
 .btn.pri{background:var(--wine-deep);border-color:var(--wine-deep);color:var(--ivory)}
 .btn.gold{background:var(--gold);border-color:var(--gold);color:#2a1508}
+@media (max-width:400px){.bar .th{display:none}.bar .btn.wa{padding:12px 14px}}
+.btn.wa{background:#1b8a4e;border-color:#1b8a4e;color:#fff}
+.btn.wa svg{width:19px;height:19px}
+.btn.icon{width:46px;height:46px;padding:0;flex:none}
+.btn.icon svg,.sheet .btn svg{width:18px;height:18px}
 .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
 
 /* ---------- Floating shortlist + sheet ---------- */
@@ -786,6 +817,14 @@ const OFFER={everyday:1350,premium:2250};
 const NO_OFFER=new Set(["SR-002","SR-018","SR-029"]);
 const offerOf=c=>NO_OFFER.has(c.code)?0:OFFER[PREMIUM.has(c.code)?"premium":"everyday"];
 const inr=n=>"₹"+n.toLocaleString("en-IN");
+/* order chat link (number kept off the page) */
+const _w="NzcwMDQ5NzMwOTE5";
+const WA_ICON='<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>', COPY_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+function sendWA(text){
+  let n="";try{n=atob(_w).split("").reverse().join("");}catch(e){}
+  const url="https://wa.me/"+n+"?text="+encodeURIComponent(text);
+  const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();
+}
 const TIERS=[{id:"everyday",label:"Everyday Elegance"},{id:"premium",label:"Premium Collection"}];
 const tierOf=c=>PREMIUM.has(c.code)?"premium":"everyday";
 try{const t=localStorage.getItem("va_tier"); if(t==="premium"||t==="everyday") tier=t;}catch(e){}
@@ -825,21 +864,84 @@ function orderText(items){
     ? `Hi VastrAura! I'd like to order ${lines[0]}.${allOffer?" (delivery included)":" Please share the price."}`
     : `Hi VastrAura! I'd like to order these:\n${lines.map(l=>"• "+l).join("\n")}\n${allOffer?`Navaratri & introductory offer total ${inr(tot)}, delivery included.`:"Please share the prices for the rest."}`;
 }
+
+/* ---------- Checkout: pick codes, see total, add delivery details, send on WhatsApp ---------- */
+function openCheckout(extra){
+  const seen=new Set(), items=[];
+  [extra,...list].forEach(i=>{ if(!i) return; const k=keyOf(i.code,i.size); if(seen.has(k)) return; const f=findShade(i.code); if(!f) return; seen.add(k); items.push({code:i.code,size:i.size||"",f,o:offerOf(f.c),on:true}); });
+  let saved={}; try{saved=JSON.parse(localStorage.getItem("va_addr")||"{}")||{};}catch(e){}
+  const s=document.createElement("div");s.className="scrim";
+  const close=()=>{s.remove();document.removeEventListener("keydown",k);};
+  const k=e=>{if(e.key==="Escape")close();};
+  s.onclick=e=>{if(e.target===s)close();};
+  s.innerHTML=`<form class="sheet co" novalidate aria-label="Place your order"><div class="grab"></div>
+    <h3>Place your order</h3>
+    <p class="sub">Tick the pieces you want, add your delivery details and send the order to us on WhatsApp.</p>
+    <div class="colist">${items.map((it,n)=>`<label class="ck"><input type="checkbox" data-n="${n}" checked><img src="${it.f.x.img}" alt=""><span class="t"><b>${it.code}${it.size?` · Size ${esc(it.size)}`:""}</b><span>${esc(it.f.c.name)} · ${esc(it.f.x.name)}</span></span><em class="${it.o?"":"no"}">${it.o?inr(it.o):"Price on<br>confirmation"}</em></label>`).join("")}</div>
+    <button class="addmore" type="button" id="coMore">+ Add more pieces</button>
+    <div class="cotot" id="coTot"></div>
+    <fieldset class="addr"><legend>Delivery details</legend>
+      <label>Full name<input name="name" autocomplete="name" value="${esc(saved.name||"")}" required></label>
+      <label>Delivery address<textarea name="addr" rows="3" autocomplete="street-address" placeholder="House / flat, street, area, city, state" required>${esc(saved.addr||"")}</textarea></label>
+      <div class="two"><label>PIN code<input name="pin" inputmode="numeric" maxlength="6" autocomplete="postal-code" value="${esc(saved.pin||"")}" required></label>
+      <label>Contact number<input name="phone" type="tel" inputmode="tel" maxlength="14" autocomplete="tel" value="${esc(saved.phone||"")}" required></label></div>
+      <p class="err" id="coErr" role="alert"></p>
+    </fieldset>
+    <div class="acts"><button class="btn" type="button" id="coCancel">Cancel</button><button class="btn wa" type="submit">${WA_ICON}<span>Send order</span></button></div>
+  </form>`;
+  const form=s.querySelector("form"), tot=s.querySelector("#coTot"), err=s.querySelector("#coErr");
+  const paint=()=>{
+    const sel=items.filter(i=>i.on), sum=sel.reduce((a,i)=>a+i.o,0), tbc=sel.filter(i=>!i.o).length;
+    tot.innerHTML=sel.length?`<span>Total payable${sel.length>1?` · ${sel.length} pieces`:""}</span><b>${sum?inr(sum):"—"}</b><small>${sum?"Delivery included":""}${tbc?`${sum?" · ":""}${tbc} piece${tbc>1?"s":""} priced on confirmation`:""}</small>`:`<span>Tick at least one piece</span>`;
+  };
+  s.querySelectorAll(".ck input").forEach(c=>c.onchange=()=>{items[+c.dataset.n].on=c.checked;paint();});
+  s.querySelector("#coCancel").onclick=close;
+  form.oninput=()=>{err.textContent="";};
+  s.querySelector("#coMore").onclick=()=>{
+    const v=n=>form.elements[n].value.trim();
+    try{localStorage.setItem("va_addr",JSON.stringify({name:v("name"),addr:v("addr"),pin:v("pin"),phone:v("phone")}));}catch(e){}
+    if(extra&&!inList(extra.code,extra.size)){list.push({code:extra.code,size:extra.size||""});saveList();}
+    close(); toast("Your picks are saved. Tap ♡ on more pieces, then order from your shortlist");
+    if(location.hash){history.pushState("",document.title,location.pathname+location.search);route();}
+  };
+  form.onsubmit=e=>{
+    e.preventDefault();
+    const v=n=>form.elements[n].value.trim();
+    const sel=items.filter(i=>i.on), pin=v("pin").replace(/\s/g,""), phone=v("phone").replace(/[^\d+]/g,"");
+    const bad=(m,f)=>{err.textContent=m; if(f){form.elements[f].focus();}};
+    if(!sel.length) return bad("Tick at least one piece to order.");
+    if(!v("name")) return bad("Please enter your name.","name");
+    if(v("addr").length<10) return bad("Please enter your full delivery address.","addr");
+    if(!/^\d{6}$/.test(pin)) return bad("Please enter a valid 6-digit PIN code.","pin");
+    if(!/^(\+?91)?[6-9]\d{9}$/.test(phone)) return bad("Please enter a valid 10-digit mobile number.","phone");
+    err.textContent="";
+    try{localStorage.setItem("va_addr",JSON.stringify({name:v("name"),addr:v("addr"),pin,phone}));}catch(e){}
+    const sum=sel.reduce((a,i)=>a+i.o,0), tbc=sel.filter(i=>!i.o);
+    const lines=sel.map((i,n)=>`${n+1}. ${i.code}${i.size?` (Size ${i.size})`:""} – ${i.f.c.name}, ${i.f.x.name} – ${i.o?inr(i.o):"price to be confirmed"}`);
+    const msg=`Hi VastrAura! I'd like to place an order:\n\n${lines.join("\n")}\n\n`+
+      (sum?`Total payable: ${inr(sum)} (Navaratri & introductory offer, delivery included)`:"")+
+      (tbc.length?`${sum?"\n":""}Please confirm the price for: ${tbc.map(i=>i.code).join(", ")}`:"")+
+      `\n\nDeliver to:\n${v("name")}\n${v("addr")}\nPIN: ${pin}\nContact: ${phone}`;
+    sendWA(msg); close(); toast("Opening WhatsApp with your order");
+  };
+  paint(); document.addEventListener("keydown",k); document.body.appendChild(s);
+}
 function openSheet(){
   const s=document.createElement("div");s.className="scrim";
   const draw=()=>{
     s.innerHTML=`<div class="sheet" role="dialog" aria-label="Your shortlist"><div class="grab"></div>
       <h3>Your shortlist</h3>
-      <p class="sub">${list.length?`Copy them all in one tap and DM us to place your order.`:""}</p>
+      <p class="sub">${list.length?`Send them all to us on WhatsApp in one tap to place your order.`:""}</p>
       ${list.length?`<div class="slist">${list.map((i,k)=>{const f=findShade(i.code);return f?`<div class="si"><img src="${f.x.img}" alt="" data-go="${i.code}"><div class="t" data-go="${i.code}"><b>${i.code}${i.size?` · ${esc(i.size)}`:""}</b><span>${esc(f.x.name)} · ${esc(f.c.name)}</span>${offerOf(f.c)?`<em class="op">${inr(offerOf(f.c))}</em>`:`<em class="op no">Not on offer · DM for price</em>`}</div><button class="rm" type="button" data-k="${k}" aria-label="Remove ${i.code}">×</button></div>`:"";}).join("")}</div>
       ${(()=>{const t=list.reduce((a,i)=>{const f=findShade(i.code);return a+(f?offerOf(f.c):0);},0);return t?`<p class="stot">Navaratri &amp; introductory offer total <b>${inr(t)}</b><small>delivery included${list.some(i=>{const f=findShade(i.code);return f&&!offerOf(f.c);})?" · plus items not on offer":""}</small></p>`:"";})()}
-      <div class="acts"><button class="btn" type="button" id="shClose">Keep browsing</button><button class="btn pri" type="button" id="shCopy">Copy all codes</button></div>`
+      <div class="acts"><button class="btn" type="button" id="shCopy">${COPY_ICON} Copy all</button><button class="btn wa" type="button" id="shWa">${WA_ICON}<span>Order on WhatsApp</span></button></div>`
       :`<p class="none">Nothing saved yet. Tap the heart on any shade to keep it here.</p><div class="acts"><button class="btn pri" type="button" id="shClose">Start browsing</button></div>`}
     </div>`;
     s.querySelectorAll(".rm").forEach(b=>b.onclick=()=>{list.splice(+b.dataset.k,1);saveList();draw();if(location.hash)route(true);});
     s.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{close();location.hash=b.dataset.go;});
-    s.querySelector("#shClose").onclick=close;
+    const sc=s.querySelector("#shClose"); if(sc) sc.onclick=close;
     const cp=s.querySelector("#shCopy"); if(cp) cp.onclick=()=>copy(orderText(list),"Copied. Paste it in your DM to us");
+    const sw=s.querySelector("#shWa"); if(sw) sw.onclick=()=>{close();openCheckout();};
   };
   const close=()=>{s.remove();document.removeEventListener("keydown",k);};
   const k=e=>{if(e.key==="Escape")close();};
@@ -1037,7 +1139,7 @@ function renderDetail(c,pre,keep){
         </div>
         <ol class="how" style="margin-top:22px">
           <li><strong>Pick</strong>Choose your ${word}${c.type==="rm"?" &amp; size":""}</li>
-          <li><strong>Copy</strong>Tap “Copy code” below</li>
+          <li><strong>Send</strong>Tap “WhatsApp” below</li>
           <li><strong>DM us</strong>Send the code${c.type==="rm"?" &amp; size":""}${offerOf(c)?"":" for price"} &amp; to place your order</li>
         </ol>
       </div>
@@ -1050,7 +1152,8 @@ function renderDetail(c,pre,keep){
   bar.innerHTML=`<div class="bar-in">
       <img class="th" id="barTh" alt="">
       <div class="sel"><small id="barHint"></small><b id="barCode"></b></div>
-      <button class="btn pri" type="button" id="copyCode">Copy code</button>
+      <button class="btn icon" type="button" id="copyCode" aria-label="Copy code">${COPY_ICON}</button>
+      <button class="btn wa" type="button" id="waBtn">${WA_ICON}<span>WhatsApp</span></button>
     </div>`;
   document.body.appendChild(bar);
   updateCounts();
@@ -1109,6 +1212,11 @@ function renderDetail(c,pre,keep){
     const x=c.colours[cur];
     if(x.sizes&&x.sizes.length&&!size){toast("Pick a size first");sizesEl.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});return;}
     copy(orderText([{code:`${c.code}-${x.sub}`,size}]),"Copied. Paste it in your DM to us");
+  };
+  document.getElementById("waBtn").onclick=()=>{
+    const x=c.colours[cur];
+    if(x.sizes&&x.sizes.length&&!size){toast("Pick a size first");sizesEl.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});return;}
+    openCheckout({code:`${c.code}-${x.sub}`,size});
   };
   document.getElementById("back").onclick=()=>{tab=c.type;tier=tierOf(c);try{localStorage.setItem("va_tab",tab);localStorage.setItem("va_tier",tier)}catch(e){};history.pushState("",document.title,location.pathname+location.search);route();};
   select(pre>=0?pre:0);
