@@ -102,6 +102,12 @@ button{font:inherit;color:inherit}
 .how li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--wine-deep);color:var(--ivory);font-size:.75rem;font-weight:600;margin-bottom:6px}
 .how strong{font-family:var(--display);font-weight:400;font-size:1.12rem;color:var(--ink)}
 .how{padding:0}
+.howwrap{margin:18px 0 6px}
+.howwrap h3{font-size:1.3rem;margin-bottom:8px}
+.how.four{grid-template-columns:repeat(2,minmax(0,1fr));margin:0}
+@media (min-width:700px){.how.four{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.hownote{margin:8px 2px 0;font-size:.78rem;color:var(--muted)}
+
 
 /* ---------- Collection nav (sticky) ---------- */
 .cnav{position:sticky;top:0;z-index:6;margin:14px -16px 0;padding:10px 16px;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
@@ -922,7 +928,11 @@ function openCheckout(extra){
       (sum?`Total payable: ${inr(sum)} (Navaratri & introductory offer, delivery included)`:"")+
       (tbc.length?`${sum?"\n":""}Please confirm the price for: ${tbc.map(i=>i.code).join(", ")}`:"")+
       `\n\nDeliver to:\n${v("name")}\n${v("addr")}\nPIN: ${pin}\nContact: ${phone}`;
-    sendWA(msg); close(); toast("Opening WhatsApp with your order");
+    sendWA(msg); close();
+    const done=new Set(sel.map(i=>keyOf(i.code,i.size)));
+    list=list.filter(i=>!done.has(keyOf(i.code,i.size))); saveList();
+    if(location.hash) route(true);
+    toast(list.length?"Order sent to WhatsApp. Ordered pieces cleared from your shortlist":"Order sent to WhatsApp. Your shortlist is now clear");
   };
   paint(); document.addEventListener("keydown",k); document.body.appendChild(s);
 }
@@ -1049,11 +1059,16 @@ function renderList(){
       <span class="onote">Delivery included · on every design marked with the offer price</span>
     </section>
     <section class="spot" id="spot" aria-label="Newest collection"></section>
-    <ol class="how" id="how" aria-label="How to order">
-      <li><strong>Browse</strong>Swipe through every shade</li>
-      <li><strong>Save</strong>Heart the ones you love</li>
-      <li><strong>DM us</strong>Send the code${tab==="rm"?" &amp; size":""} to place your order</li>
-    </ol>
+    <section class="howwrap" id="how" aria-label="How to place an order">
+      <h3>How to place an order</h3>
+      <ol class="how four">
+        <li><strong>Choose</strong>Tap a design and swipe through its shades</li>
+        <li><strong>Save</strong>Tap ♡ on every piece you love (pick a size for readymades)</li>
+        <li><strong>Order</strong>Tap the green WhatsApp button, tick your pieces and see the total</li>
+        <li><strong>Send</strong>Add your address, PIN &amp; phone, then tap Send order in WhatsApp</li>
+      </ol>
+      <p class="hownote">We'll confirm your order and share payment details on WhatsApp.</p>
+    </section>
     <div class="cnav" id="cnav">
       <div class="tiers" id="tiers" role="tablist" aria-label="Collection">
         ${TIERS.map(t=>`<button class="tier ${t.id}" role="tab" type="button" aria-selected="${t.id===tier}" data-tier="${t.id}">${t.id==="premium"?'<span class="gem" aria-hidden="true">✦</span>':""}${t.label}<small>${CATALOGUES.filter(c=>tierOf(c)===t.id).length} catalogues · any ${inr(OFFER[t.id])}</small></button>`).join("")}
@@ -1137,11 +1152,15 @@ function renderDetail(c,pre,keep){
           <p class="desc">${esc(c.blurb)}</p>
           <table class="spec">${c.spec.map(r=>`<tr><th>${esc(r[0])}</th><td>${esc(r[1])}</td><td class="m">${esc(r[2])}</td></tr>`).join("")}</table>
         </div>
-        <ol class="how" style="margin-top:22px">
-          <li><strong>Pick</strong>Choose your ${word}${c.type==="rm"?" &amp; size":""}</li>
-          <li><strong>Send</strong>Tap “WhatsApp” below</li>
-          <li><strong>DM us</strong>Send the code${c.type==="rm"?" &amp; size":""}${offerOf(c)?"":" for price"} &amp; to place your order</li>
-        </ol>
+        <section class="howwrap" style="margin-top:22px" aria-label="How to place an order">
+          <h3>How to place an order</h3>
+          <ol class="how four">
+            <li><strong>Pick</strong>Choose your ${word}${c.type==="rm"?" &amp; size":""}</li>
+            <li><strong>Save</strong>Tap ♡ to add more pieces to one order</li>
+            <li><strong>Order</strong>Tap WhatsApp below, tick your pieces &amp; see the total</li>
+            <li><strong>Send</strong>Add address, PIN &amp; phone, then tap Send order</li>
+          </ol>
+        </section>
       </div>
       ${more.length?`<section class="more"><h3>More ${tierOf(c)==="premium"?"premium ":""}${c.type==="sr"?"sarees":c.type==="rm"?"readymades":"dress materials"}</h3><div class="rail">${more.map(o=>card(o)).join("")}</div></section>`:""}
     </div>`;
