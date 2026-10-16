@@ -120,6 +120,44 @@ button{font:inherit;color:inherit}
 .shint{text-align:center;font-size:.85rem;color:var(--muted);margin:14px 0 4px}
 @media (max-width:440px){.tab{font-size:.8rem;padding:10px 4px}.tab .ct{display:none}}
 
+
+/* ---------- Collection tiers ---------- */
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:560px;margin:0 auto 10px}
+.tier{display:flex;flex-direction:column;align-items:center;gap:1px;padding:11px 8px 10px;border-radius:16px;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-family:var(--display);font-size:1.08rem;line-height:1.15;color:var(--ink)}
+.tier small{font-family:var(--body);font-size:.7rem;color:var(--muted)}
+.tier .gem{font-size:.75rem;color:var(--gold);margin-bottom:1px}
+.tier.everyday[aria-selected="true"]{background:var(--wine-deep);border-color:var(--wine-deep);color:var(--ivory)}
+.tier.everyday[aria-selected="true"] small{color:color-mix(in srgb,var(--ivory) 75%,transparent)}
+.tier.premium{background:linear-gradient(135deg,color-mix(in srgb,var(--gold-soft) 60%,var(--surface)),var(--surface))}
+.tier.premium[aria-selected="true"]{background:linear-gradient(135deg,#3a0b22 0%,#5b1236 55%,#7a4a1f 100%);border-color:var(--gold);color:#f7e6b0;box-shadow:0 10px 24px -16px rgba(58,11,34,.9)}
+.tier.premium[aria-selected="true"] small{color:#e6c77d}
+.tier.premium[aria-selected="true"] .gem{color:#f7e6b0}
+.empty.prem{border-style:solid;border-color:color-mix(in srgb,var(--gold) 45%,transparent);background:color-mix(in srgb,var(--gold-soft) 30%,var(--surface))}
+.empty .btn{margin-top:14px}
+.pbadge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:linear-gradient(135deg,#5b1236,#7a4a1f);color:#f7e6b0;font-size:.72rem;font-weight:600;letter-spacing:.02em;vertical-align:1px}
+
+/* ---------- Navaratri &amp; introductory offer ---------- */
+.offer{margin:22px 0 4px;padding:16px 14px 14px;border-radius:20px;text-align:center;color:#fbf3e4;
+  background:radial-gradient(120% 120% at 50% 0%,rgba(230,199,125,.28),transparent 60%),linear-gradient(150deg,#6a1640 0%,#4a0e2c 60%,#2c0819 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.offer::after{content:"";position:absolute;inset:6px;border:1px solid rgba(230,199,125,.35);border-radius:15px;pointer-events:none}
+.otag{display:inline-block;text-wrap:balance;max-width:24ch;font-family:var(--display);font-style:italic;font-size:1.15rem;color:#f0cf7f}
+.orow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;position:relative;z-index:1}
+.oc{display:flex;flex-direction:column;gap:2px;align-items:center;padding:10px 6px;border-radius:14px;border:1px solid rgba(230,199,125,.45);background:rgba(251,243,228,.07);color:#fbf3e4;cursor:pointer}
+.oc small{font-size:.72rem;opacity:.85}
+.oc b{font-family:var(--display);font-weight:400;font-size:clamp(1.1rem,4.6vw,1.45rem);color:#fff6dc;white-space:nowrap}
+.oc.prem b{color:#f0cf7f}
+.oc.on{background:rgba(251,243,228,.16);border-color:#f0cf7f}
+.onote{display:block;margin-top:9px;font-size:.74rem;color:#e9d6b8;position:relative;z-index:1}
+.ochip{position:absolute;left:8px;bottom:8px;padding:4px 10px;border-radius:999px;background:var(--wine-deep);color:#fff6dc;font-size:.76rem;font-weight:600;box-shadow:0 4px 12px -6px rgba(0,0,0,.6)}
+.ochip.no{left:auto;bottom:auto;right:8px;top:8px;padding:4px 9px;font-size:.68rem;background:rgba(251,243,228,.94);color:#5b1236;font-weight:600;border:1px solid rgba(91,18,54,.25)}
+.pprice{display:block;margin-top:4px;font-size:.82rem;color:var(--muted)}
+.pprice b{font-size:1.05rem;color:var(--wine);font-weight:700}
+.pprice.no{font-style:italic}
+.si .op{display:block;font-style:normal;font-size:.8rem;font-weight:600;color:var(--wine);margin-top:2px}
+.si .op.no{font-weight:400;font-style:italic;color:var(--muted)}
+.stot{margin:0 0 12px;text-align:center;font-size:.95rem}
+.stot b{font-size:1.15rem;color:var(--wine)}
+.stot small{display:block;font-size:.75rem;color:var(--muted)}
 /* ---------- Catalogue cards ---------- */
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px;padding:16px 0 12px}
 @media (min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 18px}}
@@ -571,31 +609,6 @@ const CATALOGUES = [
     spec:[["Set", "Kurta, pant &amp; dupatta (most styles)", ""], ["Fabric", "Pure cotton", ""], ["Sizes", "M to 3XL (varies by shade)", ""]],
     sizes:true,
     colours: sh("RM-023",[["A", "Mustard Embroidered Buta", ["M", "L", "XL", "XXL", "3XL"]], ["B", "Rust Embroidered Buta", ["M", "L", "XL", "XXL", "3XL"]], ["C", "Rani Pink Embroidered Buta", ["M", "L", "XL", "XXL", "3XL"]], ["D", "Red Embroidered Buta", ["M", "L", "XL", "XXL", "3XL"]], ["E", "Ivory Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["F", "Olive Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["G", "Purple Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["H", "Mauve Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["I", "Pink Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["J", "Sky Blue Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["K", "Sage Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["L", "Mehendi Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["M", "Rani Pink Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["N", "Mustard Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["O", "Pink Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["P", "Lavender Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["Q", "Maroon Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["R", "Bottle Green Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["S", "Sage Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["T", "Navy Floral Print", ["M", "L", "XL", "XXL"]], ["U", "Rose Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["V", "Navy Patchwork Print", ["M", "L", "XL", "XXL"]], ["W", "Brown Embroidered", ["M", "L", "XL", "XXL"]], ["X", "Rust Embroidered", ["M", "L", "XL", "XXL"]], ["Y", "Purple Chikan Embroidered", ["M", "L", "XL", "XXL"]], ["Z", "Black Patchwork Print", ["M", "L", "XL", "XXL"]], ["AA", "White Embroidered Buta", ["M", "L", "XL", "XXL"]], ["AB", "Olive Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["AC", "Rani Pink Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["AD", "White & Yellow Bold Floral", ["M", "L", "XL", "XXL", "3XL"]], ["AE", "White Floral, Mustard Pant", ["M", "L", "XL", "XXL"]], ["AF", "White Floral, Pink Pant", ["M", "L", "XL", "XXL"]], ["AG", "Sky Blue Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AH", "Sage Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AI", "Onion Pink Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AJ", "Purple Chikan Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AK", "Teal Chikan Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AL", "Bottle Green Chikan Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AM", "Mustard Chikan Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AN", "Red Chikan Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AO", "Beige Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AP", "Lilac Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AQ", "Mint Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AR", "Red Chikan Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AS", "Blue Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["AT", "Olive, Striped Dupatta", ["M", "L", "XL", "XXL", "3XL"]], ["AU", "Navy Embroidered", ["M", "L", "XL", "XXL", "3XL"]]],{A:2,M:2,B:2,M:2,M:2,M:2,E:2,M:2,M:2,M:2,H:2,M:2,M:2,J:2,M:2,K:2,M:2,L:2,M:2,M:2,M:2,N:2,M:2,O:2,M:2,P:2,M:2,Q:2,M:2,R:2,M:2,M:2,T:2,M:2,M:2,M:2,W:2,M:2,X:2,M:2,Y:2,M:2,Z:2,M:2,AA:2,M:2,M:2,M:2,AD:2,M:2,AE:2,M:2,AF:2,M:2,AG:2,M:2,AH:2,M:2,M:2,AJ:2,M:2,AK:2,M:2,AL:2,M:2,AM:2,M:2,AN:2,M:2,AO:2,M:2,AP:2,M:2,AQ:2,M:2,AR:2,M:2,AS:2,M:2,M:2,M:2}) },
-  { code:"RM-024", type:"rm", name:"Cotton Straight Suit Set · Designer", cover:"img/RM-024-A.jpg", coverPos:"50% 30%",
-    blurb:"Designer pure cotton straight suits with intricate thread and chikan embroidery, hand-painted florals, ajrakh and floral patch yokes. Each comes with matching pants and a coordinated dupatta in most styles.",
-    spec:[["Set", "Kurta, pant &amp; dupatta (most styles)", ""], ["Fabric", "Pure cotton", ""], ["Sizes", "M to 3XL (varies by shade)", ""]],
-    sizes:true,
-    colours: sh("RM-024",[["A", "Sage Floral Patch", ["M", "L", "XL", "XXL", "3XL"]], ["B", "White Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["C", "Lilac Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["D", "Sky Blue Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["E", "Pista Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["F", "Bottle Green Floral", ["M", "L", "3XL"]], ["G", "Pink Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["H", "Olive Striped Print", ["M", "L", "XL", "XXL", "3XL"]], ["I", "Rust Striped Print", ["M", "L", "XL", "XXL", "3XL"]], ["J", "Olive Chikan", ["M", "L", "XL", "XXL", "3XL"]], ["K", "Rani Pink Chikan", ["M", "L", "XL", "XXL", "3XL"]], ["L", "Sage Chikan", ["M", "L", "XL", "XXL", "3XL"]], ["M", "White & Maroon Floral", ["M", "L", "XL", "XXL", "3XL"]], ["N", "White & Mustard Floral", ["M", "L", "XL", "XXL", "3XL"]], ["O", "Pink Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["P", "Rust Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["Q", "Mustard Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["R", "Grey Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["S", "Beige Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["T", "Maroon Ajrakh", ["M", "L", "XL", "XXL", "3XL"]], ["U", "White & Yellow Floral", ["M", "L", "XL", "XXL", "3XL"]], ["V", "White & Teal Floral", ["M", "L", "XL", "XXL", "3XL"]], ["W", "Baby Pink Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["X", "Olive Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["Y", "Maroon Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["Z", "Purple Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AA", "White & Red Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AB", "Rust Red Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AC", "Red Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AD", "Lime Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AE", "Sage Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["AF", "Mauve Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["AG", "Aqua Floral Patch", ["M", "L", "XL", "XXL", "3XL"]], ["AH", "Sage Floral Patch II", ["M", "L", "XL", "XXL", "3XL"]], ["AI", "Beige Floral Patch", ["M", "L", "XL", "XXL", "3XL"]], ["AJ", "Peach Floral Patch", ["M", "L", "XL", "XXL", "3XL"]], ["AK", "Sky Blue Chikan", ["M", "L", "XL", "XXL", "3XL"]], ["AL", "Pink Chikan", ["M", "L", "XL", "XXL", "3XL"]], ["AM", "Lime Chikan", ["M", "L", "XL", "XXL", "3XL"]], ["AN", "Grey Chikan", ["M", "L", "XL", "XXL", "3XL"]], ["AO", "Red Thread Embroidered", ["M", "L", "XL", "XXL"]], ["AP", "Mustard Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AQ", "Rani Pink Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AR", "Ivory Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["AS", "Brown Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["AT", "White & Peach Floral", ["M", "L", "XL", "XXL", "3XL"]], ["AU", "White & Blue Floral", ["M", "L", "XL", "XXL", "3XL"]], ["AV", "White & Pink Floral", ["M", "L", "XL", "XXL", "3XL"]], ["AW", "White & Grey Floral", ["M", "L", "XL", "XXL", "3XL"]], ["AX", "Aqua Hand-painted Floral", ["M", "L", "XL", "XXL", "3XL"]], ["AY", "Lilac Hand-painted Floral", ["M", "L", "XL", "XXL", "3XL"]], ["AZ", "White & Blue Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["BA", "White & Indigo Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["BB", "White Floral Embroidered II", ["M", "L", "XL", "XXL"]], ["BC", "Olive Chikan II", ["M", "L", "XL", "XXL", "3XL"]], ["BD", "Lavender Chikan", ["M", "L", "XL", "XXL", "3XL"]], ["BE", "White Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["BF", "Brown Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["BG", "Red Embroidered II", ["M", "L", "XL", "XXL", "3XL"]], ["BH", "Navy Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["BI", "Wine Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["BJ", "Ivory Floral Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["BK", "Sage Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["BL", "Sage Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["BM", "Peach Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["BN", "Teal Rose Print", ["M", "L", "XL", "XXL"]], ["BO", "Black Floral Print", ["M", "L", "XL", "XXL"]], ["BP", "Lilac Embroidered", ["M", "L", "XL", "XXL"]], ["BQ", "Navy Embroidered II", ["M", "L", "XL", "XXL"]], ["BR", "White Embroidered Yoke", ["M", "L", "XL", "XXL"]], ["BS", "Rust Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["BT", "Sage Floral Buta II", ["M", "L", "XL", "XXL"]], ["BU", "Sky Blue Embroidered", ["M", "L", "XL", "XXL", "3XL"]]],{A:2,M:2,B:2,M:2,C:2,M:2,D:2,M:2,M:2,F:2,M:2,G:2,M:2,H:2,M:2,I:2,M:2,M:2,K:2,M:2,L:2,M:2,M:2,M:2,N:2,M:2,O:2,M:2,P:2,M:2,M:2,R:2,M:2,S:2,M:2,M:2,U:2,M:2,V:2,M:2,W:2,M:2,X:2,M:2,Y:2,M:2,Z:2,M:2,AA:2,M:2,AB:2,M:2,AC:2,M:2,AD:2,M:2,M:2,M:2,M:2,M:2,M:2,M:2,AK:2,M:2,AL:2,M:2,AM:2,M:2,AN:2,M:2,M:2,M:2,M:2,M:2,AS:2,M:2,AT:2,M:2,AU:2,M:2,AV:2,M:2,AW:2,M:2,AX:2,M:2,AY:2,M:2,AZ:2,M:2,BA:2,M:2,BB:2,M:2,BC:2,M:2,BD:2,M:2,BE:2,M:2,BF:2,M:2,M:2,M:2,M:2,M:2,BK:2,M:2,BL:2,M:2,BM:2,M:2,BN:2,M:2,M:2,BP:2,M:2,BQ:2,M:2,BR:2,M:2,BS:2,M:2,BT:2,M:2,BU:2,M:2}) },
-  { code:"RM-025", type:"rm", name:"Cotton Straight Suit Set · Luxe", cover:"img/RM-025-A.jpg", coverPos:"50% 30%",
-    blurb:"Our most detailed cotton suits: heavy floral and rose embroidery, gota, chikan and hand-painted work on refined pure cotton, with a few in flex cotton. Paired with matching pants and a fine dupatta in most styles.",
-    spec:[["Set", "Kurta, pant &amp; dupatta (most styles)", ""], ["Fabric", "Pure cotton", ""], ["Sizes", "M to 3XL (varies by shade)", ""]],
-    sizes:true,
-    colours: sh("RM-025",[["A", "Olive Gota", ["M", "L", "XL", "XXL", "3XL"]], ["B", "Grey Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["C", "Sage Hand-painted Floral", ["M", "L", "XL", "XXL", "3XL"]], ["D", "Rust Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["E", "Olive Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["F", "Red Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["G", "White Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["H", "Rani Pink Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["I", "Olive Chikan Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["J", "Sage Chikan Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["K", "White Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["L", "White & Grey Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["M", "Pink Embroidered", ["M", "L", "XL", "XXL"]], ["N", "Mustard Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["O", "Rani Pink Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["P", "Purple Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["Q", "Purple Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["R", "Grey Embroidered II", ["M", "L", "XL", "XXL", "3XL"]], ["S", "Wine Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["T", "Olive Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["U", "Plum Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["V", "Lavender Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["W", "Ivory & Red Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["X", "Sky Blue Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["Y", "White Floral Stripe", ["M", "L", "XL", "XXL", "3XL"]], ["Z", "White & Grey Floral Stripe", ["M", "L", "XL", "XXL", "3XL"]], ["AA", "Olive Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["AB", "Pink Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["AC", "Brown Embroidered", ["M", "L", "XL", "XXL"]], ["AD", "Bottle Green Embroidered", ["M", "L", "XL", "XXL"]], ["AE", "White Floral Embroidered II", ["M", "L", "XL", "XXL", "3XL"]], ["AF", "Pink Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AG", "Mustard Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AH", "Rani Pink Rose Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AI", "Red Rose Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AJ", "Maroon Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AK", "Olive Embroidered II", ["M", "L", "XL", "XXL", "3XL"]], ["AL", "Wine Embroidered II", ["M", "L", "XL", "XXL", "3XL"]], ["AM", "Teal Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AN", "Brown Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["AO", "Brown Embroidered II", ["M", "L", "XL", "XXL", "3XL"]], ["AP", "Rani Pink Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["AQ", "Mustard Embroidered II", ["M", "L", "XL", "XXL", "3XL"]], ["AR", "Rust Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["AS", "Sky Blue Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AT", "Ivory Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AU", "Mint Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AV", "White Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AW", "Rani Pink Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["AX", "Sage Embroidered", ["M", "L", "XL", "XXL", "3XL"]]],{A:2,B:2,C:2,I:2,J:2,V:2,X:2,AA:2,AB:2,AC:2,AD:2,AE:2,AP:2,AQ:2,AU:2,AV:2,AW:2,AX:2}) },
-  { code:"RM-026", type:"rm", name:"Mul Cotton Suit Set", cover:"img/RM-026-A.jpg", coverPos:"50% 30%",
-    blurb:"Feather-soft mul cotton straight suits that drape beautifully, with floral embroidery, embroidered yokes and delicate block prints. Comes with matching pants and a light dupatta.",
-    spec:[["Set", "Kurta, pant &amp; dupatta", ""], ["Fabric", "Mul cotton", ""], ["Sizes", "M to 3XL (varies by shade)", ""]],
-    sizes:true,
-    colours: sh("RM-026",[["A", "Olive Embroidered Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["B", "Mustard Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["C", "Rani Pink Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["D", "White Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["E", "White & Indigo Floral", ["M", "L", "XL", "XXL", "3XL"]], ["F", "White & Maroon Floral", ["M", "L", "XL", "XXL", "3XL"]], ["G", "Lemon Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["H", "Pink Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["I", "Sky Blue Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["J", "Rust Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["K", "Teal Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["L", "Pink Embroidered", ["M", "L", "XL", "XXL", "3XL"]]],{A:2,B:2,C:2,D:2,E:2,F:2,J:2,K:2}) },
-  { code:"RM-027", type:"rm", name:"Mul Chanderi & Gajji Silk Suit Set", cover:"img/RM-027-A.jpg", coverPos:"50% 30%",
-    blurb:"Festive straight suits in lustrous mul chanderi with gota, zari and floral thread embroidery, plus a gajji silk style. Paired with pants and a sheer dupatta.",
-    spec:[["Set", "Kurta, pant &amp; dupatta", ""], ["Fabric", "Mul chanderi / gajji silk", ""], ["Sizes", "M to 3XL (varies by shade)", ""]],
-    sizes:true,
-    colours: sh("RM-027",[["A", "Bottle Green Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["B", "Purple Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["C", "Maroon Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["D", "Rust Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["E", "Wine Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["F", "Brown Floral Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["G", "Orange Gota", ["M", "L", "XL", "XXL", "3XL"]], ["H", "Lime Gota", ["M", "L", "XL", "XXL", "3XL"]], ["I", "Rani Pink Gota", ["M", "L", "XL", "XXL", "3XL"]], ["J", "Red Gota", ["M", "L", "XL", "XXL", "3XL"]], ["K", "Red Gota Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["L", "Mustard Gota Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["M", "Orange Gota Yoke", ["M", "L", "XL", "XXL", "3XL"]], ["N", "Lime Green Gajji Silk", ["M", "L", "XL", "XXL"]], ["O", "Rani Pink Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["P", "Yellow Gota Embroidered", ["M", "L", "XL", "XXL", "3XL"]], ["Q", "Coral Pink Embroidered", ["M", "L", "XL", "XXL", "3XL"]]],{M:2,M:2,M:2,M:2,M:2,M:2,G:2,M:2,H:2,M:2,I:2,M:2,J:2,M:2,K:2,M:2,L:2,M:2,M:2,M:2,N:2,M:2,M:2,P:2,M:2,M:2}) },
-  { code:"RM-028", type:"rm", name:"Kota Doria Suit Set", cover:"img/RM-028-A.jpg", coverPos:"50% 30%",
-    blurb:"Airy kota doria straight suits with the signature check weave, printed with soft florals, butis and jaals. Breezy and elegant for summer, with matching pants and dupatta.",
-    spec:[["Set", "Kurta, pant &amp; dupatta", ""], ["Fabric", "Kota doria", ""], ["Sizes", "M to 3XL (varies by shade)", ""]],
-    sizes:true,
-    colours: sh("RM-028",[["A", "Sage Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["B", "Pink Floral Buta", ["M", "L", "XL", "XXL", "3XL"]], ["C", "Coral Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["D", "Sage Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["E", "Aqua Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["F", "Pink Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["G", "Lavender Floral Print", ["M", "L", "XL", "XXL", "3XL"]], ["H", "Pink Floral Jaal", ["M", "L", "XL", "XXL", "3XL"]], ["I", "Lemon Floral", ["M", "L", "XL", "XXL", "3XL"]], ["J", "Mint Floral", ["M", "L", "XL", "XXL", "3XL"]], ["K", "Pink Block Print", ["M", "L", "XL", "XXL", "3XL"]], ["L", "Grey Block Print", ["M", "L", "XL", "XXL", "3XL"]]],{A:2,B:2,C:2,D:2,E:2,F:2,G:2,H:2,I:2,J:2,K:2,L:2}) },
   { code:"RM-015", type:"rm", name:"Premium Mul Chanderi Embroidered Anarkali Set", cover:"img/RM-015-A.jpg", coverPos:"50% 30%",
     blurb:"Soft, lustrous premium mul chanderi anarkali with delicate thread embroidery: a floral V-neck yoke, long embroidered vine panels down the front and matching cuffs. Lined in pure cotton for comfort. Paired with straight pants and a flowing mul chanderi dupatta finished with lace and scattered butis.",
     spec:[["Set","Top, bottom & dupatta (3-piece)",""],["Fabric","Premium mul chanderi, pure cotton lining",""],["Dupatta","Premium mul chanderi with lace",""]],
@@ -765,13 +778,23 @@ if(window.IMGS){CATALOGUES.forEach(c=>{c.cover=IMGS[c.cover]||c.cover;c.colours.
 const TABS=[{id:"sr",label:"Sarees"},{id:"rm",label:"Readymades"},{id:"dm",label:"Dress Materials"}];
 const TYPE_NAME={sr:"Saree",rm:"Readymade",dm:"Dress Material"};
 const app=document.getElementById("app");
-let tab="sr";
+let tab="sr", tier="everyday";
+/* Premium Collection: catalogues whose buying price is above ₹1,750 (prices are kept off the page) */
+const PREMIUM=new Set(["SR-002","SR-003","SR-004","SR-005","SR-006","SR-007","SR-008","SR-018","SR-023","SR-024","SR-028","SR-029","RM-009","RM-011","RM-015","DM-024","DM-027"]);
+/* Festive & introductory offer: one price per collection, delivery included */
+const OFFER={everyday:1350,premium:2250};
+const NO_OFFER=new Set(["SR-002","SR-018","SR-029"]);
+const offerOf=c=>NO_OFFER.has(c.code)?0:OFFER[PREMIUM.has(c.code)?"premium":"everyday"];
+const inr=n=>"₹"+n.toLocaleString("en-IN");
+const TIERS=[{id:"everyday",label:"Everyday Elegance"},{id:"premium",label:"Premium Collection"}];
+const tierOf=c=>PREMIUM.has(c.code)?"premium":"everyday";
+try{const t=localStorage.getItem("va_tier"); if(t==="premium"||t==="everyday") tier=t;}catch(e){}
 try{const t=localStorage.getItem("va_tab"); if(t==="rm"||t==="dm"||t==="sr") tab=t;}catch(e){}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const byCode=(a,b)=>b.code.localeCompare(a.code);
-const inTab=t=>CATALOGUES.filter(c=>c.type===t).sort(byCode);
-const isNew=c=>inTab(c.type).slice(0,3).includes(c);
+const inTab=(t,tr=tier)=>CATALOGUES.filter(c=>c.type===t&&tierOf(c)===tr).sort(byCode);
+const isNew=c=>inTab(c.type,tierOf(c)).slice(0,3).includes(c);
 const HEART='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2.1 0 3.6 1.1 5 2.9 1.4-1.8 2.9-2.9 5-2.9 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>';
 let bar=null, fab=null;
 
@@ -795,18 +818,21 @@ function updateCounts(){
   if(fab){fab.hidden=!list.length; fab.querySelector("b").textContent=list.length;}
 }
 function orderText(items){
-  const lines=items.map(i=>{const f=findShade(i.code);return `${i.code}${i.size?` (size ${i.size})`:""}${f?` – ${f.x.name}`:""}`;});
+  const info=items.map(i=>{const f=findShade(i.code);return {i,f,o:f?offerOf(f.c):0};});
+  const lines=info.map(({i,f,o})=>`${i.code}${i.size?` (size ${i.size})`:""}${f?` – ${f.x.name}`:""}${o?` – Navaratri & introductory offer ${inr(o)}`:""}`);
+  const allOffer=info.every(d=>d.o), tot=info.reduce((a,d)=>a+d.o,0);
   return items.length===1
-    ? `Hi VastrAura! I'd like to order ${lines[0]}. Please share the price.`
-    : `Hi VastrAura! I'd like to order these:\n${lines.map(l=>"• "+l).join("\n")}\nPlease share the prices.`;
+    ? `Hi VastrAura! I'd like to order ${lines[0]}.${allOffer?" (delivery included)":" Please share the price."}`
+    : `Hi VastrAura! I'd like to order these:\n${lines.map(l=>"• "+l).join("\n")}\n${allOffer?`Navaratri & introductory offer total ${inr(tot)}, delivery included.`:"Please share the prices for the rest."}`;
 }
 function openSheet(){
   const s=document.createElement("div");s.className="scrim";
   const draw=()=>{
     s.innerHTML=`<div class="sheet" role="dialog" aria-label="Your shortlist"><div class="grab"></div>
       <h3>Your shortlist</h3>
-      <p class="sub">${list.length?`DM us the code${list.some(i=>i.size)?" &amp; size":""} for price &amp; to place your order. Copy them all in one tap.`:""}</p>
-      ${list.length?`<div class="slist">${list.map((i,k)=>{const f=findShade(i.code);return f?`<div class="si"><img src="${f.x.img}" alt="" data-go="${i.code}"><div class="t" data-go="${i.code}"><b>${i.code}${i.size?` · ${esc(i.size)}`:""}</b><span>${esc(f.x.name)} · ${esc(f.c.name)}</span></div><button class="rm" type="button" data-k="${k}" aria-label="Remove ${i.code}">×</button></div>`:"";}).join("")}</div>
+      <p class="sub">${list.length?`Copy them all in one tap and DM us to place your order.`:""}</p>
+      ${list.length?`<div class="slist">${list.map((i,k)=>{const f=findShade(i.code);return f?`<div class="si"><img src="${f.x.img}" alt="" data-go="${i.code}"><div class="t" data-go="${i.code}"><b>${i.code}${i.size?` · ${esc(i.size)}`:""}</b><span>${esc(f.x.name)} · ${esc(f.c.name)}</span>${offerOf(f.c)?`<em class="op">${inr(offerOf(f.c))}</em>`:`<em class="op no">Not on offer · DM for price</em>`}</div><button class="rm" type="button" data-k="${k}" aria-label="Remove ${i.code}">×</button></div>`:"";}).join("")}</div>
+      ${(()=>{const t=list.reduce((a,i)=>{const f=findShade(i.code);return a+(f?offerOf(f.c):0);},0);return t?`<p class="stot">Navaratri &amp; introductory offer total <b>${inr(t)}</b><small>delivery included${list.some(i=>{const f=findShade(i.code);return f&&!offerOf(f.c);})?" · plus items not on offer":""}</small></p>`:"";})()}
       <div class="acts"><button class="btn" type="button" id="shClose">Keep browsing</button><button class="btn pri" type="button" id="shCopy">Copy all codes</button></div>`
       :`<p class="none">Nothing saved yet. Tap the heart on any shade to keep it here.</p><div class="acts"><button class="btn pri" type="button" id="shClose">Start browsing</button></div>`}
     </div>`;
@@ -856,7 +882,7 @@ function card(c,x){
   const extra=c.type==="rm"?sizeRange(c):"";
   return `<button class="card" type="button" data-open="${href}">
     <div class="frame"><img src="${x?x.img:c.cover}" alt="${esc(c.name)}${x?" in "+esc(x.name):""}" loading="lazy" style="object-position:${x?"50% 50%":(c.coverPos||"50% 50%")}">
-      ${!x&&isNew(c)?`<span class="ribbon">New</span>`:""}${x?"":`<span class="cnt">${avail} ${word}</span>`}</div>
+      ${!x&&isNew(c)?`<span class="ribbon">New</span>`:""}${x?"":`<span class="cnt">${avail} ${word}</span>`}${offerOf(c)?`<span class="ochip">${inr(offerOf(c))}</span>`:`<span class="ochip no">Not on offer</span>`}</div>
     <div class="meta"><span class="ccode">${href}</span><span class="cname">${esc(c.name)}</span>
       ${x?`<span class="csub">${esc(x.name)}</span>`:`<span class="dots">${dots}<span>${avail>5?`+${avail-5} more`:""}</span></span>${extra?`<span class="csub">${esc(extra)}</span>`:""}`}</div>
   </button>`;
@@ -884,7 +910,10 @@ function renderGrid(){
   if(!s){
     tabs.hidden=false; hint.hidden=true;
     const items=inTab(tab);
-    html=items.length?items.map(c=>card(c)).join(""):`<div class="empty"><h3>New ${tab==="rm"?"readymades":tab==="sr"?"sarees":"arrivals"} coming soon</h3><p>DM us to hear first when they land.</p></div>`;
+    const nm=tab==="rm"?"readymades":tab==="sr"?"sarees":"dress materials";
+    html=items.length?items.map(c=>card(c)).join(""):(tier==="premium"
+      ?`<div class="empty prem"><h3>Premium ${nm} arriving soon</h3><p>Our premium ${nm} edit is being curated. DM us to hear first when it lands, or explore our premium sarees.</p><button class="btn gold" type="button" id="toSr">See premium sarees</button></div>`
+      :`<div class="empty"><h3>New ${nm} coming soon</h3><p>DM us to hear first when they land.</p></div>`);
   }else{
     tabs.hidden=true; hint.hidden=false;
     const pc=parseCode(s), norm=s.toUpperCase().replace(/[^A-Z0-9]/g,""), low=s.toLowerCase();
@@ -902,19 +931,31 @@ function renderGrid(){
     html=res.map(([c,x])=>card(c,x)).join("");
   }
   grid.innerHTML=html; wireCards(grid);
+  const ts=document.getElementById("toSr"); if(ts) ts.onclick=()=>{tab="sr";try{localStorage.setItem("va_tab",tab)}catch(e){};renderList();};
 }
 let stuckObs=null;
 function renderList(){
   clearBar(); ensureFab(); updateCounts();
-  const count=id=>CATALOGUES.filter(c=>c.type===id).length;
+  const count=id=>inTab(id).length;
   app.innerHTML=`
+    <section class="offer" aria-label="Navaratri festive offer">
+      <span class="otag">✦ Navaratri Festive &amp; Introductory Offer ✦</span>
+      <div class="orow">
+        <button type="button" class="oc${tier==="everyday"?" on":""}" data-tier="everyday"><small>Everyday Elegance</small><b>Pick any ${inr(OFFER.everyday)}</b></button>
+        <button type="button" class="oc prem${tier==="premium"?" on":""}" data-tier="premium"><small>✦ Premium Collection</small><b>Pick any ${inr(OFFER.premium)}</b></button>
+      </div>
+      <span class="onote">Delivery included · on every design marked with the offer price</span>
+    </section>
     <section class="spot" id="spot" aria-label="Newest collection"></section>
     <ol class="how" id="how" aria-label="How to order">
       <li><strong>Browse</strong>Swipe through every shade</li>
       <li><strong>Save</strong>Heart the ones you love</li>
-      <li><strong>DM us</strong>Send the code${tab==="rm"?" &amp; size":""} for price &amp; to place your order</li>
+      <li><strong>DM us</strong>Send the code${tab==="rm"?" &amp; size":""} to place your order</li>
     </ol>
     <div class="cnav" id="cnav">
+      <div class="tiers" id="tiers" role="tablist" aria-label="Collection">
+        ${TIERS.map(t=>`<button class="tier ${t.id}" role="tab" type="button" aria-selected="${t.id===tier}" data-tier="${t.id}">${t.id==="premium"?'<span class="gem" aria-hidden="true">✦</span>':""}${t.label}<small>${CATALOGUES.filter(c=>tierOf(c)===t.id).length} catalogues · any ${inr(OFFER[t.id])}</small></button>`).join("")}
+      </div>
       <nav class="tabs" id="tabs" role="tablist" aria-label="Collections">
         ${TABS.map(t=>`<button class="tab" role="tab" type="button" id="tab-${t.id}" aria-selected="${t.id===tab}" data-tab="${t.id}">${t.label}<span class="ct">${count(t.id)}</span></button>`).join("")}
       </nav>
@@ -926,6 +967,11 @@ function renderList(){
     </div>
     <p class="shint" id="shint" hidden></p>
     <section class="grid" id="grid" role="tabpanel" aria-labelledby="tab-${tab}"></section>`;
+  app.querySelectorAll("[data-tier]").forEach(b=>b.onclick=()=>{
+    tier=b.dataset.tier;try{localStorage.setItem("va_tier",tier)}catch(e){}
+    const y=document.getElementById("cnav").getBoundingClientRect().top+scrollY;
+    renderList(); if(scrollY>y) scrollTo(0,document.getElementById("cnav").offsetTop);
+  });
   app.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{
     tab=b.dataset.tab;try{localStorage.setItem("va_tab",tab)}catch(e){}
     const y=document.getElementById("cnav").getBoundingClientRect().top+scrollY;
@@ -945,8 +991,8 @@ function renderList(){
 function renderDetail(c,pre,keep){
   if(fab) fab.hidden=true;
   const word=c.type==="rm"?"colour":"shade";
-  const others=inTab(c.type).filter(o=>o!==c);
-  const at=inTab(c.type).indexOf(c);
+  const others=inTab(c.type,tierOf(c)).filter(o=>o!==c);
+  const at=inTab(c.type,tierOf(c)).indexOf(c);
   const more=others.slice(Math.max(0,at-3),Math.max(0,at-3)+8);
   const keepY=keep?scrollY:0;
   app.innerHTML=`
@@ -968,12 +1014,12 @@ function renderDetail(c,pre,keep){
       </div>
       <div>
         <div class="dhead">
-          <span class="ccode">${c.code} · ${TYPE_NAME[c.type]}</span>
+          <span class="ccode">${c.code} · ${TYPE_NAME[c.type]}</span>${tierOf(c)==="premium"?`<span class="pbadge">✦ Premium Collection</span>`:""}
           <h2>${esc(c.name)}</h2>
           <p class="lead">${c.colours.length>1?`${c.colours.length} ${word}s · swipe the photo or tap a ${word} below`:"One of a kind"}</p>
         </div>
         <div class="picked">
-          <div class="t"><small>Your pick</small><b id="pkCode"></b><span id="pkName"></span></div>
+          <div class="t"><small>Your pick</small><b id="pkCode"></b><span id="pkName"></span>${offerOf(c)?`<span class="pprice"><b>${inr(offerOf(c))}</b> Navaratri &amp; introductory offer · delivery included</span>`:`<span class="pprice no">Not on offer · DM us for price</span>`}</div>
           <button class="heart" type="button" id="heart" aria-pressed="false" aria-label="Save to shortlist">${HEART}</button>
         </div>
         <div class="sizes" id="sizes" hidden></div>
@@ -992,10 +1038,10 @@ function renderDetail(c,pre,keep){
         <ol class="how" style="margin-top:22px">
           <li><strong>Pick</strong>Choose your ${word}${c.type==="rm"?" &amp; size":""}</li>
           <li><strong>Copy</strong>Tap “Copy code” below</li>
-          <li><strong>DM us</strong>Send the code${c.type==="rm"?" &amp; size":""} for price &amp; to place your order</li>
+          <li><strong>DM us</strong>Send the code${c.type==="rm"?" &amp; size":""}${offerOf(c)?"":" for price"} &amp; to place your order</li>
         </ol>
       </div>
-      ${more.length?`<section class="more"><h3>More ${c.type==="sr"?"sarees":c.type==="rm"?"readymades":"dress materials"}</h3><div class="rail">${more.map(o=>card(o)).join("")}</div></section>`:""}
+      ${more.length?`<section class="more"><h3>More ${tierOf(c)==="premium"?"premium ":""}${c.type==="sr"?"sarees":c.type==="rm"?"readymades":"dress materials"}</h3><div class="rail">${more.map(o=>card(o)).join("")}</div></section>`:""}
     </div>`;
   wireCards(app.querySelector(".rail")||document.createElement("div"));
 
@@ -1023,7 +1069,7 @@ function renderDetail(c,pre,keep){
     const x=c.colours[cur], code=`${c.code}-${x.sub}`, needSize=!!(x.sizes&&x.sizes.length);
     document.getElementById("barTh").src=x.img;
     document.getElementById("barCode").textContent=code+(size?` · ${size}`:"");
-    document.getElementById("barHint").textContent=x.soldOut?"This one is sold out":needSize&&!size?"Pick a size, then DM us the code & size":`DM us the code${needSize?" & size":""} for price & to place your order`;
+    document.getElementById("barHint").textContent=x.soldOut?"This one is sold out":needSize&&!size?"Pick a size, then DM us the code & size":offerOf(c)?`Navaratri & introductory offer ${inr(offerOf(c))} · delivery included`:`DM us the code${needSize?" & size":""} for price & to place your order`;
   }
   function select(i,fromScroll){
     cur=i; const x=c.colours[i], code=`${c.code}-${x.sub}`;
@@ -1064,7 +1110,7 @@ function renderDetail(c,pre,keep){
     if(x.sizes&&x.sizes.length&&!size){toast("Pick a size first");sizesEl.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});return;}
     copy(orderText([{code:`${c.code}-${x.sub}`,size}]),"Copied. Paste it in your DM to us");
   };
-  document.getElementById("back").onclick=()=>{tab=c.type;try{localStorage.setItem("va_tab",tab)}catch(e){};history.pushState("",document.title,location.pathname+location.search);route();};
+  document.getElementById("back").onclick=()=>{tab=c.type;tier=tierOf(c);try{localStorage.setItem("va_tab",tab);localStorage.setItem("va_tier",tier)}catch(e){};history.pushState("",document.title,location.pathname+location.search);route();};
   select(pre>=0?pre:0);
   addEventListener("resize",()=>{programmatic=true;gal.scrollTo({left:cur*gal.clientWidth});setTimeout(()=>programmatic=false,80);},{once:true});
   window.scrollTo(0,keepY);
