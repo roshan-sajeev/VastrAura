@@ -190,6 +190,9 @@ button{font:inherit;color:inherit}
 .addr .two{display:grid;grid-template-columns:1fr 1.3fr;gap:10px}
 .err{margin:0;color:var(--stamp);font-size:.85rem;min-height:1em}
 .co .acts{position:sticky;bottom:0;background:var(--bg);padding-top:8px}
+.frame.out img{filter:grayscale(1) opacity(.6)}
+.oos{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-10deg);padding:5px 12px;border:2px solid var(--stamp);border-radius:6px;color:var(--stamp);background:color-mix(in srgb,var(--surface) 82%,transparent);font-weight:700;font-size:.78rem;letter-spacing:.04em;white-space:nowrap}
+.heart:disabled{opacity:.4;cursor:not-allowed}
 /* ---------- Catalogue cards ---------- */
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px;padding:16px 0 12px}
 @media (min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 18px}}
@@ -823,6 +826,10 @@ const OFFER={everyday:1350,premium:2250};
 const NO_OFFER=new Set(["SR-002","SR-018","SR-029"]);
 const offerOf=c=>NO_OFFER.has(c.code)?0:OFFER[PREMIUM.has(c.code)?"premium":"everyday"];
 const inr=n=>"₹"+n.toLocaleString("en-IN");
+/* Out of stock: whole catalogues (no ordering) */
+const OUT_OF_STOCK=new Set(["RM-016","RM-017","RM-018","RM-019","RM-020","RM-021","RM-022","RM-023"]);
+CATALOGUES.forEach(c=>{ if(OUT_OF_STOCK.has(c.code)) c.colours.forEach(x=>x.soldOut=true); });
+const isOut=c=>c.colours.every(x=>x.soldOut);
 /* order chat link (number kept off the page) */
 const _w="OTkwMDE5NzMwOTE5";
 const WA_ICON='<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>', COPY_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
@@ -839,7 +846,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const byCode=(a,b)=>b.code.localeCompare(a.code);
 const inTab=(t,tr=tier)=>CATALOGUES.filter(c=>c.type===t&&tierOf(c)===tr).sort(byCode);
-const isNew=c=>inTab(c.type,tierOf(c)).slice(0,3).includes(c);
+const isNew=c=>!c.colours.every(x=>x.soldOut)&&inTab(c.type,tierOf(c)).filter(o=>!o.colours.every(x=>x.soldOut)).slice(0,3).includes(c);
 const HEART='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2.1 0 3.6 1.1 5 2.9 1.4-1.8 2.9-2.9 5-2.9 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>';
 let bar=null, fab=null;
 
@@ -874,7 +881,9 @@ function orderText(items){
 /* ---------- Checkout: pick codes, see total, add delivery details, send on WhatsApp ---------- */
 function openCheckout(extra){
   const seen=new Set(), items=[];
-  [extra,...list].forEach(i=>{ if(!i) return; const k=keyOf(i.code,i.size); if(seen.has(k)) return; const f=findShade(i.code); if(!f) return; seen.add(k); items.push({code:i.code,size:i.size||"",f,o:offerOf(f.c),on:true}); });
+  if(extra){const fx=findShade(extra.code); if(fx&&fx.x.soldOut){toast("This piece is out of stock");return;}}
+  [extra,...list].forEach(i=>{ if(!i) return; const k=keyOf(i.code,i.size); if(seen.has(k)) return; const f=findShade(i.code); if(!f||f.x.soldOut) return; seen.add(k); items.push({code:i.code,size:i.size||"",f,o:offerOf(f.c),on:true}); });
+  if(!items.length){toast("Your shortlist has no pieces available to order");return;}
   let saved={}; try{saved=JSON.parse(localStorage.getItem("va_addr")||"{}")||{};}catch(e){}
   const s=document.createElement("div");s.className="scrim";
   const close=()=>{s.remove();document.removeEventListener("keydown",k);};
@@ -942,8 +951,8 @@ function openSheet(){
     s.innerHTML=`<div class="sheet" role="dialog" aria-label="Your shortlist"><div class="grab"></div>
       <h3>Your shortlist</h3>
       <p class="sub">${list.length?`Send them all to us on WhatsApp in one tap to place your order.`:""}</p>
-      ${list.length?`<div class="slist">${list.map((i,k)=>{const f=findShade(i.code);return f?`<div class="si"><img src="${f.x.img}" alt="" data-go="${i.code}"><div class="t" data-go="${i.code}"><b>${i.code}${i.size?` · ${esc(i.size)}`:""}</b><span>${esc(f.x.name)} · ${esc(f.c.name)}</span>${offerOf(f.c)?`<em class="op">${inr(offerOf(f.c))}</em>`:`<em class="op no">Not on offer · DM for price</em>`}</div><button class="rm" type="button" data-k="${k}" aria-label="Remove ${i.code}">×</button></div>`:"";}).join("")}</div>
-      ${(()=>{const t=list.reduce((a,i)=>{const f=findShade(i.code);return a+(f?offerOf(f.c):0);},0);return t?`<p class="stot">Navaratri &amp; introductory offer total <b>${inr(t)}</b><small>delivery included${list.some(i=>{const f=findShade(i.code);return f&&!offerOf(f.c);})?" · plus items not on offer":""}</small></p>`:"";})()}
+      ${list.length?`<div class="slist">${list.map((i,k)=>{const f=findShade(i.code);return f?`<div class="si"><img src="${f.x.img}" alt="" data-go="${i.code}"><div class="t" data-go="${i.code}"><b>${i.code}${i.size?` · ${esc(i.size)}`:""}</b><span>${esc(f.x.name)} · ${esc(f.c.name)}</span>${f.x.soldOut?`<em class="op no">Out of stock · can't be ordered</em>`:offerOf(f.c)?`<em class="op">${inr(offerOf(f.c))}</em>`:`<em class="op no">Not on offer · DM for price</em>`}</div><button class="rm" type="button" data-k="${k}" aria-label="Remove ${i.code}">×</button></div>`:"";}).join("")}</div>
+      ${(()=>{const t=list.reduce((a,i)=>{const f=findShade(i.code);return a+(f&&!f.x.soldOut?offerOf(f.c):0);},0);return t?`<p class="stot">Navaratri &amp; introductory offer total <b>${inr(t)}</b><small>delivery included${list.some(i=>{const f=findShade(i.code);return f&&!offerOf(f.c);})?" · plus items not on offer":""}</small></p>`:"";})()}
       <div class="acts"><button class="btn" type="button" id="shCopy">${COPY_ICON} Copy all</button><button class="btn wa" type="button" id="shWa">${WA_ICON}<span>Order on WhatsApp</span></button></div>`
       :`<p class="none">Nothing saved yet. Tap the heart on any shade to keep it here.</p><div class="acts"><button class="btn pri" type="button" id="shClose">Start browsing</button></div>`}
     </div>`;
@@ -989,14 +998,15 @@ function parseCode(s){
 function card(c,x){
   const avail=c.colours.filter(y=>!y.soldOut).length;
   const href=x?`${c.code}-${x.sub}`:c.code;
-  const word=c.type==="rm"?(avail===1?"colour":"colours"):(avail===1?"shade":"shades");
+  const out=x?!!x.soldOut:isOut(c), shown=out&&!x?c.colours.length:avail;
+  const word=c.type==="rm"?(shown===1?"colour":"colours"):(shown===1?"shade":"shades");
   const dots=c.colours.slice(0,5).map(y=>`<i style="background-image:url('${y.img}')"></i>`).join("");
   const extra=c.type==="rm"?sizeRange(c):"";
   return `<button class="card" type="button" data-open="${href}">
-    <div class="frame"><img src="${x?x.img:c.cover}" alt="${esc(c.name)}${x?" in "+esc(x.name):""}" loading="lazy" style="object-position:${x?"50% 50%":(c.coverPos||"50% 50%")}">
-      ${!x&&isNew(c)?`<span class="ribbon">New</span>`:""}${x?"":`<span class="cnt">${avail} ${word}</span>`}${offerOf(c)?`<span class="ochip">${inr(offerOf(c))}</span>`:`<span class="ochip no">Not on offer</span>`}</div>
+    <div class="frame${out?" out":""}"><img src="${x?x.img:c.cover}" alt="${esc(c.name)}${x?" in "+esc(x.name):""}" loading="lazy" style="object-position:${x?"50% 50%":(c.coverPos||"50% 50%")}">
+      ${!x&&isNew(c)?`<span class="ribbon">New</span>`:""}${x?"":`<span class="cnt">${shown} ${word}</span>`}${out?`<span class="oos">Out of stock</span>`:offerOf(c)?`<span class="ochip">${inr(offerOf(c))}</span>`:`<span class="ochip no">Not on offer</span>`}</div>
     <div class="meta"><span class="ccode">${href}</span><span class="cname">${esc(c.name)}</span>
-      ${x?`<span class="csub">${esc(x.name)}</span>`:`<span class="dots">${dots}<span>${avail>5?`+${avail-5} more`:""}</span></span>${extra?`<span class="csub">${esc(extra)}</span>`:""}`}</div>
+      ${x?`<span class="csub">${esc(x.name)}</span>`:`<span class="dots">${dots}<span>${shown>5?`+${shown-5} more`:""}</span></span>${extra?`<span class="csub">${esc(extra)}</span>`:""}`}</div>
   </button>`;
 }
 function wireCards(root){root.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>{location.hash=b.dataset.open;});}
@@ -1004,7 +1014,7 @@ function wireCards(root){root.querySelectorAll("[data-open]").forEach(b=>b.oncli
 /* ---------- Home ---------- */
 let q="";
 function spotlight(){
-  const c=inTab(tab)[0]; const el=document.getElementById("spot");
+  const c=inTab(tab).find(x=>!isOut(x))||inTab(tab)[0]; const el=document.getElementById("spot");
   if(!c){el.hidden=true;return;}
   const pics=c.colours.slice(0,7), n=pics.length, span=n>1?Math.min(56,n*9):0;
   el.innerHTML=`<div class="fan${reduce?"":" shut"}" id="fan">${pics.map((x,k)=>`<img src="${x.img}" alt="" style="--r:${n>1?(-span/2+span*k/(n-1)).toFixed(1):0}deg;--k:${k};z-index:${k}" ${k>2?'loading="lazy"':""}>`).join("")}</div>
@@ -1021,7 +1031,7 @@ function renderGrid(){
   document.getElementById("spot").hidden=!!s; document.getElementById("how").hidden=!!s;
   if(!s){
     tabs.hidden=false; hint.hidden=true;
-    const items=inTab(tab);
+    const items=inTab(tab).sort((a,b)=>isOut(a)-isOut(b));
     const nm=tab==="rm"?"readymades":tab==="sr"?"sarees":"dress materials";
     html=items.length?items.map(c=>card(c)).join(""):(tier==="premium"
       ?`<div class="empty prem"><h3>Premium ${nm} arriving soon</h3><p>Our premium ${nm} edit is being curated. DM us to hear first when it lands, or explore our premium sarees.</p><button class="btn gold" type="button" id="toSr">See premium sarees</button></div>`
@@ -1122,7 +1132,7 @@ function renderDetail(c,pre,keep){
       <div class="viewer">
         <div class="vwrap">
           <div class="gal" id="gal" aria-label="Shade photos, swipe to see more">
-            ${c.colours.map((x,i)=>`<div class="slide${x.soldOut?" sold":""}" data-i="${i}"><img src="${x.img}" alt="${esc(c.name)} in ${esc(x.name)}, code ${c.code}-${x.sub}" ${i>1?'loading="lazy"':""}><div class="stamp"><span>Sold out</span></div></div>`).join("")}
+            ${c.colours.map((x,i)=>`<div class="slide${x.soldOut?" sold":""}" data-i="${i}"><img src="${x.img}" alt="${esc(c.name)} in ${esc(x.name)}, code ${c.code}-${x.sub}" ${i>1?'loading="lazy"':""}><div class="stamp"><span>Out of stock</span></div></div>`).join("")}
           </div>
           ${c.colours.length>1?`<span class="pos" id="pos"></span><button class="arr l" type="button" id="prev" aria-label="Previous ${word}">‹</button><button class="arr r" type="button" id="next" aria-label="Next ${word}">›</button>`:""}
           <span class="zhint">Tap to zoom</span>
@@ -1136,15 +1146,15 @@ function renderDetail(c,pre,keep){
           <p class="lead">${c.colours.length>1?`${c.colours.length} ${word}s · swipe the photo or tap a ${word} below`:"One of a kind"}</p>
         </div>
         <div class="picked">
-          <div class="t"><small>Your pick</small><b id="pkCode"></b><span id="pkName"></span>${offerOf(c)?`<span class="pprice"><b>${inr(offerOf(c))}</b> Navaratri &amp; introductory offer · delivery included</span>`:`<span class="pprice no">Not on offer · DM us for price</span>`}</div>
+          <div class="t"><small>Your pick</small><b id="pkCode"></b><span id="pkName"></span>${isOut(c)?`<span class="pprice no">Out of stock · not available to order</span>`:offerOf(c)?`<span class="pprice"><b>${inr(offerOf(c))}</b> Navaratri &amp; introductory offer · delivery included</span>`:`<span class="pprice no">Not on offer · DM us for price</span>`}</div>
           <button class="heart" type="button" id="heart" aria-pressed="false" aria-label="Save to shortlist">${HEART}</button>
         </div>
         <div class="sizes" id="sizes" hidden></div>
         ${c.colours.length>1?`<div class="block"><h3>All ${word}s <small>${c.colours.length}</small></h3>
         <div class="swatches">
           ${c.colours.map((x,i)=>{const code=`${c.code}-${x.sub}`;return `
-          <button class="sw${x.soldOut?" sold":""}" type="button" aria-pressed="false" data-i="${i}" aria-label="${code}, ${esc(x.name)}${x.soldOut?", sold out":""}">
-            <div class="ph"><img src="${x.img}" alt="" loading="lazy"><div class="stamp"><span>Sold out</span></div><span class="saved">${HEART}</span></div>
+          <button class="sw${x.soldOut?" sold":""}" type="button" aria-pressed="false" data-i="${i}" aria-label="${code}, ${esc(x.name)}${x.soldOut?", out of stock":""}">
+            <div class="ph"><img src="${x.img}" alt="" loading="lazy"><div class="stamp"><span>Out of stock</span></div><span class="saved">${HEART}</span></div>
             <span class="lbl"><b>${code}</b>${esc(x.name)}</span>
           </button>`}).join("")}
         </div></div>`:""}
@@ -1190,22 +1200,24 @@ function renderDetail(c,pre,keep){
   function paintBar(){
     const x=c.colours[cur], code=`${c.code}-${x.sub}`, needSize=!!(x.sizes&&x.sizes.length);
     document.getElementById("barTh").src=x.img;
+    ["waBtn","copyCode"].forEach(id=>document.getElementById(id).setAttribute("aria-disabled",String(!!x.soldOut)));
+    const hb=document.getElementById("heart"); if(hb) hb.disabled=!!x.soldOut;
     document.getElementById("barCode").textContent=code+(size?` · ${size}`:"");
-    document.getElementById("barHint").textContent=x.soldOut?"This one is sold out":needSize&&!size?"Pick a size, then DM us the code & size":offerOf(c)?`Navaratri & introductory offer ${inr(offerOf(c))} · delivery included`:`DM us the code${needSize?" & size":""} for price & to place your order`;
+    document.getElementById("barHint").textContent=x.soldOut?"Out of stock · not available to order":needSize&&!size?"Pick a size, then DM us the code & size":offerOf(c)?`Navaratri & introductory offer ${inr(offerOf(c))} · delivery included`:`DM us the code${needSize?" & size":""} for price & to place your order`;
   }
   function select(i,fromScroll){
     cur=i; const x=c.colours[i], code=`${c.code}-${x.sub}`;
     if(!(x.sizes||[]).includes(size)) size=x.sizes&&x.sizes.length===1?x.sizes[0]:"";
     app.querySelectorAll(".sw").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.i===i)));
     document.getElementById("pkCode").textContent=code;
-    document.getElementById("pkName").textContent=x.name+(x.soldOut?" · sold out":"");
+    document.getElementById("pkName").textContent=x.name+(x.soldOut?" · out of stock":"");
     if(pos) pos.textContent=`${i+1} / ${c.colours.length}`;
     // extra photos of this shade
     const slideImg=gal.children[i].querySelector("img");
     views.innerHTML=x.imgs.length>1?x.imgs.map((p,k)=>`<button type="button" class="vw" aria-pressed="${slideImg.getAttribute("src")===p}" data-k="${k}" aria-label="Photo ${k+1}"><img src="${p}" alt="" loading="lazy"></button>`).join(""):"";
     views.querySelectorAll(".vw").forEach(v=>v.onclick=()=>{slideImg.src=x.imgs[+v.dataset.k];views.querySelectorAll(".vw").forEach(o=>o.setAttribute("aria-pressed",String(o===v)));});
     // sizes
-    if(x.sizes&&x.sizes.length){
+    if(x.sizes&&x.sizes.length&&!x.soldOut){
       sizesEl.hidden=false;
       sizesEl.innerHTML=`<h3>Size <small>${x.sizes.length>1?"choose one":""}</small></h3><div class="szrow">${x.sizes.map(z=>`<button class="sz" type="button" aria-pressed="${z===size}">${esc(z)}</button>`).join("")}</div>`;
       sizesEl.querySelectorAll(".sz").forEach(b=>b.onclick=()=>{size=b.textContent;sizesEl.querySelectorAll(".sz").forEach(o=>o.setAttribute("aria-pressed",String(o===b)));paintBar();refreshSaved();});
@@ -1222,6 +1234,7 @@ function renderDetail(c,pre,keep){
   gal.querySelectorAll("img").forEach(im=>im.onclick=()=>zoom(im.src,im.alt));
   heart.onclick=()=>{
     const x=c.colours[cur];
+    if(x.soldOut){toast("This piece is out of stock");return;}
     if(x.sizes&&x.sizes.length&&!size){toast("Pick a size first");sizesEl.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});return;}
     toggleItem(`${c.code}-${x.sub}`,size); refreshSaved();
     heart.classList.remove("pop");void heart.offsetWidth;heart.classList.add("pop");
@@ -1229,11 +1242,13 @@ function renderDetail(c,pre,keep){
   document.getElementById("bag").onclick=openSheet;
   document.getElementById("copyCode").onclick=()=>{
     const x=c.colours[cur];
+    if(x.soldOut){toast("This piece is out of stock");return;}
     if(x.sizes&&x.sizes.length&&!size){toast("Pick a size first");sizesEl.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});return;}
     copy(orderText([{code:`${c.code}-${x.sub}`,size}]),"Copied. Paste it in your DM to us");
   };
   document.getElementById("waBtn").onclick=()=>{
     const x=c.colours[cur];
+    if(x.soldOut){toast("This piece is out of stock");return;}
     if(x.sizes&&x.sizes.length&&!size){toast("Pick a size first");sizesEl.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});return;}
     openCheckout({code:`${c.code}-${x.sub}`,size});
   };
