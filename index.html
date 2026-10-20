@@ -488,8 +488,129 @@ footer .terms li::before{width:19px;height:19px;font-size:.64rem}
 footer .terms ol{gap:7px}
 @media (min-width:700px){footer .terms ol{grid-template-columns:repeat(3,1fr);column-gap:22px}}
 
+
+/* ================= v3: top header, compact tiles ================= */
+.topbar{position:sticky;top:0;z-index:12;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.tb-in{max-width:1120px;margin:0 auto;padding:8px 12px;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+.tb-brand{font-family:var(--wordmark);font-size:1.35rem;color:var(--ink);text-decoration:none;letter-spacing:.02em}
+.tb-brand i{font-style:normal;color:var(--gold)}
+.tb-search{position:relative}
+.tb-search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted);pointer-events:none}
+.tb-search input{width:100%;font:inherit;font-size:16px;padding:9px 34px 9px 36px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);outline:none;-webkit-appearance:none;appearance:none}
+.tb-search input:focus{border-color:var(--gold)}
+.tb-search input::-webkit-search-cancel-button{display:none}
+.tb-search .clr{position:absolute;right:4px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--muted);font-size:1.2rem;padding:4px 10px;cursor:pointer}
+.tb-acts{display:flex;gap:4px;align-items:center}
+.tb-acts button,.tb-acts a{position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:1px;min-width:44px;padding:5px 6px;border:0;border-radius:12px;background:transparent;color:var(--ink);font:inherit;font-size:.64rem;font-weight:600;text-decoration:none;cursor:pointer}
+.tb-acts svg{width:20px;height:20px}
+.tb-acts a svg{fill:none;stroke:currentColor;stroke-width:1.6}
+.tb-acts em{position:absolute;top:0;right:2px;font-style:normal;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:var(--wine-deep);color:var(--ivory);font-size:.6rem;font-weight:700;display:grid;place-items:center}
+.tb-acts em:empty{display:none}
+.tb-acts .tb-order{background:#1b8a4e;color:#fff;padding:5px 10px}
+.tb-acts .tb-order svg{fill:currentColor}
+@media (max-width:640px){
+  .tb-in{grid-template-columns:auto 1fr;row-gap:6px;padding:6px 10px}
+  .tb-brand{font-size:1.15rem}
+  .tb-acts{justify-content:flex-end}
+  .tb-search{grid-column:1/-1;order:3}
+  .tb-acts button,.tb-acts a{min-width:40px;padding:4px 4px}
+}
+@media (max-width:360px){.tb-acts span{display:none}}
+.dtop{top:var(--tbh,58px)}
+.howstrip{margin:14px 0 4px}
+.howstrip h3{font-family:var(--body);font-size:.74rem;font-weight:700;letter-spacing:.06em;color:var(--wine);margin-bottom:8px}
+.howstrip ol{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,1fr);gap:8px;overflow-x:auto;scrollbar-width:none;counter-reset:hs}
+.howstrip ol::-webkit-scrollbar{display:none}
+.howstrip li{counter-increment:hs;display:flex;flex-direction:column;gap:1px;padding:9px 10px;border-radius:12px;background:color-mix(in srgb,var(--gold-soft) 40%,var(--surface));border:1px solid color-mix(in srgb,var(--gold) 25%,transparent);font-size:.72rem;line-height:1.3;color:var(--muted)}
+.howstrip li b{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--ink)}
+.howstrip li b::before{content:counter(hs);display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--wine-deep);color:var(--ivory);font-size:.64rem;flex:none}
+.howstrip li:last-child{background:linear-gradient(135deg,color-mix(in srgb,var(--gold-soft) 70%,var(--surface)),var(--surface));border-color:color-mix(in srgb,var(--gold) 55%,transparent)}
+.howstrip .inl svg{width:14px;height:14px}
+/* categories: compact circles, scale to many */
+.cats{grid-auto-columns:72px;gap:12px;padding:12px 2px 4px}
+@media (min-width:700px){.cats{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:84px}}
+.catc{gap:2px}
+.catc .cimg{width:62px;height:62px;aspect-ratio:auto;border-radius:50%;box-shadow:0 6px 14px -10px rgba(58,11,34,.8);border:2px solid var(--surface)}
+.catc.on .cimg{outline:2px solid var(--gold);outline-offset:2px}
+.catc .cimg.all{display:grid;place-items:center;background:linear-gradient(150deg,#6a1640,#3a0b22);color:#f0cf7f;font-family:var(--display);font-size:1rem}
+.catc .cl{font-family:var(--body);font-size:.72rem;font-weight:600;margin-top:4px;line-height:1.2}
+.catc .cn{font-size:.62rem}
+.catc .cimg.all + .cl{display:none}
+/* collections: smaller */
+.colls{margin:10px 0 2px;gap:6px}
+.collc{min-height:58px;padding:8px 6px;gap:2px;border-radius:12px}
+.collc::after{inset:3px;border-radius:9px}
+.collc b{font-size:clamp(.82rem,3.4vw,1rem)}
+.collc span{font-size:clamp(.6rem,2.5vw,.72rem)}
+/* results + grid: smaller tiles */
+.reshead{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:14px 2px 0}
+.reshead .shint{margin:0}
+.ftags{display:flex;flex-wrap:wrap;gap:6px}
+.ftags button{padding:4px 10px;border-radius:999px;border:1px solid var(--gold);background:color-mix(in srgb,var(--gold-soft) 45%,var(--surface));color:var(--ink);font:inherit;font-size:.74rem;cursor:pointer}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 8px;padding-top:10px}
+@media (min-width:700px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 14px}}
+@media (min-width:1000px){.grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.frame{border-radius:10px}
+.cname{font-size:clamp(.8rem,3.3vw,1rem);-webkit-line-clamp:2}
+.meta{padding-top:6px;gap:3px}
+.ccode{font-size:.62rem}
+.price{font-size:.8rem}
+.dots i{width:15px;height:15px;margin-left:-5px;border-width:1.5px}
+.dots span{font-size:.6rem;margin-left:5px}
+.csub{font-size:.62rem}
+.ribbon,.ktag,.oos{font-size:.56rem;padding:3px 7px}
+.ribbon{left:5px;top:5px}.ktag{left:5px;bottom:5px}
+@media (max-width:400px){.mrow{flex-direction:column;align-items:flex-start;gap:0}}
+/* filter sheet */
+.flt .fh{margin:14px 0 6px;font-size:.78rem;font-weight:700;color:var(--muted)}
+.fopts{display:flex;flex-wrap:wrap;gap:6px}
+.fopts .chip small{font-weight:400;opacity:.75;margin-left:4px}
+.flt .acts{margin-top:18px}
+
+.dtop .mini,.dtop .bagbtn{display:none}
+.si .rm.txt{font-size:.74rem;font-weight:600;color:var(--wine);border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:var(--surface)}
+.ecn{text-align:center}
+.ecn-ic{display:inline-grid;place-items:center;width:58px;height:58px;margin:6px auto 4px;border-radius:50%;background:color-mix(in srgb,var(--gold-soft) 60%,var(--surface));color:var(--wine)}
+.ecn-ic svg{width:28px;height:28px}
+.ecn .acts .btn{flex:1}
+.promo{margin:12px 0 0;padding:9px 14px;border-radius:12px;text-align:center;font-size:.82rem;color:#fff7e6;background:linear-gradient(135deg,#8c3555,#5b1236 60%,#6b4419);border:1px solid rgba(240,207,127,.5)}
+.promo b{color:#f3d48a}
+.disc-hint,.disc-ok{grid-column:1/-1;margin:8px 0 0;padding:8px 10px;border-radius:10px;font-size:.78rem;text-align:center}
+.disc-hint{background:color-mix(in srgb,var(--gold-soft) 45%,var(--surface));color:var(--ink)}
+.disc-ok{background:linear-gradient(135deg,#8c3555,#5b1236);color:#fff7e6}
+.disc-ok b{color:#f3d48a}
+.sheet .disc-hint,.sheet .disc-ok{margin:0 0 12px}
+.cotot .disc-hint,.cotot .disc-ok{margin:8px 0 0}
+
+/* ================= v4: main categories + price sub-categories ================= */
+.maincats{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:8px;margin:16px 0 0;overflow-x:auto;scrollbar-width:none}
+.maincats::-webkit-scrollbar{display:none}
+@media (max-width:520px){.maincats{grid-auto-columns:minmax(108px,1fr)}}
+.mcat{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;min-width:0;transition:background .2s,border-color .2s}
+.mcat .cimg{width:38px;height:38px;flex:none;border-radius:50%;overflow:hidden;background:var(--line)}
+.mcat img{width:100%;height:100%;object-fit:cover}
+.mcat .cl{font-weight:600;font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mcat.on{background:var(--wine-deep);border-color:var(--wine-deep);color:var(--ivory);box-shadow:0 8px 18px -12px rgba(58,11,34,.9)}
+.mcat.on .cimg{outline:2px solid var(--gold);outline-offset:1px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mcat.on{background:var(--gold);border-color:var(--gold);color:#2a1508}}
+:root[data-theme="dark"] .mcat.on{background:var(--gold);border-color:var(--gold);color:#2a1508}
+.colls{margin:10px 0 0}
+.reshead{justify-content:space-between}
+.showall{border:0;background:transparent;color:var(--wine);font:inherit;font-size:.8rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 0}
+.grid.grouped{display:block}
+.gsec{margin:4px 0 22px}
+.gh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:6px 0 0;padding:8px 12px;border-radius:12px;font-family:var(--display);font-weight:400;font-size:1.12rem;color:#fff7e6}
+.gh small{font-family:var(--body);font-size:.72rem;color:#f3d48a;white-space:nowrap}
+.gh.k-offer{background:linear-gradient(135deg,#b4566f,#8c3555 55%,#5e1a37)}
+.gh.k-everyday{background:linear-gradient(135deg,#8a2353,#5b1236 55%,#3a0b22)}
+.gh.k-premium{background:linear-gradient(135deg,#3a0b22,#5b1236 50%,#8a5a22)}
+.grid.sub{padding-top:10px}
+.cats,.ftags{display:none}
+@media (max-width:520px){.maincats{grid-auto-columns:minmax(100px,1fr)}.mcat{flex-direction:column;gap:4px;padding:8px 6px;border-radius:16px}.mcat .cimg{width:44px;height:44px}.mcat .cl{white-space:normal;text-align:center;font-size:.76rem;line-height:1.15;overflow:visible}}
+.collc.none0{opacity:.55}
 </style>
 
+<div class="topbar" id="topbar"></div>
 <header class="banner">
   <div class="wrap">
     <div class="eyebrow">Sarees · Readymades · Dress Materials</div>
@@ -503,7 +624,7 @@ footer .terms ol{gap:7px}
 
 <footer class="wrap">
   <section class="terms" aria-label="Good to know before you order">
-    <h3>Good to know before you order</h3>
+    <h3>Good to know before you order 💛</h3>
     <div id="terms"></div>
   </section>
   <p class="fine">© VastrAura · Prices include free delivery · Codes are unique to each shade</p>
@@ -1007,8 +1128,9 @@ const newest=(a,b)=>(isOut(a)-isOut(b))||b.code.localeCompare(a.code);
 const NEW_SET=new Set(); ACTIVE_CATS.forEach(k=>CATALOGUES.filter(c=>c.type===k.id&&!isOut(c)).sort(newest).slice(0,2).forEach(c=>NEW_SET.add(c.code)));
 const wordOf=(c,n)=>{const w=(CAT[c.type]||{word:"shade"}).word;return n===1?w:w+"s";};
 
-let fCat="all", fColl="all", fSort="new", q="";
-try{const s=JSON.parse(localStorage.getItem("va_filters")||"{}"); if(s.cat&&(s.cat==="all"||CAT[s.cat])) fCat=s.cat; if(s.coll&&(s.coll==="all"||COLL[s.coll])) fColl=s.coll; if(s.sort) fSort=s.sort;}catch(e){}
+let fCat="sr", fColl="all", fSort="new", q="";
+try{const s=JSON.parse(localStorage.getItem("va_filters")||"{}"); if(s.cat&&CAT[s.cat]) fCat=s.cat; if(s.coll&&(s.coll==="all"||COLL[s.coll])) fColl=s.coll;}catch(e){}
+if(!ACTIVE_CATS.some(k=>k.id===fCat)) fCat=(ACTIVE_CATS[0]||{id:"sr"}).id;
 const saveFilters=()=>{try{localStorage.setItem("va_filters",JSON.stringify({cat:fCat,coll:fColl,sort:fSort}));}catch(e){}};
 let bar=null, fab=null;
 
@@ -1045,10 +1167,11 @@ function updateCounts(){
   if(fab){fab.hidden=!live; fab.querySelector("b").textContent=live;}
 }
 function toggleItem(code,size){
-  if(inList(code,size)){list=list.filter(i=>keyOf(i.code,i.size)!==keyOf(code,size));saveList();toast("Removed from your cart");return false;}
-  list.push({code,size:size||""});saveList();toast("Added to your cart");return true;
+  if(inList(code,size)){list=list.filter(i=>keyOf(i.code,i.size)!==keyOf(code,size));saveList();toast("Removed from your cart. You can add it back anytime");return false;}
+  list.push({code,size:size||""});saveList();toast("Lovely choice! Added to your cart ✨");return true;
 }
 function ensureFab(){
+  return;
   if(fab) return;
   fab=document.createElement("button");fab.type="button";fab.className="fab";
   fab.innerHTML=`${CART_ICON}<span>Cart</span><b></b>`;fab.onclick=openCart;document.body.appendChild(fab);
@@ -1062,10 +1185,10 @@ function openCart(){
     const items=cartItems(), live=items.filter(i=>!i.f.x.soldOut), tot=live.reduce((a,i)=>a+priceOf(i.f.c),0);
     s.innerHTML=`<div class="sheet" role="dialog" aria-label="Your cart"><div class="grab"></div>
       <h3>Your cart</h3>
-      ${items.length?`<div class="slist">${items.map((i,n)=>`<div class="si${i.f.x.soldOut?" gone":""}"><img src="${i.f.x.img}" alt="" data-go="${i.code}"><div class="t" data-go="${i.code}"><b>${i.code}${i.size?` · ${esc(i.size)}`:""}</b><span>${esc(i.f.x.name)} · ${esc(i.f.c.name)}</span>${i.f.x.soldOut?`<em class="op no">Out of stock · can't be ordered</em>`:`<em class="op">${inr(priceOf(i.f.c))}</em>`}</div><button class="rm" type="button" data-k="${n}" aria-label="Remove ${i.code}">×</button></div>`).join("")}</div>
-      <p class="stot">Total <b>${inr(tot)}</b><small>${live.length} piece${live.length===1?"":"s"} · free delivery</small></p>
+      ${items.length?`<div class="slist">${items.map((i,n)=>`<div class="si${i.f.x.soldOut?" gone":""}"><img src="${i.f.x.img}" alt="" data-go="${i.code}"><div class="t" data-go="${i.code}"><b>${i.code}${i.size?` · ${esc(i.size)}`:""}</b><span>${esc(i.f.x.name)} · ${esc(i.f.c.name)}</span>${i.f.x.soldOut?`<em class="op no">Sold out · found its home already</em>`:`<em class="op">${inr(priceOf(i.f.c))}</em>`}</div><button class="rm txt" type="button" data-k="${n}" aria-label="Remove ${i.code}">Remove</button></div>`).join("")}</div>
+      <p class="stot">Total <b>${inr(tot)}</b><small>${live.length} piece${live.length===1?"":"s"} · free delivery</small></p>${discNote(live.length)}
       <div class="acts"><button class="btn" type="button" id="shClose">Keep shopping</button><button class="btn wa" type="button" id="shGo"${live.length?"":" disabled"}>${WA_ICON}<span>Place order</span></button></div>`
-      :`<p class="none">Your cart is empty. Tap <span class="inl">${CART_ADD}</span> on any piece to add it.</p><div class="acts"><button class="btn pri" type="button" id="shClose">Start shopping</button></div>`}
+      :`<p class="none">Your cart is waiting to be filled ✨<br>Tap <span class="inl">${CART_ADD}</span> on any piece you love to add it here.</p><div class="acts"><button class="btn pri" type="button" id="shClose">Start shopping</button></div>`}
     </div>`;
     s.querySelectorAll(".rm").forEach(b=>b.onclick=()=>{const it=items[+b.dataset.k];list=list.filter(i=>keyOf(i.code,i.size)!==keyOf(it.code,it.size));saveList();draw();if(location.hash&&!location.hash.startsWith("#reviews"))route(true);});
     s.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{close();location.hash=b.dataset.go;});
@@ -1083,15 +1206,15 @@ function newOrderId(){
   for(let i=0;i<4;i++) r+=A[buf[i]%A.length];
   return `VA-${String(d.getFullYear()).slice(2)}${p(d.getMonth()+1)}${p(d.getDate())}-${r}`;
 }
-const TERMS=[["Colour","Colours may look slightly different from the photos, depending on lighting and your screen."],["Returns & exchanges","Reviewed case by case. Just message us and we'll do our best to help."],["Who we are","We are resellers, not manufacturers. Every piece is handpicked from our suppliers."],["Order confirmation","Your order is confirmed once stock is checked and payment is received."],["Delivery","Free delivery, in 5 to 10 working days from order confirmation."]];
+const TERMS=[["Colour","Every shade is photographed with care. Colours may look a little different depending on lighting and your screen."],["Returns & exchanges","If something isn't right, just message us. We look into every request personally and do our best to make it right."],["Who we are","We are resellers, not manufacturers. Every piece is lovingly handpicked from trusted makers."],["Order confirmation","We confirm your order as soon as stock is checked and payment is received. We'll keep you posted on WhatsApp."],["Delivery","Free delivery to your doorstep within 5 to 10 working days of confirmation."]];
 const termsHTML=()=>`<ol>${TERMS.map(([a,b])=>`<li><b>${esc(a)}</b><span>${esc(b)}</span></li>`).join("")}</ol>`;
 
 /* ---------- Checkout ---------- */
 function openCheckout(extra){
-  if(extra){const fx=findShade(extra.code); if(fx&&fx.x.soldOut){toast("This piece is out of stock");return;}}
+  if(extra){const fx=findShade(extra.code); if(fx&&fx.x.soldOut){toast("This one has found its home already. Explore similar pieces below");return;}}
   const seen=new Set(), items=[];
   [extra,...list].forEach(i=>{ if(!i) return; const k=keyOf(i.code,i.size); if(seen.has(k)) return; const f=findShade(i.code); if(!f||f.x.soldOut) return; seen.add(k); items.push({code:i.code,size:i.size||"",f,p:priceOf(f.c),on:true}); });
-  if(!items.length){toast("Your cart has no pieces available to order");return;}
+  if(!items.length){toast("The pieces in your cart are sold out. Do explore our latest arrivals");return;}
   let saved={}; try{saved=JSON.parse(localStorage.getItem("va_addr")||"{}")||{};}catch(e){}
   const s=document.createElement("div");s.className="scrim";
   const close=()=>{s.remove();document.removeEventListener("keydown",k);};
@@ -1115,32 +1238,32 @@ function openCheckout(extra){
   </form>`;
   const form=s.querySelector("form"), tot=s.querySelector("#coTot"), err=s.querySelector("#coErr");
   const paint=()=>{const sel=items.filter(i=>i.on), sum=sel.reduce((a,i)=>a+i.p,0);
-    tot.innerHTML=sel.length?`<span>Total payable${sel.length>1?` · ${sel.length} pieces`:""}</span><b>${inr(sum)}</b><small>Free delivery</small>`:`<span>Tick at least one piece</span>`;};
+    tot.innerHTML=sel.length?`<span>Total payable${sel.length>1?` · ${sel.length} pieces`:""}</span><b>${inr(sum)}</b><small>Free delivery${sel.length>=DISC_MIN?" · special discount will be applied on WhatsApp":""}</small>${discNote(sel.length)}`:`<span>Tick at least one piece</span>`;};
   s.querySelectorAll(".ck input").forEach(c=>c.onchange=()=>{items[+c.dataset.n].on=c.checked;paint();});
   s.querySelector("#coCancel").onclick=close;
   form.oninput=()=>{err.textContent="";};
   const v=n=>form.elements[n].value.trim();
   const keepAddr=()=>{try{localStorage.setItem("va_addr",JSON.stringify({name:v("name"),addr:v("addr"),pin:v("pin").replace(/\s/g,""),phone:v("phone")}));}catch(e){}};
   s.querySelector("#coMore").onclick=()=>{keepAddr();if(extra&&!inList(extra.code,extra.size)){list.push({code:extra.code,size:extra.size||""});saveList();}
-    close();toast("Saved to your cart. Add more pieces, then tap Cart");if(location.hash){history.pushState("",document.title,location.pathname+location.search);route();}};
+    close();toast("All saved in your cart. Explore more, then tap Place order when you're ready");if(location.hash){history.pushState("",document.title,location.pathname+location.search);route();}};
   form.onsubmit=e=>{
     e.preventDefault();
     const sel=items.filter(i=>i.on), pin=v("pin").replace(/\s/g,""), phone=v("phone").replace(/[^\d+]/g,"");
     const bad=(m,f)=>{err.textContent=m; if(f) form.elements[f].focus();};
-    if(!sel.length) return bad("Tick at least one piece to order.");
-    if(!v("name")) return bad("Please enter your name.","name");
-    if(v("addr").length<10) return bad("Please enter your full delivery address.","addr");
-    if(!/^\d{6}$/.test(pin)) return bad("Please enter a valid 6-digit PIN code.","pin");
-    if(!/^(\+?91)?[6-9]\d{9}$/.test(phone)) return bad("Please enter a valid 10-digit mobile number.","phone");
+    if(!sel.length) return bad("Please tick at least one piece you'd like to order.");
+    if(!v("name")) return bad("May we have your name, please?","name");
+    if(v("addr").length<10) return bad("Please add your full delivery address so your parcel reaches you safely.","addr");
+    if(!/^\d{6}$/.test(pin)) return bad("Please check the PIN code. It should be 6 digits.","pin");
+    if(!/^(\+?91)?[6-9]\d{9}$/.test(phone)) return bad("Please check your mobile number. It should be 10 digits.","phone");
     keepAddr();
     const oid=newOrderId(), sum=sel.reduce((a,i)=>a+i.p,0);
     const lines=sel.map((i,n)=>`${n+1}. ${i.code}${i.size?` (Size ${i.size})`:""} – ${i.f.c.name}, ${i.f.x.name} – ${inr(i.p)}`);
-    const msg=`Hi VastrAura! I'd like to place an order.\nOrder ID: ${oid}\n\n${lines.join("\n")}\n\nTotal payable: ${inr(sum)} (free delivery)\n\nDeliver to:\n${v("name")}\n${v("addr")}\nPIN: ${pin}\nContact: ${phone}\n\nOrder ID: ${oid}`;
+    const msg=`Hi VastrAura! I'd like to place an order.\nOrder ID: ${oid}\n\n${lines.join("\n")}\n\nTotal payable: ${inr(sum)} (free delivery)${sel.length>=DISC_MIN?`\nSpecial discount: eligible (${sel.length} pieces) – please share my discounted total`:""}\n\nDeliver to:\n${v("name")}\n${v("addr")}\nPIN: ${pin}\nContact: ${phone}\n\nOrder ID: ${oid}`;
     sendWA(msg); close();
     try{const h=JSON.parse(localStorage.getItem("va_orders")||"[]");h.unshift({id:oid,at:Date.now(),items:sel.map(i=>({code:i.code,size:i.size}))});localStorage.setItem("va_orders",JSON.stringify(h.slice(0,20)));}catch(e){}
-    const done=new Set(sel.map(i=>keyOf(i.code,i.size))); list=list.filter(i=>!done.has(keyOf(i.code,i.size))); saveList();
+    list=[]; saveList();
     if(location.hash) route(true);
-    toast(`Order ${oid} sent to WhatsApp. ${list.length?"Ordered pieces removed from your cart":"Your cart is now empty"}`);
+    toast(`Thank you! Order ${oid} is ready in WhatsApp. Just tap send and we'll confirm it shortly 💛`);
   };
   paint(); document.addEventListener("keydown",k); document.body.appendChild(s);
 }
@@ -1163,10 +1286,7 @@ function wireCards(root){root.querySelectorAll("[data-open]").forEach(b=>b.oncli
 
 /* ---------- Home ---------- */
 function filtered(){
-  let items=CATALOGUES.filter(c=>(fCat==="all"||c.type===fCat)&&(fColl==="all"||collOf(c)===fColl));
-  const s=fSort;
-  items.sort((a,b)=>(isOut(a)-isOut(b))||(s==="low"?priceOf(a)-priceOf(b):s==="high"?priceOf(b)-priceOf(a):b.code.localeCompare(a.code)));
-  return items;
+  return CATALOGUES.filter(c=>c.type===fCat&&(fColl==="all"||collOf(c)===fColl)).sort(newest);
 }
 function avgStars(){return REVIEWS.length?REVIEWS.reduce((a,r)=>a+r.stars,0)/REVIEWS.length:0;}
 function starsHTML(n,cls=""){return `<span class="stars ${cls}" aria-label="${n} out of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=Math.round(n)?"on":""}">${STAR}</i>`).join("")}</span>`;}
@@ -1174,10 +1294,14 @@ function renderGrid(){
   const grid=document.getElementById("grid"), hint=document.getElementById("shint");
   const s=q.trim(); let html="", res;
   if(!s){
-    res=filtered().map(c=>[c]);
-    const parts=[fCat==="all"?"All categories":CAT[fCat].label, fColl==="all"?"":COLL[fColl].label].filter(Boolean);
-    hint.innerHTML=`<b>${res.length}</b> ${res.length===1?"catalogue":"catalogues"} · ${esc(parts.join(" · "))}`;
-    html=res.length?res.map(([c])=>card(c)).join(""):`<div class="empty"><h3>Nothing here yet</h3><p>Try another category or collection.</p><button class="btn" type="button" id="resetF">Show everything</button></div>`;
+    const all=filtered(), label=CAT[fCat].label;
+    hint.innerHTML=fColl==="all"?`<b>${esc(label)}</b> · ${all.length} catalogues · newest first`:`<b>${esc(label)}</b> · ${esc(COLL[fColl].label)} · ${esc(COLL[fColl].note)} · ${all.length} catalogue${all.length===1?"":"s"}`;
+    const empty=`<div class="empty"><h3>New pieces are on their way</h3><p>Nothing here just yet. Peek into another price range, there's plenty to love.</p></div>`;
+    if(fColl==="all"){
+      grid.classList.add("grouped");
+      html=COLLECTIONS.map(k=>{const items=all.filter(c=>collOf(c)===k.id);if(!items.length)return "";
+        return `<section class="gsec"><h3 class="gh k-${k.id}"><span>${k.id==="premium"?"✦ ":""}${esc(k.label)}</span><small>${esc(k.note)} · ${items.length}</small></h3><div class="grid sub">${items.map(c=>card(c)).join("")}</div></section>`;}).join("")||empty;
+    }else{ grid.classList.remove("grouped"); html=all.length?all.map(c=>card(c)).join(""):empty; }
   }else{
     const pc=parseCode(s), norm=s.toUpperCase().replace(/[^A-Z0-9]/g,""), low=s.toLowerCase();
     res=[];
@@ -1189,72 +1313,102 @@ function renderGrid(){
         else c.colours.forEach(x=>{ if(x.name.toLowerCase().includes(low)) res.push([c,x]); });
       });
     }
-    hint.innerHTML=res.length?`<b>${res.length}</b> ${res.length===1?"match":"matches"} for “${esc(s)}”`:`No match for “${esc(s)}”. Try a code like SR-015 or a colour like “maroon”.`;
+    grid.classList.remove("grouped");
+    hint.innerHTML=res.length?`<b>${res.length}</b> ${res.length===1?"match":"matches"} for “${esc(s)}” across all categories`:`Nothing for “${esc(s)}” yet. Try a code like SR-015 or a colour like “maroon”.`;
     html=res.map(([c,x])=>card(c,x)).join("");
   }
   grid.innerHTML=html; wireCards(grid);
-  const rf=document.getElementById("resetF"); if(rf) rf.onclick=()=>{fCat="all";fColl="all";saveFilters();renderList(true);};
+}
+/* ---------- Top header (search, filter, reviews, cart, place order) ---------- */
+const HDR_SEARCH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+const HDR_FILTER='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>';
+function goHome(){ if(location.hash){history.pushState("",document.title,location.pathname+location.search);route();} }
+function scrollToShop(){const n=document.getElementById("shint");if(n)scrollTo({top:n.getBoundingClientRect().top+scrollY-70,behavior:reduce?"auto":"smooth"});}
+function activeFilterCount(){return (fCat!=="all")+(fColl!=="all")+(fSort!=="new");}
+function paintHeader(){}
+function initHeader(){
+  const h=document.getElementById("topbar"); if(!h) return;
+  h.innerHTML=`<div class="tb-in">
+    <a class="tb-brand" href="#" id="hHome" aria-label="VastrAura home">Vastr<i>Aura</i></a>
+    <div class="tb-search" role="search">${HDR_SEARCH}<input id="q" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Search code or colour" aria-label="Search by code, name or colour"><button class="clr" type="button" id="qclr" aria-label="Clear search" hidden>×</button></div>
+    <nav class="tb-acts" aria-label="Shop actions">
+      <a href="#reviews" id="hRev" aria-label="Customer reviews">${STAR}<span>Reviews</span></a>
+      <button type="button" id="hCart" aria-label="Cart">${CART_ICON}<span>Cart</span><em data-count></em></button>
+      <button type="button" id="hOrder" class="tb-order" aria-label="Place order">${WA_ICON}<span>Place order</span></button>
+    </nav></div>`;
+  document.getElementById("hHome").onclick=e=>{e.preventDefault();q="";const i=document.getElementById("q");i.value="";document.getElementById("qclr").hidden=true;goHome();scrollTo(0,0);};
+  const inp=document.getElementById("q"), clr=document.getElementById("qclr");
+  inp.oninput=()=>{q=inp.value;clr.hidden=!q;if(location.hash){goHome();}else renderGrid();if(q)scrollToShop();};
+  inp.onkeydown=e=>{ if(e.key==="Enter"){ const pc=parseCode(inp.value); const c=pc&&CATALOGUES.find(x=>x.code===pc.code); inp.blur(); if(c) location.hash=pc.sub?`${c.code}-${pc.sub}`:c.code; } };
+  clr.onclick=()=>{q="";inp.value="";clr.hidden=true;if(!location.hash)renderGrid();inp.focus();};
+  document.getElementById("hCart").onclick=openCart;
+  document.getElementById("hOrder").onclick=()=>{const live=cartItems().filter(i=>!i.f.x.soldOut);if(!live.length){emptyCartNote();return;}openCheckout();};
+  paintHeader(); updateCounts();
+  const setH=()=>document.documentElement.style.setProperty("--tbh",h.offsetHeight+"px"); setH(); addEventListener("resize",setH);
+}
+
+const DISC_MIN=4; /* special discount on more than 3 pieces in one order */
+function discNote(n){return n>=DISC_MIN?`<p class="disc-ok">🎉 You've unlocked a <b>special discount</b>! We'll share your discounted total on WhatsApp.</p>`:`<p class="disc-hint">✨ Add <b>${DISC_MIN-n} more piece${DISC_MIN-n===1?"":"s"}</b> to unlock a <b>special discount</b> on this order.</p>`;}
+function emptyCartNote(){
+  const sc=document.createElement("div");sc.className="scrim";
+  const close=()=>{sc.remove();document.removeEventListener("keydown",kd);};const kd=e=>{if(e.key==="Escape")close();};
+  sc.innerHTML=`<div class="sheet ecn" role="dialog" aria-label="Your cart is empty"><div class="grab"></div>
+    <span class="ecn-ic">${CART_ADD}</span>
+    <h3>Your cart is waiting to be filled</h3>
+    <p class="sub">Tap <span class="inl">${CART_ADD}</span> on any piece you love to add it to your cart. Then come back to <b>Place order</b> and we'll take care of the rest.</p>
+    <div class="acts"><button class="btn pri" type="button" id="ecnGo">Start exploring</button></div></div>`;
+  sc.onclick=e=>{if(e.target===sc)close();};
+  sc.querySelector("#ecnGo").onclick=()=>{close();if(location.hash)goHome();setTimeout(scrollToShop,30);};
+  document.addEventListener("keydown",kd);document.body.appendChild(sc);
+}
+function openFilter(){
+  let c=fCat, k=fColl, s=fSort;
+  const sc=document.createElement("div");sc.className="scrim";
+  const close=()=>{sc.remove();document.removeEventListener("keydown",kd);};
+  const kd=e=>{if(e.key==="Escape")close();};
+  const draw=()=>{
+    sc.innerHTML=`<div class="sheet flt" role="dialog" aria-label="Filter"><div class="grab"></div><h3>Filter &amp; sort</h3>
+      <p class="fh">Category</p><div class="fopts">${[{id:"all",label:"All"},...ACTIVE_CATS].map(x=>`<button type="button" class="chip${c===x.id?" on":""}" data-c="${x.id}">${esc(x.label)}</button>`).join("")}</div>
+      <p class="fh">Collection</p><div class="fopts">${[{id:"all",label:"All prices"},...COLLECTIONS].map(x=>`<button type="button" class="chip${k===x.id?" on":""}" data-k="${x.id}">${esc(x.label)}${x.note?` <small>${esc(x.note)}</small>`:""}</button>`).join("")}</div>
+      <p class="fh">Sort by</p><div class="fopts">${[["new","Newest"],["low","Price: low to high"],["high","Price: high to low"]].map(([id,l])=>`<button type="button" class="chip${s===id?" on":""}" data-s="${id}">${l}</button>`).join("")}</div>
+      <div class="acts"><button class="btn" type="button" id="fReset">Clear all</button><button class="btn pri" type="button" id="fApply">Show results</button></div></div>`;
+    sc.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{c=b.dataset.c;draw();});
+    sc.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{k=b.dataset.k;draw();});
+    sc.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{s=b.dataset.s;draw();});
+    sc.querySelector("#fReset").onclick=()=>{c="all";k="all";s="new";draw();};
+    sc.querySelector("#fApply").onclick=()=>{fCat=c;fColl=k;fSort=s;saveFilters();close();if(location.hash)goHome();else renderList(true);setTimeout(scrollToShop,30);};
+  };
+  sc.onclick=e=>{if(e.target===sc)close();};
+  document.addEventListener("keydown",kd); draw(); document.body.appendChild(sc); setTimeout(()=>sc.classList.add("drawn"),400);
 }
 let stuckObs=null;
 function renderList(keepPos){
-  clearBar(); ensureFab(); updateCounts();
+  clearBar(); ensureFab(); updateCounts(); paintHeader();
   const cover=k=>{const c=CATALOGUES.filter(c=>c.type===k.id&&!isOut(c)).sort(newest)[0]||CATALOGUES.find(c=>c.type===k.id);return c?c.cover:"";};
-  const nCat=id=>CATALOGUES.filter(c=>c.type===id).length, nColl=id=>CATALOGUES.filter(c=>collOf(c)===id&&(fCat==="all"||c.type===fCat)).length;
-  const avg=avgStars();
+  const nColl=id=>CATALOGUES.filter(c=>collOf(c)===id&&c.type===fCat).length;
   app.innerHTML=`
-    <nav class="quick" aria-label="Sections"><a href="#shop" data-jump="shop">Shop</a><a href="#reviews">Reviews${REVIEWS.length?` <small>★ ${avg.toFixed(1)}</small>`:""}</a><a href="#how" data-jump="how">How to order</a><button type="button" class="qcart" id="qcart">${CART_ICON}<span>Cart</span><em data-count></em></button></nav>
-    <section class="cats" aria-label="Shop by category">
-      ${ACTIVE_CATS.map(k=>`<button type="button" class="catc${fCat===k.id?" on":""}" data-cat="${k.id}"><span class="cimg"><img src="${cover(k)}" alt="" loading="lazy"></span><span class="cl">${esc(k.label)}</span><span class="cn">${nCat(k.id)} catalogues</span></button>`).join("")}
-    </section>
-    <section class="colls" aria-label="Shop by collection">
-      ${COLLECTIONS.map(k=>`<button type="button" class="collc k-${k.id}${fColl===k.id?" on":""}" data-coll="${k.id}"><b>${k.id==="premium"?"✦ ":""}${esc(k.label)}</b><span>${esc(k.note)}</span></button>`).join("")}
-    </section>
-    <div class="cnav" id="cnav">
-      <div class="chips" role="tablist" aria-label="Category">
-        <button type="button" class="chip${fCat==="all"?" on":""}" data-cat="all">All</button>
-        ${ACTIVE_CATS.map(k=>`<button type="button" class="chip${fCat===k.id?" on":""}" data-cat="${k.id}">${esc(k.label)}</button>`).join("")}
-      </div>
-      <div class="frow">
-        <div class="search" role="search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <input id="q" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Search code or colour" aria-label="Search by code, name or colour" value="${esc(q)}">
-          <button class="clr" type="button" id="qclr" aria-label="Clear search"${q?"":" hidden"}>×</button>
-        </div>
-        <select id="coll" aria-label="Collection"><option value="all">All prices</option>${COLLECTIONS.map(k=>`<option value="${k.id}"${fColl===k.id?" selected":""}>${esc(k.label)}</option>`).join("")}</select>
-        <select id="sort" aria-label="Sort"><option value="new"${fSort==="new"?" selected":""}>Newest</option><option value="low"${fSort==="low"?" selected":""}>Price: low to high</option><option value="high"${fSort==="high"?" selected":""}>Price: high to low</option></select>
-      </div>
-    </div>
-    <p class="shint" id="shint" aria-live="polite"></p>
-    <section class="grid" id="grid" aria-label="Catalogues"></section>
-    <section class="revteaser" aria-label="Customer reviews">
-      <div><h3>Loved by our customers</h3><p>${REVIEWS.length?`${starsHTML(avg)} <b>${avg.toFixed(1)}</b> from ${REVIEWS.length} review${REVIEWS.length===1?"":"s"}`:"Received your order? Tell us how we did."}</p></div>
-      <div class="ra">${REVIEWS.length?`<a class="btn" href="#reviews">Read reviews</a>`:""}<button class="btn gold" type="button" id="rateBtn">${STAR}<span>Rate your order</span></button></div>
-    </section>
-    <section class="howwrap" id="how" aria-label="How to place an order">
-      <h3>How to place an order</h3>
-      <ol class="how four">
-        <li><strong>Choose</strong>Pick a category, then swipe through the shades</li>
-        <li><strong>Add to cart</strong>Tap <span class="inl">${CART_ADD}</span> on every piece you love</li>
-        <li><strong>Order</strong>Open your cart, tick your pieces and see the total</li>
-        <li><strong>Send</strong>Add your address &amp; phone, then send the order on WhatsApp</li>
+    <p class="promo">✨ <b>Special discount</b> on orders of more than 3 pieces in a single order</p>
+    <section class="howstrip" id="how" aria-label="How to place an order">
+      <h3>How to order</h3>
+      <ol>
+        <li><b>Choose</b><span>Pick a category &amp; shade</span></li>
+        <li><b>Add to cart</b><span>Tap <span class="inl">${CART_ADD}</span> on pieces you love</span></li>
+        <li><b>Place order</b><span>Tick pieces, see the total</span></li>
+        <li><b>Send</b><span>Add address &amp; phone, send on WhatsApp</span></li>
+        <li><b>Review</b><span>After delivery, post a genuine review ★</span></li>
       </ol>
-    </section>`;
-  const scrollToShop=()=>{const n=document.getElementById("cnav");if(n)scrollTo({top:n.getBoundingClientRect().top+scrollY-4,behavior:reduce?"auto":"smooth"});};
-  app.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{const v=b.dataset.cat;fCat=(b.classList.contains("catc")&&fCat===v)?"all":v;saveFilters();renderList(true);if(b.classList.contains("catc"))scrollToShop();});
+    </section>
+    <nav class="maincats" aria-label="Main categories">
+      ${ACTIVE_CATS.map(k=>`<button type="button" class="mcat${fCat===k.id?" on":""}" data-cat="${k.id}" aria-pressed="${fCat===k.id}"><span class="cimg"><img src="${cover(k)}" alt="" loading="lazy"></span><span class="cl">${esc(k.label)}</span></button>`).join("")}
+    </nav>
+    <section class="colls" aria-label="${esc(CAT[fCat].label)} by price">
+      ${COLLECTIONS.map(k=>`<button type="button" class="collc k-${k.id}${fColl===k.id?" on":""}${nColl(k.id)?"":" none0"}" data-coll="${k.id}" aria-pressed="${fColl===k.id}"><b>${k.id==="premium"?"✦ ":""}${esc(k.label)}</b><span>${esc(k.note)} · ${nColl(k.id)||"soon"}</span></button>`).join("")}
+    </section>
+    <div class="reshead"><p class="shint" id="shint" aria-live="polite"></p>${fColl!=="all"?`<button type="button" class="showall" data-coll="${fColl}">Show all ${esc(CAT[fCat].label.toLowerCase())}</button>`:""}</div>
+    <section class="grid" id="grid" aria-label="Catalogues"></section>`;
+  app.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{if(q){q="";const i=document.getElementById("q");if(i){i.value="";document.getElementById("qclr").hidden=true;}}fCat=b.dataset.cat;fColl="all";saveFilters();renderList(true);});
   app.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>{const v=b.dataset.coll;fColl=fColl===v?"all":v;saveFilters();renderList(true);scrollToShop();});
-  app.querySelectorAll("[data-jump]").forEach(a=>a.onclick=e=>{e.preventDefault();if(a.dataset.jump==="shop")scrollToShop();else document.getElementById(a.dataset.jump).scrollIntoView({behavior:reduce?"auto":"smooth"});});
-  document.getElementById("coll").onchange=e=>{fColl=e.target.value;saveFilters();renderList(true);};
-  document.getElementById("sort").onchange=e=>{fSort=e.target.value;saveFilters();renderGrid();};
-  document.getElementById("qcart").onclick=openCart;
-  document.getElementById("rateBtn").onclick=()=>openReview();
-  const inp=document.getElementById("q"), clr=document.getElementById("qclr");
-  inp.oninput=()=>{q=inp.value;clr.hidden=!q;renderGrid();};
-  inp.onkeydown=e=>{ if(e.key==="Enter"){ const pc=parseCode(inp.value); const c=pc&&CATALOGUES.find(x=>x.code===pc.code); inp.blur(); if(c) location.hash=pc.sub?`${c.code}-${pc.sub}`:c.code; } };
-  clr.onclick=()=>{q="";inp.value="";clr.hidden=true;renderGrid();inp.focus();};
   renderGrid(); updateCounts();
-  const nav=document.getElementById("cnav");
-  if(stuckObs) stuckObs.disconnect();
-  if("IntersectionObserver" in window){const sent=document.createElement("div");nav.before(sent);stuckObs=new IntersectionObserver(([e])=>nav.classList.toggle("stuck",!e.isIntersecting));stuckObs.observe(sent);}
 }
 
 /* ---------- Reviews ---------- */
@@ -1278,7 +1432,7 @@ function openReview(){
       <div class="fl"><span>Your overall experience</span><div class="bigstars" role="radiogroup" aria-label="Overall rating">${[1,2,3,4,5].map(i=>`<button type="button" class="${i<=stars?"on":""}" data-s="${i}" role="radio" aria-checked="${i===stars}" aria-label="${i} star${i>1?"s":""}">${STAR}</button>`).join("")}</div>
         <small class="sl">${["Tap to rate","Poor","Fair","Good","Very good","Excellent"][stars]}</small></div>
       <div class="fl"><span>Rate the products</span>
-        <div class="rvlist">${rows.map((it,n)=>{const f=findShade(it.code);return `<div class="rvi">${f?`<img src="${f.x.img}" alt="">`:`<span class="ph0"></span>`}<div class="t"><b>${esc(it.code)}</b><span>${f?esc(f.c.name):""}</span></div><div class="seg" role="radiogroup" aria-label="Rating for ${esc(it.code)}">${RATE.map(r=>`<button type="button" class="${it.r===r?"on "+r.toLowerCase():""}" data-n="${n}" data-r="${r}" role="radio" aria-checked="${it.r===r}">${r}</button>`).join("")}</div><button type="button" class="rm" data-del="${n}" aria-label="Remove">×</button></div>`;}).join("")||`<p class="none sm">Add the code of each piece you received.</p>`}</div>
+        <div class="rvlist">${rows.map((it,n)=>{const f=findShade(it.code);return `<div class="rvi">${f?`<img src="${f.x.img}" alt="">`:`<span class="ph0"></span>`}<div class="t"><b>${esc(it.code)}</b><span>${f?esc(f.c.name):""}</span></div><div class="seg" role="radiogroup" aria-label="Rating for ${esc(it.code)}">${RATE.map(r=>`<button type="button" class="${it.r===r?"on "+r.toLowerCase():""}" data-n="${n}" data-r="${r}" role="radio" aria-checked="${it.r===r}">${r}</button>`).join("")}</div><button type="button" class="rm" data-del="${n}" aria-label="Remove">×</button></div>`;}).join("")||`<p class="none sm">Add the code of each piece you received, and tell us how you liked it.</p>`}</div>
         <div class="addcode"><input id="rvCode" placeholder="Add a product code, e.g. SR-022-AC" autocapitalize="characters"><button type="button" class="btn" id="rvAdd">Add</button></div></div>
       <label class="fl">Your name<input id="rvName" value="${esc(tmpName)}" placeholder="Shown with your review"></label>
       <p class="err" id="rvErr" role="alert"></p>
@@ -1289,18 +1443,18 @@ function openReview(){
     s.querySelectorAll(".bigstars button").forEach(b=>b.onclick=()=>{stars=+b.dataset.s;keep();draw();});
     s.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{rows[+b.dataset.n].r=b.dataset.r;keep();draw();});
     s.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{rows.splice(+b.dataset.del,1);keep();draw();});
-    const add=()=>{const v=s.querySelector("#rvCode").value,pc=parseCode(v);if(!pc||!pc.sub){err.textContent="Type a full product code, e.g. SR-022-AC.";return;}const code=`${pc.code}-${pc.sub}`;if(!rows.some(r=>r.code===code))rows.push({code,r:""});keep();draw();};
+    const add=()=>{const v=s.querySelector("#rvCode").value,pc=parseCode(v);if(!pc||!pc.sub){err.textContent="Please type the full product code, for example SR-022-AC.";return;}const code=`${pc.code}-${pc.sub}`;if(!rows.some(r=>r.code===code))rows.push({code,r:""});keep();draw();};
     s.querySelector("#rvAdd").onclick=add; s.querySelector("#rvCode").onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();add();}};
     s.querySelector("#rvCancel").onclick=close;
     s.querySelector("form").onsubmit=e=>{
       e.preventDefault(); keep();
       const id=(oid||tmpOid||"").trim().toUpperCase();
-      if(!stars){err.textContent="Please tap the stars to rate your experience.";return;}
-      if(rows.some(r=>!r.r)){err.textContent="Please rate each product as Bad, Good or Excellent (or remove it).";return;}
+      if(!stars){err.textContent="Tap the stars to tell us how we did. It means a lot to us!";return;}
+      if(rows.some(r=>!r.r)){err.textContent="Almost done! Please rate each piece as Bad, Good or Excellent.";return;}
       const nm=tmpName.trim();
       const msg=`VastrAura customer review\nOrder ID: ${id||"not given"}\nName: ${nm||"not given"}\n\nOverall experience: ${"★".repeat(stars)}${"☆".repeat(5-stars)} (${stars}/5)\n`+
         (rows.length?`\nProducts:\n${rows.map(r=>{const f=findShade(r.code);return `• ${r.code}${f?` – ${f.c.name}, ${f.x.name}`:""}: ${r.r}`;}).join("\n")}\n`:"")+`\nThank you!`;
-      sendWA(msg,_r); close(); toast("Thank you! Your review is ready to send on WhatsApp");
+      sendWA(msg,_r); close(); toast("Thank you so much! Just tap send in WhatsApp to share your review 💛");
     };
   };
   let tmpOid="", tmpName=saved.name||"";
@@ -1319,7 +1473,7 @@ function renderReviews(){
         <div class="revlist">${REVIEWS.slice().sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(r=>`<article class="rev"><header>${starsHTML(r.stars,"sm")}<b>${esc(r.name||"Customer")}</b>${r.place?`<span>${esc(r.place)}</span>`:""}${r.date?`<time>${esc(r.date)}</time>`:""}</header>
           ${(r.items||[]).length?`<ul>${r.items.map(([code,rt])=>{const f=findShade(code);return `<li><a href="#${esc(code)}">${f?`<img src="${f.x.img}" alt="">`:""}<span>${esc(code)}</span></a><em class="rt ${String(rt).toLowerCase()}">${esc(rt)}</em></li>`;}).join("")}</ul>`:""}
           ${r.note?`<p>${esc(r.note)}</p>`:""}</article>`).join("")}</div>`
-      :`<div class="empty"><h3>No reviews yet</h3><p>Our first customer reviews will appear here soon.</p></div>`}
+      :`<div class="empty"><h3>Be among our first reviewers</h3><p>Our customers' stories will shine here soon. Received your order? We'd love to hear from you.</p></div>`}
       <div class="revcta"><p>Received your order? Rate your experience and each piece. It takes 20 seconds.</p><button class="btn gold" type="button" id="rateBtn">${STAR}<span>Rate your order</span></button></div>
     </section>`;
   document.getElementById("back").onclick=()=>{history.pushState("",document.title,location.pathname+location.search);route();};
@@ -1340,7 +1494,7 @@ function renderDetail(c,pre,keep){
       <span class="mini">Vastr<i>Aura</i></span>
       <button class="bagbtn" type="button" id="bag" aria-label="Open cart">${CART_ICON}<em data-count></em></button>
     </div>
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="#" data-crumb="all">Shop</a><span>/</span><a href="#" data-crumb="${c.type}">${esc((CAT[c.type]||{}).label||"")}</a>${k?`<span>/</span><a href="#" data-crumb="${c.type}" data-coll="${k.id}">${esc(k.label)}</a>`:""}</nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="#" data-crumb="${c.type}">Shop</a><span>/</span><a href="#" data-crumb="${c.type}">${esc((CAT[c.type]||{}).label||"")}</a>${k?`<span>/</span><a href="#" data-crumb="${c.type}" data-coll="${k.id}">${esc(k.label)}</a>`:""}</nav>
     <div class="detail">
       <div class="viewer">
         <div class="vwrap">
@@ -1380,7 +1534,7 @@ function renderDetail(c,pre,keep){
       ${same.length?`<section class="more"><h3>More ${esc(((CAT[c.type]||{}).label||"").toLowerCase())}</h3><div class="rail">${same.map(o=>card(o)).join("")}</div></section>`:""}
     </div>`;
   wireCards(app.querySelector(".rail")||document.createElement("div"));
-  app.querySelectorAll("[data-crumb]").forEach(a=>a.onclick=e=>{e.preventDefault();fCat=a.dataset.crumb;fColl=a.dataset.coll||"all";saveFilters();history.pushState("",document.title,location.pathname+location.search);route();setTimeout(()=>{const n=document.getElementById("cnav");if(n&&fCat!=="all")scrollTo(0,n.getBoundingClientRect().top+scrollY-4);},30);});
+  app.querySelectorAll("[data-crumb]").forEach(a=>a.onclick=e=>{e.preventDefault();fCat=a.dataset.crumb;fColl=a.dataset.coll||"all";q="";saveFilters();history.pushState("",document.title,location.pathname+location.search);route();setTimeout(()=>{const n=document.getElementById("cnav");if(n)scrollTo(0,n.getBoundingClientRect().top+scrollY-4);},30);});
 
   clearBar();
   bar=document.createElement("div");bar.className="bar";
@@ -1408,7 +1562,7 @@ function renderDetail(c,pre,keep){
     document.getElementById("barTh").src=x.img;
     ["waBtn","barCart"].forEach(id=>document.getElementById(id).setAttribute("aria-disabled",String(!!x.soldOut)));
     document.getElementById("barCode").textContent=code+(size?` · ${size}`:"");
-    document.getElementById("barHint").textContent=x.soldOut?"Out of stock · not available to order":needSize&&!size?"Pick a size to order":`${inr(price)} · free delivery`;
+    document.getElementById("barHint").textContent=x.soldOut?"Sold out · explore similar pieces below":needSize&&!size?"Pick your size to order":`${inr(price)} · free delivery`;
   }
   function select(i,fromScroll){
     cur=i; const x=c.colours[i], code=`${c.code}-${x.sub}`;
@@ -1435,11 +1589,11 @@ function renderDetail(c,pre,keep){
   const pv=document.getElementById("prev"), nx=document.getElementById("next");
   if(pv){pv.onclick=()=>select((cur-1+c.colours.length)%c.colours.length);nx.onclick=()=>select((cur+1)%c.colours.length);}
   gal.querySelectorAll("img").forEach(im=>im.onclick=()=>zoom(im.src,im.alt));
-  const needSizeFirst=x=>{if(x.sizes&&x.sizes.length&&!size){toast("Pick a size first");sizesEl.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});return true;}return false;};
-  const toggleCart=()=>{const x=c.colours[cur];if(x.soldOut){toast("This piece is out of stock");return;}if(needSizeFirst(x))return;toggleItem(`${c.code}-${x.sub}`,size);refreshSaved();heart.classList.remove("pop");void heart.offsetWidth;heart.classList.add("pop");};
+  const needSizeFirst=x=>{if(x.sizes&&x.sizes.length&&!size){toast("Just pick your size and you're all set");sizesEl.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});return true;}return false;};
+  const toggleCart=()=>{const x=c.colours[cur];if(x.soldOut){toast("This one has found its home already. Explore similar pieces below");return;}if(needSizeFirst(x))return;toggleItem(`${c.code}-${x.sub}`,size);refreshSaved();heart.classList.remove("pop");void heart.offsetWidth;heart.classList.add("pop");};
   heart.onclick=toggleCart; barCart.onclick=toggleCart;
   document.getElementById("bag").onclick=openCart;
-  document.getElementById("waBtn").onclick=()=>{const x=c.colours[cur];if(x.soldOut){toast("This piece is out of stock");return;}if(needSizeFirst(x))return;openCheckout({code:`${c.code}-${x.sub}`,size});};
+  document.getElementById("waBtn").onclick=()=>{const x=c.colours[cur];if(x.soldOut){toast("This one has found its home already. Explore similar pieces below");return;}if(needSizeFirst(x))return;openCheckout({code:`${c.code}-${x.sub}`,size});};
   document.getElementById("back").onclick=()=>{history.pushState("",document.title,location.pathname+location.search);route();};
   select(pre>=0?pre:0);
   addEventListener("resize",()=>{programmatic=true;gal.scrollTo({left:cur*gal.clientWidth});setTimeout(()=>programmatic=false,80);},{once:true});
@@ -1469,6 +1623,7 @@ function trackView(){try{const h=location.hash.slice(1);if(window.goatcounter&&w
   const g=document.createElement("script");g.async=true;g.src="https://gc.zgo.at/count.js";g.dataset.goatcounter="https://anandhi.goatcounter.com/count";
   g.onload=()=>trackView();document.head.appendChild(g);})();
 document.getElementById("terms").innerHTML=termsHTML();
+initHeader();
 route();
 </script>
 
