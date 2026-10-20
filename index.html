@@ -330,6 +330,16 @@ button{font:inherit;color:inherit}
 
 /* ---------- Footer ---------- */
 footer{margin-top:30px;padding-block:26px 90px;border-top:1px solid var(--line)}
+.terms{max-width:760px}
+.terms h3{font-size:1.35rem;margin-bottom:10px}
+.terms ol,.coterms ol{margin:0;padding:0;list-style:none;counter-reset:t;display:grid;gap:8px}
+.terms li,.coterms li{counter-increment:t;display:grid;grid-template-columns:22px 1fr;column-gap:10px;font-size:.86rem;color:var(--muted);line-height:1.45}
+.terms li::before,.coterms li::before{content:counter(t);grid-row:span 2;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;font-weight:600;color:var(--wine);border:1px solid color-mix(in srgb,var(--gold) 60%,transparent)}
+.terms li b,.coterms li b{color:var(--ink);font-weight:600}
+@media (min-width:700px){.terms ol{grid-template-columns:1fr 1fr;column-gap:28px}}
+.coterms{margin:0 0 12px;padding:10px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.coterms summary{cursor:pointer;font-size:.82rem;font-weight:600;color:var(--wine)}
+.coterms ol{margin-top:10px}
 .disc{display:flex;gap:12px;align-items:flex-start;font-size:.86rem;color:var(--muted);max-width:70ch}
 .disc::before{content:"";flex:none;width:8px;height:8px;margin-top:7px;transform:rotate(45deg);border:1px solid var(--gold)}
 .fine{margin-top:14px;font-size:.75rem;color:var(--muted)}
@@ -359,7 +369,10 @@ footer{margin-top:30px;padding-block:26px 90px;border-top:1px solid var(--line)}
 <main id="app" class="wrap"></main>
 
 <footer class="wrap">
-  <p class="disc">Colours shown may vary slightly from the actual fabric due to lighting during photography and your screen settings.</p>
+  <section class="terms" aria-label="Before you order">
+    <h3>Before you order</h3>
+    <ol><li><b>Colour</b><span>Colours may look slightly different from the photos, depending on lighting and your screen.</span></li><li><b>Returns &amp; exchanges</b><span>Reviewed case by case. Just message us and we'll do our best to help.</span></li><li><b>Who we are</b><span>We are resellers, not manufacturers. Every piece is handpicked from our suppliers.</span></li><li><b>Order confirmation</b><span>Your order is confirmed once stock is checked and payment is received.</span></li><li><b>Delivery</b><span>5 to 10 working days from order confirmation.</span></li></ol>
+  </section>
   <p class="fine">© VastrAura · Codes are unique to each shade</p>
 </footer>
 
@@ -831,7 +844,7 @@ const OUT_OF_STOCK=new Set(["RM-016","RM-017","RM-018","RM-019","RM-020","RM-021
 CATALOGUES.forEach(c=>{ if(OUT_OF_STOCK.has(c.code)) c.colours.forEach(x=>x.soldOut=true); });
 const isOut=c=>c.colours.every(x=>x.soldOut);
 /* order chat link (number kept off the page) */
-const _w="OTkwMDE5NzMwOTE5";
+const _w="NjAxMDkzMDA0OTE5";
 const WA_ICON='<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>', COPY_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
 function sendWA(text){
   let n="";try{n=atob(_w).split("").reverse().join("");}catch(e){}
@@ -902,6 +915,7 @@ function openCheckout(extra){
       <label>Contact number<input name="phone" type="tel" inputmode="tel" maxlength="14" autocomplete="tel" value="${esc(saved.phone||"")}" required></label></div>
       <p class="err" id="coErr" role="alert"></p>
     </fieldset>
+    <details class="coterms"><summary>Before you order: colour, returns, confirmation &amp; delivery</summary><ol><li><b>Colour</b><span>Colours may look slightly different from the photos, depending on lighting and your screen.</span></li><li><b>Returns &amp; exchanges</b><span>Reviewed case by case. Just message us and we'll do our best to help.</span></li><li><b>Who we are</b><span>We are resellers, not manufacturers. Every piece is handpicked from our suppliers.</span></li><li><b>Order confirmation</b><span>Your order is confirmed once stock is checked and payment is received.</span></li><li><b>Delivery</b><span>5 to 10 working days from order confirmation.</span></li></ol></details>
     <div class="acts"><button class="btn" type="button" id="coCancel">Cancel</button><button class="btn wa" type="submit">${WA_ICON}<span>Send order</span></button></div>
   </form>`;
   const form=s.querySelector("form"), tot=s.querySelector("#coTot"), err=s.querySelector("#coErr");
