@@ -608,12 +608,104 @@ footer .terms ol{gap:7px}
 .cats,.ftags{display:none}
 @media (max-width:520px){.maincats{grid-auto-columns:minmax(100px,1fr)}.mcat{flex-direction:column;gap:4px;padding:8px 6px;border-radius:16px}.mcat .cimg{width:44px;height:44px}.mcat .cl{white-space:normal;text-align:center;font-size:.76rem;line-height:1.15;overflow:visible}}
 .collc.none0{opacity:.55}
+/* ===== Shop layout: pleated category fans → stock tabs → price chips ===== */
+.catbar{position:sticky;top:var(--tbh,58px);z-index:5;margin:0 calc(50% - 50vw);background:color-mix(in srgb,var(--bg) 94%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid color-mix(in srgb,var(--gold) 28%,var(--line))}
+.catbar nav{display:flex;align-items:center;justify-content:center;gap:0;max-width:1120px;margin:0 auto;padding:0 16px;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 24px),transparent)}
+.catbar nav::-webkit-scrollbar{display:none}
+@media (max-width:760px){.catbar nav{justify-content:flex-start}}
+.cb{flex:none;position:relative;display:flex;align-items:center;padding:15px 0 14px;border:0;background:none;cursor:pointer;font-family:var(--display);font-size:.84rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap;transition:color .2s}
+.cb+.cb::before{content:"";width:5px;height:5px;margin:0 clamp(14px,2.6vw,26px);background:var(--gold);transform:rotate(45deg);opacity:.75}
+.cb span{position:relative;padding-bottom:3px}
+.cb span::after{content:"";position:absolute;left:0;right:.16em;bottom:-2px;height:1.5px;background:linear-gradient(90deg,var(--gold),#f3d48a,var(--gold));transform:scaleX(0);transition:transform .25s}
+.cb:hover{color:var(--ink)}
+.cb.on{color:var(--wine)}
+.cb.on span::after{transform:none}
+.banner{padding-block:12px 10px}
+.cb span i{font-style:normal}
+@media (max-width:760px){.cb span{display:flex;flex-direction:column;align-items:center;line-height:1.25}.cb{padding:10px 0 9px;font-size:.74rem;letter-spacing:.1em}.cb+.cb::before{margin:0 7px;width:4px;height:4px}.catbar nav{padding:0 8px;justify-content:space-between;-webkit-mask-image:none;mask-image:none}}
+.banner .word{margin-top:2px}.banner .rule{margin:6px auto 4px}.banner .cap{margin:0}
+.grid.grouped .gh{display:flex;align-items:center;justify-content:center;gap:14px;margin:8px 0 2px;padding:0;border-radius:0;background:none;color:var(--ink);font-size:1.25rem;letter-spacing:.02em}
+.grid.grouped .gh::before,.grid.grouped .gh::after{content:"";flex:1;max-width:160px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.grid.grouped .gh::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.grid.grouped .gh span{order:0}
+.grid.grouped .gh small{order:1;font-size:.7rem;color:var(--muted);letter-spacing:.04em}
+.grid.grouped .gh::after{order:2}
+.stabs{display:flex;justify-content:center;gap:clamp(14px,5vw,44px);margin:16px 0 0;border-bottom:1px solid var(--line)}
+.stab{position:relative;display:flex;flex-direction:column;align-items:center;padding:6px 2px 10px;border:0;background:none;cursor:pointer;color:var(--muted);line-height:1.15}
+.stab b{font-family:var(--display);font-weight:400;font-size:clamp(1.02rem,4vw,1.3rem);color:var(--muted);transition:color .2s}
+.stab span{font-size:.68rem;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.stab::after{content:"";position:absolute;left:18%;right:18%;bottom:-1px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--gold),#f3d48a,var(--gold));transform:scaleX(0);transition:transform .25s}
+.stab.on b{color:var(--ink)}.stab.on span{color:var(--wine)}
+.stab.on::after{transform:none}
+.tabnote{text-align:center;font-size:.76rem;font-style:italic;color:var(--muted);margin:8px 0 0}
+.pchips{display:flex;gap:0;justify-content:center;align-items:flex-start;overflow-x:auto;scrollbar-width:none;padding:14px 2px 0}
+@media (max-width:640px){.pchips{justify-content:flex-start}}
+.pchips::-webkit-scrollbar{display:none}
+.pchip{flex:none;display:flex;flex-direction:column;align-items:center;gap:1px;padding:4px 14px;border:0;background:none;cursor:pointer;font-family:var(--display);font-size:1rem;line-height:1.2;white-space:nowrap;color:var(--muted);position:relative}
+.pchip+.pchip{border-left:1px solid color-mix(in srgb,var(--gold) 35%,transparent)}
+.pchip small{font-family:var(--body);font-size:.64rem;letter-spacing:.04em;color:var(--muted);opacity:.8}
+.pchip.on{color:var(--wine)}
+.pchip.on small{color:var(--gold);opacity:1}
+.pchip.zero{opacity:.4}
+.shop .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:700px){.shop .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1000px){.shop .grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.newtag{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;background:var(--wine-deep);color:#f3d48a;font-size:.66rem;font-weight:700;letter-spacing:.04em}
+.scopenote{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 10px;padding:8px 12px;border-radius:12px;background:color-mix(in srgb,var(--gold-soft) 40%,var(--surface));font-size:.8rem;color:var(--muted)}
+.scopenote b{color:var(--ink)}
+.scopenote button{border:0;background:none;color:var(--wine);font-weight:600;cursor:pointer;padding:0;text-decoration:underline}
+.howsheet ol{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px;counter-reset:hs}
+.howsheet li{counter-increment:hs;display:grid;grid-template-columns:28px 1fr;gap:2px 10px;align-items:center;padding:10px 12px;border-radius:14px;background:color-mix(in srgb,var(--gold-soft) 40%,var(--surface));border:1px solid color-mix(in srgb,var(--gold) 25%,transparent);font-size:.82rem;color:var(--muted)}
+.howsheet li::before{content:counter(hs);grid-row:span 2;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--wine-deep);color:#f3d48a;font-weight:700;font-size:.8rem}
+.howsheet li b{color:var(--ink);font-size:.95rem}
+.howsheet .inl svg{width:14px;height:14px;display:inline;vertical-align:-2px}
+.howsheet .disc{margin:12px 0 0;text-align:center;font-size:.82rem;color:var(--muted)}
+.stab b i,.pchip .pl i{font-style:normal}
+@media (max-width:760px){.stab b i,.pchip .pl i{display:block;line-height:1.15}.stab b{text-align:center}.pchip{padding:4px 10px}.pchip .pl{text-align:center}.pchips{justify-content:center}.stabs{gap:clamp(10px,6vw,34px)}}
+
+/* category band: continuation of the wine banner, names in the tagline cream */
+.catbar{margin-top:-1px;background:linear-gradient(160deg,#4f0f2f 0%,#3d0b25 55%,#2c0819 100%);-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:1px solid rgba(230,199,125,.55);box-shadow:inset 0 1px 0 rgba(230,199,125,.22),0 10px 22px -18px rgba(40,6,22,.9)}
+.cb{color:rgba(243,227,196,.72)}
+.cb:hover{color:#f3e3c4}
+.cb.on{color:#f3e3c4}
+.cb+.cb::before{background:#e6c77d;opacity:.8}
+.cb span::after{background:linear-gradient(90deg,#c9a24f,#f3d48a,#c9a24f)}
+
+/* Always dark: VastrAura opens in its dark jewel theme on every device */
+:root,:root[data-theme]{--bg:#130a10;--surface:#1e1219;--ink:#f4e9ee;--muted:#b9a4af;--line:#36252f;--wine:#d27aa3;--gold:#d9b66a;--gold-soft:#4a3a22;--wa:#2fb36a;--stamp:#ef6b62;--shadow:0 18px 36px -24px rgba(0,0,0,.8);color-scheme:dark}
+html,body{background:var(--bg)!important;color:var(--ink)}
+.btn.pri,.fab{background:var(--gold);border-color:var(--gold);color:#2a1508}
+
+/* Dark theme text in the tagline's champagne tone */
+:root,:root[data-theme]{--ink:#e2d8c6;--muted:#a89d8c}
+/* Selected category / tab / price shimmer like the tagline */
+.cb.on span,.stab.on b,.pchip.on .pl{background:linear-gradient(110deg,#c4b8a4 0%,#cdc2af 40%,#fff9ea 46%,#ffffff 50%,#fff9ea 54%,#cdc2af 60%,#c4b8a4 100%);background-size:260% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:silver 3.6s ease-in-out infinite,glow 3.6s ease-in-out infinite}
+.cb.on span i,.stab.on b i,.pchip.on .pl i{-webkit-text-fill-color:transparent}
+.cb.on{color:#f3e3c4}
+@media (prefers-reduced-motion:reduce){.cb.on span,.stab.on b,.pchip.on .pl{animation:none;background-position:50% 0}}
+
+/* Selection controls stay fixed under the header; only results scroll */
+.filt{position:sticky;top:var(--tbh,58px);z-index:6;margin:0 calc(50% - 50vw);padding:0 calc(50vw - 50%) 10px;background:var(--bg);border-bottom:1px solid color-mix(in srgb,var(--gold) 22%,transparent);box-shadow:0 14px 20px -18px rgba(0,0,0,.9)}
+.filt .catbar{position:static;margin:0 calc(50% - 50vw)}
+.filt .stabs{margin-top:8px}
+.filt .tabnote{display:none}
+.filt .pchips{padding-top:8px}
+@media (max-width:760px){.filt .stab{padding:4px 2px 7px}.filt .stab b{font-size:.98rem}.filt .pchip{font-size:.92rem;padding:2px 10px}.filt .stabs{margin-top:6px}}
+/* Good to know: compact disclaimer */
+footer .terms{padding:14px 2px 6px;border:0;border-top:1px solid color-mix(in srgb,var(--gold) 30%,transparent);border-radius:0;background:none}
+footer .terms h3{font-size:.7rem;margin-bottom:6px;color:var(--gold)}
+footer .terms ol{display:block}
+footer .terms li{display:block;margin:0 0 5px;font-size:.72rem;line-height:1.5;color:var(--muted)}
+footer .terms li::before{display:none}
+footer .terms li b{color:var(--ink);font-weight:600}
+footer .terms li b::after{content:": "}
+footer .terms li span{color:var(--muted)}
+@media (min-width:700px){footer .terms ol{display:block;columns:2;column-gap:32px}footer .terms li{break-inside:avoid}}
 </style>
 
 <div class="topbar" id="topbar"></div>
 <header class="banner">
   <div class="wrap">
-    <div class="eyebrow">Handpicked textiles for you &amp; your home</div>
     <h1 class="word" aria-label="VastrAura"><span class="l" style="--i:0">V</span><span class="l" style="--i:1">a</span><span class="l" style="--i:2">s</span><span class="l" style="--i:3">t</span><span class="l" style="--i:4">r</span><i><span class="l" style="--i:5">A</span><span class="l" style="--i:6">u</span><span class="l" style="--i:7">r</span><span class="l" style="--i:8">a</span></i><span class="spk" aria-hidden="true" style="top:2%;left:-5%;--s:10px;--d:.2s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:-8%;left:14%;--s:12px;--d:.9s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:30%;left:27%;--s:9px;--d:1.5s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:-6%;left:57%;--s:15px;--d:.5s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:20%;left:76%;--s:9px;--d:1.9s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:58%;right:-6%;--s:11px;--d:1.1s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="bottom:-8%;left:40%;--s:9px;--d:2.2s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="bottom:2%;left:8%;--s:8px;--d:1.7s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span></h1>
     <div class="rule" aria-hidden="true"><span></span></div>
     <p class="cap"><span class="tl" id="tl">Every <b>AURA</b> has its <b>VASTRA</b></span></p>
@@ -624,7 +716,7 @@ footer .terms ol{gap:7px}
 
 <footer class="wrap">
   <section class="terms" aria-label="Good to know before you order">
-    <h3>Good to know before you order 💛</h3>
+    <h3>Please note</h3>
     <div id="terms"></div>
   </section>
   <p class="fine">© VastrAura · Prices include free delivery · Codes are unique to each shade</p>
@@ -775,6 +867,16 @@ const CATALOGUES = [
     spec:[["Fabric","Pure cotton mul, 92×80",""],["Work","Natural hand block print, natural dyes & colours",""],["Length","6.5 m with blouse",""],["Blouse","Contrast hand block printed blouse piece",""]],
     sizes:null,
     colours: sh("SR-021",[["A","Indigo Red Floral Buta"],["B","Red & Beige Leaf Buti"],["C","Yellow Floral, Black Paisley Pallu"],["D","Indigo Floral & Black Checks"],["E","Red & Black Checkerboard Leaf"],["F","Black Bird Motif"],["G","Black Animal Border"],["H","Indigo Leaf Buti"],["I","Red Floral & Black Checks"],["J","Grey Paisley, Mustard Border"],["K","Indigo Floral, Mustard Leaf Pallu"],["L","Mustard Rose Jaal"],["M","Yellow Buti, Black Floral Band"],["N","Mustard Geometric Star"],["O","Black Buti, Mustard Leaf Pallu"],["P","Black Zigzag & Red Vine"],["Q","Purple Leaf Jaal"],["R","Black Paisley Buti"],["S","Indigo Floral, Spiral Border"],["T","Black & Red Tree Motif"],["U","Green Leaf, Mustard Buti Pallu"],["V","Black Flower Bird, Polka Band"],["W","Maroon Paisley & Zigzag"],["X","Black Floral Vine, Yellow Band"],["Y","Black Floral, Yellow Marigold Band"],["Z","Magenta & Red Buta"],["AA","Yellow Leaf, Blue Stripe Pallu"],["AB","Black Floral, Red Stripe Pallu"],["AC","White Pink Floral, Green Bands"],["AD","Grey Polka & Stripes"],["AE","Black Flower Buti, Grey Arrows"],["AF","Indigo Floral Vine"],["AG","Indigo Tree Buti, Lattice Pallu"],["AH","Black Lotus, Mustard Bands"],["AI","Teal Floral, Yellow Sunflower Band"],["AJ","Navy & Red Buti"],["AK","Black Paisley Vine & Zigzag"],["AL","Mustard Leaf, Black Paisley Pallu"],["AM","Indigo Arrow, Tree Pallu"],["AN","Indigo Paisley, Zigzag Pallu"],["AO","Red Leaf & Stripes"],["AP","Indigo Zigzag, Tree Buti Band"],["AQ","Blue Lotus, Yellow Sunflower Band"],["AR","Indigo Medallion Jaal"],["AS","Indigo & White Floral, Wave Pallu"],["AT","Indigo Polka & Stripes"],["AU","Blue Paisley Vine, Mustard Band"],["AV","Teal Yellow Floral, Rainbow Stripes"],["AW","Blue Floral, Pink Paisley Band"],["AX","Purple Paisley, Black Band"],["AY","Black & Beige Line Checks"],["AZ","Green Floral, Pink Paisley Band"],["BA","Maroon Paisley, Tree Band"],["BB","Olive Floral, Chevron Bands"],["BC","Maroon Leaf Buti"],["BD","Red Tribal, Lattice Band"],["BE","Navy Red Tulip, Bouquet Pallu"],["BF","Black Flower, Tree Band"],["BG","Black Batik Sunburst"],["BH","Beige Buti, Olive Motif Band"],["BI","Pink Floral, Multicolour Bands"],["BJ","Yellow Red Buti, Marigold Band"],["BK","Aqua Floral, Maroon Bands"],["BL","Navy & Beige Floral Jaal"],["BM","Indigo Leaf, Tree Band"],["BN","Indigo Flower Buti, Fountain Pallu"],["BO","Black Floral, Red Marigold Band"],["BP","Indigo & White Lotus, Zigzag"],["BQ","Navy Big Polka & Stripes"],["BR","Wine Batik Floral"],["BS","Green Floral, Yellow Temple Band"],["BT","Blue Tulip, Yellow Lotus Band"],["BU","Teal Batik Floral"],["BV","Indigo Triangle & Circle Batik"],["BW","Purple Batik Floral"],["BX","Sky Blue Floral, Paisley Band"],["BY","Red Batik Sunburst"],["BZ","Navy Red Zigzag, Bouquet Band"],["CA","Mustard Batik Floral"],["CB","Black Floral, Red Paisley Band"],["CC","Wine Big Polka & Stripes"],["CD","Maroon & Red Buti, Stripe Pallu"]]) },
+  { code:"SR-039", type:"sr", name:"Georgette Ajrakh Print Saree with Mirror Work", cover:"img/SR-039-A.jpg", coverPos:"50% 50%",
+    blurb:"Super premium georgette sarees in a uniform Ajrakh design, with mirror work all over: a wide medallion border, scattered mirror motifs on the body and a matching Ajrakh-printed blouse piece. Light, flowing and fully washable.",
+    spec:[["Fabric","Premium georgette",""],["Print","Ajrakh, uniform design",""],["Work","Full mirror work",""],["Blouse","Ajrakh printed blouse piece",""],["Care","Washable",""]],
+    sizes:null,
+    colours: sh("SR-039",[["A","Wine",null],["B","Bottle Green",null],["C","Purple",null],["D","Navy Blue",null],["E","Black",null],["F","Maroon Red",null]],{E:2}) },
+  { code:"SR-038", type:"sr", name:"Modal Dhola Silk Ajrakh Saree with Zari Pallu", cover:"img/SR-038-A.jpg", coverPos:"50% 40%",
+    blurb:"Exclusive, limited-stock sarees in 100% pure modal dhola silk, hand block printed in natural colours with Ajrakh, Bagru and vanaspati prints. Each is finished with a rich woven zari border and a grand zari pallu, many with royal elephant medallions. Comes with a blouse piece.",
+    spec:[["Fabric","Pure modal dhola silk",""],["Print","Hand block, natural colours (Ajrakh / Bagru / vanaspati)",""],["Border & pallu","Woven zari, elephant motifs",""],["Blouse","Included",""],["Stock","Limited, one piece per design",""]],
+    sizes:null,
+    colours: sh("SR-038",[["A","Red Ajrakh, Indigo Motifs, Gold Zari Pallu"],["B","Black Ajrakh Patchwork, Elephant Zari Pallu"],["C","Bright Red Lotus Buti, Elephant Zari Pallu"],["D","Ivory, Indigo Buti, Ivory Zari Pallu"],["E","Navy, Leaf Buta, Elephant Zari Pallu"],["F","Bottle Green, Red Ajrakh Stripes, Gold Elephant Pallu"],["G","Brick Red Jaal, Elephant Zari Pallu"],["H","Red & Black Stripes, Ajrakh Border, Elephant Pallu"],["I","Mustard Yellow, Green Ajrakh, Mustard Zari Pallu"],["J","Maroon, Lotus Buti, Elephant Zari Pallu"],["K","Ivory & Black Chevron, Gold Elephant Pallu"],["L","Ivory, Indigo Ajrakh Grid, Ivory Zari Pallu"],["M","Black, Indigo Flower Buta, Elephant Zari Pallu"],["N","Indigo, Jaal & Flower Buta, Elephant Pallu"],["O","Teal Blue Ajrakh, Floral Band, Elephant Pallu"],["P","Lemon Yellow, Green Buti, Yellow Zari Pallu"],["Q","Ivory & Indigo Stripes, Floral Band, Ivory Pallu"],["R","Indigo & Green Stripes, Elephant Zari Pallu"],["S","Black & Red Ajrakh Stripes, Purple Elephant Pallu"],["T","Indigo & Rust Ajrakh, Black Brocade Pallu"],["U","Teal & Mustard Chevron Ajrakh, Teal Zari Pallu"],["V","Ivory, Indigo Paisley Jaal, Ivory Elephant Pallu"],["W","Red Buti, Ajrakh Medallions, Elephant Zari Pallu"],["X","Beige, Teal Star Flower, Gold Zari Pallu"],["Y","Indigo Ajrakh Jaal, Elephant Zari Pallu"],["Z","Bottle Green Ajrakh, Red Accents, Elephant Pallu"],["AA","Red, Black Buta Panels, Elephant Zari Pallu"],["AB","Navy, Red Circle Ajrakh, Elephant Zari Pallu"],["AC","Red & Indigo Ajrakh Cross, Elephant Pallu"],["AD","Navy, Red Star Ajrakh, Elephant Zari Pallu"],["AE","Lemon Yellow, Green Leaf Buta, Yellow Zari Pallu"]]) },
   { code:"SR-037", type:"sr", name:"Soft Georgette Jacquard Weaving Saree", cover:"img/SR-037-A.jpg", coverPos:"50% 50%",
     blurb:"Soft, flowing georgette sarees with rich jacquard-woven zari borders. Kalamkari florals, folk-art panels, elephants and peacocks, patola borders, paisley vines and shimmering checks in jewel tones of wine, black, teal, purple and lime. Light to drape and easy to carry from office to festive occasions, each with a running blouse.",
     spec:[["Fabric","Soft georgette",""],["Border","Jacquard weaving with zari",""],["Blouse","Running blouse",""]],
@@ -973,6 +1075,46 @@ const CATALOGUES = [
     spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Pure cotton ikat (top & bottom)",""],["Kurta","3/4 sleeves, approx. 43 inches",""],["Pant","38 inches, full elastic, pocket",""],["Sizes","L (40) · XL (42) · 2XL (44) · 3XL (46); limited stock per colour",""]],
     sizes:true,
     colours: sh("RM-031",[["A", "Charcoal Black, Multicolour Ikat", ["L", "XL", "3XL"]],["B", "Coffee Brown, Ivory Chevron Ikat", ["XXL", "3XL"]],["C", "Royal Blue & Purple, Flame Ikat", ["L"]],["D", "Mango Orange, Ivory Ikat", ["L"]],["E", "Maroon, Fine Ikat Dash", ["XXL"]],["F", "Grey, White Ikat", ["M", "L", "XXL", "3XL"]],["G", "Indigo, Ikat Flower", ["XXL", "3XL"]],["H", "Mustard, Red & Green Ikat", ["XXL"]],["I", "Cobalt Blue, White Ikat Stripes", ["L", "XXL", "3XL"]]]) },
+  { code:"RM-040", type:"rm", name:"Hand Block Print Waffle Bath Robe", cover:"img/RM-040-A.jpg", coverPos:"50% 20%",
+    blurb:"Premium waffle-weave cotton bath robes, pure hand block printed with Mughal butas, marigolds, roses and poppies, finished with a printed border on the collar, cuffs and pockets. A kimono-style wrap with an adjustable waist belt and two deep side pockets, perfect for slow mornings, spa days and gifting.",
+    spec:[["Fabric","Waffle cotton, pure hand block print",""],["Length","45 inches",""],["Size","Free size, fits up to XXL",""],["Details","Adjustable waist belt, two deep side pockets",""]],
+    sizes:null,
+    colours: sh("RM-040",[["A","White, Blue Tulip Buta, Indigo Border"],["B","White, Mustard Marigold Buta, Lattice Border"],["C","Cream, Yellow Marigold, Teal & Mustard Border"],["D","White, Navy Floral Buta"],["E","White, Magenta Poppy Buta"],["F","Cream, Red Rose Buta, Lattice Border"],["G","Cream, Magenta Fern Buta"],["H","White, Pink & Mustard Bouquet, Pink Border"],["I","White, Orange Floral Buta, Green Cross Border"],["J","White, Rani Pink Marigold Buta"],["K","White, Pink Mughal Bouquet"],["L","White, Mustard Rose Buta"],["M","Cream, Turquoise Pom Flower Buta"],["N","White, Pink Floral Buta, Pink Border"],["O","Cream, Rust Marigold Buta"],["P","White, Pink Buta, Pink Chevron Border"]]) },
+  { code:"RM-039", type:"rm", name:"Cotton Contrast Yoke Embroidered Co-ord Set", cover:"img/RM-039-A.jpg", coverPos:"50% 20%",
+    blurb:"Stylish two-piece co-ord sets in soft, breathable premium cotton. A straight kurta with a contrast yoke and sleeves, finished with geometric thread embroidery, mirror work and printed sleeve accents, paired with matching straight pants. Easy for daily wear, outings and smart casual days.",
+    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Premium cotton",""],["Kurta","Contrast yoke, embroidery & mirror work, 3/4 sleeves",""],["Sizes","M (38) · L (40) · XL (42) · XXL (44) · 3XL (46)",""]],
+    sizes:true,
+    colours: sh("RM-039",[["A","Lime Green, Black Yoke",["M","L","XL","XXL","3XL"]],["B","Rust Orange, Black Yoke",["M","L","XL","XXL","3XL"]],["C","Maroon, Cream Yoke",["M","L","XL","XXL","3XL"]]]) },
+  { code:"RM-038", type:"rm", name:"Cotton Kurti, Pant & Dupatta Set with Mirror Embroidery", cover:"img/RM-038-A.jpg", coverPos:"50% 25%",
+    blurb:"Ready-to-wear three-piece sets in soft cotton: a straight kurti with a lace-trimmed round neck and a bold circular medallion of mirror work, gold zari and pink-and-white thread embroidery, with matching embroidered sleeve cuffs. Paired with matching pants and a light dupatta.",
+    spec:[["Set","Kurti, pant & dupatta (3-piece)",""],["Fabric","Cotton",""],["Work","Mirror, zari & thread embroidery, lace neckline",""],["Sizes","L (40) · XL (42) · XXL (44) · 3XL (46)",""]],
+    sizes:true,
+    colours: sh("RM-038",[["A","Royal Purple",["L","XL","XXL","3XL"]],["B","Rust Orange",["L","XL","XXL","3XL"]],["C","Rani Pink",["L","XL","XXL","3XL"]],["D","Mustard Yellow",["L","XL","XXL","3XL"]]],{A:2,B:2,C:2,D:2}) },
+  { code:"RM-037", type:"rm", name:"Pure Cotton Embroidered Co-ord Set", cover:"img/RM-037-A.jpg", coverPos:"50% 30%",
+    blurb:"Elegant two-piece co-ord sets in pure cotton. A beige button-down short kurta with a notched neck, gathered waist and bold rose-vine embroidered panels on the placket and sleeve cuffs, paired with straight pants in a matching contrast colour.",
+    spec:[["Set","Short kurta & pant (2-piece)",""],["Fabric","Pure cotton",""],["Kurta","Button-down, gathered waist, embroidered placket & cuffs",""],["Sizes","3XL (46)",""]],
+    sizes:true,
+    colours: sh("RM-037",[["A","Beige & Brick Red Embroidery, Red Pants",["3XL"]],["B","Beige & Mustard Brown Embroidery, Mustard Pants",["3XL"]]]) },
+  { code:"RM-036", type:"rm", name:"Pure Cotton Appliqué Co-ord Set", cover:"img/RM-036-A.jpg", coverPos:"50% 30%",
+    blurb:"Smart two-piece co-ord sets in pure cotton. A relaxed short kurta with side slits and bold ivory appliqué work (a paisley yoke or a large rose motif), paired with matching straight pants. Easy to wear for work, outings and casual days.",
+    spec:[["Set","Short kurta & pant (2-piece)",""],["Fabric","Pure cotton",""],["Kurta","Ivory appliqué work, side slits",""],["Sizes","3XL (46) · 4XL (48); one piece per design",""]],
+    sizes:true,
+    colours: sh("RM-036",[["A","Brick Red, Ivory Paisley Appliqué",["4XL"]],["B","Mauve, Ivory Rose Appliqué",["3XL"]]]) },
+  { code:"RM-035", type:"rm", name:"Cotton Printed Kurta & Pant Set", cover:"img/RM-035-A.jpg", coverPos:"50% 30%",
+    blurb:"An easy everyday two-piece kurta set in soft cotton, in teal green, olive green and plum with ivory buti, ikat-style and bandana paisley prints. The straight kurta has a round neck, button placket, three-quarter sleeves and side slits, paired with matching straight pants in a vertical floral stripe print.",
+    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Cotton / cotton cambric 60x60",""],["Kurta","Round neck, button placket, 3/4 sleeves, side slits",""],["Sizes","2XL (44)",""]],
+    sizes:true,
+    colours: sh("RM-035",[["A","Teal Green, Ivory Floral Buti",["XXL"]],["B","Olive Green, Ivory Ikat Print",["XXL"]],["C","Plum Purple, Bandana Paisley Print",["XXL"]]]) },
+  { code:"RM-034", type:"rm", name:"Cotton Cambric Kurta & Pant Set with Flower Appliqué", cover:"img/RM-034-A.jpg", coverPos:"50% 30%",
+    blurb:"A graceful two-piece kurta set in soft 60x60 cotton cambric, in a deep wine shade. The straight kurta has a V-neck trimmed with striped piping, three-quarter sleeves and large ivory flower appliqués with mirror centres on the front and back, paired with matching straight pants.",
+    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Cotton cambric 60x60",""],["Kurta","V-neck, 3/4 sleeves, flower appliqué front & back",""],["Sizes","L (40)",""]],
+    sizes:true,
+    colours: sh("RM-034",[["A","Wine, Ivory Flower Appliqué",["L"]]]) },
+  { code:"RM-033", type:"rm", name:"Cotton Kurta, Pant & Dupatta Set", cover:"img/RM-033-A.jpg", coverPos:"50% 30%",
+    blurb:"Ready-to-wear three-piece cotton salwar sets: kurta, pant and dupatta. Mughal block prints, kalamkari, gold rose prints, ikat and chikankari-style embroidery, with details like mirror work, gota trims and embroidered yokes. One piece per design, so grab your size while it lasts.",
+    spec:[["Set","Kurta, pant & dupatta (3-piece)",""],["Fabric","Cotton",""],["Sizes","XL (42); teal ikat in 5XL only. One piece per design",""]],
+    sizes:true,
+    colours: sh("RM-033",[["A","White, Blue Mughal Poppy Print",["XL"]],["B","Rose Pink, Embroidered Yoke",["XL"]],["C","Black & Gold Rose Print, Gota Trim",["XL"]],["D","Mauve Kalamkari Print, V-Neck",["XL"]],["E","Teal Ikat, Mirror Work Neck, Mustard Dupatta",["5XL"]]]) },
   { code:"RM-032", type:"rm", name:"Heavy Cotton Deer Embroidered Kurti, Pant & Dupatta Set", cover:"img/RM-032-A.jpg", coverPos:"50% 35%",
     blurb:"A charming fully stitched three-piece set in heavy cotton. The straight kurti carries a delicate floral-embroidered V neckline with a tassel tie, embroidered cuffs and a whimsical hem of grasses, wildflowers and grazing deer. Paired with matching pants and a soft crinkled dupatta scattered with embroidered blooms.",
     spec:[["Set","Kurti, pant & dupatta (3-piece)",""],["Fabric","Heavy cotton",""],["Type","Fully stitched",""],["Sizes","M (38) · L (40) · XL (42) · XXL (44) · 3XL (46)",""]],
@@ -1235,6 +1377,16 @@ const CATALOGUES = [
     spec:[["Top","Cotton, hand block print, natural dyes",""],["Bottom","Cotton, block printed",""],["Dupatta","Chiffon, block printed",""]],
     sizes:null,
     colours: sh("DM-047",[["A","White, Coral Floral Buti"],["B","Sky Blue, Indigo Jaal"],["C","Lilac, Pink & Olive Floral Vine"],["D","Lavender, Mughal Bouquet Panel"],["E","White, Yellow & Grey Mughal Bouquet"],["F","Pink, Teal Floral Jaal"],["G","Parrot Green, Brown & Teal Floral"],["H","Ice Blue, Iris Floral"],["I","Cream, Paisley Panel"],["J","Baby Pink, Magenta & Teal Floral"],["K","Grey Blue, Pink Leaf Vine"],["L","Aqua, Tulip Buti"],["M","Cream, Sunflower Bouquet Panel"],["N","Mint Grey, Yellow Mughal Bouquet"],["O","Orange, Star Buti"],["P","Peach, Red & Green Floral"],["Q","Peach & Orange, Pomegranate Vine"],["R","Yellow, Ogee Leaf Floral"],["S","Rose Pink, Orange Floral Vine"],["T","Yellow, Black Paisley"],["U","Cream, Yellow & Green Sunflower"],["V","Lilac, Mughal Bouquet Panel"],["W","Sky Blue, Grey & Pink Floral Vine"],["X","Peach, Mustard Leaf Vine"],["Y","Cream, Single Flower Panel"],["Z","Mauve, Mustard & Pink Floral"],["AA","Aqua, Teal Triangle Motif"],["AB","Mint Green, Yellow Rose"],["AC","White, Grey & Mustard Floral"],["AD","White, Aqua Daisy Buti"],["AE","White, Lime Green Flower"],["AF","White, Orange Paisley Floral"],["AG","White, Rose Bouquet Panel"],["AH","White, Pink Iris Panel"],["AI","White, Lilac Carnation Panel"],["AJ","Grey, Yellow Marigold Buti"],["AK","White, Mustard & Green Floral Jaal"],["AL","Pink, Mustard Floral Buti"],["AM","Lime Yellow, Floral Buta"],["AN","White, Blue Mughal Bouquet"],["AO","Grey, Blue & White Floral Vine"],["AP","Pista Green, Yellow Floral"],["AQ","Mauve, Coral Lotus Vine"],["AR","Teal, Pink Hydrangea"],["AS","Sage Green, Coral Carnation"],["AT","Olive Green, Indigo Floral Vine"],["AU","Parrot Green Polka Dots"],["AV","Baby Pink Polka Dots"],["AW","Aqua Polka Dots"],["AX","Sage Green, Pink Lotus Buti"],["AY","Lavender, Yellow Flower Vine"],["AZ","Lilac Polka Dots"],["BA","Lilac, Peach Flower & Hearts"],["BB","White, Blue & Green Flower Panel"],["BC","Sage Green Batik, Diamond Bandhej"],["BD","Peach Batik, Tulip Panel"],["BE","White, Blue & Teal Lotus Jaal"],["BF","Rose Pink, Coral Paisley Buti"],["BG","Sage Green Batik, Flower Buti"],["BH","Peach Batik, Pine Cone Panel"],["BI","White, Red Poppy Buti"],["BJ","White, Blue Poppy Buti"],["BK","Cornflower Blue, Red Hibiscus"],["BL","Peach, Pink Rose Floral"],["BM","Pink & Grey Marble Print"],["BN","Taupe, Pink Floral Buti"]]) },
+  { code:"DM-052", type:"dm", name:"Sanganeri Print Cotton Suit with Gota Neck Work", cover:"img/DM-052-A.jpg", coverPos:"50% 40%",
+    blurb:"Unstitched three-piece suits in soft cotton with classic Sanganeri prints: butis, floral jaals, leheriya and bandhej. The top has a printed placket with gota and lace neck work, paired with a coordinated printed cotton bottom and a cotton dupatta finished with gota lace and tassels.",
+    spec:[["Top","Cotton, Sanganeri print, gota neck work","2.50 m"],["Bottom","Cotton, printed","2.50 m"],["Dupatta","Cotton, printed, gota lace edge","2.50 m"]],
+    sizes:null,
+    colours: sh("DM-052",[["A","Indigo, Red Flower Buti"],["B","Maroon Buti, Ivory Paisley Bottom"],["C","Rani Pink Leheriya, Bandhej Bottom"],["D","Parrot Green Leheriya, Bandhej Bottom"],["E","Sky Blue, White Floral"],["F","Teal Paisley & Rose, Chevron Bottom"],["G","Purple Leheriya, Bandhej Bottom"],["H","Lime Green, White Floral"],["I","Pink, White Floral"],["J","Mustard Orange Leheriya, Bandhej Bottom"],["K","Maroon Floral Jaal, Ivory Buti Bottom"],["L","Lavender, White Leaf Buti"],["M","Maroon Leaf Buti, Ivory Zigzag Bottom"],["N","Powder Blue, Pink Floral Jaal"],["O","Rose Pink Floral, Ivory Bottom"],["P","Mustard Yellow, Ivory Floral"],["Q","Bottle Green, Red Flower Buti"],["R","Wine, Pink Floral Vine"],["S","Ivory, Blue Floral Vine"],["T","Navy Floral Jaal, Ivory Buti Bottom"],["U","White, Pink Rose & Paisley Placket, Grey Bottom"],["V","Magenta, White Rose Print"],["W","White, Pink Floral Buti, Grey Floral Bottom"],["X","Rose Pink, White Floral"],["Y","Lavender Floral Vine, Striped Bottom"],["Z","Navy, Pink & Blue Floral"],["AA","Mauve Pink Floral Vine, Striped Bottom"],["AB","Mustard Kalamkari, Black Greek Key Bottom"],["AC","Parrot Green Floral, Chevron Bottom"],["AD","Indigo Buti, Tribal Print Bottom"],["AE","Magenta Leaf Print, Striped Bottom"],["AF","Baby Pink, White Buti"],["AG","White, Blue Floral Buti, Blue Rose Bottom"],["AH","Indigo Leheriya, Bandhej Bottom"],["AI","Bottle Green, Lime Floral, Hexagon Bottom"],["AJ","Black, Red Flower Buti"],["AK","Sage Green Floral, Pink Chevron Bottom"],["AL","Ivory, Mustard Rose Print"]]) },
+  { code:"DM-051", type:"dm", name:"Cotton Lakhnavi Embroidered Suit with Batik Bottom & Dupatta", cover:"img/DM-051-A.jpg", coverPos:"50% 40%",
+    blurb:"Unstitched three-piece suits with a soft cotton cambric top finished in fine tone-on-tone Lakhnavi embroidery: a rich neckline yoke, paisley butis and a scattered flower. Paired with a fancy batik-printed cambric bottom and a batik-printed cotton dupatta, many with a dip-dyed ombre border.",
+    spec:[["Top","Cotton cambric, Lakhnavi work","2.50 m"],["Bottom","Cotton cambric, batik print","2.25 m"],["Dupatta","Cotton, batik print","2.25 m"]],
+    sizes:null,
+    colours: sh("DM-051",[["A","Mustard Yellow Top, Green Batik"],["B","Maroon Top, Black Batik"],["C","Navy Top, Teal Batik"],["D","Bottle Green Top, Green Batik"],["E","Rose Pink Top, Purple Batik"],["F","Red Top, Red Floral Batik"],["G","Rani Pink Top, Pink Floral Batik"],["H","Maroon Top, Triangle Batik"],["I","Teal Blue Top, Teal Batik"],["J","Sage Green Top, Paisley Batik"],["K","Coffee Brown Top, Brown Batik"],["L","Royal Purple Top, Purple Batik"],["M","Taupe Top, Ivory Embroidery, Taupe Batik"]]) },
   { code:"DM-050", type:"dm", name:"Hand Block Print Maheshwari Silk Suit", cover:"img/DM-050-A.jpg", coverPos:"50% 40%",
     blurb:"Unstitched three-piece suits in Maheshwari silk-by-cotton, pure hand block printed in Mughal butas, floral jaals, paisleys and Bagru-style motifs, finished with a woven zari border. Paired with a printed Maheshwari dupatta and a soft 60s cambric cotton bottom.",
     spec:[["Top","Maheshwari silk-by-cotton, hand block printed","2.50 m"],["Bottom","Cotton cambric 60s, printed","2.50 m"],["Dupatta","Maheshwari silk-by-cotton, hand block printed","2.50 m"],["Care","Dry clean recommended",""]],
@@ -1309,6 +1461,7 @@ const CATEGORIES=[
   {id:"sr",label:"Sarees",one:"Saree",word:"shade"},
   {id:"rm",label:"Readymades",one:"Readymade",word:"colour"},
   {id:"dm",label:"Dress Materials",one:"Dress Material",word:"shade"},
+  {id:"hl",label:"Home & Living",one:"Home & Living",word:"design"},
   {id:"cb",label:"Cloth Bags",one:"Cloth Bag",word:"design"},
   {id:"bq",label:"Bedsheets",one:"Bedsheet",word:"design"},
   {id:"cu",label:"Curtains",one:"Curtain",word:"design"},
@@ -1318,7 +1471,7 @@ const CATEGORIES=[
   {id:"ac",label:"Accessories",one:"Accessory",word:"design"}
 ];
 
-const PRICE={"BQ-001":1250,"CU-001":1200,"CU-002":1350,"CU-003":1500,"BL-001":2200,"DS-001":1450,"CB-001":1050,"CB-002":700,"CB-003":700,"DM-001":1100,"DM-002":1100,"DM-003":1300,"DM-004":1200,"DM-005":1050,"DM-006":1200,"DM-007":850,"DM-008":850,"DM-009":1000,"DM-010":950,"DM-011":1800,"DM-012":1600,"DM-013":1300,"DM-014":1100,"DM-015":1300,"DM-016":1300,"DM-017":1400,"DM-018":1400,"DM-019":1350,"DM-020":1200,"DM-021":1200,"DM-022":1200,"DM-023":1350,"DM-024":2200,"DM-025":1150,"DM-026":900,"DM-027":1900,"DM-028":900,"DM-029":1900,"DM-030":1300,"DM-031":1350,"DM-032":1100,"DM-033":1200,"DM-034":1200,"DM-035":1150,"DM-036":1000,"DM-037":1550,"DM-038":750,"DM-039":1000,"DM-040":1250,"DM-041":1450,"DM-042":1550,"DM-043":1100,"DM-044":2700,"DM-045":1100,"DM-046":1000,"DM-047":1300,"DM-048":1200,"DM-049":1450,"DM-050":2300,"RM-001":1250,"RM-002":850,"RM-004":1450,"RM-005":1250,"RM-006":1450,"RM-007":1200,"RM-008":1200,"RM-009":1850,"RM-010":1600,"RM-011":1950,"RM-012":1300,"RM-013":1100,"RM-014":900,"RM-015":2050,"RM-016":600,"RM-017":800,"RM-018":700,"RM-019":1100,"RM-020":1150,"RM-021":1150,"RM-022":1400,"RM-029":1100,"RM-030":1450,"RM-031":1050,"RM-032":1450,"RM-023":1450,"SR-001":1150,"SR-002":3550,"SR-003":2100,"SR-004":2100,"SR-005":2100,"SR-006":2550,"SR-007":2550,"SR-008":2550,"SR-009":1200,"SR-010":1200,"SR-011":1200,"SR-012":1200,"SR-013":1200,"SR-014":1200,"SR-015":1250,"SR-016":1600,"SR-017":1600,"SR-018":3500,"SR-019":1600,"SR-020":1750,"SR-021":1200,"SR-022":1200,"SR-023":2150,"SR-024":2400,"SR-025":1200,"SR-026":1200,"SR-027":1750,"SR-028":2400,"SR-029":2900,"SR-037":1000,"SR-036":999,"SR-035":1100,"SR-034":4950,"SR-033":1750,"SR-032":5950,"SR-031":2050,"SR-030":1750};
+const PRICE={"BQ-001":1250,"CU-001":1200,"CU-002":1350,"CU-003":1500,"BL-001":2200,"DS-001":1450,"CB-001":1050,"CB-002":700,"CB-003":700,"DM-001":1100,"DM-002":1100,"DM-003":1300,"DM-004":1200,"DM-005":1050,"DM-006":1200,"DM-007":850,"DM-008":850,"DM-009":1000,"DM-010":950,"DM-011":1800,"DM-012":1600,"DM-013":1300,"DM-014":1100,"DM-015":1300,"DM-016":1300,"DM-017":1400,"DM-018":1400,"DM-019":1350,"DM-020":1200,"DM-021":1200,"DM-022":1200,"DM-023":1350,"DM-024":2200,"DM-025":1150,"DM-026":900,"DM-027":1900,"DM-028":900,"DM-029":1900,"DM-030":1300,"DM-031":1350,"DM-032":1100,"DM-033":1200,"DM-034":1200,"DM-035":1150,"DM-036":1000,"DM-037":1550,"DM-038":750,"DM-039":1000,"DM-040":1250,"DM-041":1450,"DM-042":1550,"DM-043":1100,"DM-044":2700,"DM-045":1100,"DM-046":1000,"DM-047":1300,"DM-048":1200,"DM-049":1450,"DM-050":2300,"DM-051":1200,"DM-052":1350,"RM-001":1250,"RM-002":850,"RM-004":1450,"RM-005":1250,"RM-006":1450,"RM-007":1200,"RM-008":1200,"RM-009":1850,"RM-010":1600,"RM-011":1950,"RM-012":1300,"RM-013":1100,"RM-014":900,"RM-015":2050,"RM-016":600,"RM-017":800,"RM-018":700,"RM-019":1100,"RM-020":1150,"RM-021":1150,"RM-022":1400,"RM-029":1100,"RM-030":1450,"RM-031":1050,"RM-032":1450,"RM-033":950,"RM-034":950,"RM-035":850,"RM-036":900,"RM-037":1000,"RM-038":1450,"RM-039":1400,"RM-040":1250,"RM-023":1450,"SR-001":1150,"SR-002":3550,"SR-003":2100,"SR-004":2100,"SR-005":2100,"SR-006":2550,"SR-007":2550,"SR-008":2550,"SR-009":1200,"SR-010":1200,"SR-011":1200,"SR-012":1200,"SR-013":1200,"SR-014":1200,"SR-015":1250,"SR-016":1600,"SR-017":1600,"SR-018":3500,"SR-019":1600,"SR-020":1750,"SR-021":1200,"SR-022":1200,"SR-023":2150,"SR-024":2400,"SR-025":1200,"SR-026":1200,"SR-027":1750,"SR-028":2400,"SR-029":2900,"SR-037":1000,"SR-038":4950,"SR-039":1350,"SR-036":999,"SR-035":1100,"SR-034":4950,"SR-033":1750,"SR-032":5950,"SR-031":2050,"SR-030":1750};
 /* Collections by selling price */
 const COLLECTIONS=[
   {id:"offer",label:"Offer Picks",note:"Under ₹1,000",test:p=>p<1000},
@@ -1343,6 +1496,11 @@ const inr=n=>"₹"+Number(n).toLocaleString("en-IN");
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const CAT=Object.fromEntries(CATEGORIES.map(c=>[c.id,c]));
 const TYPE_NAME=Object.fromEntries(CATEGORIES.map(c=>[c.id,c.one]));
+/* Upload date of every design, in catalogue order: [date, number of designs]. Newest additions go at the end. */
+const ADDED={"SR-001":[["2026-10-10",5]],"SR-002":[["2026-10-10",20]],"SR-003":[["2026-10-10",7]],"SR-004":[["2026-10-10",5]],"SR-005":[["2026-10-10",4]],"SR-006":[["2026-10-10",2]],"SR-007":[["2026-10-10",1]],"SR-008":[["2026-10-10",2]],"SR-009":[["2026-10-10",5]],"SR-010":[["2026-10-10",13]],"SR-011":[["2026-10-10",8]],"SR-012":[["2026-10-10",7]],"SR-013":[["2026-10-10",6]],"SR-014":[["2026-10-10",2]],"SR-015":[["2026-10-12",8]],"SR-016":[["2026-10-13",14]],"SR-017":[["2026-10-13",5]],"RM-001":[["2026-10-10",14]],"RM-002":[["2026-10-10",12]],"SR-018":[["2026-10-13",25]],"SR-019":[["2026-10-13",13]],"SR-020":[["2026-10-13",10]],"SR-021":[["2026-10-13",82]],"SR-039":[["2026-10-28",6]],"SR-038":[["2026-10-28",31]],"SR-037":[["2026-10-24",17]],"SR-036":[["2026-10-22",78]],"SR-035":[["2026-10-22",32]],"SR-034":[["2026-10-22",37]],"SR-033":[["2026-10-22",11]],"SR-032":[["2026-10-22",21]],"SR-031":[["2026-10-22",32]],"SR-030":[["2026-10-14",6]],"SR-029":[["2026-10-14",85]],"SR-028":[["2026-10-14",38]],"SR-027":[["2026-10-14",9]],"SR-026":[["2026-10-14",78]],"SR-025":[["2026-10-14",82]],"SR-024":[["2026-10-14",18]],"SR-023":[["2026-10-13",19]],"SR-022":[["2026-10-13",51]],"RM-014":[["2026-10-10",11]],"RM-004":[["2026-10-10",4]],"RM-005":[["2026-10-12",2]],"RM-006":[["2026-10-12",2]],"RM-007":[["2026-10-12",1]],"RM-008":[["2026-10-12",1]],"RM-009":[["2026-10-12",1]],"RM-010":[["2026-10-12",2]],"RM-011":[["2026-10-12",2]],"RM-012":[["2026-10-12",2]],"RM-013":[["2026-10-12",5]],"RM-016":[["2026-10-14",20]],"RM-017":[["2026-10-14",7]],"RM-018":[["2026-10-14",15]],"RM-019":[["2026-10-14",11]],"RM-020":[["2026-10-14",63]],"RM-021":[["2026-10-14",59]],"RM-022":[["2026-10-14",53]],"RM-023":[["2026-10-14",47]],"RM-015":[["2026-10-12",1]],"RM-029":[["2026-10-22",49]],"RM-030":[["2026-10-22",1]],"RM-031":[["2026-10-22",9]],"RM-040":[["2026-10-28",16]],"RM-039":[["2026-10-28",3]],"RM-038":[["2026-10-28",4]],"RM-037":[["2026-10-28",2]],"RM-036":[["2026-10-28",2]],"RM-035":[["2026-10-28",3]],"RM-034":[["2026-10-27",1]],"RM-033":[["2026-10-27",5]],"RM-032":[["2026-10-22",3]],"DM-001":[["2026-10-10",4]],"DM-002":[["2026-10-10",20]],"DM-003":[["2026-10-10",8]],"DM-004":[["2026-10-10",7]],"DM-005":[["2026-10-10",4]],"DM-006":[["2026-10-10",5]],"DM-007":[["2026-10-10",4]],"DM-008":[["2026-10-10",4]],"DM-009":[["2026-10-10",4]],"DM-010":[["2026-10-10",9]],"DM-011":[["2026-10-10",3]],"DM-012":[["2026-10-10",8]],"DM-013":[["2026-10-10",3]],"DM-014":[["2026-10-10",6]],"DM-015":[["2026-10-10",8]],"DM-016":[["2026-10-10",4]],"DM-017":[["2026-10-10",3]],"DM-018":[["2026-10-10",4]],"DM-019":[["2026-10-10",3]],"DM-020":[["2026-10-10",4]],"DM-021":[["2026-10-10",4]],"DM-022":[["2026-10-10",4]],"DM-023":[["2026-10-14",2],["2026-10-24",7]],"DM-024":[["2026-10-14",17]],"DM-025":[["2026-10-14",9]],"DM-026":[["2026-10-15",6]],"DM-027":[["2026-10-15",11]],"DM-028":[["2026-10-21",8]],"DM-029":[["2026-10-21",8]],"DM-030":[["2026-10-21",4]],"DM-031":[["2026-10-21",15]],"DM-032":[["2026-10-21",4]],"DM-033":[["2026-10-21",10]],"DM-034":[["2026-10-21",5]],"DM-035":[["2026-10-21",4]],"DM-036":[["2026-10-21",10]],"DM-037":[["2026-10-21",40]],"DM-038":[["2026-10-21",110]],"DM-039":[["2026-10-21",23]],"DM-040":[["2026-10-22",4]],"DM-041":[["2026-10-22",27]],"DM-042":[["2026-10-22",34]],"DM-043":[["2026-10-22",4]],"DM-044":[["2026-10-22",65]],"DM-045":[["2026-10-24",5]],"DM-046":[["2026-10-24",4]],"DM-047":[["2026-10-24",66]],"DM-052":[["2026-10-28",38]],"DM-051":[["2026-10-28",13]],"DM-050":[["2026-10-24",58]],"DM-049":[["2026-10-24",35]],"DM-048":[["2026-10-24",58]],"CB-001":[["2026-10-22",27]],"CB-002":[["2026-10-22",41]],"CB-003":[["2026-10-22",7]],"BQ-001":[["2026-10-22",45],["2026-10-23",40]],"CU-001":[["2026-10-22",13]],"CU-002":[["2026-10-22",13]],"CU-003":[["2026-10-22",13]],"BL-001":[["2026-10-22",34]],"DS-001":[["2026-10-22",11]]};
+const NEW_DAYS=10;
+CATALOGUES.forEach(c=>{const runs=(ADDED[c.code]||[]).flatMap(([d,n])=>Array(n).fill(d));
+  c.colours.forEach((x,i)=>{x.added=runs[i]||"2026-10-10";x.isNew=(Date.now()-Date.parse(x.added+"T00:00:00+05:30"))<NEW_DAYS*864e5;});});
 CATALOGUES.forEach(c=>{ if(OUT_OF_STOCK.has(c.code)) c.colours.forEach(x=>x.soldOut=true); });
 /* Individual shades that are out of stock (code-shade) */
 const SOLD_SHADES=new Set(["BQ-001-A","BQ-001-B","BQ-001-C","BQ-001-D","BQ-001-E","BQ-001-F","BQ-001-G","BQ-001-H","BQ-001-I","BQ-001-J","BQ-001-K","BQ-001-L","BQ-001-M","BQ-001-N","BQ-001-O","BQ-001-P","BQ-001-Q","BQ-001-R","BQ-001-S","BQ-001-T","BQ-001-U","BQ-001-V","BQ-001-W","BQ-001-X","BQ-001-Y","BQ-001-Z","BQ-001-AA","BQ-001-AB","BQ-001-AC","BQ-001-AD","BQ-001-AE","BQ-001-AF","BQ-001-AG","BQ-001-AH","BQ-001-AI","BQ-001-AJ","BQ-001-AK","BQ-001-AL","BQ-001-AM","BQ-001-AN","BQ-001-AO","BQ-001-AP","BQ-001-AQ","BQ-001-AR","BQ-001-AS"]);
@@ -1352,15 +1510,29 @@ const isOut=c=>c.colours.every(x=>x.soldOut);
 const priceOf=c=>PRICE[c.code]||0;
 const collOf=c=>{const p=priceOf(c);const k=COLLECTIONS.find(k=>p&&k.test(p));return k?k.id:"";};
 const COLL=Object.fromEntries(COLLECTIONS.map(k=>[k.id,k]));
+/* Bedsheets, blankets, curtains and diwan sets show together as Home & Living (codes unchanged) */
+CATALOGUES.forEach(c=>{if(["bq","bl","cu","ds"].includes(c.type)) c.type="hl";});
 const ACTIVE_CATS=CATEGORIES.filter(k=>CATALOGUES.some(c=>c.type===k.id));
 const newest=(a,b)=>(isOut(a)-isOut(b))||b.code.localeCompare(a.code);
-const NEW_SET=new Set(); ACTIVE_CATS.forEach(k=>CATALOGUES.filter(c=>c.type===k.id&&!isOut(c)).sort(newest).slice(0,2).forEach(c=>NEW_SET.add(c.code)));
-const wordOf=(c,n)=>{const w=(CAT[c.type]||{word:"shade"}).word;return n===1?w:w+"s";};
+const NEW_SET=new Set(CATALOGUES.filter(c=>c.colours.some(x=>x.isNew&&!x.soldOut)).map(c=>c.code));
+const TABS=[{id:"new",label:"New Arrivals",note:"Fresh designs added in the last 10 days"},{id:"keep",label:"Timeless Picks",note:"Loved designs, still available to order"},{id:"sold",label:"Sold Out",note:"Gone for now. Message us if you would like a restock"}];
+const inTab=(x,t)=>t==="sold"?!!x.soldOut:(!x.soldOut&&(t==="new"?!!x.isNew:!x.isNew));
+function viewOf(c,t){const cs=c.colours.filter(x=>inTab(x,t)); if(!cs.length) return null; if(cs.length===c.colours.length) return Object.assign(Object.create(c),{_view:t});
+  return Object.assign(Object.create(c),{_base:c,colours:cs,cover:cs[0].img,coverPos:c.cover===cs[0].img?c.coverPos:"50% 45%",_view:t,_part:true});}
+const lastAdded=c=>c.colours.reduce((m,x)=>x.added>m?x.added:m,"");
+const byDate=(a,b)=>lastAdded(b).localeCompare(lastAdded(a))||b.code.localeCompare(a.code);
+let scopeTab=null;
+/* "designs" when the photos are different prints/patterns, "shades" when it is one design in several colours */
+const DESIGN_RX=/buti|buta|print|jaal|floral|flower|paisley|motif|stripe|check|border|lotus|rose|leaf|bandh|leheriya|ajrakh|kalamkari|elephant|bird|peacock|chevron|vine|bouquet|poppy|marigold|tulip|grid|dot|polka|pallu|dupatta|bottom|pattern|embroid|batik|shibori|geometric|mughal|tree|chakra|star|medallion|swirl|tribal|ikat|appliqu|fern|patch|chrysanth|block|yoke|dress|maxi|abstract|daisy|temple|triangle|zigzag|hexagon/i;
+const UNIT_OVERRIDE={"DM-002":"design","DM-037":"design"}; /* set per code when the automatic choice is wrong */
+const unitOf=c=>{const b=c._base||c; if(b._unit) return b._unit; if(UNIT_OVERRIDE[b.code]) return b._unit=UNIT_OVERRIDE[b.code]; const n=b.colours.map(x=>x.name), r=n.filter(x=>DESIGN_RX.test(x)).length/Math.max(1,n.length);
+  return b._unit=(["cb","hl"].includes(b.type)||r>=.5)?"design":"shade";};
+const wordOf=(c,n)=>n===1?"shade/design":"shades/designs";
 
-let fCat="sr", fColl="all", fSort="new", q="";
-try{const s=JSON.parse(localStorage.getItem("va_filters")||"{}"); if(s.cat&&CAT[s.cat]) fCat=s.cat; if(s.coll&&(s.coll==="all"||COLL[s.coll])) fColl=s.coll;}catch(e){}
-if(!ACTIVE_CATS.some(k=>k.id===fCat)) fCat=(ACTIVE_CATS[0]||{id:"sr"}).id;
-const saveFilters=()=>{try{localStorage.setItem("va_filters",JSON.stringify({cat:fCat,coll:fColl,sort:fSort}));}catch(e){}};
+let fCat="sr", fColl="all", fSort="new", fTab="new", q="";
+try{const s=JSON.parse(localStorage.getItem("va_filters")||"{}"); if(s.cat&&CAT[s.cat]) fCat=s.cat; if(s.coll&&(s.coll==="all"||COLL[s.coll])) fColl=s.coll; if(s.tab&&TABS.some(t=>t.id===s.tab)) fTab=s.tab;}catch(e){}
+if(!ACTIVE_CATS.some(k=>k.id===fCat)) fCat="sr";
+const saveFilters=()=>{try{localStorage.setItem("va_filters",JSON.stringify({cat:fCat,coll:fColl,sort:fSort,tab:fTab}));}catch(e){}};
 let bar=null, fab=null;
 
 const _r="NzcwMDQ5NzMwOTE5";
@@ -1503,19 +1675,20 @@ function card(c,x){
   const href=x?`${c.code}-${x.sub}`:c.code, k=COLL[collOf(c)];
   const dots=c.colours.slice(0,5).map(y=>`<i style="background-image:url('${y.img}')"></i>`).join("");
   const extra=c.type==="rm"?sizeRange(c):"";
-  return `<button class="card" type="button" data-open="${href}">
+  return `<button class="card" type="button" data-open="${href}"${!x&&c._part?` data-tab="${c._view}"`:""}>
     <div class="frame${out?" out":""}"><img src="${x?x.img:c.cover}" alt="${esc(c.name)}${x?" in "+esc(x.name):""}" loading="lazy" style="object-position:${x?"50% 50%":(c.coverPos||"50% 50%")}">
-      ${!x&&NEW_SET.has(c.code)?`<span class="ribbon">New</span>`:""}${out?`<span class="oos">Out of stock</span>`:""}
-      ${!out&&k&&k.id!=="everyday"?`<span class="ktag k-${k.id}">${k.id==="premium"?"✦ Premium":"Offer Pick"}</span>`:""}</div>
+      ${!x&&!c._view&&NEW_SET.has(c.code)?`<span class="ribbon">New</span>`:""}${!x&&c._view==="new"&&!c._part?`<span class="newtag">NEW</span>`:""}${!x&&c._view==="new"&&c._part?`<span class="newtag">${n} NEW</span>`:""}${out?`<span class="oos">Out of stock</span>`:""}
+      ${!out&&k&&k.id!=="everyday"?`<span class="ktag k-${k.id}">${k.id==="premium"?"Premium":"Offer Pick"}</span>`:""}</div>
     <div class="meta"><div class="mrow"><span class="ccode">${href}</span><span class="price">${inr(priceOf(c))}</span></div><span class="cname">${esc(c.name)}</span>
       ${x?`<span class="csub">${esc(x.name)}</span>`:`<span class="dots">${dots}<span>${n} ${wordOf(c,n)}</span></span>${extra?`<span class="csub">${esc(extra)}</span>`:""}`}</div>
   </button>`;
 }
-function wireCards(root){root.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>{location.hash=b.dataset.open;});}
+function wireCards(root){root.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>{scopeTab=b.dataset.tab||null;location.hash=b.dataset.open;});}
 
 /* ---------- Home ---------- */
+function tabItems(cat,tab){return CATALOGUES.filter(c=>cat==="all"||c.type===cat).map(c=>viewOf(c,tab)).filter(Boolean).sort(byDate);}
 function filtered(){
-  return CATALOGUES.filter(c=>c.type===fCat&&(fColl==="all"||collOf(c)===fColl)).sort(newest);
+  return tabItems(fCat,fTab).filter(c=>fColl==="all"||collOf(c)===fColl);
 }
 function avgStars(){return REVIEWS.length?REVIEWS.reduce((a,r)=>a+r.stars,0)/REVIEWS.length:0;}
 function starsHTML(n,cls=""){return `<span class="stars ${cls}" aria-label="${n} out of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=Math.round(n)?"on":""}">${STAR}</i>`).join("")}</span>`;}
@@ -1523,13 +1696,13 @@ function renderGrid(){
   const grid=document.getElementById("grid"), hint=document.getElementById("shint");
   const s=q.trim(); let html="", res;
   if(!s){
-    const all=filtered(), label=CAT[fCat].label;
-    hint.innerHTML=fColl==="all"?`<b>${esc(label)}</b> · ${all.length} catalogues · newest first`:`<b>${esc(label)}</b> · ${esc(COLL[fColl].label)} · ${esc(COLL[fColl].note)} · ${all.length} catalogue${all.length===1?"":"s"}`;
-    const empty=`<div class="empty"><h3>New pieces are on their way</h3><p>Nothing here just yet. Peek into another price range, there's plenty to love.</p></div>`;
+    const all=filtered(), label=fCat==="all"?"All categories":CAT[fCat].label, tb=TABS.find(t=>t.id===fTab);
+    hint.innerHTML=`<b>${esc(tb.label)}</b> · ${esc(label)}${fColl!=="all"?` · ${esc(COLL[fColl].label)}`:""} · ${all.length} catalogue${all.length===1?"":"s"}`;
+    const empty=fTab==="new"?`<div class="empty"><h3>Fresh arrivals are on their way</h3><p>Nothing new here this week. Have a look at the Timeless Picks, there's plenty to love.</p></div>`:fTab==="sold"?`<div class="empty"><h3>Nothing sold out here</h3><p>Everything in this section is available to order.</p></div>`:`<div class="empty"><h3>New pieces are on their way</h3><p>Nothing here just yet. Peek into another category or price range.</p></div>`;
     if(fColl==="all"){
       grid.classList.add("grouped");
       html=COLLECTIONS.map(k=>{const items=all.filter(c=>collOf(c)===k.id);if(!items.length)return "";
-        return `<section class="gsec"><h3 class="gh k-${k.id}"><span>${k.id==="premium"?"✦ ":""}${esc(k.label)}</span><small>${esc(k.note)} · ${items.length}</small></h3><div class="grid sub">${items.map(c=>card(c)).join("")}</div></section>`;}).join("")||empty;
+        return `<section class="gsec"><h3 class="gh k-${k.id}"><span>${esc(k.label)}</span><small>${esc(k.note)} · ${items.length}</small></h3><div class="grid sub">${items.map(c=>card(c)).join("")}</div></section>`;}).join("")||empty;
     }else{ grid.classList.remove("grouped"); html=all.length?all.map(c=>card(c)).join(""):empty; }
   }else{
     const pc=parseCode(s), norm=s.toUpperCase().replace(/[^A-Z0-9]/g,""), low=s.toLowerCase();
@@ -1561,6 +1734,7 @@ function initHeader(){
     <a class="tb-brand" href="#" id="hHome" aria-label="VastrAura home">Vastr<i>Aura</i></a>
     <div class="tb-search" role="search">${HDR_SEARCH}<input id="q" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Search code or colour" aria-label="Search by code, name or colour"><button class="clr" type="button" id="qclr" aria-label="Clear search" hidden>×</button></div>
     <nav class="tb-acts" aria-label="Shop actions">
+      <button type="button" id="hHow" aria-label="How to order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.5"/><circle cx="12" cy="16.9" r=".6" fill="currentColor"/></svg><span>How to order</span></button>
       <a href="#reviews" id="hRev" aria-label="Customer reviews">${STAR}<span>Reviews</span></a>
       <button type="button" id="hCart" aria-label="Cart">${CART_ICON}<span>Cart</span><em data-count></em></button>
       <button type="button" id="hOrder" class="tb-order" aria-label="Place order">${WA_ICON}<span>Place order</span></button>
@@ -1571,6 +1745,7 @@ function initHeader(){
   inp.onkeydown=e=>{ if(e.key==="Enter"){ const pc=parseCode(inp.value); const c=pc&&CATALOGUES.find(x=>x.code===pc.code); inp.blur(); if(c) location.hash=pc.sub?`${c.code}-${pc.sub}`:c.code; } };
   clr.onclick=()=>{q="";inp.value="";clr.hidden=true;if(!location.hash)renderGrid();inp.focus();};
   document.getElementById("hCart").onclick=openCart;
+  document.getElementById("hHow").onclick=openHow;
   document.getElementById("hOrder").onclick=()=>{const live=cartItems().filter(i=>!i.f.x.soldOut);if(!live.length){emptyCartNote();return;}openCheckout();};
   paintHeader(); updateCounts();
   const setH=()=>document.documentElement.style.setProperty("--tbh",h.offsetHeight+"px"); setH(); addEventListener("resize",setH);
@@ -1589,6 +1764,22 @@ function emptyCartNote(){
   sc.onclick=e=>{if(e.target===sc)close();};
   sc.querySelector("#ecnGo").onclick=()=>{close();if(location.hash)goHome();setTimeout(scrollToShop,30);};
   document.addEventListener("keydown",kd);document.body.appendChild(sc);
+}
+function openHow(){
+  const sc=document.createElement("div");sc.className="scrim";
+  const close=()=>{sc.remove();document.removeEventListener("keydown",kd);}; const kd=e=>{if(e.key==="Escape")close();};
+  sc.innerHTML=`<div class="sheet howsheet" role="dialog" aria-label="How to order"><div class="grab"></div><h3>How to order</h3>
+    <ol>
+      <li><b>Choose</b><span>Pick a category &amp; shade</span></li>
+      <li><b>Add to cart</b><span>Tap <span class="inl">${CART_ADD}</span> on pieces you love</span></li>
+      <li><b>Place order</b><span>Tick pieces, see the total</span></li>
+      <li><b>Send</b><span>Add address &amp; phone, send on WhatsApp</span></li>
+      <li><b>Review</b><span>After delivery, post a genuine review ★</span></li>
+    </ol>
+    <p class="disc">✨ Special discount on more than 3 pieces in one order</p>
+    <div class="acts"><button class="btn pri" type="button" id="howOk">Start shopping</button></div></div>`;
+  sc.onclick=e=>{if(e.target===sc)close();}; document.addEventListener("keydown",kd);
+  document.body.appendChild(sc); sc.querySelector("#howOk").onclick=close;
 }
 function openFilter(){
   let c=fCat, k=fColl, s=fSort;
@@ -1614,31 +1805,29 @@ let stuckObs=null;
 function renderList(keepPos){
   clearBar(); ensureFab(); updateCounts(); paintHeader();
   const cover=k=>{const c=CATALOGUES.filter(c=>c.type===k.id&&!isOut(c)).sort(newest)[0]||CATALOGUES.find(c=>c.type===k.id);return c?c.cover:"";};
-  const nColl=id=>CATALOGUES.filter(c=>collOf(c)===id&&c.type===fCat).length;
+  const nColl=id=>tabItems(fCat,fTab).filter(c=>collOf(c)===id).length;
   app.innerHTML=`
-    <p class="promo">✨ <b>Special discount</b> on orders of more than 3 pieces in a single order</p>
-    <section class="howstrip" id="how" aria-label="How to place an order">
-      <h3>How to order</h3>
-      <ol>
-        <li><b>Choose</b><span>Pick a category &amp; shade</span></li>
-        <li><b>Add to cart</b><span>Tap <span class="inl">${CART_ADD}</span> on pieces you love</span></li>
-        <li><b>Place order</b><span>Tick pieces, see the total</span></li>
-        <li><b>Send</b><span>Add address &amp; phone, send on WhatsApp</span></li>
-        <li><b>Review</b><span>After delivery, post a genuine review ★</span></li>
-      </ol>
-    </section>
-    <nav class="maincats" aria-label="Main categories">
-      ${ACTIVE_CATS.map(k=>`<button type="button" class="mcat${fCat===k.id?" on":""}" data-cat="${k.id}" aria-pressed="${fCat===k.id}"><span class="cimg"><img src="${cover(k)}" alt="" loading="lazy"></span><span class="cl">${esc(k.label)}</span></button>`).join("")}
-    </nav>
-    <section class="colls" aria-label="${esc(CAT[fCat].label)} by price">
-      ${COLLECTIONS.map(k=>`<button type="button" class="collc k-${k.id}${fColl===k.id?" on":""}${nColl(k.id)?"":" none0"}" data-coll="${k.id}" aria-pressed="${fColl===k.id}"><b>${k.id==="premium"?"✦ ":""}${esc(k.label)}</b><span>${esc(k.note)} · ${nColl(k.id)||"soon"}</span></button>`).join("")}
-    </section>
-    <div class="reshead"><p class="shint" id="shint" aria-live="polite"></p>${fColl!=="all"?`<button type="button" class="showall" data-coll="${fColl}">Show all ${esc(CAT[fCat].label.toLowerCase())}</button>`:""}</div>
-    <section class="grid" id="grid" aria-label="Catalogues"></section>`;
-  app.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{if(q){q="";const i=document.getElementById("q");if(i){i.value="";document.getElementById("qclr").hidden=true;}}fCat=b.dataset.cat;fColl="all";saveFilters();renderList(true);});
-  app.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>{const v=b.dataset.coll;fColl=fColl===v?"all":v;saveFilters();renderList(true);scrollToShop();});
+    <div class="filt">
+    <div class="catbar"><nav aria-label="Categories">${ACTIVE_CATS.map(k=>`<button type="button" class="cb${fCat===k.id?" on":""}" data-cat="${k.id}" aria-pressed="${fCat===k.id}"><span>${(({dm:["Dress","Materials"],hl:["Home &amp;","Living"],cb:["Cloth","Bags"]})[k.id]||[esc(k.label)]).map(w=>`<i>${w}</i>`).join(" ")}</span></button>`).join("")}</nav></div>
+        <div class="stabs" role="tablist" aria-label="Stock">${TABS.map(t=>`<button type="button" role="tab" class="stab t-${t.id}${fTab===t.id?" on":""}" data-tab="${t.id}" aria-selected="${fTab===t.id}"><b>${t.label.split(" ").map(w=>`<i>${esc(w)}</i>`).join(" ")}</b><span>${tabItems(fCat,t.id).length} catalogues</span></button>`).join("")}</div>
+        <p class="tabnote">${esc(TABS.find(t=>t.id===fTab).note)}</p>
+        <div class="pchips" aria-label="Price">${COLLECTIONS.map(k=>{const n=k.id==="all"?1:nColl(k.id);return `<button type="button" class="pchip k-${k.id}${fColl===k.id?" on":""}${n?"":" zero"}" data-coll="${k.id}" aria-pressed="${fColl===k.id}"><span class="pl">${k.label.split(" ").map((w,j)=>`<i>${esc(w)}</i>`).join(" ")}</span><small>${esc(k.note)}</small></button>`;}).join("")}</div>
+    </div>
+    <div class="shop">
+      <div class="shop-main">
+        <div class="reshead"><p class="shint" id="shint" aria-live="polite"></p></div>
+    <section class="grid" id="grid" aria-label="Catalogues"></section>
+      </div>
+    </div>`;
+  app.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{if(q){q="";const i=document.getElementById("q");if(i){i.value="";document.getElementById("qclr").hidden=true;}}fCat=b.dataset.cat;fColl="all";saveFilters();renderList(true);const cb=app.querySelector(".cb.on");if(cb)cb.scrollIntoView({inline:"center",block:"nearest"});});
+  app.querySelectorAll(".stab").forEach(b=>b.onclick=()=>{fTab=b.dataset.tab;fColl="all";saveFilters();renderList(true);});
+  app.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>{const v=b.dataset.coll;fColl=(fColl===v||v==="all")?"all":v;saveFilters();renderList(true);});
   renderGrid(); updateCounts();
+  app.querySelectorAll(".filt [data-cat],.filt [data-tab],.filt [data-coll]").forEach(b=>b.addEventListener("click",toResults));
 }
+function toResults(){const f=document.querySelector(".filt"),r=document.querySelector(".reshead");if(!f||!r)return;
+  const tb=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--tbh"))||58, y=r.getBoundingClientRect().top+scrollY-tb-f.offsetHeight-6;
+  if(scrollY>y) scrollTo({top:y,behavior:"auto"});}
 
 /* ---------- Reviews ---------- */
 const RATE=["Bad","Good","Excellent"];
@@ -1714,7 +1903,7 @@ function renderReviews(){
 /* ---------- Catalogue page ---------- */
 function renderDetail(c,pre,keep){
   if(fab) fab.hidden=true;
-  const word=(CAT[c.type]||{word:"shade"}).word, k=COLL[collOf(c)];
+  const word="shade/design", k=COLL[collOf(c)];
   const same=CATALOGUES.filter(o=>o!==c&&o.type===c.type&&!isOut(o)).sort((a,b)=>(collOf(a)===collOf(c)?0:1)-(collOf(b)===collOf(c)?0:1)||newest(a,b)).slice(0,8);
   const keepY=keep?scrollY:0, price=priceOf(c), out=isOut(c);
   app.innerHTML=`
@@ -1740,14 +1929,14 @@ function renderDetail(c,pre,keep){
           <span class="ccode">${c.code} · ${TYPE_NAME[c.type]}</span>${k?`<span class="pbadge k-${k.id}">${k.id==="premium"?"✦ ":""}${esc(k.label)}</span>`:""}
           <h2>${esc(c.name)}</h2>
           <p class="dprice">${out?`<span class="no">Out of stock</span>`:`<b>${inr(price)}</b><span>Free delivery</span>`}</p>
-          <p class="lead">${c.colours.length>1?`${c.colours.length} ${word}s · swipe the photo or tap a ${word} below`:"One of a kind"}</p>
+          <p class="lead">${c.colours.length>1?`${c.colours.length} shades/designs · swipe the photo or tap a ${word} below`:"One of a kind"}</p>
         </div>
         <div class="picked">
           <div class="t"><small>Your pick</small><b id="pkCode"></b><span id="pkName"></span></div>
           <button class="cartbtn" type="button" id="heart" aria-pressed="false"></button>
         </div>
         <div class="sizes" id="sizes" hidden></div>
-        ${c.colours.length>1?`<div class="block"><h3>All ${word}s <small>${c.colours.length}</small></h3>
+        ${c.colours.length>1?`<div class="block"><h3>All shades/designs <small>${c.colours.length}</small></h3>
         <div class="swatches">
           ${c.colours.map((x,i)=>{const code=`${c.code}-${x.sub}`;return `
           <button class="sw${x.soldOut?" sold":""}" type="button" aria-pressed="false" data-i="${i}" aria-label="${code}, ${esc(x.name)}${x.soldOut?", out of stock":""}">
@@ -1841,8 +2030,13 @@ function route(keep){
   const h=decodeURIComponent(location.hash.slice(1));
   if(h==="reviews"){lastCat=null;renderReviews();return;}
   const pc=parseCode(h), c=pc&&CATALOGUES.find(x=>x.code===pc.code);
-  if(c){ if(!lastCat) homeY=scrollY; renderDetail(c,pc.sub?c.colours.findIndex(x=>x.sub===pc.sub):-1,keep===true&&lastCat===c);lastCat=c;}
-  else{const back=lastCat!==null;lastCat=null;renderList();window.scrollTo(0,back?homeY:0);}
+  if(c){ if(!lastCat) homeY=scrollY;
+    let v=scopeTab?viewOf(c,scopeTab):null; if(v&&(!v._part||(pc.sub&&!v.colours.some(x=>x.sub===pc.sub)))) v=null; if(!v) scopeTab=null;
+    const d=v||c; renderDetail(d,pc.sub?d.colours.findIndex(x=>x.sub===pc.sub):-1,keep===true&&!!lastCat&&lastCat.code===c.code);lastCat=c;
+    if(v){const hd=app.querySelector(".dhead"), t=TABS.find(t=>t.id===scopeTab);
+      if(hd){hd.insertAdjacentHTML("afterbegin",`<p class="scopenote">Showing <b>${v.colours.length} ${esc(t.label.toLowerCase())}</b> of ${c.colours.length} designs<button type="button" id="seeAll">See all designs</button></p>`);
+        document.getElementById("seeAll").onclick=()=>{scopeTab=null;renderDetail(c,-1,false);};}}}
+  else{const back=lastCat!==null;lastCat=null;scopeTab=null;renderList();window.scrollTo(0,back?homeY:0);}
 }
 addEventListener("hashchange",()=>{route();trackView();});
 /* Visitor stats (GoatCounter) – loads only on the public website, not inside previews */
