@@ -772,6 +772,23 @@ footer .terms li span{color:var(--muted)}
 .banner .ofr b{white-space:nowrap;font-size:clamp(.82rem,3.6vw,1.15rem)!important}
 .banner .ofr[data-how="2"]{flex-grow:1.4}
 @media (max-width:420px){.banner .diya.sep{width:18px;height:18px}.banner .offers{gap:3px!important}}
+
+/* Mobile: stock + price filters as two dropdowns on one line */
+.fdd{display:none}
+@media (max-width:760px){
+.filt .stabs,.filt .pchips{display:none!important}
+.fdd{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:2px 12px 0}
+.dd{position:relative;display:flex;align-items:center;gap:8px;min-height:46px;padding:5px 30px 5px 12px;border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:12px;background:linear-gradient(165deg,color-mix(in srgb,var(--gold) 9%,var(--surface)),var(--surface));box-shadow:0 4px 10px -6px rgba(0,0,0,.8)}
+.dd{padding-right:8px!important;justify-content:space-between}
+.dd .chev{flex:none;position:relative;width:26px;height:26px;border-radius:50%;background:linear-gradient(165deg,#f6dc98,#c49a45);box-shadow:0 2px 0 #7a5418,0 4px 8px -3px rgba(0,0,0,.8);animation:ddhint 1.2s ease-in-out .8s 2}
+.dd .chev::after{content:"";position:absolute;left:50%;top:45%;width:7px;height:7px;border-right:2px solid #3a0a22;border-bottom:2px solid #3a0a22;transform:translate(-50%,-50%) rotate(45deg)}
+@keyframes ddhint{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@media (prefers-reduced-motion:reduce){.dd .chev{animation:none}}
+.dd .dv{display:flex;flex-direction:column;min-width:0;line-height:1.2}
+.dd small{font-size:.68rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dd b{font-family:var(--display);font-weight:600;font-size:.95rem;color:#f3e3c4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dd select{position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:16px;cursor:pointer}
+}
 </style>
 
 <div class="topbar" id="topbar"></div>
@@ -2268,7 +2285,12 @@ function renderList(keepPos){
     <div class="catbar"><nav aria-label="Categories" style="--nc:${ACTIVE_CATS.length}">${ACTIVE_CATS.map(k=>`<button type="button" class="cb${fCat===k.id?" on":""}" data-cat="${k.id}" aria-pressed="${fCat===k.id}"><span>${(({dm:["Dress","Materials"],hl:["Home &amp;","Lifestyle"],mw:["Menswear","Exclusive"],cb:["Cloth","Bags"]})[k.id]||[esc(k.label)]).map(w=>`<i>${w}</i>`).join(" ")}</span></button>`).join("")}</nav></div>
         <div class="stabs" role="tablist" aria-label="Stock">${TABS.filter(t=>t.id!=="keep"||tabItems(fCat,"keep").length).map(t=>`<button type="button" role="tab" class="stab t-${t.id}${fTab===t.id?" on":""}" data-tab="${t.id}" aria-selected="${fTab===t.id}"><b>${t.label.split(" ").map(w=>`<i>${esc(w)}</i>`).join(" ")}</b><span>${(n=>`${n} catalogue${n===1?"":"s"}`)(tabItems(fCat,t.id).length)}</span></button>`).join("")}</div>
         <p class="tabnote">${esc(TABS.find(t=>t.id===fTab).note)}</p>
-        <div class="pchips" aria-label="Price">${COLLECTIONS.map(k=>{const n=k.id==="all"?1:nColl(k.id);return `<button type="button" class="pchip k-${k.id}${fColl===k.id?" on":""}${n?"":" zero"}" data-coll="${k.id}" aria-pressed="${fColl===k.id}"><span class="pl">${k.label.split(" ").map((w,j)=>`<i>${esc(w)}</i>`).join(" ")}</span><small>${esc(k.note)}</small></button>`;}).join("")}</div>
+        <div class="pchips" aria-label="Price">${[...COLLECTIONS].reverse().map(k=>{const n=k.id==="all"?1:nColl(k.id);return `<button type="button" class="pchip k-${k.id}${fColl===k.id?" on":""}${n?"":" zero"}" data-coll="${k.id}" aria-pressed="${fColl===k.id}"><span class="pl">${k.label.split(" ").map((w,j)=>`<i>${esc(w)}</i>`).join(" ")}</span><small>${esc(k.note)}</small></button>`;}).join("")}</div>
+        ${(()=>{const tabs=TABS.filter(t=>t.id!=="keep"||tabItems(fCat,"keep").length), ct=TABS.find(t=>t.id===fTab), nT=id=>tabItems(fCat,id).length, ck=COLL[fColl];
+          return `<div class="fdd">
+          <label class="dd"><span class="dv"><small>Showing · ${tabs.length} options</small><b>${esc(ct.label)} · ${nT(ct.id)}</b></span><i class="chev" aria-hidden="true"></i><select id="ddTab" aria-label="Stock">${tabs.map(t=>`<option value="${t.id}"${t.id===fTab?" selected":""}>${esc(t.label)} (${nT(t.id)})</option>`).join("")}</select></label>
+          <label class="dd"><span class="dv"><small>Price · ${COLLECTIONS.length+1} options</small><b>${ck?esc(ck.label):"All prices"}</b></span><i class="chev" aria-hidden="true"></i><select id="ddColl" aria-label="Price"><option value="all"${fColl==="all"?" selected":""}>All prices</option>${[...COLLECTIONS].reverse().map(k=>{const n=nColl(k.id);return `<option value="${k.id}"${fColl===k.id?" selected":""}${n?"":" disabled"}>${esc(k.label)} · ${esc(k.note)} (${n})</option>`;}).join("")}</select></label>
+        </div>`;})()}
     </div>
     <div class="shop">
       <div class="shop-main">
@@ -2278,6 +2300,9 @@ function renderList(keepPos){
     </div>`;
   app.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{if(q){q="";const i=document.getElementById("q");if(i){i.value="";document.getElementById("qclr").hidden=true;}}fCat=b.dataset.cat;fColl="all";saveFilters();renderList(true);const cb=app.querySelector(".cb.on");if(cb)cb.scrollIntoView({inline:"center",block:"nearest"});});
   app.querySelectorAll(".stab").forEach(b=>b.onclick=()=>{fTab=b.dataset.tab;fColl="all";saveFilters();renderList(true);});
+  {const dt=app.querySelector("#ddTab"), dc=app.querySelector("#ddColl");
+   if(dt) dt.onchange=()=>{fTab=dt.value;fColl="all";saveFilters();renderList(true);toResults();};
+   if(dc) dc.onchange=()=>{fColl=dc.value;saveFilters();renderList(true);toResults();};}
   app.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>{const v=b.dataset.coll;fColl=(fColl===v||v==="all")?"all":v;saveFilters();renderList(true);});
   renderGrid(); updateCounts();
   app.querySelectorAll(".filt [data-cat],.filt [data-tab],.filt [data-coll]").forEach(b=>b.addEventListener("click",toResults));
