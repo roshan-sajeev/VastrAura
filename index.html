@@ -623,7 +623,8 @@ footer .terms ol{gap:7px}
 .banner{padding-block:12px 10px}
 .cb span i{font-style:normal}
 @media (max-width:760px){.cb span{display:flex;flex-direction:column;align-items:center;line-height:1.25}.cb{padding:10px 0 9px;font-size:.74rem;letter-spacing:.1em}.cb+.cb::before{margin:0 7px;width:4px;height:4px}.catbar nav{padding:0 8px;justify-content:space-between;-webkit-mask-image:none;mask-image:none}}
-.banner .word{margin-top:2px}.banner .rule{margin:6px auto 4px}.banner .cap{margin:0}
+.banner .word{margin-top:2px;font-size:clamp(3.6rem,20.5vw,8rem);white-space:nowrap}
+.banner .wrap{padding-inline:10px}.banner .rule{margin:6px auto 4px}.banner .cap{margin:0}
 .grid.grouped .gh{display:flex;align-items:center;justify-content:center;gap:14px;margin:8px 0 2px;padding:0;border-radius:0;background:none;color:var(--ink);font-size:1.25rem;letter-spacing:.02em}
 .grid.grouped .gh::before,.grid.grouped .gh::after{content:"";flex:1;max-width:160px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
 .grid.grouped .gh::after{background:linear-gradient(90deg,var(--gold),transparent)}
@@ -702,6 +703,75 @@ footer .terms li b::after{content:": "}
 footer .terms li span{color:var(--muted)}
 @media (min-width:700px){footer .terms ol{display:block;columns:2;column-gap:32px}footer .terms li{break-inside:avoid}}
 .vset .sz{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:120px}.vset .sz small{font-size:.72rem;opacity:.85}
+
+/* ---------- Diwali sale ---------- */
+.banner .sale{display:flex;flex-direction:column;align-items:center;gap:3px;margin:10px auto 2px;text-align:center}
+.banner .sale .sn{font-family:var(--display);font-weight:800;font-size:clamp(1.05rem,4.6vw,1.45rem);letter-spacing:.14em;background:linear-gradient(110deg,#e6c77d 0%,#f3d48a 40%,#fff6dc 50%,#f3d48a 60%,#e6c77d 100%);background-size:240% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 3.2s linear infinite}
+.banner .sale{gap:8px!important;margin-top:14px!important}
+.banner .offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;max-width:620px}
+.banner .ofr{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:62px;padding:8px 6px;border-radius:12px;border:1px solid rgba(230,199,125,.55);background:linear-gradient(165deg,rgba(255,236,190,.10),rgba(0,0,0,.22));box-shadow:inset 0 1px 0 rgba(255,236,190,.18),0 6px 14px -8px rgba(0,0,0,.8);color:#f3e3c4;cursor:pointer;font:inherit;text-align:center}
+.banner .ofr b{font-family:var(--display);font-size:clamp(.9rem,3.9vw,1.15rem);line-height:1.15;color:#f3d48a;font-weight:700}
+.banner .ofr span{font-size:clamp(.68rem,2.9vw,.82rem);color:#f3e3c4;opacity:.9;line-height:1.2}
+.banner .ofr:hover{border-color:#f3d48a}
+.banner .howoff{background:none;border:0;padding:2px 6px;color:#f3d48a;font:inherit;font-size:.82rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.offsheet .oi{padding:12px 14px;border-radius:14px;margin-top:10px;background:color-mix(in srgb,var(--gold-soft) 40%,var(--surface));border:1px solid color-mix(in srgb,var(--gold) 28%,transparent)}
+.offsheet .oi.hi{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+.offsheet .oi h4{margin:0 0 4px;font-family:var(--display);font-size:1.05rem;color:var(--gold)}
+.offsheet .oi p{margin:0;font-size:.86rem;line-height:1.5;color:var(--ink)}
+.offsheet .oi .eg{margin-top:6px;font-size:.8rem;color:var(--muted)}
+.offsheet .one{margin:12px 0 0;font-size:.82rem;line-height:1.5;color:var(--muted);text-align:center}
+.offsheet .one b{color:var(--ink)}
+.banner .sale .cd{font-size:.8rem;color:#e6c77d;font-variant-numeric:tabular-nums;letter-spacing:.03em}
+@keyframes shim{from{background-position:100% 0}to{background-position:-140% 0}}
+@media (prefers-reduced-motion:reduce){.banner .sale .sn{animation:none}}
+.price s,.ck em s,.op s,.vset small s{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px;text-decoration-thickness:1px}
+.dprice{flex-wrap:wrap;row-gap:2px}
+.dprice .was{font-size:1rem;color:var(--muted);font-weight:500}
+.dprice .dl{color:#f3d48a;background:rgba(230,199,125,.14);border:1px solid rgba(230,199,125,.4);padding:1px 8px;border-radius:999px;font-size:.74rem}
+.free{color:#6fd39a;font-weight:800;letter-spacing:.04em}
+.deal{margin:10px 0 4px;padding:10px 12px;border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:12px;background:color-mix(in srgb,var(--gold) 8%,var(--surface))}
+.deal p{margin:0;font-size:.82rem;line-height:1.45;color:var(--muted)}
+.deal p b{color:var(--ink)}
+.deal .dh{margin-bottom:6px;color:var(--gold);font-size:.88rem}
+.deal .dh b{color:var(--gold)}
+.deal .opt{display:flex;align-items:center;gap:10px;padding:8px 10px;margin-top:6px;border:1px solid var(--line);border-radius:10px;cursor:pointer}
+.deal .opt.on{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 12%,transparent)}
+.deal .opt input{accent-color:#d9b66a;margin:0}
+.deal .opt span{flex:1;display:flex;flex-direction:column;font-size:.88rem;color:var(--ink);font-weight:600}
+.deal .opt small{font-weight:400;color:var(--muted);font-size:.74rem}
+.deal .opt em{font-style:normal;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.deal .save{margin-top:8px;text-align:center;color:#6fd39a;font-weight:700}
+
+/* ---------- Category tiles: separate 3D tiles with a little space under the banner ---------- */
+.filt{padding-top:12px}
+.filt .catbar,.catbar{background:none!important;border:0!important;box-shadow:none!important;margin-top:0}
+.catbar nav{display:grid!important;grid-template-columns:repeat(var(--nc,5),minmax(0,1fr));gap:10px;max-width:880px;padding:2px 16px 10px!important;overflow:visible;-webkit-mask-image:none!important;mask-image:none!important}
+.cb{justify-content:center;text-align:center;min-height:52px;padding:8px 6px!important;border-radius:12px;background:linear-gradient(165deg,#6a1840 0%,#4f0f2f 55%,#350920 100%);border:1px solid rgba(230,199,125,.5);color:#f3e3c4!important;letter-spacing:.1em!important;box-shadow:inset 0 1px 0 rgba(255,236,190,.28),inset 0 -3px 0 rgba(0,0,0,.28),0 4px 0 #1f0512,0 9px 16px -6px rgba(0,0,0,.85);transform:translateY(0);transition:transform .15s,box-shadow .15s,background .2s}
+.cb:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,236,190,.3),inset 0 -3px 0 rgba(0,0,0,.28),0 6px 0 #1f0512,0 12px 18px -6px rgba(0,0,0,.85)}
+.cb:active{transform:translateY(3px);box-shadow:inset 0 1px 0 rgba(255,236,190,.2),0 1px 0 #1f0512,0 3px 8px -4px rgba(0,0,0,.8)}
+.cb+.cb::before{display:none!important}
+.cb span::after{display:none!important}
+.cb span{display:flex;flex-direction:column;align-items:center;line-height:1.25}
+.cb.on{background:linear-gradient(165deg,#f6dc98 0%,#e2bd68 55%,#c49a45 100%);border-color:#f6dc98;color:#3a0a22!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -3px 0 rgba(120,80,20,.35),0 4px 0 #7a5418,0 10px 18px -6px rgba(0,0,0,.85)}
+.cb.on span,.cb.on span i{background:none!important;-webkit-text-fill-color:#3a0a22!important;color:#3a0a22!important;animation:none!important;font-weight:700}
+@media (max-width:760px){.catbar nav{display:flex!important;flex-wrap:wrap;justify-content:center;gap:8px 8px;padding:0 12px 8px!important}.catbar nav .cb{flex:0 0 calc((100% - 16px)/3)}.cb{min-height:40px;padding:5px 4px!important;font-size:.68rem!important;letter-spacing:.06em!important;border-radius:10px}.cb span{flex-direction:row;gap:.3em;flex-wrap:wrap;justify-content:center}}
+
+/* Diwali headline with diyas; offers as plain text separated by diyas */
+.banner .sale .sn{display:flex;align-items:center;justify-content:center;gap:10px;margin:0;animation:none;background:none;-webkit-text-fill-color:initial;color:inherit;letter-spacing:0;font-weight:400}
+.banner .sale .sn span{display:flex;flex-direction:column;align-items:center;line-height:1.1}
+.banner .sale .sn b{font-family:var(--display);font-weight:700;font-size:clamp(1.35rem,6.4vw,2rem);letter-spacing:.05em;background:linear-gradient(110deg,#e6c77d 0%,#f3d48a 40%,#fff6dc 50%,#f3d48a 60%,#e6c77d 100%);background-size:240% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shim 3.2s linear infinite}
+.banner .sale .sn small{font-family:var(--display);font-style:italic;font-size:clamp(.82rem,3.6vw,1rem);color:#f3e3c4;letter-spacing:.03em;margin-top:2px}
+.banner .diya{width:30px;height:30px;flex:none;filter:drop-shadow(0 0 6px rgba(255,190,80,.55))}
+.banner .diya .fl{transform-origin:16px 17px;animation:flick 1.6s ease-in-out infinite alternate}
+@keyframes flick{0%{transform:scale(1,1)}50%{transform:scale(.94,1.06)}100%{transform:scale(1.04,.97)}}
+@media (prefers-reduced-motion:reduce){.banner .diya .fl,.banner .sale .sn b{animation:none}}
+.banner .offers{display:flex!important;align-items:center;justify-content:center;gap:6px!important;max-width:640px}
+.banner .ofr{flex:1 1 0;min-width:0;min-height:0!important;padding:4px 2px!important;border:0!important;background:none!important;box-shadow:none!important;border-radius:0!important}
+.banner .ofr:hover b{text-decoration:underline;text-underline-offset:3px}
+.banner .diya.sep{width:22px;height:22px}
+.banner .ofr b{white-space:nowrap;font-size:clamp(.82rem,3.6vw,1.15rem)!important}
+.banner .ofr[data-how="2"]{flex-grow:1.4}
+@media (max-width:420px){.banner .diya.sep{width:18px;height:18px}.banner .offers{gap:3px!important}}
 </style>
 
 <div class="topbar" id="topbar"></div>
@@ -710,6 +780,16 @@ footer .terms li span{color:var(--muted)}
     <h1 class="word" aria-label="VastrAura"><span class="l" style="--i:0">V</span><span class="l" style="--i:1">a</span><span class="l" style="--i:2">s</span><span class="l" style="--i:3">t</span><span class="l" style="--i:4">r</span><i><span class="l" style="--i:5">A</span><span class="l" style="--i:6">u</span><span class="l" style="--i:7">r</span><span class="l" style="--i:8">a</span></i><span class="spk" aria-hidden="true" style="top:2%;left:-5%;--s:10px;--d:.2s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:-8%;left:14%;--s:12px;--d:.9s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:30%;left:27%;--s:9px;--d:1.5s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:-6%;left:57%;--s:15px;--d:.5s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:20%;left:76%;--s:9px;--d:1.9s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="top:58%;right:-6%;--s:11px;--d:1.1s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="bottom:-8%;left:40%;--s:9px;--d:2.2s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span><span class="spk" aria-hidden="true" style="bottom:2%;left:8%;--s:8px;--d:1.7s"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C10.8 6 14 9.2 20 10C14 10.8 10.8 14 10 20C9.2 14 6 10.8 0 10C6 9.2 9.2 6 10 0Z"/></svg></span></h1>
     <div class="rule" aria-hidden="true"><span></span></div>
     <p class="cap"><span class="tl" id="tl">Every <b>AURA</b> has its <b>VASTRA</b></span></p>
+    <div class="sale" id="saleBand" hidden><p class="sn"><svg class="diya" viewBox="0 0 32 32" aria-hidden="true"><defs><radialGradient id="dfl0" cx="50%" cy="70%" r="60%"><stop offset="0" stop-color="#fff6c8"/><stop offset=".55" stop-color="#ffc23d"/><stop offset="1" stop-color="#ff7a1a"/></radialGradient></defs><path class="fl" d="M16 3c3 4.5 4.6 7.6 4.6 10.2A4.6 4.6 0 0 1 16 17.8a4.6 4.6 0 0 1-4.6-4.6C11.4 10.6 13 7.5 16 3z" fill="url(#dfl0)"/><path d="M3 18.5h26c-.6 5.6-5.8 9.5-13 9.5S3.6 24.1 3 18.5z" fill="#d9a441"/><path d="M3 18.5h26" stroke="#f3d48a" stroke-width="1.6" stroke-linecap="round"/><path d="M8 22.5c2.4 1.6 5 2.3 8 2.3s5.6-.7 8-2.3" stroke="#8a5a17" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg><span><b>Celebrate Diwali</b><small>with sparkling festive offers</small></span><svg class="diya" viewBox="0 0 32 32" aria-hidden="true"><defs><radialGradient id="dfl1" cx="50%" cy="70%" r="60%"><stop offset="0" stop-color="#fff6c8"/><stop offset=".55" stop-color="#ffc23d"/><stop offset="1" stop-color="#ff7a1a"/></radialGradient></defs><path class="fl" d="M16 3c3 4.5 4.6 7.6 4.6 10.2A4.6 4.6 0 0 1 16 17.8a4.6 4.6 0 0 1-4.6-4.6C11.4 10.6 13 7.5 16 3z" fill="url(#dfl1)"/><path d="M3 18.5h26c-.6 5.6-5.8 9.5-13 9.5S3.6 24.1 3 18.5z" fill="#d9a441"/><path d="M3 18.5h26" stroke="#f3d48a" stroke-width="1.6" stroke-linecap="round"/><path d="M8 22.5c2.4 1.6 5 2.3 8 2.3s5.6-.7 8-2.3" stroke="#8a5a17" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></p>
+      <div class="offers">
+        <button type="button" class="ofr" data-how="1"><b>Sale prices</b><span>on all clothing</span></button>
+        <svg class="diya sep" viewBox="0 0 32 32" aria-hidden="true"><defs><radialGradient id="dfl2" cx="50%" cy="70%" r="60%"><stop offset="0" stop-color="#fff6c8"/><stop offset=".55" stop-color="#ffc23d"/><stop offset="1" stop-color="#ff7a1a"/></radialGradient></defs><path class="fl" d="M16 3c3 4.5 4.6 7.6 4.6 10.2A4.6 4.6 0 0 1 16 17.8a4.6 4.6 0 0 1-4.6-4.6C11.4 10.6 13 7.5 16 3z" fill="url(#dfl2)"/><path d="M3 18.5h26c-.6 5.6-5.8 9.5-13 9.5S3.6 24.1 3 18.5z" fill="#d9a441"/><path d="M3 18.5h26" stroke="#f3d48a" stroke-width="1.6" stroke-linecap="round"/><path d="M8 22.5c2.4 1.6 5 2.3 8 2.3s5.6-.7 8-2.3" stroke="#8a5a17" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+        <button type="button" class="ofr" data-how="2"><b>Buy 3, Get 1 Free</b><span>on clothing</span></button>
+        <svg class="diya sep" viewBox="0 0 32 32" aria-hidden="true"><defs><radialGradient id="dfl3" cx="50%" cy="70%" r="60%"><stop offset="0" stop-color="#fff6c8"/><stop offset=".55" stop-color="#ffc23d"/><stop offset="1" stop-color="#ff7a1a"/></radialGradient></defs><path class="fl" d="M16 3c3 4.5 4.6 7.6 4.6 10.2A4.6 4.6 0 0 1 16 17.8a4.6 4.6 0 0 1-4.6-4.6C11.4 10.6 13 7.5 16 3z" fill="url(#dfl3)"/><path d="M3 18.5h26c-.6 5.6-5.8 9.5-13 9.5S3.6 24.1 3 18.5z" fill="#d9a441"/><path d="M3 18.5h26" stroke="#f3d48a" stroke-width="1.6" stroke-linecap="round"/><path d="M8 22.5c2.4 1.6 5 2.3 8 2.3s5.6-.7 8-2.3" stroke="#8a5a17" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+        <button type="button" class="ofr" data-how="3"><b>5% off</b><span>Home &amp; Lifestyle</span></button>
+      </div>
+      <span class="cd" id="saleCd"></span>
+      <button type="button" class="howoff" id="howOff">How the offers work ›</button></div>
   </div>
 </header>
 
@@ -726,7 +806,7 @@ footer .terms li span{color:var(--muted)}
 <script>
 /* keep the tagline on one line and never wider than the VastrAura name */
 (function(){const w=document.querySelector('.word'),t=document.getElementById('tl');if(!w||!t)return;
-function fit(){t.style.fontSize='20px';const ww=w.getBoundingClientRect().width,tw=t.getBoundingClientRect().width;if(!ww||!tw)return;t.style.fontSize=Math.min(20,20*ww*0.86/tw).toFixed(2)+'px';}
+function fit(){t.style.fontSize='20px';const ww=w.getBoundingClientRect().width,tw=t.getBoundingClientRect().width;if(!ww||!tw)return;t.style.fontSize=Math.min(22,20*ww*0.74/tw).toFixed(2)+'px';}
 fit();addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);addEventListener('load',fit);})();
 </script>
 <script>
@@ -868,6 +948,176 @@ const CATALOGUES = [
     spec:[["Fabric","Pure cotton mul, 92×80",""],["Work","Natural hand block print, natural dyes & colours",""],["Length","6.5 m with blouse",""],["Blouse","Contrast hand block printed blouse piece",""]],
     sizes:null,
     colours: sh("SR-021",[["A","Indigo Red Floral Buta"],["B","Red & Beige Leaf Buti"],["C","Yellow Floral, Black Paisley Pallu"],["D","Indigo Floral & Black Checks"],["E","Red & Black Checkerboard Leaf"],["F","Black Bird Motif"],["G","Black Animal Border"],["H","Indigo Leaf Buti"],["I","Red Floral & Black Checks"],["J","Grey Paisley, Mustard Border"],["K","Indigo Floral, Mustard Leaf Pallu"],["L","Mustard Rose Jaal"],["M","Yellow Buti, Black Floral Band"],["N","Mustard Geometric Star"],["O","Black Buti, Mustard Leaf Pallu"],["P","Black Zigzag & Red Vine"],["Q","Purple Leaf Jaal"],["R","Black Paisley Buti"],["S","Indigo Floral, Spiral Border"],["T","Black & Red Tree Motif"],["U","Green Leaf, Mustard Buti Pallu"],["V","Black Flower Bird, Polka Band"],["W","Maroon Paisley & Zigzag"],["X","Black Floral Vine, Yellow Band"],["Y","Black Floral, Yellow Marigold Band"],["Z","Magenta & Red Buta"],["AA","Yellow Leaf, Blue Stripe Pallu"],["AB","Black Floral, Red Stripe Pallu"],["AC","White Pink Floral, Green Bands"],["AD","Grey Polka & Stripes"],["AE","Black Flower Buti, Grey Arrows"],["AF","Indigo Floral Vine"],["AG","Indigo Tree Buti, Lattice Pallu"],["AH","Black Lotus, Mustard Bands"],["AI","Teal Floral, Yellow Sunflower Band"],["AJ","Navy & Red Buti"],["AK","Black Paisley Vine & Zigzag"],["AL","Mustard Leaf, Black Paisley Pallu"],["AM","Indigo Arrow, Tree Pallu"],["AN","Indigo Paisley, Zigzag Pallu"],["AO","Red Leaf & Stripes"],["AP","Indigo Zigzag, Tree Buti Band"],["AQ","Blue Lotus, Yellow Sunflower Band"],["AR","Indigo Medallion Jaal"],["AS","Indigo & White Floral, Wave Pallu"],["AT","Indigo Polka & Stripes"],["AU","Blue Paisley Vine, Mustard Band"],["AV","Teal Yellow Floral, Rainbow Stripes"],["AW","Blue Floral, Pink Paisley Band"],["AX","Purple Paisley, Black Band"],["AY","Black & Beige Line Checks"],["AZ","Green Floral, Pink Paisley Band"],["BA","Maroon Paisley, Tree Band"],["BB","Olive Floral, Chevron Bands"],["BC","Maroon Leaf Buti"],["BD","Red Tribal, Lattice Band"],["BE","Navy Red Tulip, Bouquet Pallu"],["BF","Black Flower, Tree Band"],["BG","Black Batik Sunburst"],["BH","Beige Buti, Olive Motif Band"],["BI","Pink Floral, Multicolour Bands"],["BJ","Yellow Red Buti, Marigold Band"],["BK","Aqua Floral, Maroon Bands"],["BL","Navy & Beige Floral Jaal"],["BM","Indigo Leaf, Tree Band"],["BN","Indigo Flower Buti, Fountain Pallu"],["BO","Black Floral, Red Marigold Band"],["BP","Indigo & White Lotus, Zigzag"],["BQ","Navy Big Polka & Stripes"],["BR","Wine Batik Floral"],["BS","Green Floral, Yellow Temple Band"],["BT","Blue Tulip, Yellow Lotus Band"],["BU","Teal Batik Floral"],["BV","Indigo Triangle & Circle Batik"],["BW","Purple Batik Floral"],["BX","Sky Blue Floral, Paisley Band"],["BY","Red Batik Sunburst"],["BZ","Navy Red Zigzag, Bouquet Band"],["CA","Mustard Batik Floral"],["CB","Black Floral, Red Paisley Band"],["CC","Wine Big Polka & Stripes"],["CD","Maroon & Red Buti, Stripe Pallu"]]) },
+  { code:"SR-073", type:"sr", name:"Beige Soft Tissue Silk Saree", cover:"img/SR-073-A.jpg", coverPos:"50% 50%",
+    blurb:"A glowing soft tissue silk saree in champagne beige, with a rich metallic sheen and an all-over woven geometric diamond pattern. Woven borders frame the drape and an ornate pallu adds grandeur, finished with a delicate pearl-drop lace edging. Light and fluid to drape, a radiant choice for weddings, receptions and festive evenings.",
+    spec:[["Fabric","Soft tissue silk",""],["Weave","All-over geometric diamond weave",""],["Pallu","Ornate woven pallu",""],["Finish","Pearl-drop lace edging",""]],
+    sizes:null,
+    colours: sh("SR-073",[["A","Champagne Beige",null]]) },
+  { code:"SR-072", type:"sr", name:"Beige Soft Banarasi Silk Saree", cover:"img/SR-072-A.jpg", coverPos:"50% 20%",
+    blurb:"An understated luxury soft Banarasi silk saree in warm beige, woven all over with a subtle tone-on-tone gold floral jaal. A broad woven zari border and a richly textured pallu add a soft sheen, finished with delicate tassels. Comes with a matching blouse piece. Quiet elegance for weddings, receptions and festive evenings.",
+    spec:[["Fabric","Soft Banarasi silk",""],["Weave","Tone-on-tone gold floral jaal",""],["Border","Broad woven zari border",""],["Pallu","Rich woven pallu with tassels",""],["Blouse","Matching blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-072",[["A","Beige with Gold",null]]) },
+  { code:"SR-071", type:"sr", name:"White Soft Silk Saree with Peach Weave", cover:"img/SR-071-A.jpg", coverPos:"50% 30%",
+    blurb:"A fresh, elegant soft silk saree in creamy white, woven with peach leaf-spray buttas across the body. A fine peach geometric border frames the drape and flows into a rich all-over peach woven pallu. Comes with a matching peach woven blouse piece. Light, graceful and easy to wear for day functions and festive mornings.",
+    spec:[["Fabric","Soft silk",""],["Weave","Peach leaf butta & geometric border",""],["Pallu","Rich all-over woven pallu",""],["Blouse","Matching peach woven blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-071",[["A","White with Peach",null]]) },
+  { code:"SR-070", type:"sr", name:"White Pashmina Silk Saree with Folk Art Weave", cover:"img/SR-070-A.jpg", coverPos:"50% 30%",
+    blurb:"A striking pashmina silk saree in ivory white, scattered with woven dancing-figure motifs and tiny multicolour buti. A bold framed border of folk-art panels in rani pink, teal and gold runs along the drape, flowing into a storytelling pallu of palm trees and village figures, finished with tassels. Comes with a contrast rani-pink blouse piece. A warm, festive statement for the winter season.",
+    spec:[["Fabric","Pashmina silk",""],["Weave","Folk-art panel border & dancing-figure buti",""],["Pallu","Palm tree & village scene pallu with tassels",""],["Blouse","Rani-pink blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-070",[["A","Ivory with Rani Pink & Teal",null]]) },
+  { code:"SR-069", type:"sr", name:"Beige Pashmina Silk Saree with Kani Weave", cover:"img/SR-069-A.jpg", coverPos:"50% 30%",
+    blurb:"A luxurious pashmina silk saree in soft beige, with a Kani-style woven border of peacocks and blooming flowers in rose, coral, saffron and green, scattered floral buti across the body, and a grand pallu of elephants and trees. Comes with a matching woven blouse piece. A warm, elegant statement for the festive and winter season.",
+    spec:[["Fabric","Pashmina silk",""],["Weave","Kani-style peacock & floral border",""],["Pallu","Elephant & tree motif pallu",""],["Blouse","Matching woven blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-069",[["A","Beige with Rose & Saffron Weave",null]]) },
+  { code:"SR-068", type:"sr", name:"Beige Pure Banarasi Soft Silk Saree", cover:"img/SR-068-A.jpg", coverPos:"50% 30%",
+    blurb:"A graceful pure Banarasi soft silk saree in warm beige, woven all over with a delicate gold zari floral jaal. A rich onion-pink and gold zari border of paisleys and florals frames the drape, flowing into a grand zari pallu. Paired with a matching onion-pink blouse piece with zari buti and border.",
+    spec:[["Fabric","Pure Banarasi soft silk",""],["Weave","Gold zari floral jaal",""],["Border","Onion-pink & gold zari paisley border",""],["Pallu","Grand zari pallu",""],["Blouse","Onion-pink zari blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-068",[["A","Beige with Onion Pink Border",null]]) },
+  { code:"SR-067", type:"sr", name:"White Banarasi Soft Silk Saree", cover:"img/SR-067-A.jpg", coverPos:"50% 30%",
+    blurb:"An elegant Banarasi soft silk saree in ivory white with fine self checks, set off by a rich black and antique-gold zari border of elephant and floral motifs. The striking black pallu is woven with bands of gold zari stripes, paired with a contrast charcoal grey blouse piece. Classic, graceful and perfect for festive evenings.",
+    spec:[["Fabric","Banarasi soft silk",""],["Body","Ivory with self checks",""],["Border","Black & gold zari, elephant motifs",""],["Pallu","Black with gold zari stripes",""],["Blouse","Contrast charcoal grey blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-067",[["A","Ivory White with Black Zari Border",null]]) },
+  { code:"SR-066", type:"sr", name:"Pink Organza Silk Chevron Saree", cover:"img/SR-066-A.jpg", coverPos:"50% 30%",
+    blurb:"A dreamy organza silk saree in soft pink with multicolour chevron stripes of rose, coral, lilac and grey-blue, woven through with fine silver-gold zari. A broad zari border edged in hot pink frames the drape, and the matching zari-woven blouse piece completes a light, festive look.",
+    spec:[["Fabric","Organza silk",""],["Design","Multicolour chevron stripes with zari weave",""],["Border","Broad zari border with pink edge",""],["Blouse","Matching zari blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-066",[["A","Pink Multicolour Chevron",null]]) },
+  { code:"SR-065", type:"sr", name:"Black Soft Silk Saree with Copper Zari", cover:"img/SR-065-A.jpg", coverPos:"50% 40%",
+    blurb:"A striking soft silk saree in classic black, woven with bold copper zari floral buta across the body and a rich copper zari border of floral vines. The pallu carries a wide panel of scrolling florals and geometric zari bands, with a matching black blouse piece bordered in copper zari. Timeless, elegant and easy to drape.",
+    spec:[["Fabric","Soft silk",""],["Weave","Copper zari floral buta",""],["Border","Copper zari floral vine border",""],["Blouse","Matching blouse piece with zari border",""]],
+    sizes:null,
+    colours: sh("SR-065",[["A","Black with Copper Zari",null]],{A:3}) },
+  { code:"SR-064", type:"sr", name:"Navy Blue Banarasi Silk Saree", cover:"img/SR-064-A.jpg", coverPos:"50% 40%",
+    blurb:"A regal Banarasi silk saree in deep navy blue, woven all over with gold and silver zari jaal of elephants, peacocks and floral motifs. A wide antique-gold zari border, a grand zari lattice pallu with tassels, and a matching navy blouse piece with zari-bordered sleeves complete the look. Made for weddings and grand celebrations.",
+    spec:[["Fabric","Banarasi silk",""],["Weave","Gold & silver zari jaal, elephant & peacock motifs",""],["Border","Wide antique-gold zari border",""],["Pallu","Zari lattice pallu with tassels",""],["Blouse","Matching blouse piece with zari border",""]],
+    sizes:null,
+    colours: sh("SR-064",[["A","Navy Blue with Gold Zari",null]],{A:3}) },
+  { code:"SR-063", type:"sr", name:"Green Soft Silk Saree with Copper Zari Border", cover:"img/SR-063-A.jpg", coverPos:"50% 40%",
+    blurb:"An elegant soft silk saree in deep bottle green with a fluid drape, framed by a rich copper zari border of floral vines. The grand pallu features a copper zari lattice panel between floral bands, finished with tassels. Paired with a contrast red brocade blouse piece with gold buti. A graceful choice for festive and family occasions.",
+    spec:[["Fabric","Soft silk",""],["Border","Copper zari floral border",""],["Pallu","Zari lattice pallu with tassels",""],["Blouse","Contrast red brocade blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-063",[["A","Bottle Green with Red Blouse",null]],{A:2}) },
+  { code:"SR-062", type:"sr", name:"Banarasi Silk Saree with Zari Buta", cover:"img/SR-062-A.jpg", coverPos:"50% 30%",
+    blurb:"A rich Banarasi-style silk saree in deep maroon with a soft raw-silk texture, woven with gold zari paisley buta across the body and a broad zari border of floral motifs. The grand pallu features a zari lattice panel framed by fine stripes, and it comes with a matching blouse piece with zari-bordered sleeves. A timeless pick for weddings and festive occasions.",
+    spec:[["Fabric","Silk, raw-silk texture",""],["Weave","Gold zari paisley buta",""],["Border","Broad zari floral border",""],["Pallu","Zari lattice pallu",""],["Blouse","Matching blouse piece with zari border",""]],
+    sizes:null,
+    colours: sh("SR-062",[["A","Maroon with Gold Zari",null]],{A:3}) },
+  { code:"SR-061", type:"sr", name:"Kanchi Cotton Self Saree with Grand Pallu", cover:"img/SR-061-A.jpg", coverPos:"50% 50%",
+    blurb:"A 100% pure 120-count Kanchi cotton saree, 6.25 m with running blouse, in self colours with fine zari pinstripes and diamond buti across the body, a double-band zari temple border and a grand zari pallu of diamond lattice and floral motifs. Soft, user friendly and easy to care for with normal wash. Colours may vary slightly due to photography.",
+    spec:[["Fabric","100% pure cotton, 120 count",""],["Length","6.25 m with running blouse",""],["Design","Self saree, zari stripes & buti, grand pallu",""],["Care","Normal wash",""]],
+    sizes:null,
+    colours: sh("SR-061",[["A","Royal Blue & Purple Dual Tone",null],["B","Magenta",null],["C","Rani Pink",null],["D","Lavender Dual Tone",null],["E","Maroon",null],["F","Red Maroon",null],["G","Onion Dual Tone",null],["H","Violet",null],["I","Baby Pink with Rani Pink Border",null],["J","Pale Onion with Red Border",null],["K","Magenta Wine",null],["L","Coffee Brown",null],["M","Black",null],["N","Mint Green with Maroon Border",null]],{A:2}) },
+  { code:"SR-060", type:"sr", name:"Fancy Pochampalli Silk Saree", cover:"img/SR-060-A.jpg", coverPos:"50% 20%",
+    blurb:"A fancy Pochampalli-style silk saree with a digital ikat print all over, a contrast ikat-print pallu with tassels, and a copper zari Kanchi-style fancy border. Very soft and comfortable for long wear. Comes with a contrast running blouse. Ready stock available for uniform sarees.",
+    spec:[["Fabric","Soft silk, Pochampalli style",""],["Print","Digital ikat print all over",""],["Pallu","Contrast ikat-print pallu",""],["Border","Copper zari Kanchi fancy border",""],["Blouse","Contrast running blouse",""],["Note","Bulk / uniform orders available",""]],
+    sizes:null,
+    colours: sh("SR-060",[["A","Cream with Bottle Green",null],["B","Rani Pink with Navy",null],["C","Purple with Olive Green",null],["D","Yellow with Magenta",null],["E","Orange with Plum",null],["F","Magenta with Parrot Green",null],["G","Parrot Green with Purple",null],["H","Ivory & Rose with Magenta",null],["I","Olive Yellow with Rani Pink",null],["J","White & Navy with Royal Blue",null],["K","Yellow with Purple",null],["L","Ivory & Grey with Olive",null],["M","Peach with Maroon",null],["N","Purple with Orange",null],["O","Red with Royal Blue",null],["P","Cream with Royal Blue",null],["Q","Rani Pink with Olive",null],["R","Navy with Red",null],["S","Sky Blue with Black",null],["T","Lime Yellow with Magenta",null],["U","Navy with Rust Orange",null],["V","White & Grey with Royal Blue",null],["W","White with Black",null]]) },
+  { code:"SR-059", type:"sr", name:"Warm Silk Banarasi Saree", cover:"img/SR-059-A.jpg", coverPos:"50% 50%",
+    blurb:"A rich warm silk Banarasi saree in bold contrast pairings, with gold zari floral buti across the body, a grand Banarasi border of paisleys and flowering trees highlighted with red meenakari touches, and a shimmering tissue-zari pallu with contrast stripes. Comes with a matching contrast brocade blouse piece.",
+    spec:[["Fabric","Warm silk",""],["Weave","Banarasi zari buti, meenakari border",""],["Pallu","Tissue zari pallu with contrast stripes",""],["Blouse","Contrast brocade blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-059",[["A","Red with Royal Blue",null],["B","Royal Blue with Baby Pink",null],["C","Mango Orange with Wine",null],["D","Ice Blue with Maroon",null],["E","Sky Blue with Bottle Green",null],["F","Beige Gold with Red",null],["G","Bottle Green with Red",null]],{A:2,B:2,C:2,E:3}) },
+  { code:"SR-058", type:"sr", name:"Palki Motif Silk Saree", cover:"img/SR-058-A.jpg", coverPos:"50% 50%",
+    blurb:"A trending soft silk saree with a checked zari grid, woven with the classic palki (palanquin) motif featuring peacocks and chariot wheels, alternating with small zari buti, and a zari temple border. Rich dual-tone shades for festive wear.",
+    spec:[["Fabric","Soft silk",""],["Weave","Zari check grid with palki & peacock motifs",""],["Border","Zari temple border",""]],
+    sizes:null,
+    colours: sh("SR-058",[["A","Peacock Green",null],["B","Peacock Blue",null],["C","Rani Pink & Orange",null],["D","Rust Red",null],["E","Bottle Green",null],["F","Orange",null],["G","Sea Green",null],["H","Magenta",null],["I","Mustard Yellow",null],["J","Royal Purple",null],["K","Wine",null]],{A:2}) },
+  { code:"SR-057", type:"sr", name:"Banarasi Tissue Dual Tone Saree", cover:"img/SR-057-C.jpg", coverPos:"50% 50%",
+    blurb:"A shimmering Banarasi tissue saree in a dual-tone weave, with woven zari patterns across the body and a beautiful broad contrast zari border. Comes with a blouse piece. A glowing pick for festive occasions.",
+    spec:[["Fabric","Banarasi tissue",""],["Weave","Dual-tone zari pattern",""],["Border","Broad contrast zari border",""],["Blouse","Blouse piece included",""]],
+    sizes:null,
+    colours: sh("SR-057",[["A","Rose Gold with Orange Border",null],["B","Olive Gold with Red Border",null],["C","Lemon Yellow with Pink Border",null],["D","Wine with Gold Zari",null]]) },
+  { code:"SR-056", type:"sr", name:"Handmade Pure Cotton Jamdani Saree", cover:"img/SR-056-A.jpg", coverPos:"50% 50%",
+    blurb:"A 100% pure cotton jamdani saree, handmade and soft, with colourful hand-woven buti scattered across the body, a pallu of flowering vine jamdani motifs with a fine striped band and tasselled ends, and a slim contrast border. Comes with a blouse piece.",
+    spec:[["Fabric","100% pure cotton, handmade",""],["Weave","Hand jamdani buti & floral vine pallu",""],["Border","Slim contrast border",""],["Blouse","Blouse piece included",""]],
+    sizes:null,
+    colours: sh("SR-056",[["A","Coral Peach with Red Border",null],["B","Sky Blue with Maroon Border",null],["C","Purple with Pink Border",null],["D","Lavender with Red Border",null],["E","Baby Pink with Red Border",null],["F","Peach with Red Border",null],["G","Lemon Yellow with Red Border",null],["H","White with Red Border",null],["I","Deep Purple with Lilac Border",null]]) },
+  { code:"SR-055", type:"sr", name:"Matka Silk Chap Dye Buta Saree", cover:"img/SR-055-A.jpg", coverPos:"50% 50%",
+    blurb:"A textured Matka silk saree in chap-dye (contrast dip-dyed) colours, woven with large gold zari floral buta across the body, a row of zari paisleys above a grand contrast Banarasi-style zari border, and a rich zari pallu.",
+    spec:[["Fabric","Matka silk",""],["Dye","Chap dye with contrast border",""],["Weave","Gold zari floral buta",""],["Pallu","Rich zari pallu",""]],
+    sizes:null,
+    colours: sh("SR-055",[["A","Maroon with Mustard Border",null],["B","Mustard with Peacock Blue Border",null],["C","Purple with Lilac Border",null],["D","Mustard Yellow with Magenta Border",null],["E","Rust with Coffee Border",null],["F","Magenta with Lavender Border",null],["G","Sea Green with Navy Border",null],["H","Orange Red with Purple Border",null],["I","Bottle Green with Lilac Border",null],["J","Royal Purple with Sea Green Border",null]]) },
+  { code:"SR-054", type:"sr", name:"Handloom Khadi Kantha Stitch Jamdani Saree", cover:"img/SR-054-A-2.jpg", coverPos:"50% 50%",
+    blurb:"A pure khadi handloom chatai-weave saree with fine kantha-stitch lines running across the body, a wide contrast border, and a hand-woven jamdani pallu of bold diamond and hourglass motifs in multicolour threads, finished with tassels. Comes with a contrast blouse piece.",
+    spec:[["Fabric","Pure khadi, handloom chatai weave",""],["Work","Kantha stitch lines, hand jamdani pallu",""],["Border","Wide contrast border",""],["Blouse","Contrast blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-054",[["A","Bottle Green with Rust Border",null],["B","Maroon with Red Border",null],["C","Navy Blue with Magenta Border",null],["D","Teal with Red Border",null],["E","Beige with Red Border",null],["F","Aqua with Pink Pallu",null],["G","Black with Maroon Border",null],["H","White with Pink Border",null]],{A:2}) },
+  { code:"SR-053", type:"sr", name:"Cotton Zari Pallu Saree with Floral Buti", cover:"img/SR-053-A.jpg", coverPos:"50% 50%",
+    blurb:"A soft, breathable 100% cotton by cotton saree with woven floral buti across the body, an elegant jacquard floral-vine border, and a rich zari pallu finished with matching tassels. Comes with a running blouse piece.",
+    spec:[["Fabric","100% cotton by cotton",""],["Design","Floral buti, jacquard border",""],["Pallu","Rich zari pallu with matching tassels",""],["Blouse","Running blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-053",[["A","Maroon",null],["B","Mustard Brown",null],["C","Royal Blue",null],["D","Purple",null],["E","Magenta",null],["F","Black",null]],{A:2,D:2}) },
+  { code:"SR-052", type:"sr", name:"Mangalagiri Silk Saree with Contrast Border", cover:"img/SR-052-I.jpg", coverPos:"50% 50%",
+    blurb:"A colourful Mangalagiri silk saree in soft dip-dyed shades that flow into a contrast border and pallu, finished with a woven gold zari temple border and zari-striped pallu with tassels. Comes with a running blouse piece. Perfect for festive, traditional and special occasions. Availability to be confirmed before ordering.",
+    spec:[["Fabric","Mangalagiri silk",""],["Design","Dip-dye body, contrast border & pallu",""],["Border","Gold zari temple border",""],["Blouse","Running blouse piece",""],["Note","Please confirm availability before ordering",""]],
+    sizes:null,
+    colours: sh("SR-052",[["A","Baby Pink & Rani Pink",null],["B","Orange & Rani Red",null],["C","Off-White & Mustard",null],["D","Rani Pink & Parrot Green",null],["E","Lemon & Yellow",null],["F","Peach & Mustard",null],["G","Rust & Rani Pink",null],["H","Pink & Wine",null],["I","Lime & Sky Blue, Silver Zari",null],["J","Yellow & Red",null]],{D:2}) },
+  { code:"SR-051", type:"sr", name:"Ikat Cotton Dhaniakhali Saree", cover:"img/SR-051-F.jpg", coverPos:"50% 50%",
+    blurb:"A handloom cotton saree in the classic Dhaniakhali style, with a subtle ikat-flecked body, a wide contrast border edged with fine checked stripes, a striped pallu and colourful pom-pom tassels. Comes with a blouse piece. Light, breathable and easy for daily wear.",
+    spec:[["Fabric","Cotton, handloom",""],["Design","Ikat flecks, Dhaniakhali contrast border, striped pallu",""],["Finish","Pom-pom tassels",""],["Blouse","Blouse piece included",""]],
+    sizes:null,
+    colours: sh("SR-051",[["A","Magenta with Mustard Border",null],["B","Maroon with Mustard Border",null],["C","Navy Blue with Mustard Border",null],["D","Off-White with Red Border",null],["E","Bottle Green with Mustard Border",null],["F","Red with Orange Border",null],["G","Black with Mustard Border",null]],{A:2}) },
+  { code:"SR-050", type:"sr", name:"Cotton Silk Botgach Handloom Saree", cover:"img/SR-050-G.jpg", coverPos:"50% 50%",
+    blurb:"A handloom cotton silk saree with a soft sheen and textured weave, featuring a contrast pallu woven with the classic botgach (tree of life) motif in two-tone thread and fine zari stripes, and a slim zari border. Comes with a blouse piece.",
+    spec:[["Fabric","Cotton silk, handloom",""],["Pallu","Botgach (tree) motif contrast pallu",""],["Border","Slim zari border",""],["Blouse","Blouse piece included",""]],
+    sizes:null,
+    colours: sh("SR-050",[["A","Red with Black Pallu",null],["B","Rani Pink with Royal Blue Pallu",null],["C","Grey with Off-White Pallu",null],["D","Beige with Black Pallu",null],["E","Orange with Rani Pink Pallu",null],["F","Orange with Black Pallu",null],["G","Off-White with Sky Blue Pallu",null],["H","Black with Red Pallu",null],["I","Olive Green with Magenta Pallu",null]]) },
+  { code:"SR-049", type:"sr", name:"Handwoven Pure Cotton Temple Border Saree", cover:"img/SR-049-A.jpg", coverPos:"50% 50%",
+    blurb:"A pure soft cotton by cotton saree, totally handmade, with woven temple-spike motifs along a solid contrast border, small woven buti across the body and a striped pallu with bold star motifs and tassels. Comes with a blouse piece. Premium quality for everyday grace.",
+    spec:[["Fabric","Pure cotton by cotton, handwoven",""],["Design","Temple border, woven buti, star & stripe pallu",""],["Blouse","Blouse piece included",""]],
+    sizes:null,
+    colours: sh("SR-049",[["A","Off-White with Red Border",null],["B","Yellow with Maroon Border",null],["C","Olive Green with Wine Border",null],["D","Coral Pink with Red Border",null],["E","Rani Pink with Mustard Border",null],["F","Peach with Magenta Border",null],["G","Yellow with Rust Orange Border",null]]) },
+  { code:"SR-048", type:"sr", name:"Fulia Handloom Jamdani Saree with Silver Zari", cover:"img/SR-048-A.jpg", coverPos:"50% 50%",
+    blurb:"A Diwali special handloom jamdani saree from Fulia, woven with silver zari: scattered paisley buti in navy and coral across the body, a grand jamdani pallu of flowering vines with silver wave borders, and a woven zari border. Comes with a running blouse piece. More colours can be customised on request for the festive season.",
+    spec:[["Fabric","Fulia handloom cotton",""],["Weave","Jamdani with silver zari",""],["Pallu","Floral vine jamdani pallu",""],["Blouse","Running blouse piece",""],["Colours","More colours customisable on request",""]],
+    sizes:null,
+    colours: sh("SR-048",[["A","Rani Pink with Orange Zari Border",null],["B","Peach Pink",null],["C","White with Silver Border",null],["D","Sky Blue",null],["E","Lime Green",null],["F","Purple with Pink Zari Border",null],["G","Lemon Yellow with Gold Border",null],["H","Parrot Green with Gold Border",null],["I","Sea Green",null],["J","Turquoise",null]],{A:2,C:2,F:2}) },
+  { code:"SR-047", type:"sr", name:"Khadi Cotton Gini Work Saree with Contrast Pallu", cover:"img/SR-047-A.jpg", coverPos:"50% 50%",
+    blurb:"A handloom-feel khadi cotton by cotton saree in bold two-tone colour blocking, with a contrast pallu and shining gini (sequin) work (A–X), or in solid colours with white embroidered flower buti (Y–AM), finished with chunky handmade tassels. Comes with a contrast blouse piece plus an extra Kalamkari-printed blouse piece in Warli, Ajrakh, ikat, elephant, camel, paisley or buta prints.",
+    spec:[["Fabric","Khadi cotton by cotton",""],["Design","Contrast pallu, gini work, tassels",""],["Blouse","Contrast blouse piece + extra Kalamkari printed blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-047",[["A","Olive & Peacock Blue, Green Buta Blouse",null],["B","Black & Rust, Cream Star Blouse",null],["C","Mustard & Magenta, Warli Blouse",null],["D","Olive Gold & Navy, Geometric Blouse",null],["E","Navy & Maroon, Red Ikat Blouse",null],["F","Black & Rust, Elephant Blouse",null],["G","Navy & Maroon, Blue Warli Blouse",null],["H","Bottle Green & Magenta, Warli Blouse",null],["I","Coffee & Mustard, Rust Warli Blouse",null],["J","Olive Gold & Purple, Elephant Blouse",null],["K","Olive & Navy, Green Ajrakh Blouse",null],["L","Lime & Navy, Mustard Buta Blouse",null],["M","Lime & Navy, Blue Warli Blouse",null],["N","Mustard & Magenta, Pink Ikat Blouse",null],["O","Coffee & Mustard, Mustard Ikat Blouse",null],["P","Olive Gold & Maroon, Warli Blouse",null],["Q","Olive Gold & Navy, Warli Blouse",null],["R","Olive & Peacock Blue, Blue Ikat Blouse",null],["S","Rust & Black, Cream Star Blouse",null],["T","Olive Gold & Maroon, Red Ajrakh Blouse",null],["U","Rust & Black, Camel Print Blouse",null],["V","Olive Gold & Purple, Paisley Blouse",null],["W","Bottle Green & Magenta, Camel Print Blouse",null],["X","Olive & Navy, Warli Blouse",null],["Y","Red Embroidered Buti, Warli Blouse",null],["Z","Royal Purple Embroidered Buti, Elephant Blouse",null],["AA","Grey Embroidered Buti, Black Warli Blouse",null],["AB","Coffee Brown Embroidered Buti, Cream Star Blouse",null],["AC","Maroon Embroidered Buti, Red Ajrakh Blouse",null],["AD","Rust Embroidered Buti, Black Ajrakh Blouse",null],["AE","Violet Embroidered Buti, Warli Blouse",null],["AF","Olive Embroidered Buti, Warli Blouse",null],["AG","Black Embroidered Buti, Camel Print Blouse",null],["AH","Bottle Green Embroidered Buti, Warli Blouse",null],["AI","Magenta Embroidered Buti, Paisley Blouse",null],["AJ","Lime Green Embroidered Buti, Mustard Ajrakh Blouse",null],["AK","Rani Pink Embroidered Buti, Warli Blouse",null],["AL","Baby Pink Embroidered Buti, Elephant Blouse",null],["AM","Wine Embroidered Buti, Mustard Buta Blouse",null]]) },
+  { code:"SR-046", type:"sr", name:"Handwoven Mul Cotton Saree", cover:"img/SR-046-B.jpg", coverPos:"50% 50%",
+    blurb:"A soft, breathable handwoven mul cotton saree with small woven buti scattered across the body, a striped contrast border, a woven-stripe pallu with braided accents and playful pom-pom tassels. Comes with a blouse piece. Light and easy for everyday elegance.",
+    spec:[["Fabric","Mul cotton, handwoven",""],["Design","Woven buti, striped border & pallu",""],["Finish","Pom-pom tassels",""],["Blouse","Blouse piece included",""]],
+    sizes:null,
+    colours: sh("SR-046",[["A","Red with White Stripes",null],["B","Off-White with Black Border",null],["C","Sky Blue with Black Border",null],["D","Peach with Black Border",null],["E","Mint Green with Black Border",null]],{B:2}) },
+  { code:"SR-045", type:"sr", name:"Tissue Linen Saree with Paithani Jamdani Work", cover:"img/SR-045-C.jpg", coverPos:"50% 40%",
+    blurb:"A luxurious handwoven tissue linen saree in pure tested zari tissue by pure linen, with scattered jamdani-woven bird and floral buti across the body and a grand Paithani-style pallu of swan pairs among lotus blooms (A–H) or blooming lotus stems (I–N), framed by shimmering tissue zari borders and tasselled ends. Comes with a running blouse piece. Any colour can be customised on request.",
+    spec:[["Fabric","Pure zari tissue by pure linen (handwoven)",""],["Work","Paithani jamdani weave",""],["Pallu","Swan & lotus jamdani pallu, tasselled",""],["Blouse","Running blouse piece",""],["Colours","Any colour customisable on request",""]],
+    sizes:null,
+    colours: sh("SR-045",[["A","Coral Orange",null],["B","Mustard Yellow",null],["C","Lavender",null],["D","Rose Pink",null],["E","Turquoise Blue",null],["F","Coffee Brown",null],["G","Mauve & Wine",null],["H","Peacock Teal",null],["I","Violet, Lotus Pallu",null],["J","Rust Orange, Lotus Pallu",null],["K","Coral Pink, Lotus Pallu",null],["L","Sea Green, Lotus Pallu",null],["M","Chocolate Brown, Lotus Pallu",null],["N","Mustard Yellow, Lotus Pallu",null]]) },
+  { code:"SR-044", type:"sr", name:"Moss Saree with Grand Sequin Jaal Work", cover:"img/SR-044-A.jpg", coverPos:"50% 50%",
+    blurb:"A trendy moss fabric saree with grand all-over jaal work in gold zari threadwork and sequins, finished with a rich scalloped cut-work border and a grand worked C-pallu. A dazzling choice for weddings and festive evenings.",
+    spec:[["Fabric","Moss",""],["Work","Grand zari & sequin jaal all over",""],["Border","Scalloped sequin cut-work border",""],["Pallu","Grand worked C-pallu",""]],
+    sizes:null,
+    colours: sh("SR-044",[["A","Dusky Mauve",null],["B","Olive Green",null],["C","Lavender Purple",null],["D","Dusty Rose",null]]) },
+  { code:"SR-043", type:"sr", name:"Mysore Crepe Silk Saree with Zari Border", cover:"img/SR-043-H.jpg", coverPos:"50% 50%",
+    blurb:"An exclusive Mysore crepe silk saree with a soft, fluid drape, featuring fine gold zari checks and floral buti on the body, a contrast zari border with peacock and chakra motifs and a grand paisley band, and a rich zari-striped pallu. Available in an exclusive range of contrast colour pairings.",
+    spec:[["Fabric","Mysore crepe silk",""],["Body","Zari checks with floral buti",""],["Border","Contrast zari border, peacock & paisley motifs",""],["Pallu","Rich zari-striped pallu",""]],
+    sizes:null,
+    colours: sh("SR-043",[["A","Black with Onion Pink Border",null],["B","Red with Black Border",null],["C","Sage Green with Purple Border",null],["D","Peach with Wine Border",null],["E","Bottle Green with Rose Pink Border",null],["F","Rust with Coffee Brown Border",null],["G","Maroon with Bottle Green Border",null],["H","Bottle Green with Wine Border",null],["I","Deep Purple with Lavender Border",null],["J","Magenta with Mauve Border",null],["K","Royal Blue with Sky Blue Border",null],["L","Navy Blue with Lavender Border",null],["M","Navy with Mint Green Border",null]],{H:2}) },
+  { code:"SR-042", type:"sr", name:"Viscose Silk Saree with Zari Buti", cover:"img/SR-042-B.jpg", coverPos:"50% 50%",
+    blurb:"A graceful viscose silk saree with a soft sheen and gentle texture, woven with scattered gold zari floral buti across the body and finished with a fine zari border. Comes with a matching blouse piece with buti and border. Available in 18 rich solid shades.",
+    spec:[["Fabric","Viscose silk",""],["Weave","Gold zari floral buti",""],["Border","Fine zari border",""],["Blouse","Matching blouse piece",""]],
+    sizes:null,
+    colours: sh("SR-042",[["A","Coffee Brown",null],["B","Royal Violet",null],["C","Bottle Green",null],["D","Mocha Brown",null],["E","Peacock Teal",null],["F","Rani Pink",null],["G","Sage Green",null],["H","Black",null],["I","Rose Pink",null],["J","Red",null],["K","Deep Purple",null],["L","Peach",null],["M","Maroon",null],["N","Rust Orange",null],["O","Wine",null],["P","Onion Pink",null],["Q","Orange",null],["R","Lavender",null]],{B:2,G:2}) },
+  { code:"SR-041", type:"sr", name:"Crunchy Crush Saree with Brush & Block Print", cover:"img/SR-041-A.jpg", coverPos:"50% 50%",
+    blurb:"A soft, crunchy crush fabric saree in ivory white with hand brush-painted pink lotus and blue blooms on trailing green vines, framed by a red block-printed floral border. Finished with khatli handwork touch-ups in beads and sequins, a sparkling mirror-sequin lace border and a contrast blouse.",
+    spec:[["Fabric","Crunchy soft crush",""],["Print","Brush paint & block print",""],["Work","Khatli handwork with beads & sequins",""],["Border","Mirror-sequin lace",""],["Blouse","Contrast blouse",""]],
+    sizes:null,
+    colours: sh("SR-041",[["A","Ivory, Pink & Blue Floral",null]],{A:2}) },
+  { code:"SR-040", type:"sr", name:"Pashmina Saree with Shawl", cover:"img/SR-040-A.jpg", coverPos:"50% 50%",
+    blurb:"Soft, warm pashmina fabric sarees with an all-over Kani-style floral and paisley weave, a richly patterned pallu with tassels and a woven contrast border. Each comes with a matching pashmina shawl / stole and a printed blouse fabric, an elegant pick for the winter season.",
+    spec:[["Fabric","Pashmina",""],["Design","Kani-style floral & paisley weave, tasselled pallu",""],["Includes","Matching shawl / stole",""],["Blouse","Printed blouse fabric",""]],
+    sizes:null,
+    colours: sh("SR-040",[["A","Ivory, Multicolour Floral",null],["B","Navy & Turquoise",null],["C","Ivory & Turquoise Blue",null],["D","Ivory & Grey with Pink",null],["E","Ivory & Rose Pink",null],["F","Ivory & Beige Paisley",null],["G","Ivory & Peach Paisley",null],["H","Black & Red",null]]) },
   { code:"SR-039", type:"sr", name:"Georgette Ajrakh Print Saree with Mirror Work", cover:"img/SR-039-A.jpg", coverPos:"50% 50%",
     blurb:"Super premium georgette sarees in a uniform Ajrakh design, with mirror work all over: a wide medallion border, scattered mirror motifs on the body and a matching Ajrakh-printed blouse piece. Light, flowing and fully washable.",
     spec:[["Fabric","Premium georgette",""],["Print","Ajrakh, uniform design",""],["Work","Full mirror work",""],["Blouse","Ajrakh printed blouse piece",""],["Care","Washable",""]],
@@ -1076,11 +1326,126 @@ const CATALOGUES = [
     spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Pure cotton ikat (top & bottom)",""],["Kurta","3/4 sleeves, approx. 43 inches",""],["Pant","38 inches, full elastic, pocket",""],["Sizes","L (40) · XL (42) · 2XL (44) · 3XL (46); limited stock per colour",""]],
     sizes:true,
     colours: sh("RM-031",[["A", "Charcoal Black, Multicolour Ikat", ["L", "XL", "3XL"]],["B", "Coffee Brown, Ivory Chevron Ikat", ["XXL", "3XL"]],["C", "Royal Blue & Purple, Flame Ikat", ["L"]],["D", "Mango Orange, Ivory Ikat", ["L"]],["E", "Maroon, Fine Ikat Dash", ["XXL"]],["F", "Grey, White Ikat", ["M", "L", "XXL", "3XL"]],["G", "Indigo, Ikat Flower", ["XXL", "3XL"]],["H", "Mustard, Red & Green Ikat", ["XXL"]],["I", "Cobalt Blue, White Ikat Stripes", ["L", "XXL", "3XL"]]]) },
-  { code:"RM-041", type:"rm", name:"Cotton Kurta & Pant Set", cover:"img/RM-041-A.jpg", coverPos:"50% 30%",
-    blurb:"A relaxed two-piece cotton kurta set for everyday ease, in four distinct looks: a long mustard kurta with white batik floral vines and dotted-stripe pants, a short indigo kurti with ivory floral motifs, a solid olive kurta with fringed hems and ivory heart-print pants, and a rani red and navy ikat-geometric kurti with a lace-trimmed yoke.",
-    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Cotton",""],["Pants","Elasticated waist; cuffed hem on A, B & D",""],["Sizes","XL",""]],
+  { code:"RM-065", type:"rm", name:"Premium Royal Blue Floral Kurta Set", cover:"img/RM-065-A.jpg", coverPos:"50% 25%",
+    blurb:"A premium cotton kurta set in royal blue with large ivory lily-style florals and leaf prints. The straight kurta has a notched V neck, elbow-length sleeves and side slits, paired with matching straight pants.",
+    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Cotton",""],["Kurta","Notched V neck, elbow sleeves, side slits",""],["Sizes","XXL",""]],
     sizes:true,
-    colours: sh("RM-041",[["A","Mustard Brown, White Batik Floral Vine",["XL"]],["B","Indigo Blue, Ivory Floral Motif",["XL"]],["C","Olive Green Kurta, Ivory Heart-Print Pant",["XL"]],["D","Rani Red & Navy, Ikat Geometric",["XL"]]]) },
+    colours: sh("RM-065",[["A","Royal Blue, Ivory Lily Floral",["XXL"]]]) },
+  { code:"RM-064", type:"rm", name:"Teal Ikat Pure Cotton Salwar Set", cover:"img/RM-064-A.jpg", coverPos:"50% 25%",
+    blurb:"A pure cotton three-piece salwar set in deep teal with white and mustard ikat motifs. The straight kurta has a V neck with mirror and thread embroidery, three-quarter sleeves with mustard piping and side slits, paired with mustard ikat-print pants and a vibrant mustard and teal ikat dupatta with a printed border.",
+    spec:[["Set","Kurta, pant & dupatta (3-piece)",""],["Fabric","Pure cotton",""],["Kurta","V neck with mirror & thread work, 3/4 sleeves, side slits",""],["Sizes","5XL",""]],
+    sizes:true,
+    colours: sh("RM-064",[["A","Teal & Mustard, Ikat",["5XL"]]]) },
+  { code:"RM-063", type:"rm", name:"Vibrant Yellow Cotton Co-ord with Thread Work", cover:"img/RM-063-A.jpg", coverPos:"50% 25%",
+    blurb:"A sunny pure cotton co-ord set in vibrant yellow with fine white thread work. The kurti has a V neck and a framed yoke embroidered with a heritage scene of arches, florals and birds, three-quarter sleeves and side slits, paired with matching wide-leg pants.",
+    spec:[["Set","Kurti & pant co-ord (2-piece)",""],["Fabric","Pure cotton",""],["Work","White thread embroidery on yoke",""],["Sizes","XXL",""]],
+    sizes:true,
+    colours: sh("RM-063",[["A","Vibrant Yellow, White Thread Work",["XXL"]]]) },
+  { code:"RM-062", type:"rm", name:"Green Floral Pure Cotton Kurta", cover:"img/RM-062-A.jpg", coverPos:"50% 25%",
+    blurb:"A pure cotton straight kurta in olive green with an all-over floral jaal print in teal, mustard, ivory and wine. It has a round neck with a lace-trimmed V panel, lace-edged three-quarter sleeves and side slits. Kurta only.",
+    spec:[["Piece","Kurta (kurta only)",""],["Fabric","Pure cotton",""],["Kurta","Round neck, lace V panel, 3/4 sleeves, side slits",""],["Sizes","XXL",""]],
+    sizes:true,
+    colours: sh("RM-062",[["A","Olive Green, Floral Jaal",["XXL"]]]) },
+  { code:"RM-061", type:"rm", name:"Vibrant Green Cotton Kurta", cover:"img/RM-061-A.jpg", coverPos:"50% 25%",
+    blurb:"A fresh cotton kurta in vibrant parrot green with a diagonal bandhani-style print in white and yellow. It has a round neck, a lace-framed yoke with fine diagonal stripes and wooden buttons, lace-trimmed three-quarter sleeves and side slits. Kurta only.",
+    spec:[["Piece","Kurta (kurta only)",""],["Fabric","Cotton",""],["Kurta","Round neck, lace-trimmed yoke, button placket, 3/4 sleeves",""],["Sizes","XL",""]],
+    sizes:true,
+    colours: sh("RM-061",[["A","Parrot Green, Bandhani Stripe",["XL"]]]) },
+  { code:"RM-060", type:"rm", name:"Brown Pure Cotton Long Dress", cover:"img/RM-060-A.jpg", coverPos:"50% 25%",
+    blurb:"A graceful pure cotton long dress in rich wine brown with golden ethnic motif detailing on the yoke, sleeve borders and hem. It has a round neck, three-quarter sleeves and a fitted bodice that flows into a full, flared skirt.",
+    spec:[["Piece","Long dress (single piece)",""],["Fabric","Pure cotton",""],["Style","Round neck, golden motif yoke, 3/4 sleeves, flared",""],["Sizes","L",""]],
+    sizes:true,
+    colours: sh("RM-060",[["A","Wine Brown, Golden Motif Border",["L"]]]) },
+  { code:"RM-059", type:"rm", name:"Soft Pink Cotton Embroidered Salwar Set", cover:"img/RM-059-A.jpg", coverPos:"50% 25%",
+    blurb:"A soft cotton salwar set in rose pink with ivory thread embroidery. The straight kurta has a notched round neck with a richly embroidered yoke, a buttoned placket, scattered floral buti and embroidered sleeve hems, paired with pink salwar pants with elasticated cuffs and a matching pink dupatta with all-over ivory embroidery and border.",
+    spec:[["Set","Kurta, salwar & dupatta (3-piece)",""],["Fabric","Soft cotton",""],["Work","Thread embroidery on yoke, sleeves & dupatta",""],["Sizes","XL",""]],
+    sizes:true,
+    colours: sh("RM-059",[["A","Rose Pink, Ivory Embroidery",["XL"]]]) },
+  { code:"RM-058", type:"rm", name:"Black Cotton Salwar Set with Golden Florals", cover:"img/RM-058-A.jpg", coverPos:"50% 25%",
+    blurb:"An elegant cotton salwar set in black with golden-beige rose florals and touches of wine. The kurta has a round neck with gold piping, gold-trimmed princess panels and a pleated flare, with bordered full sleeves, paired with black salwar pants with elasticated cuffs and a matching black dupatta with golden floral prints and fine gold stripes.",
+    spec:[["Set","Kurta, salwar & dupatta (3-piece)",""],["Fabric","Cotton",""],["Kurta","Round neck with gold piping, pleated panels, full sleeves",""],["Sizes","XL (42)",""]],
+    sizes:true,
+    colours: sh("RM-058",[["A","Black, Golden Rose Floral",["XL"]]]) },
+  { code:"RM-057", type:"rm", name:"Bright Purple Cotton Tiered Gown", cover:"img/RM-057-A.jpg", coverPos:"50% 25%",
+    blurb:"A cheerful cotton gown in bright purple with ivory and grey block-print floral buti. It has a round neck with a short button placket, puff sleeves with cuffs, a gathered empire waist and a tiered, flared skirt.",
+    spec:[["Piece","Gown (single piece)",""],["Fabric","Cotton",""],["Style","Round neck, button placket, puff sleeves, tiered flare",""],["Sizes","3XL",""]],
+    sizes:true,
+    colours: sh("RM-057",[["A","Bright Purple, Ivory Floral Buti",["3XL"]]]) },
+  { code:"RM-056", type:"rm", name:"Mauve Kalamkari Print Cotton Salwar Set", cover:"img/RM-056-A.jpg", coverPos:"50% 25%",
+    blurb:"A graceful printed cotton salwar set in dusky mauve with rust, ivory and plum Kalamkari-style motifs. The straight kurta has a deep V neck with printed borders, a diamond-buti centre panel framed by bold paisley side panels and bordered three-quarter sleeves, paired with matching buti-print pants and a richly printed dupatta with a wide border.",
+    spec:[["Set","Kurta, pant & dupatta (3-piece)",""],["Fabric","Cotton",""],["Kurta","V neck with printed border, panelled print, 3/4 sleeves",""],["Sizes","XL",""]],
+    sizes:true,
+    colours: sh("RM-056",[["A","Dusky Mauve, Rust Kalamkari Print",["XL"]]]) },
+  { code:"RM-055", type:"rm", name:"Olive Green Cotton Co-ord with Heart Pants", cover:"img/RM-055-A.jpg", coverPos:"50% 25%",
+    blurb:"A playful pure cotton co-ord set: a solid olive green short kurti with a notched neck, concealed placket, and fringed sleeve and hem edges, paired with ivory wide-leg pants scattered with olive heart prints.",
+    spec:[["Set","Kurti & pant co-ord (2-piece)",""],["Fabric","Pure cotton",""],["Kurti","Notched neck, full sleeves, fringed hems, side slits",""],["Sizes","XL",""]],
+    sizes:true,
+    colours: sh("RM-055",[["A","Olive Green Kurti, Ivory Heart-Print Pant",["XL"]]]) },
+  { code:"RM-054", type:"rm", name:"Vibrant Red Paisley Cotton Co-ord Set", cover:"img/RM-054-A.jpg", coverPos:"50% 25%",
+    blurb:"A statement cotton co-ord set in vibrant red with an all-over Kalamkari-style paisley print in beige, navy and rust. The longline shirt-style kurta has a classic collar, an overlap wrap front, three-quarter sleeves and side slits, paired with matching straight pants.",
+    spec:[["Set","Kurta & pant co-ord (2-piece)",""],["Fabric","Cotton",""],["Kurta","Shirt collar, wrap-style front, 3/4 sleeves, side slits",""],["Sizes","4XL",""]],
+    sizes:true,
+    colours: sh("RM-054",[["A","Vibrant Red, Paisley Print",["4XL"]]]) },
+  { code:"RM-053", type:"rm", name:"Snow White Anarkali Kurta with Mirror Yoke", cover:"img/RM-053-A.jpg", coverPos:"50% 25%",
+    blurb:"A beautiful snow white cotton Anarkali kurta with a sparkling mirror work yoke, a round neck with tie-up tassels and three-quarter sleeves, flowing into a full, flared panelled skirt. Kurta only.",
+    spec:[["Piece","Anarkali kurta (kurta only)",""],["Fabric","Cotton",""],["Detailing","Mirror work yoke, tasselled neck tie, full flare",""],["Sizes","XL",""]],
+    sizes:true,
+    colours: sh("RM-053",[["A","Snow White, Mirror Work Yoke",["XL"]]]) },
+  { code:"RM-052", type:"rm", name:"Sleeveless Pure Cotton Kurta Set", cover:"img/RM-052-A.jpg", coverPos:"50% 25%",
+    blurb:"A light, summery pure cotton kurta set in ivory white with hand block style teal-blue poppy and green leaf motifs. The sleeveless kurti has a V neck, princess-seam bodice and a gathered flared hem, paired with matching straight pants.",
+    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Pure cotton",""],["Kurta","Sleeveless, V neck, gathered flared hem",""],["Sizes","XL",""]],
+    sizes:true,
+    colours: sh("RM-052",[["A","Ivory White, Teal Poppy Buti",["XL"]]]) },
+  { code:"RM-051", type:"rm", name:"Black Angarkha Kurta Set with Mirror Work", cover:"img/RM-051-A.jpg", coverPos:"50% 25%",
+    blurb:"A striking pure cotton Angarkha kurta set in classic black. The flared kurta has a wrap-style V neckline edged with small mirror work, a side tie with a red tassel, and ivory and red elephant motifs along the hem and sleeve cuffs, paired with matching black straight pants.",
+    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Pure cotton",""],["Kurta","Angarkha wrap, mirror work on neckline, side tie with tassel, 3/4 sleeves",""],["Sizes","XL",""]],
+    sizes:true,
+    colours: sh("RM-051",[["A","Black, Elephant Motif Hem",["XL"]]]) },
+  { code:"RM-050", type:"rm", name:"Tomato Red Cotton Co-ord Set", cover:"img/RM-050-A.jpg", coverPos:"50% 25%",
+    blurb:"A fresh cotton co-ord set in tomato red with delicate white running-stitch style floral vines trailing across the kurti and pants. The short kurti has a notched round neck, three-quarter sleeves and side slits, paired with matching straight pants.",
+    spec:[["Set","Kurti & pant co-ord (2-piece)",""],["Fabric","Cotton",""],["Kurti","Notched round neck, 3/4 sleeves, side slits",""],["Sizes","L",""]],
+    sizes:true,
+    colours: sh("RM-050",[["A","Tomato Red, White Floral Vine",["L"]]]) },
+  { code:"RM-049", type:"rm", name:"Purple Printed Cotton Kurta Set", cover:"img/RM-049-A.jpg", coverPos:"50% 25%",
+    blurb:"An elegant pure cotton kurta set in deep plum purple with bold white floral prints: a flower spray at the shoulder and a trailing vine at the hem on the front, with a statement bloom across the back. The straight kurta has a mandarin neck, full button placket, three-quarter sleeves and side slits, paired with matching straight pants.",
+    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Pure cotton",""],["Kurta","Mandarin neck, button placket, 3/4 sleeves, side slits",""],["Sizes","XL",""]],
+    sizes:true,
+    colours: sh("RM-049",[["A","Plum Purple, White Floral Print",["XL"]]],{A:2}) },
+  { code:"RM-048", type:"rm", name:"Jaipuri Cotton Batik Kurta Set", cover:"img/RM-048-A.jpg", coverPos:"50% 25%",
+    blurb:"A pure Jaipuri cotton kurta set in warm mustard brown with crisp white batik floral vines. The straight kurta has a mandarin collar, button placket, three-quarter sleeves with cuffs and side slits, paired with matching dotted-stripe pants with elasticated cuffs.",
+    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Pure Jaipuri cotton",""],["Kurta","Mandarin collar, button placket, 3/4 sleeves, side slits",""],["Sizes","XL (42)",""]],
+    sizes:true,
+    colours: sh("RM-048",[["A","Mustard Brown, White Batik Floral Vine",["XL"]]]) },
+  { code:"RM-047", type:"rm", name:"Red & Navy Ikat Cotton Co-ord Set", cover:"img/RM-047-A.jpg", coverPos:"50% 25%",
+    blurb:"A bold pure cotton co-ord set in deep red with beige and navy ikat-inspired geometric motifs. The short kurti has a notched neck, a navy ikat yoke outlined with white lace, three-quarter sleeves and a navy ikat hem, paired with straight wide pants carrying triangle stripes and a matching ikat border.",
+    spec:[["Set","Kurti & pant co-ord (2-piece)",""],["Fabric","Pure cotton",""],["Kurti","Notched neck, lace-edged yoke, 3/4 sleeves, side slits",""],["Sizes","L (40)",""]],
+    sizes:true,
+    colours: sh("RM-047",[["A","Red & Navy, Ikat Geometric",["L"]]]) },
+  { code:"RM-046", type:"rm", name:"Navy & Pink Floral Cotton Salwar Set", cover:"img/RM-046-A.jpg", coverPos:"50% 25%",
+    blurb:"A pure cotton three-piece salwar set in deep navy blue with large vibrant pink and soft gold peony florals. The straight kurta has a round neck, a placket with fabric-covered pink buttons and gotta patti lace on the sleeves, paired with solid pink salwar pants with elasticated cuffs and a navy and pink shaded dupatta finished with gotta patti lace border.",
+    spec:[["Set","Kurta, salwar & dupatta (3-piece)",""],["Fabric","Pure cotton",""],["Detailing","Gotta patti lace border on sleeves & dupatta, covered buttons",""],["Sizes","L",""]],
+    sizes:true,
+    colours: sh("RM-046",[["A","Navy Blue, Pink Floral with Pink Salwar",["L"]]]) },
+  { code:"RM-045", type:"rm", name:"Vibrant Yellow Cambric Cotton Salwar Set", cover:"img/RM-045-A.jpg", coverPos:"50% 25%",
+    blurb:"A stylish three-piece set in cambric cotton 60x60, in vibrant yellow with a lush rose and leaf floral print. The flared, gathered kurta has a deep V yoke with a contrast printed border and three-quarter sleeves, paired with yellow buti-print pants and a matching floral dupatta with a solid yellow edge and printed border.",
+    spec:[["Set","Kurta, pant & dupatta (3-piece)",""],["Fabric","Cambric cotton 60x60",""],["Kurta","Flared, gathered front, V yoke with printed border, 3/4 sleeves",""],["Sizes","L",""]],
+    sizes:true,
+    colours: sh("RM-045",[["A","Vibrant Yellow, Rose Floral Print",["L"]]]) },
+  { code:"RM-044", type:"rm", name:"Mustard Printed Kurta & Chevron Pant Set", cover:"img/RM-044-A.jpg", coverPos:"50% 30%",
+    blurb:"A graceful two-piece cotton set in warm mustard: a long straight kurta with an ivory floral-trellis print, a square neck framed by a contrast chevron yoke with lace edging, and lace-trimmed three-quarter sleeves, paired with mustard and ivory chevron-print pants with elasticated cuffs.",
+    spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Cotton",""],["Kurta","Square neck, chevron yoke with lace trim, 3/4 sleeves, side slits",""],["Pants","Chevron print, elasticated cuffs",""],["Sizes","3XL – 4XL",""]],
+    sizes:true,
+    colours: sh("RM-044",[["A","Mustard, Ivory Floral Trellis & Chevron",["3XL","4XL"]]]) },
+  { code:"RM-043", type:"rm", name:"Red Cotton Shirt & Printed Skirt Set", cover:"img/RM-043-A.jpg", coverPos:"50% 30%",
+    blurb:"A smart Indo-western pairing: a vibrant red cotton shirt with a classic collar, button front and roll-up tab sleeves, worn with a flowing black crepe-cotton maxi skirt in gold and red floral medallion print.",
+    spec:[["Set","Shirt & skirt (2-piece)",""],["Shirt","Vibrant red cotton, collared, roll-up tab sleeves",""],["Skirt","Black crepe cotton, gold & red floral print, flared maxi",""],["Sizes","Shirt L · Skirt free size",""]],
+    sizes:true,
+    colours: sh("RM-043",[["A","Red Shirt, Black Gold-Print Skirt",["L"]]]) },
+  { code:"RM-042", type:"rm", name:"Denim Blue Cotton Co-ord Set", cover:"img/RM-042-A.jpg", coverPos:"50% 30%",
+    blurb:"A breezy two-piece co-ord in denim-blue cotton with bold ivory floral motifs, a short kurti with notched neckline, three-quarter sleeves with printed cuffs and side slits, paired with straight pants carrying matching floral motifs.",
+    spec:[["Set","Kurti & pant co-ord (2-piece)",""],["Fabric","Cotton",""],["Kurti","Notched neck, 3/4 sleeves, side slits",""],["Sizes","XL",""]],
+    sizes:true,
+    colours: sh("RM-042",[["A","Denim Blue, Ivory Floral Motif",["XL"]]]) },
   { code:"RM-040", type:"rm", name:"Hand Block Print Waffle Bath Robe", cover:"img/RM-040-A.jpg", coverPos:"50% 20%",
     blurb:"Premium waffle-weave cotton bath robes, pure hand block printed with Mughal butas, marigolds, roses and poppies, finished with a printed border on the collar, cuffs and pockets. A kimono-style wrap with an adjustable waist belt and two deep side pockets, perfect for slow mornings, spa days and gifting.",
     spec:[["Fabric","Waffle cotton, pure hand block print",""],["Length","45 inches",""],["Size","Free size, fits up to XXL",""],["Details","Adjustable waist belt, two deep side pockets",""]],
@@ -1116,11 +1481,6 @@ const CATALOGUES = [
     spec:[["Set","Kurta & pant (2-piece)",""],["Fabric","Cotton cambric 60x60",""],["Kurta","V-neck, 3/4 sleeves, flower appliqué front & back",""],["Sizes","L (40)",""]],
     sizes:true,
     colours: sh("RM-034",[["A","Wine, Ivory Flower Appliqué",["L"]]]) },
-  { code:"RM-033", type:"rm", name:"Cotton Kurta, Pant & Dupatta Set", cover:"img/RM-033-A.jpg", coverPos:"50% 30%",
-    blurb:"Ready-to-wear three-piece cotton salwar sets: kurta, pant and dupatta. Mughal block prints, kalamkari, gold rose prints, ikat and chikankari-style embroidery, with details like mirror work, gota trims and embroidered yokes. One piece per design, so grab your size while it lasts.",
-    spec:[["Set","Kurta, pant & dupatta (3-piece)",""],["Fabric","Cotton",""],["Sizes","XL (42); teal ikat in 5XL only. One piece per design",""]],
-    sizes:true,
-    colours: sh("RM-033",[["A","White, Blue Mughal Poppy Print",["XL"]],["B","Rose Pink, Embroidered Yoke",["XL"]],["C","Black & Gold Rose Print, Gota Trim",["XL"]],["D","Mauve Kalamkari Print, V-Neck",["XL"]],["E","Teal Ikat, Mirror Work Neck, Mustard Dupatta",["5XL"]]]) },
   { code:"RM-032", type:"rm", name:"Heavy Cotton Deer Embroidered Kurti, Pant & Dupatta Set", cover:"img/RM-032-A.jpg", coverPos:"50% 35%",
     blurb:"A charming fully stitched three-piece set in heavy cotton. The straight kurti carries a delicate floral-embroidered V neckline with a tassel tie, embroidered cuffs and a whimsical hem of grasses, wildflowers and grazing deer. Paired with matching pants and a soft crinkled dupatta scattered with embroidered blooms.",
     spec:[["Set","Kurti, pant & dupatta (3-piece)",""],["Fabric","Heavy cotton",""],["Type","Fully stitched",""],["Sizes","M (38) · L (40) · XL (42) · XXL (44) · 3XL (46)",""]],
@@ -1385,7 +1745,7 @@ const CATALOGUES = [
     colours: sh("DM-047",[["A","White, Coral Floral Buti"],["B","Sky Blue, Indigo Jaal"],["C","Lilac, Pink & Olive Floral Vine"],["D","Lavender, Mughal Bouquet Panel"],["E","White, Yellow & Grey Mughal Bouquet"],["F","Pink, Teal Floral Jaal"],["G","Parrot Green, Brown & Teal Floral"],["H","Ice Blue, Iris Floral"],["I","Cream, Paisley Panel"],["J","Baby Pink, Magenta & Teal Floral"],["K","Grey Blue, Pink Leaf Vine"],["L","Aqua, Tulip Buti"],["M","Cream, Sunflower Bouquet Panel"],["N","Mint Grey, Yellow Mughal Bouquet"],["O","Orange, Star Buti"],["P","Peach, Red & Green Floral"],["Q","Peach & Orange, Pomegranate Vine"],["R","Yellow, Ogee Leaf Floral"],["S","Rose Pink, Orange Floral Vine"],["T","Yellow, Black Paisley"],["U","Cream, Yellow & Green Sunflower"],["V","Lilac, Mughal Bouquet Panel"],["W","Sky Blue, Grey & Pink Floral Vine"],["X","Peach, Mustard Leaf Vine"],["Y","Cream, Single Flower Panel"],["Z","Mauve, Mustard & Pink Floral"],["AA","Aqua, Teal Triangle Motif"],["AB","Mint Green, Yellow Rose"],["AC","White, Grey & Mustard Floral"],["AD","White, Aqua Daisy Buti"],["AE","White, Lime Green Flower"],["AF","White, Orange Paisley Floral"],["AG","White, Rose Bouquet Panel"],["AH","White, Pink Iris Panel"],["AI","White, Lilac Carnation Panel"],["AJ","Grey, Yellow Marigold Buti"],["AK","White, Mustard & Green Floral Jaal"],["AL","Pink, Mustard Floral Buti"],["AM","Lime Yellow, Floral Buta"],["AN","White, Blue Mughal Bouquet"],["AO","Grey, Blue & White Floral Vine"],["AP","Pista Green, Yellow Floral"],["AQ","Mauve, Coral Lotus Vine"],["AR","Teal, Pink Hydrangea"],["AS","Sage Green, Coral Carnation"],["AT","Olive Green, Indigo Floral Vine"],["AU","Parrot Green Polka Dots"],["AV","Baby Pink Polka Dots"],["AW","Aqua Polka Dots"],["AX","Sage Green, Pink Lotus Buti"],["AY","Lavender, Yellow Flower Vine"],["AZ","Lilac Polka Dots"],["BA","Lilac, Peach Flower & Hearts"],["BB","White, Blue & Green Flower Panel"],["BC","Sage Green Batik, Diamond Bandhej"],["BD","Peach Batik, Tulip Panel"],["BE","White, Blue & Teal Lotus Jaal"],["BF","Rose Pink, Coral Paisley Buti"],["BG","Sage Green Batik, Flower Buti"],["BH","Peach Batik, Pine Cone Panel"],["BI","White, Red Poppy Buti"],["BJ","White, Blue Poppy Buti"],["BK","Cornflower Blue, Red Hibiscus"],["BL","Peach, Pink Rose Floral"],["BM","Pink & Grey Marble Print"],["BN","Taupe, Pink Floral Buti"]]) },
   { code:"MW-001", type:"mw", name:"Hand Block Printed Cotton Kurta Pyjama", cover:"img/MW-001-B.jpg", coverPos:"50% 30%",
     blurb:"Exclusive hand block printed kurtas for men in breathable cotton: a classic mandarin collar, wooden-button placket, full sleeves, side slits and a handy side pocket. Prints range from heritage butis and Kalamkari vines to ikat, shibori and crisp stripes. Available as kurta only, or as a set with a white cotton pyjama.",
-    spec:[["Fabric","Cotton, hand block printed",""],["Kurta","Mandarin collar, full sleeves, side pocket",""],["Kurta only","₹1,250",""],["Kurta + Pyjama","₹1,950",""],["Sizes","S · M · L · XL · XXL",""]],
+    spec:[["Fabric","Cotton, hand block printed",""],["Kurta","Mandarin collar, full sleeves, side pocket",""],["Sizes","S · M · L · XL · XXL",""]],
     sizes:true,
     colours: sh("MW-001",[["A","Peach, Rust Floral Vine Jaal",["S","M","L","XL","XXL"]],["B","Navy Blue, White Leaf Buti",["S","M","L","XL","XXL"]],["C","Mustard Yellow, Grey Floral Buta",["S","M","L","XL","XXL"]],["D","Charcoal Brown, Ivory Floral Buta",["S","M","L","XL","XXL"]],["E","Black, Kalamkari Floral Vine",["S","M","L","XL","XXL"]],["F","Coral Red, Shibori Tie & Dye",["S","M","L","XL","XXL"]],["G","Olive Green, Ivory Tree Buti",["S","M","L","XL","XXL"]],["H","Brick Red & Ivory, Batik Medallion",["S","M","L","XL","XXL"]],["I","Black & Beige, Ikat",["S","M","L","XL","XXL"]],["J","Indigo, White Pinstripe",["S","M","L","XL","XXL"]],["K","Black & Beige, Bold Stripe",["S","M","L","XL","XXL"]],["L","Plum Wine, Floral Dot Stripe",["S","M","L","XL","XXL"]],["M","Mustard & Rust, Moroccan Tile Print",["S","M","L","XL","XXL"]],["N","Royal Blue, White Floral Jaal",["S","M","L","XL","XXL"]],["O","Olive Green, Paisley Kalamkari",["S","M","L","XL","XXL"]],["P","Black, Ivory Ikat Motif",["S","M","L","XL","XXL"]],["Q","Indigo Blue, Dabu Leaf Buti",["S","M","L","XL","XXL"]],["R","White & Sky Blue, Shibori",["S","M","L","XL","XXL"]],["S","Black, Kalamkari Lotus Grid",["S","M","L","XL","XXL"]],["T","Brick Red, Ivory Floral Medallion",["S","M","L","XL","XXL"]],["U","Rust, Indigo & Ochre, Leaf Stripe",["S","M","L","XL","XXL"]],["V","Black, White Floral Buti",["S","M","L","XL","XXL"]],["W","Madder Red, Kalamkari Rose Jaal",["S","M","L","XL","XXL"]],["X","Cream, Rust & Ochre Floral Vine",["S","M","L","XL","XXL"]],["Y","Mustard, Green Leaf Bagru",["S","M","L","XL","XXL"]],["Z","Navy & Red, Ajrakh Geometric",["S","M","L","XL","XXL"]],["AA","Turmeric, Red & Ivory Floral Jaal",["S","M","L","XL","XXL"]],["AB","Cream, Black Buta",["S","M","L","XL","XXL"]],["AC","Ochre & Brown, Geometric Stripe",["S","M","L","XL","XXL"]],["AD","Lemon Yellow, Tie & Dye",["S","M","L","XL","XXL"]],["AE","Sea Green, Floral Buti",["S","M","L","XL","XXL"]],["AF","Rose Pink & Rust, Floral Jaal",["S","M","L","XL","XXL"]]],{A:2,B:2,C:2,D:2,E:2,G:3,I:2,K:2,M:2,N:2,Y:2,Z:2}) },
   { code:"DM-052", type:"dm", name:"Sanganeri Print Cotton Suit with Gota Neck Work", cover:"img/DM-052-A.jpg", coverPos:"50% 40%",
@@ -1473,7 +1833,7 @@ const CATEGORIES=[
   {id:"rm",label:"Readymades",one:"Readymade",word:"colour"},
   {id:"dm",label:"Dress Materials",one:"Dress Material",word:"shade"},
   {id:"mw",label:"Menswear Exclusive",one:"Menswear",word:"design"},
-  {id:"hl",label:"Home & Living",one:"Home & Living",word:"design"},
+  {id:"hl",label:"Home & Lifestyle",one:"Home & Lifestyle",word:"design"},
   {id:"cb",label:"Cloth Bags",one:"Cloth Bag",word:"design"},
   {id:"bq",label:"Bedsheets",one:"Bedsheet",word:"design"},
   {id:"cu",label:"Curtains",one:"Curtain",word:"design"},
@@ -1483,8 +1843,16 @@ const CATEGORIES=[
   {id:"ac",label:"Accessories",one:"Accessory",word:"design"}
 ];
 
-const PRICE={"BQ-001":1250,"CU-001":1200,"CU-002":1350,"CU-003":1500,"BL-001":2200,"DS-001":1450,"CB-001":1050,"CB-002":700,"CB-003":700,"DM-001":1100,"DM-002":1100,"DM-003":1300,"DM-004":1200,"DM-005":1050,"DM-006":1200,"DM-007":850,"DM-008":850,"DM-009":1000,"DM-010":950,"DM-011":1800,"DM-012":1600,"DM-013":1300,"DM-014":1100,"DM-015":1300,"DM-016":1300,"DM-017":1400,"DM-018":1400,"DM-019":1350,"DM-020":1200,"DM-021":1200,"DM-022":1200,"DM-023":1350,"DM-024":2200,"DM-025":1150,"DM-026":900,"DM-027":1900,"DM-028":900,"DM-029":1900,"DM-030":1300,"DM-031":1350,"DM-032":1100,"DM-033":1200,"DM-034":1200,"DM-035":1150,"DM-036":1000,"DM-037":1550,"DM-038":750,"DM-039":1000,"DM-040":1250,"DM-041":1450,"DM-042":1550,"DM-043":1100,"DM-044":2700,"DM-045":1100,"DM-046":1000,"DM-047":1300,"DM-048":1200,"DM-049":1450,"DM-050":2300,"DM-051":1200,"DM-052":1350,"MW-001":1250,"RM-001":1250,"RM-002":850,"RM-004":1450,"RM-005":1250,"RM-006":1450,"RM-007":1200,"RM-008":1200,"RM-009":1850,"RM-010":1600,"RM-011":1950,"RM-012":1300,"RM-013":1100,"RM-014":900,"RM-015":2050,"RM-016":600,"RM-017":800,"RM-018":700,"RM-019":1100,"RM-020":1150,"RM-021":1150,"RM-022":1400,"RM-029":1100,"RM-030":1450,"RM-031":1050,"RM-032":1450,"RM-033":950,"RM-034":950,"RM-035":850,"RM-036":900,"RM-037":1000,"RM-038":1450,"RM-039":1400,"RM-040":1250,"RM-041":850,"RM-023":1450,"SR-001":1150,"SR-002":3550,"SR-003":2100,"SR-004":2100,"SR-005":2100,"SR-006":2550,"SR-007":2550,"SR-008":2550,"SR-009":1200,"SR-010":1200,"SR-011":1200,"SR-012":1200,"SR-013":1200,"SR-014":1200,"SR-015":1250,"SR-016":1600,"SR-017":1600,"SR-018":3500,"SR-019":1600,"SR-020":1750,"SR-021":1200,"SR-022":1200,"SR-023":2150,"SR-024":2400,"SR-025":1200,"SR-026":1200,"SR-027":1750,"SR-028":2400,"SR-029":2900,"SR-037":1000,"SR-038":4950,"SR-039":1350,"SR-036":999,"SR-035":1100,"SR-034":4950,"SR-033":1750,"SR-032":5950,"SR-031":2050,"SR-030":1750};
+const PRICE={"BQ-001":1350,"CU-001":1250,"CU-002":1450,"CU-003":1600,"BL-001":2200,"DS-001":1450,"CB-001":1150,"CB-002":750,"CB-003":800,"DM-001":1200,"DM-002":1200,"DM-003":1400,"DM-004":1300,"DM-005":1150,"DM-006":1300,"DM-007":950,"DM-008":950,"DM-009":1100,"DM-010":1000,"DM-011":1900,"DM-012":1700,"DM-013":1400,"DM-014":1200,"DM-015":1350,"DM-016":1400,"DM-017":1500,"DM-018":1500,"DM-019":1450,"DM-020":1300,"DM-021":1300,"DM-022":1300,"DM-023":1450,"DM-024":2300,"DM-025":1250,"DM-026":1000,"DM-027":2000,"DM-028":1000,"DM-029":2000,"DM-030":1400,"DM-031":1350,"DM-032":1200,"DM-033":1300,"DM-034":1300,"DM-035":1250,"DM-036":1100,"DM-037":1650,"DM-038":850,"DM-039":1100,"DM-040":1250,"DM-041":1500,"DM-042":1650,"DM-043":1200,"DM-044":2750,"DM-045":1200,"DM-046":1100,"DM-047":1400,"DM-048":1300,"DM-049":1500,"DM-050":2400,"DM-051":1200,"DM-052":1350,"MW-001":1250,"RM-001":1350,"RM-002":900,"RM-004":1500,"RM-005":1350,"RM-006":1500,"RM-007":1300,"RM-008":1300,"RM-009":1950,"RM-010":1700,"RM-011":2000,"RM-012":1400,"RM-013":1200,"RM-014":950,"RM-015":2100,"RM-016":700,"RM-017":900,"RM-018":800,"RM-019":1200,"RM-020":1250,"RM-021":1250,"RM-022":1500,"RM-029":1200,"RM-030":1450,"RM-031":1150,"RM-032":1450,"RM-034":950,"RM-035":850,"RM-036":900,"RM-037":1000,"RM-038":1450,"RM-039":1400,"RM-040":1250,"RM-042":1100,"RM-043":1100,"RM-044":1150,"RM-045":1200,"RM-046":1200,"RM-047":1100,"RM-048":1100,"RM-049":1100,"RM-050":1100,"RM-051":1200,"RM-052":1200,"RM-053":1100,"RM-054":1150,"RM-055":1150,"RM-056":1200,"RM-057":1100,"RM-058":1200,"RM-059":1700,"RM-060":1100,"RM-061":850,"RM-062":1100,"RM-063":1150,"RM-064":1450,"RM-065":1450,"RM-023":1550,"SR-001":1250,"SR-002":3600,"SR-003":2200,"SR-004":2200,"SR-005":2200,"SR-006":2600,"SR-007":2600,"SR-008":2600,"SR-009":1300,"SR-010":1300,"SR-011":1300,"SR-012":1300,"SR-013":1300,"SR-014":1300,"SR-015":1350,"SR-016":1700,"SR-017":1700,"SR-018":3600,"SR-019":1700,"SR-020":1850,"SR-021":1300,"SR-022":1300,"SR-023":2250,"SR-024":2500,"SR-025":1300,"SR-026":1300,"SR-027":1850,"SR-028":2500,"SR-029":3000,"SR-037":1100,"SR-038":4950,"SR-039":1350,"SR-040":1600,"SR-041":2200,"SR-042":2100,"SR-043":2350,"SR-044":2450,"SR-045":4600,"SR-046":1700,"SR-047":900,"SR-048":1150,"SR-049":1600,"SR-050":1350,"SR-051":1250,"SR-052":1250,"SR-053":1250,"SR-054":1350,"SR-055":2100,"SR-056":2650,"SR-057":1500,"SR-058":1350,"SR-059":1950,"SR-060":1100,"SR-061":2650,"SR-062":1700,"SR-063":1350,"SR-064":1800,"SR-065":1450,"SR-066":1900,"SR-067":1550,"SR-068":1800,"SR-069":3050,"SR-070":2100,"SR-071":1450,"SR-072":3250,"SR-073":2000,"SR-036":999,"SR-035":1200,"SR-034":4950,"SR-033":1850,"SR-032":5950,"SR-031":2150,"SR-030":1850};
 /* Collections by selling price */
+/* ---------- Diwali sale: offer prices until 10 Nov 2026, 9 pm IST; reverts automatically ---------- */
+const SALE_END=Date.parse("2026-11-10T21:00:00+05:30");
+const SALE_ON=Date.now()<SALE_END;
+const OFFER={"SR-001":1125,"SR-002":3425,"SR-003":2025,"SR-004":2025,"SR-005":2025,"SR-006":2450,"SR-007":2450,"SR-008":2450,"SR-009":1200,"SR-010":1200,"SR-011":1200,"SR-012":1200,"SR-013":1200,"SR-014":1200,"SR-015":1225,"SR-016":1575,"SR-017":1575,"SR-018":3375,"SR-019":1575,"SR-020":1700,"SR-021":1200,"SR-022":1200,"SR-023":2100,"SR-024":2325,"SR-025":1200,"SR-026":1200,"SR-027":1700,"SR-028":2325,"SR-029":2825,"SR-030":1700,"DM-002":1075,"DM-003":1275,"DM-004":1175,"DM-005":1050,"DM-009":975,"DM-012":1550,"DM-013":1275,"DM-014":1075,"DM-015":1250,"DM-016":1275,"DM-017":1375,"DM-018":1375,"DM-019":1300,"DM-020":1200,"DM-021":1200,"DM-022":1200,"DM-024":2150,"DM-025":1125,"DM-027":1850,"MW-001":1150,"BQ-001":1225,"CB-002":675,"CU-001":1150,"CU-002":1325,"CU-003":1450,"DM-023":1300,"DM-029":1850,"DM-030":1275,"DM-031":1325,"DM-032":1075,"DM-035":1125,"DM-036":975,"DM-037":1525,"DM-039":975,"DM-040":1225,"DM-041":1400,"DM-042":1525,"DM-043":1075,"DM-044":2600,"DM-046":975,"DM-047":1275,"DM-048":1175,"DM-049":1400,"DM-050":2250,"DM-051":1100,"DM-052":1225,"RM-030":1400,"RM-032":1400,"RM-034":850,"RM-035":750,"RM-036":800,"RM-037":925,"RM-038":1325,"RM-039":1275,"RM-040":1150,"RM-042":975,"RM-043":975,"RM-044":1050,"RM-045":1100,"RM-046":1100,"RM-047":975,"RM-048":975,"RM-049":975,"RM-050":975,"RM-051":1100,"RM-052":1100,"RM-053":975,"RM-054":1050,"RM-055":1050,"RM-056":1100,"RM-057":975,"RM-058":1100,"RM-059":1575,"RM-060":975,"RM-061":750,"RM-062":975,"RM-063":1050,"RM-064":1350,"RM-065":1350,"SR-031":2000,"SR-033":1700,"SR-037":975,"SR-038":4700,"SR-039":1225,"SR-040":1450,"SR-041":2050,"SR-042":1925,"SR-043":2175,"SR-044":2300,"SR-045":4350,"SR-046":1575,"SR-047":800,"SR-048":1050,"SR-049":1450,"SR-050":1225,"SR-051":1150,"SR-052":1150,"SR-053":1150,"SR-054":1225,"SR-055":1925,"SR-056":2475,"SR-057":1375,"SR-058":1225,"SR-060":1025,"SR-061":2475,"SR-062":1600,"SR-063":1225,"SR-064":1675,"SR-065":1325,"SR-066":1775,"SR-067":1400,"SR-068":1675,"SR-069":2850,"SR-070":1950,"SR-071":1325,"SR-072":3050,"SR-073":1850,"SR-032":5675,"SR-034":4700,"SR-036":925,"DS-001":1350,"BL-001":2075,"RM-001":1225,"RM-002":825,"RM-004":1400,"RM-005":1225,"RM-006":1400,"RM-007":1200,"RM-008":1200,"RM-009":1825,"RM-010":1550,"RM-011":1875,"RM-012":1275,"RM-013":1075,"RM-014":875,"RM-015":1975,"RM-016":600,"RM-017":800,"RM-018":700,"RM-019":1075,"RM-020":1125,"RM-021":1125,"RM-022":1375,"RM-023":1425,"RM-029":1100,"RM-031":1050,"DM-001":1075,"DM-006":1200,"DM-007":825,"DM-008":825,"DM-010":925,"DM-011":1750,"DM-026":900,"DM-028":900,"DM-033":1200,"DM-034":1200,"DM-038":750,"DM-045":1100,"SR-035":1100,"CB-001":1050,"CB-003":700};
+const VOFFER={"MW-001":[1150, 1825]};
+/* Out of stock only while the sale is on */
+const SALE_OOS=new Set(["SR-059"]);
+const B3_MIN=4000; /* Buy 3 Get 1: 3 Premium / Everyday Elegance pieces worth this much (regular price) unlock 1 free Offer Pick */
 const COLLECTIONS=[
   {id:"offer",label:"Offer Picks",note:"Under ₹1,000",test:p=>p<1000},
   {id:"everyday",label:"Everyday Elegance",note:"₹1,000 – ₹2,000",test:p=>p>=1000&&p<=2000},
@@ -1509,28 +1877,36 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const CAT=Object.fromEntries(CATEGORIES.map(c=>[c.id,c]));
 const TYPE_NAME=Object.fromEntries(CATEGORIES.map(c=>[c.id,c.one]));
 /* Upload date of every design, in catalogue order: [date, number of designs]. Newest additions go at the end. */
-const ADDED={"RM-041":[["2026-10-29",4]],"MW-001":[["2026-10-28",32]],"SR-001":[["2026-10-10",5]],"SR-002":[["2026-10-10",20]],"SR-003":[["2026-10-10",7]],"SR-004":[["2026-10-10",5]],"SR-005":[["2026-10-10",4]],"SR-006":[["2026-10-10",2]],"SR-007":[["2026-10-10",1]],"SR-008":[["2026-10-10",2]],"SR-009":[["2026-10-10",5]],"SR-010":[["2026-10-10",13]],"SR-011":[["2026-10-10",8]],"SR-012":[["2026-10-10",7]],"SR-013":[["2026-10-10",6]],"SR-014":[["2026-10-10",2]],"SR-015":[["2026-10-12",8]],"SR-016":[["2026-10-13",14]],"SR-017":[["2026-10-13",5]],"RM-001":[["2026-10-10",14]],"RM-002":[["2026-10-10",12]],"SR-018":[["2026-10-13",25]],"SR-019":[["2026-10-13",13]],"SR-020":[["2026-10-13",10]],"SR-021":[["2026-10-13",82]],"SR-039":[["2026-10-28",6]],"SR-038":[["2026-10-28",31]],"SR-037":[["2026-10-24",17]],"SR-036":[["2026-10-22",78]],"SR-035":[["2026-10-22",32]],"SR-034":[["2026-10-22",37]],"SR-033":[["2026-10-22",11]],"SR-032":[["2026-10-22",21]],"SR-031":[["2026-10-22",32]],"SR-030":[["2026-10-14",6]],"SR-029":[["2026-10-14",85]],"SR-028":[["2026-10-14",38]],"SR-027":[["2026-10-14",9]],"SR-026":[["2026-10-14",78]],"SR-025":[["2026-10-14",82]],"SR-024":[["2026-10-14",18]],"SR-023":[["2026-10-13",19]],"SR-022":[["2026-10-13",51]],"RM-014":[["2026-10-10",11]],"RM-004":[["2026-10-10",4]],"RM-005":[["2026-10-12",2]],"RM-006":[["2026-10-12",2]],"RM-007":[["2026-10-12",1]],"RM-008":[["2026-10-12",1]],"RM-009":[["2026-10-12",1]],"RM-010":[["2026-10-12",2]],"RM-011":[["2026-10-12",2]],"RM-012":[["2026-10-12",2]],"RM-013":[["2026-10-12",5]],"RM-016":[["2026-10-14",20]],"RM-017":[["2026-10-14",7]],"RM-018":[["2026-10-14",15]],"RM-019":[["2026-10-14",11]],"RM-020":[["2026-10-14",63]],"RM-021":[["2026-10-14",59]],"RM-022":[["2026-10-14",53]],"RM-023":[["2026-10-14",47]],"RM-015":[["2026-10-12",1]],"RM-029":[["2026-10-22",49]],"RM-030":[["2026-10-22",1]],"RM-031":[["2026-10-22",9]],"RM-040":[["2026-10-28",16]],"RM-039":[["2026-10-28",3]],"RM-038":[["2026-10-28",4]],"RM-037":[["2026-10-28",2]],"RM-036":[["2026-10-28",2]],"RM-035":[["2026-10-28",3]],"RM-034":[["2026-10-27",1]],"RM-033":[["2026-10-27",5]],"RM-032":[["2026-10-22",3]],"DM-001":[["2026-10-10",4]],"DM-002":[["2026-10-10",20]],"DM-003":[["2026-10-10",8]],"DM-004":[["2026-10-10",7]],"DM-005":[["2026-10-10",4]],"DM-006":[["2026-10-10",5]],"DM-007":[["2026-10-10",4]],"DM-008":[["2026-10-10",4]],"DM-009":[["2026-10-10",4]],"DM-010":[["2026-10-10",9]],"DM-011":[["2026-10-10",3]],"DM-012":[["2026-10-10",8]],"DM-013":[["2026-10-10",3]],"DM-014":[["2026-10-10",6]],"DM-015":[["2026-10-10",8]],"DM-016":[["2026-10-10",4]],"DM-017":[["2026-10-10",3]],"DM-018":[["2026-10-10",4]],"DM-019":[["2026-10-10",3]],"DM-020":[["2026-10-10",4]],"DM-021":[["2026-10-10",4]],"DM-022":[["2026-10-10",4]],"DM-023":[["2026-10-14",2],["2026-10-24",7]],"DM-024":[["2026-10-14",17]],"DM-025":[["2026-10-14",9]],"DM-026":[["2026-10-15",6]],"DM-027":[["2026-10-15",11]],"DM-028":[["2026-10-21",8]],"DM-029":[["2026-10-21",8]],"DM-030":[["2026-10-21",4]],"DM-031":[["2026-10-21",15]],"DM-032":[["2026-10-21",4]],"DM-033":[["2026-10-21",10]],"DM-034":[["2026-10-21",5]],"DM-035":[["2026-10-21",4]],"DM-036":[["2026-10-21",10]],"DM-037":[["2026-10-21",40]],"DM-038":[["2026-10-21",110]],"DM-039":[["2026-10-21",23]],"DM-040":[["2026-10-22",4]],"DM-041":[["2026-10-22",27]],"DM-042":[["2026-10-22",34]],"DM-043":[["2026-10-22",4]],"DM-044":[["2026-10-22",65]],"DM-045":[["2026-10-24",5]],"DM-046":[["2026-10-24",4]],"DM-047":[["2026-10-24",66]],"DM-052":[["2026-10-28",38]],"DM-051":[["2026-10-28",13]],"DM-050":[["2026-10-24",58]],"DM-049":[["2026-10-24",35]],"DM-048":[["2026-10-24",58]],"CB-001":[["2026-10-22",27]],"CB-002":[["2026-10-22",41]],"CB-003":[["2026-10-22",7]],"BQ-001":[["2026-10-22",45],["2026-10-23",40]],"CU-001":[["2026-10-22",13]],"CU-002":[["2026-10-22",13]],"CU-003":[["2026-10-22",13]],"BL-001":[["2026-10-22",34]],"DS-001":[["2026-10-22",11]]};
-const NEW_DAYS=10;
+const ADDED={"SR-073":[["2026-11-01",1]],"SR-072":[["2026-11-01",1]],"SR-071":[["2026-11-01",1]],"SR-070":[["2026-11-01",1]],"SR-069":[["2026-11-01",1]],"SR-068":[["2026-11-01",1]],"SR-067":[["2026-11-01",1]],"SR-066":[["2026-11-01",1]],"SR-065":[["2026-11-01",1]],"SR-064":[["2026-11-01",1]],"SR-063":[["2026-11-01",1]],"SR-062":[["2026-11-01",1]],"SR-061":[["2026-11-01",14]],"SR-060":[["2026-11-01",23]],"SR-059":[["2026-11-01",7]],"SR-058":[["2026-11-01",11]],"SR-057":[["2026-11-01",4]],"SR-056":[["2026-11-01",9]],"SR-055":[["2026-11-01",10]],"SR-054":[["2026-11-01",8]],"SR-053":[["2026-11-01",6]],"SR-052":[["2026-11-01",10]],"SR-051":[["2026-11-01",7]],"SR-050":[["2026-11-01",9]],"SR-049":[["2026-11-01",7]],"SR-048":[["2026-11-01",10]],"SR-047":[["2026-11-01",39]],"SR-046":[["2026-11-01",5]],"SR-045":[["2026-11-01",14]],"SR-044":[["2026-11-01",4]],"SR-043":[["2026-11-01",13]],"SR-042":[["2026-11-01",18]],"SR-041":[["2026-11-01",1]],"SR-040":[["2026-11-01",8]],"RM-065":[["2026-11-01",1]],"RM-064":[["2026-11-01",1]],"RM-063":[["2026-11-01",1]],"RM-062":[["2026-11-01",1]],"RM-061":[["2026-11-01",1]],"RM-060":[["2026-11-01",1]],"RM-059":[["2026-11-01",1]],"RM-058":[["2026-11-01",1]],"RM-057":[["2026-11-01",1]],"RM-056":[["2026-11-01",1]],"RM-055":[["2026-11-01",1]],"RM-054":[["2026-11-01",1]],"RM-053":[["2026-11-01",1]],"RM-052":[["2026-11-01",1]],"RM-051":[["2026-11-01",1]],"RM-050":[["2026-11-01",1]],"RM-049":[["2026-11-01",1]],"RM-048":[["2026-11-01",1]],"RM-047":[["2026-11-01",1]],"RM-046":[["2026-11-01",1]],"RM-045":[["2026-11-01",1]],"RM-044":[["2026-11-01",1]],"RM-043":[["2026-11-01",1]],"RM-042":[["2026-11-01",1]],"MW-001":[["2026-10-28",32]],"SR-001":[["2026-10-10",5]],"SR-002":[["2026-10-10",20]],"SR-003":[["2026-10-10",7]],"SR-004":[["2026-10-10",5]],"SR-005":[["2026-10-10",4]],"SR-006":[["2026-10-10",2]],"SR-007":[["2026-10-10",1]],"SR-008":[["2026-10-10",2]],"SR-009":[["2026-10-10",5]],"SR-010":[["2026-10-10",13]],"SR-011":[["2026-10-10",8]],"SR-012":[["2026-10-10",7]],"SR-013":[["2026-10-10",6]],"SR-014":[["2026-10-10",2]],"SR-015":[["2026-10-12",8]],"SR-016":[["2026-10-13",14]],"SR-017":[["2026-10-13",5]],"RM-001":[["2026-10-10",14]],"RM-002":[["2026-10-10",12]],"SR-018":[["2026-10-13",25]],"SR-019":[["2026-10-13",13]],"SR-020":[["2026-10-13",10]],"SR-021":[["2026-10-13",82]],"SR-039":[["2026-10-28",6]],"SR-038":[["2026-10-28",31]],"SR-037":[["2026-10-24",17]],"SR-036":[["2026-10-22",78]],"SR-035":[["2026-10-22",32]],"SR-034":[["2026-10-22",37]],"SR-033":[["2026-10-22",11]],"SR-032":[["2026-10-22",21]],"SR-031":[["2026-10-22",32]],"SR-030":[["2026-10-14",6]],"SR-029":[["2026-10-14",85]],"SR-028":[["2026-10-14",38]],"SR-027":[["2026-10-14",9]],"SR-026":[["2026-10-14",78]],"SR-025":[["2026-10-14",82]],"SR-024":[["2026-10-14",18]],"SR-023":[["2026-10-13",19]],"SR-022":[["2026-10-13",51]],"RM-014":[["2026-10-10",11]],"RM-004":[["2026-10-10",4]],"RM-005":[["2026-10-12",2]],"RM-006":[["2026-10-12",2]],"RM-007":[["2026-10-12",1]],"RM-008":[["2026-10-12",1]],"RM-009":[["2026-10-12",1]],"RM-010":[["2026-10-12",2]],"RM-011":[["2026-10-12",2]],"RM-012":[["2026-10-12",2]],"RM-013":[["2026-10-12",5]],"RM-016":[["2026-10-14",20]],"RM-017":[["2026-10-14",7]],"RM-018":[["2026-10-14",15]],"RM-019":[["2026-10-14",11]],"RM-020":[["2026-10-14",63]],"RM-021":[["2026-10-14",59]],"RM-022":[["2026-10-14",53]],"RM-023":[["2026-10-14",47]],"RM-015":[["2026-10-12",1]],"RM-029":[["2026-10-22",49]],"RM-030":[["2026-10-22",1]],"RM-031":[["2026-10-22",9]],"RM-040":[["2026-10-28",16]],"RM-039":[["2026-10-28",3]],"RM-038":[["2026-10-28",4]],"RM-037":[["2026-10-28",2]],"RM-036":[["2026-10-28",2]],"RM-035":[["2026-10-28",3]],"RM-034":[["2026-10-27",1]],"RM-032":[["2026-10-22",3]],"DM-001":[["2026-10-10",4]],"DM-002":[["2026-10-10",20]],"DM-003":[["2026-10-10",8]],"DM-004":[["2026-10-10",7]],"DM-005":[["2026-10-10",4]],"DM-006":[["2026-10-10",5]],"DM-007":[["2026-10-10",4]],"DM-008":[["2026-10-10",4]],"DM-009":[["2026-10-10",4]],"DM-010":[["2026-10-10",9]],"DM-011":[["2026-10-10",3]],"DM-012":[["2026-10-10",8]],"DM-013":[["2026-10-10",3]],"DM-014":[["2026-10-10",6]],"DM-015":[["2026-10-10",8]],"DM-016":[["2026-10-10",4]],"DM-017":[["2026-10-10",3]],"DM-018":[["2026-10-10",4]],"DM-019":[["2026-10-10",3]],"DM-020":[["2026-10-10",4]],"DM-021":[["2026-10-10",4]],"DM-022":[["2026-10-10",4]],"DM-023":[["2026-10-14",2],["2026-10-24",7]],"DM-024":[["2026-10-14",17]],"DM-025":[["2026-10-14",9]],"DM-026":[["2026-10-15",6]],"DM-027":[["2026-10-15",11]],"DM-028":[["2026-10-21",8]],"DM-029":[["2026-10-21",8]],"DM-030":[["2026-10-21",4]],"DM-031":[["2026-10-21",15]],"DM-032":[["2026-10-21",4]],"DM-033":[["2026-10-21",10]],"DM-034":[["2026-10-21",5]],"DM-035":[["2026-10-21",4]],"DM-036":[["2026-10-21",10]],"DM-037":[["2026-10-21",40]],"DM-038":[["2026-10-21",110]],"DM-039":[["2026-10-21",23]],"DM-040":[["2026-10-22",4]],"DM-041":[["2026-10-22",27]],"DM-042":[["2026-10-22",34]],"DM-043":[["2026-10-22",4]],"DM-044":[["2026-10-22",65]],"DM-045":[["2026-10-24",5]],"DM-046":[["2026-10-24",4]],"DM-047":[["2026-10-24",66]],"DM-052":[["2026-10-28",38]],"DM-051":[["2026-10-28",13]],"DM-050":[["2026-10-24",58]],"DM-049":[["2026-10-24",35]],"DM-048":[["2026-10-24",58]],"CB-001":[["2026-10-22",27]],"CB-002":[["2026-10-22",41]],"CB-003":[["2026-10-22",7]],"BQ-001":[["2026-10-22",45],["2026-10-23",40]],"CU-001":[["2026-10-22",13]],"CU-002":[["2026-10-22",13]],"CU-003":[["2026-10-22",13]],"BL-001":[["2026-10-22",34]],"DS-001":[["2026-10-22",11]]};
+const NEW_FROM="2026-10-21";
+/* Older sarees & dress materials (₹1,000+) brought back into stock on 1 Nov 2026; confirm availability with the supplier per order */
+const RESTORED=new Set(["DM-002", "DM-023", "DM-003", "DM-004", "DM-005", "DM-009", "DM-012", "DM-013", "DM-014", "DM-015", "DM-016", "DM-017", "DM-018", "DM-019", "DM-020", "DM-021", "DM-022", "DM-024", "DM-025", "DM-027", "SR-001", "SR-002", "SR-003", "SR-004", "SR-005", "SR-006", "SR-007", "SR-008", "SR-009", "SR-010", "SR-011", "SR-012", "SR-013", "SR-014", "SR-015", "SR-016", "SR-017", "SR-018", "SR-019", "SR-020", "SR-021", "SR-022", "SR-023", "SR-024", "SR-025", "SR-026", "SR-027", "SR-028", "SR-029", "SR-030"]); /* uploaded on/after this date = New Arrivals; earlier uploads are out of stock */
 CATALOGUES.forEach(c=>{const runs=(ADDED[c.code]||[]).flatMap(([d,n])=>Array(n).fill(d));
-  c.colours.forEach((x,i)=>{x.added=runs[i]||"2026-10-10";x.isNew=(Date.now()-Date.parse(x.added+"T00:00:00+05:30"))<NEW_DAYS*864e5;});});
-CATALOGUES.forEach(c=>{ if(OUT_OF_STOCK.has(c.code)) c.colours.forEach(x=>x.soldOut=true); });
+  c.colours.forEach((x,i)=>{x.added=runs[i]||"2026-10-10";x.isNew=x.added>=NEW_FROM; if(x.added<NEW_FROM&&!RESTORED.has(c.code)) x.soldOut=true;});});
+CATALOGUES.forEach(c=>{ if(OUT_OF_STOCK.has(c.code)||(SALE_ON&&SALE_OOS.has(c.code))) c.colours.forEach(x=>x.soldOut=true); });
 /* Individual shades that are out of stock (code-shade) */
 const SOLD_SHADES=new Set(["BQ-001-A","BQ-001-B","BQ-001-C","BQ-001-D","BQ-001-E","BQ-001-F","BQ-001-G","BQ-001-H","BQ-001-I","BQ-001-J","BQ-001-K","BQ-001-L","BQ-001-M","BQ-001-N","BQ-001-O","BQ-001-P","BQ-001-Q","BQ-001-R","BQ-001-S","BQ-001-T","BQ-001-U","BQ-001-V","BQ-001-W","BQ-001-X","BQ-001-Y","BQ-001-Z","BQ-001-AA","BQ-001-AB","BQ-001-AC","BQ-001-AD","BQ-001-AE","BQ-001-AF","BQ-001-AG","BQ-001-AH","BQ-001-AI","BQ-001-AJ","BQ-001-AK","BQ-001-AL","BQ-001-AM","BQ-001-AN","BQ-001-AO","BQ-001-AP","BQ-001-AQ","BQ-001-AR","BQ-001-AS"]);
 CATALOGUES.forEach(c=>{ c.colours.forEach(x=>{ if(SOLD_SHADES.has(c.code+"-"+x.sub)) x.soldOut=true; });
   if(c.colours.some(x=>x.soldOut)&&!c.colours.every(x=>x.soldOut)){ c.colours=[...c.colours.filter(x=>!x.soldOut),...c.colours.filter(x=>x.soldOut)]; c.cover=c.colours[0].img; } });
 const isOut=c=>c.colours.every(x=>x.soldOut);
-const priceOf=c=>PRICE[c.code]||0;
+const origOf=c=>PRICE[c.code]||0;
+/* Home & Living (bedsheets, blankets, curtains, diwan sets) and Cloth Bags: no offer price; 5% off orders made up only of these */
+const NO_OFFER=c=>["hl","bq","bl","cu","ds","cb"].includes(c.type);
+const priceOf=c=>(SALE_ON&&!NO_OFFER(c)&&OFFER[c.code])||PRICE[c.code]||0;
 /* Codes sold in two options (e.g. kurta only / kurta + pyjama). The option is stored after the size, e.g. "L · Kurta + Pyjama" */
 const VARIANTS={"MW-001":[{label:"Kurta only",price:1250},{label:"Kurta + Pyjama",price:1950}]};
-const priceFor=(c,size)=>{const v=VARIANTS[c.code]; if(v&&size){const o=v.find(o=>String(size).endsWith(o.label)); if(o) return o.price;} return priceOf(c);};
+const vPrice=(c,k)=>SALE_ON&&VOFFER[c.code]?VOFFER[c.code][k]:VARIANTS[c.code][k].price;
+const priceFor=(c,size)=>{const v=VARIANTS[c.code]; if(v&&size){const k=v.findIndex(o=>String(size).endsWith(o.label)); if(k>=0) return vPrice(c,k);} return priceOf(c);};
+const origFor=(c,size)=>{const v=VARIANTS[c.code]; if(v&&size){const o=v.find(o=>String(size).endsWith(o.label)); if(o) return o.price;} return origOf(c);};
+const priceHTML=(o,p)=>p<o?`<s>${inr(o)}</s> ${inr(p)}`:inr(p);
 const collOf=c=>{const p=priceOf(c);const k=COLLECTIONS.find(k=>p&&k.test(p));return k?k.id:"";};
 const COLL=Object.fromEntries(COLLECTIONS.map(k=>[k.id,k]));
-/* Bedsheets, blankets, curtains and diwan sets show together as Home & Living (codes unchanged) */
-CATALOGUES.forEach(c=>{if(["bq","bl","cu","ds"].includes(c.type)) c.type="hl";});
+/* Bedsheets, blankets, curtains and diwan sets and cloth bags show together as Home & Lifestyle (codes unchanged) */
+CATALOGUES.forEach(c=>{if(["bq","bl","cu","ds","cb"].includes(c.type)) c.type="hl";});
 const ACTIVE_CATS=CATEGORIES.filter(k=>CATALOGUES.some(c=>c.type===k.id));
 const newest=(a,b)=>(isOut(a)-isOut(b))||b.code.localeCompare(a.code);
 const NEW_SET=new Set(CATALOGUES.filter(c=>c.colours.some(x=>x.isNew&&!x.soldOut)).map(c=>c.code));
-const TABS=[{id:"new",label:"New Arrivals",note:"Fresh designs added in the last 10 days"},{id:"keep",label:"Timeless Picks",note:"Loved designs, still available to order"},{id:"sold",label:"Sold Out",note:"Gone for now. Message us if you would like a restock"}];
+const TABS=[{id:"new",label:"New Arrivals",note:"Fresh designs, just added"},{id:"keep",label:"Timeless Picks",note:"Loved designs, still available to order"},{id:"sold",label:"Sold Out",note:"Gone for now. Message us if you would like a restock"}];
 const inTab=(x,t)=>t==="sold"?!!x.soldOut:(!x.soldOut&&(t==="new"?!!x.isNew:!x.isNew));
 function viewOf(c,t){const cs=c.colours.filter(x=>inTab(x,t)); if(!cs.length) return null; if(cs.length===c.colours.length) return Object.assign(Object.create(c),{_view:t});
   return Object.assign(Object.create(c),{_base:c,colours:cs,cover:cs[0].img,coverPos:c.cover===cs[0].img?c.coverPos:"50% 45%",_view:t,_part:true});}
@@ -1598,14 +1974,15 @@ function openCart(){
   const close=()=>{s.remove();document.removeEventListener("keydown",k);};
   const k=e=>{if(e.key==="Escape")close();};
   const draw=()=>{
-    const items=cartItems(), live=items.filter(i=>!i.f.x.soldOut), tot=live.reduce((a,i)=>a+priceFor(i.f.c,i.size),0);
+    const items=cartItems(), live=items.filter(i=>!i.f.x.soldOut), d=dealCalc(live), tot=dealTotal(d);
     s.innerHTML=`<div class="sheet" role="dialog" aria-label="Your cart"><div class="grab"></div>
       <h3>Your cart</h3>
-      ${items.length?`<div class="slist">${items.map((i,n)=>`<div class="si${i.f.x.soldOut?" gone":""}"><img src="${i.f.x.img}" alt="" data-go="${i.code}"><div class="t" data-go="${i.code}"><b>${i.code}${i.size?` · ${esc(i.size)}`:""}</b><span>${esc(i.f.x.name)} · ${esc(i.f.c.name)}</span>${i.f.x.soldOut?`<em class="op no">Sold out · found its home already</em>`:`<em class="op">${inr(priceFor(i.f.c,i.size))}</em>`}</div><button class="rm txt" type="button" data-k="${n}" aria-label="Remove ${i.code}">Remove</button></div>`).join("")}</div>
-      <p class="stot">Total <b>${inr(tot)}</b><small>${live.length} piece${live.length===1?"":"s"} · free delivery</small></p>${discNote(live.length)}
+      ${items.length?`<div class="slist">${items.map((i,n)=>`<div class="si${i.f.x.soldOut?" gone":""}"><img src="${i.f.x.img}" alt="" data-go="${i.code}"><div class="t" data-go="${i.code}"><b>${i.code}${i.size?` · ${esc(i.size)}`:""}</b><span>${esc(i.f.x.name)} · ${esc(i.f.c.name)}</span>${i.f.x.soldOut?`<em class="op no">Sold out · found its home already</em>`:`<em class="op">${rowHTML(d,d.map.get(keyOf(i.code,i.size)))}</em>`}</div><button class="rm txt" type="button" data-k="${n}" aria-label="Remove ${i.code}">Remove</button></div>`).join("")}</div>
+      <p class="stot">Total <b>${inr(tot)}</b><small>${live.length} piece${live.length===1?"":"s"} · free delivery</small></p>${dealBox(d)}
       <div class="acts"><button class="btn" type="button" id="shClose">Keep shopping</button><button class="btn wa" type="button" id="shGo"${live.length?"":" disabled"}>${WA_ICON}<span>Place order</span></button></div>`
       :`<p class="none">Your cart is waiting to be filled ✨<br>Tap <span class="inl">${CART_ADD}</span> on any piece you love to add it here.</p><div class="acts"><button class="btn pri" type="button" id="shClose">Start shopping</button></div>`}
     </div>`;
+    wireDeal(s,draw);
     s.querySelectorAll(".rm").forEach(b=>b.onclick=()=>{const it=items[+b.dataset.k];list=list.filter(i=>keyOf(i.code,i.size)!==keyOf(it.code,it.size));saveList();draw();if(location.hash&&!location.hash.startsWith("#reviews"))route(true);});
     s.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{close();location.hash=b.dataset.go;});
     s.querySelector("#shClose").onclick=close;
@@ -1622,7 +1999,7 @@ function newOrderId(){
   for(let i=0;i<4;i++) r+=A[buf[i]%A.length];
   return `VA-${String(d.getFullYear()).slice(2)}${p(d.getMonth()+1)}${p(d.getDate())}-${r}`;
 }
-const TERMS=[["Colour","Every shade is photographed with care. Colours may look a little different depending on lighting and your screen."],["Returns & exchanges","If something isn't right, just message us. We look into every request personally and do our best to make it right."],["Who we are","We are resellers, not manufacturers. Every piece is lovingly handpicked from trusted makers."],["Order confirmation","We confirm your order as soon as stock is checked and payment is received. We'll keep you posted on WhatsApp."],["Delivery","Free delivery to your doorstep within 5 to 10 working days of confirmation."]];
+const TERMS=[...(SALE_ON?[["Diwali Sale: Buy 3 Get 1 Free","Buy any 3 pieces from Premium Collection or Everyday Elegance with a total regular price of ₹4,000 or more, and get 1 piece from Offer Picks free (the lowest-priced Offer Pick in your order). Buy 3 Get 1 is billed at regular prices. One offer per order: choose either Buy 3 Get 1 Free or sale prices; your cart shows both totals so you can pick. Sale prices and Buy 3 Get 1 apply to sarees, readymades, dress materials and menswear. Home & Lifestyle (bedsheets, blankets, curtains, diwan sets and cloth bags) is at regular price; an order with only Home & Lifestyle pieces gets 5% off the total. Offers valid till Tue 10 Nov 2026, 9 pm."]]:[]),["Colour","Every shade is photographed with care. Colours may look a little different depending on lighting and your screen."],["Returns & exchanges","If something isn't right, just message us. We look into every request personally and do our best to make it right."],["Who we are","We are resellers, not manufacturers. Every piece is lovingly handpicked from trusted makers."],["Order confirmation","We confirm your order as soon as stock is checked and payment is received. We'll keep you posted on WhatsApp."],["Delivery","Free delivery to your doorstep within 5 to 10 working days of confirmation."]];
 const termsHTML=()=>`<ol>${TERMS.map(([a,b])=>`<li><b>${esc(a)}</b><span>${esc(b)}</span></li>`).join("")}</ol>`;
 
 /* ---------- Checkout ---------- */
@@ -1639,7 +2016,7 @@ function openCheckout(extra){
   s.innerHTML=`<form class="sheet co" novalidate aria-label="Place your order"><div class="grab"></div>
     <h3>Place your order</h3>
     <p class="sub">Tick the pieces you want, add your delivery details and send the order to us on WhatsApp.</p>
-    <div class="colist">${items.map((it,n)=>`<label class="ck"><input type="checkbox" data-n="${n}" checked><img src="${it.f.x.img}" alt=""><span class="t"><b>${it.code}${it.size?` · Size ${esc(it.size)}`:""}</b><span>${esc(it.f.c.name)} · ${esc(it.f.x.name)}</span></span><em>${inr(it.p)}</em></label>`).join("")}</div>
+    <div class="colist">${items.map((it,n)=>`<label class="ck"><input type="checkbox" data-n="${n}" checked><img src="${it.f.x.img}" alt=""><span class="t"><b>${it.code}${it.size?` · Size ${esc(it.size)}`:""}</b><span>${esc(it.f.c.name)} · ${esc(it.f.x.name)}</span></span><em data-n="${n}">${priceHTML(origFor(it.f.c,it.size),it.p)}</em></label>`).join("")}</div>
     <button class="addmore" type="button" id="coMore">+ Add more pieces</button>
     <div class="cotot" id="coTot"></div>
     <fieldset class="addr"><legend>Delivery details</legend>
@@ -1653,8 +2030,10 @@ function openCheckout(extra){
     <div class="acts"><button class="btn" type="button" id="coCancel">Cancel</button><button class="btn wa" type="submit">${WA_ICON}<span>Send order</span></button></div>
   </form>`;
   const form=s.querySelector("form"), tot=s.querySelector("#coTot"), err=s.querySelector("#coErr");
-  const paint=()=>{const sel=items.filter(i=>i.on), sum=sel.reduce((a,i)=>a+i.p,0);
-    tot.innerHTML=sel.length?`<span>Total payable${sel.length>1?` · ${sel.length} pieces`:""}</span><b>${inr(sum)}</b><small>Free delivery${sel.length>=DISC_MIN?" · special discount will be applied on WhatsApp":""}</small>${discNote(sel.length)}`:`<span>Tick at least one piece</span>`;};
+  const paint=()=>{const sel=items.filter(i=>i.on), d=dealCalc(sel), sum=dealTotal(d);
+    s.querySelectorAll(".ck em[data-n]").forEach(e=>{const it=items[+e.dataset.n], r=d.map.get(keyOf(it.code,it.size)); e.innerHTML=r?rowHTML(d,r):priceHTML(origFor(it.f.c,it.size),it.p);});
+    tot.innerHTML=sel.length?`<span>Total payable${sel.length>1?` · ${sel.length} pieces`:""}</span><b>${inr(sum)}</b><small>Free delivery${!SALE_ON&&sel.length>=DISC_MIN?" · special discount will be applied on WhatsApp":""}</small>${dealBox(d)}`:`<span>Tick at least one piece</span>`;
+    wireDeal(tot,paint);};
   s.querySelectorAll(".ck input").forEach(c=>c.onchange=()=>{items[+c.dataset.n].on=c.checked;paint();});
   s.querySelector("#coCancel").onclick=close;
   form.oninput=()=>{err.textContent="";};
@@ -1672,9 +2051,9 @@ function openCheckout(extra){
     if(!/^\d{6}$/.test(pin)) return bad("Please check the PIN code. It should be 6 digits.","pin");
     if(!/^(\+?91)?[6-9]\d{9}$/.test(phone)) return bad("Please check your mobile number. It should be 10 digits.","phone");
     keepAddr();
-    const oid=newOrderId(), sum=sel.reduce((a,i)=>a+i.p,0);
-    const lines=sel.map((i,n)=>`${n+1}. ${i.code}${i.size?` (Size ${i.size})`:""} – ${i.f.c.name}, ${i.f.x.name} – ${inr(i.p)}`);
-    const msg=`Hi VastrAura! I'd like to place an order.\nOrder ID: ${oid}\n\n${lines.join("\n")}\n\nTotal payable: ${inr(sum)} (free delivery)${sel.length>=DISC_MIN?`\nSpecial discount: eligible (${sel.length} pieces) – please share my discounted total`:""}\n\nDeliver to:\n${v("name")}\n${v("addr")}\nPIN: ${pin}\nContact: ${phone}\n\nOrder ID: ${oid}`;
+    const oid=newOrderId(), d=dealCalc(sel), sum=dealTotal(d);
+    const lines=sel.map((i,n)=>{const r=d.map.get(keyOf(i.code,i.size)), p=rowPrice(d,r);return `${n+1}. ${i.code}${i.size?` (Size ${i.size})`:""} – ${i.f.c.name}, ${i.f.x.name} – ${p?inr(p):"FREE"}`;});
+    const msg=`Hi VastrAura! I'd like to place an order.\nOrder ID: ${oid}\n\n${lines.join("\n")}\n\nTotal payable: ${inr(sum)} (free delivery)${dealMsg(d)}${!SALE_ON&&sel.length>=DISC_MIN?`\nSpecial discount: eligible (${sel.length} pieces) – please share my discounted total`:""}\n\nDeliver to:\n${v("name")}\n${v("addr")}\nPIN: ${pin}\nContact: ${phone}\n\nOrder ID: ${oid}`;
     sendWA(msg); close();
     try{const h=JSON.parse(localStorage.getItem("va_orders")||"[]");h.unshift({id:oid,at:Date.now(),items:sel.map(i=>({code:i.code,size:i.size}))});localStorage.setItem("va_orders",JSON.stringify(h.slice(0,20)));}catch(e){}
     list=[]; saveList();
@@ -1684,17 +2063,41 @@ function openCheckout(extra){
   paint(); document.addEventListener("keydown",k); document.body.appendChild(s);
 }
 
+/* ---------- How the Diwali offers work ---------- */
+function openOffers(focus){
+  const sc=document.createElement("div");sc.className="scrim";
+  const close=()=>{sc.remove();document.removeEventListener("keydown",kd);}; const kd=e=>{if(e.key==="Escape")close();};
+  const hi=n=>focus===n?" hi":"";
+  sc.innerHTML=`<div class="sheet offsheet" role="dialog" aria-label="How the Diwali offers work"><div class="grab"></div><h3>How the Diwali offers work</h3>
+    <div class="oi${hi(1)}"><h4>1. Sale prices on all clothing</h4><p>Sarees, readymades, dress materials and menswear are already marked down. The price in bold is what you pay; the old price is struck off.</p></div>
+    <div class="oi${hi(2)}"><h4>2. Buy 3, Get 1 Free</h4><p>Add 3 clothing pieces from <b>Premium</b> or <b>Everyday Elegance</b> worth ₹4,000 or more, plus 1 piece from <b>Offer Picks</b>. The Offer Pick is free. This deal uses regular prices.</p>
+      <p class="eg">Example: sarees at ₹1,600 + ₹1,450 + ₹1,300 = ₹4,350, plus a ₹900 Offer Pick → you pay ₹4,350.</p></div>
+    <div class="oi${hi(3)}"><h4>3. 5% off Home &amp; Lifestyle</h4><p>Bedsheets, blankets, curtains, diwan sets and cloth bags are at regular price. Order only these and get 5% off your total.</p></div>
+    <p class="one">One offer per order. In your cart, choose <b>Sale prices</b> or <b>Buy 3, Get 1 Free</b>. We show both totals and pick the cheaper one for you.<br>Ends Tue 10 Nov, 9 pm.</p>
+    <div class="acts"><button class="btn pri" type="button" id="offOk">Start shopping</button></div></div>`;
+  sc.onclick=e=>{if(e.target===sc)close();}; sc.querySelector("#offOk").onclick=close;
+  document.addEventListener("keydown",kd); document.body.appendChild(sc);
+}
+document.querySelectorAll("#saleBand [data-how]").forEach(b=>b.onclick=()=>openOffers(+b.dataset.how));
+{const ho=document.getElementById("howOff"); if(ho) ho.onclick=()=>openOffers(0);}
+
+/* ---------- Diwali sale band in the banner ---------- */
+(function(){const el=document.getElementById("saleBand"), cd=document.getElementById("saleCd"); if(!el||!SALE_ON) return; el.hidden=false;
+  const tick=()=>{const ms=SALE_END-Date.now(); if(ms<=0){location.reload();return;} const dd=Math.floor(ms/864e5), hh=Math.floor(ms%864e5/36e5), mm=Math.floor(ms%36e5/6e4);
+    cd.textContent=`Ends Tue 10 Nov, 9 pm · ${dd?dd+"d ":""}${hh}h ${dd?"":mm+"m "}left`;};
+  tick(); setInterval(tick,30000);})();
+
 /* ---------- Cards ---------- */
 function card(c,x){
   const out=x?!!x.soldOut:isOut(c), n=c.colours.length;
   const href=x?`${c.code}-${x.sub}`:c.code, k=COLL[collOf(c)];
   const dots=c.colours.slice(0,5).map(y=>`<i style="background-image:url('${y.img}')"></i>`).join("");
-  const extra=(c.type==="rm"||c.type==="mw")?sizeRange(c)+(VARIANTS[c.code]?" · with pyjama "+inr(VARIANTS[c.code][1].price):""):"";
+  const extra=(c.type==="rm"||c.type==="mw")?sizeRange(c)+(VARIANTS[c.code]?" · with pyjama "+inr(vPrice(c,1)):""):"";
   return `<button class="card" type="button" data-open="${href}"${!x&&c._part?` data-tab="${c._view}"`:""}>
     <div class="frame${out?" out":""}"><img src="${x?x.img:c.cover}" alt="${esc(c.name)}${x?" in "+esc(x.name):""}" loading="lazy" style="object-position:${x?"50% 50%":(c.coverPos||"50% 50%")}">
       ${!x&&!c._view&&NEW_SET.has(c.code)?`<span class="ribbon">New</span>`:""}${!x&&c._view==="new"&&!c._part?`<span class="newtag">NEW</span>`:""}${!x&&c._view==="new"&&c._part?`<span class="newtag">${n} NEW</span>`:""}${out?`<span class="oos">Out of stock</span>`:""}
       ${!out&&k&&k.id!=="everyday"?`<span class="ktag k-${k.id}">${k.id==="premium"?"Premium":"Offer Pick"}</span>`:""}</div>
-    <div class="meta"><div class="mrow"><span class="ccode">${href}</span><span class="price">${inr(priceOf(c))}</span></div><span class="cname">${esc(c.name)}</span>
+    <div class="meta"><div class="mrow"><span class="ccode">${href}</span><span class="price">${isOut(c)?inr(origOf(c)):priceHTML(origOf(c),priceOf(c))}</span></div><span class="cname">${esc(c.name)}</span>
       ${x?`<span class="csub">${esc(x.name)}</span>`:`<span class="dots">${dots}<span>${n} ${wordOf(c,n)}</span></span>${extra?`<span class="csub">${esc(extra)}</span>`:""}`}</div>
   </button>`;
 }
@@ -1766,6 +2169,44 @@ function initHeader(){
   const setH=()=>document.documentElement.style.setProperty("--tbh",h.offsetHeight+"px"); setH(); addEventListener("resize",setH);
 }
 
+let dealMode=null; /* "offer" | "b3g1" | null = whichever is cheaper */
+function dealCalc(sel){
+  const rows=sel.map(i=>({key:keyOf(i.code,i.size),code:i.code,o:origFor(i.f.c,i.size),p:priceFor(i.f.c,i.size),k:collOf(i.f.c),hl:NO_OFFER(i.f.c)}));
+  const d={rows,offerTot:rows.reduce((a,r)=>a+r.p,0),origTot:rows.reduce((a,r)=>a+r.o,0),n:0,map:new Map(rows.map(r=>[r.key,r]))};
+  if(!SALE_ON) return d;
+  if(rows.length&&rows.every(r=>r.hl)){d.hl5=Math.floor(d.offerTot*0.05);d.offerTot-=d.hl5;return d;}
+  const paid=rows.filter(r=>!r.hl&&r.k!=="offer").sort((a,b)=>b.o-a.o), fr=rows.filter(r=>!r.hl&&r.k==="offer").sort((a,b)=>a.o-b.o);
+  let n=0; while(n<fr.length&&(n+1)*3<=paid.length&&paid.slice(0,(n+1)*3).reduce((a,r)=>a+r.o,0)>=B3_MIN*(n+1)) n++;
+  fr.slice(0,n).forEach(r=>r.free=true);
+  Object.assign(d,{n,b3Tot:rows.reduce((a,r)=>a+(r.free?0:r.o),0),paidN:paid.length,paidSum:paid.slice(0,3).reduce((a,r)=>a+r.o,0),frN:fr.length});
+  return d;
+}
+const modeOf=d=>!d.n?"offer":(dealMode||(d.b3Tot<d.offerTot?"b3g1":"offer"));
+const dealTotal=d=>modeOf(d)==="b3g1"?d.b3Tot:d.offerTot;
+const rowPrice=(d,r)=>modeOf(d)==="b3g1"?(r.free?0:r.o):r.p;
+const rowHTML=(d,r)=>modeOf(d)==="b3g1"?(r.free?`<s>${inr(r.o)}</s> <b class="free">FREE</b>`:inr(r.o)):priceHTML(r.o,r.p);
+function dealBox(d){
+  if(!SALE_ON) return discNote(d.rows.length);
+  if(!d.rows.length) return "";
+  if(d.hl5) return `<div class="deal"><p class="dh">✨ <b>Diwali Sale: 5% off</b></p><p>5% off your Home &amp; Lifestyle order: <b>${inr(d.hl5)} off</b> applied to the total.</p></div>`;
+  if(!d.n){const need=[];
+    if(d.paidN<3) need.push(`<b>${3-d.paidN} more</b> from Premium or Everyday Elegance`);
+    else if(d.paidSum<B3_MIN) need.push(`<b>${inr(B3_MIN-d.paidSum)} more</b> in Premium or Everyday Elegance pieces`);
+    if(!d.frN) need.push(`<b>1 Offer Pick</b> to take free`);
+    return `<div class="deal hint"><p class="dh">✨ <b>Buy 3 Get 1 Free</b></p><p>Buy 3 from Premium or Everyday Elegance worth ${inr(B3_MIN)}+ and get 1 Offer Pick free. Add ${need.join(" and ")}.</p></div>`;}
+  const m=modeOf(d), save=d.origTot-dealTotal(d);
+  return `<div class="deal" role="radiogroup" aria-label="Choose your Diwali offer"><p class="dh">✨ <b>Choose your Diwali offer</b> (one per order)</p>
+    <label class="opt${m==="offer"?" on":""}"><input type="radio" name="deal" value="offer"${m==="offer"?" checked":""}><span>Sale prices<small>Sale price on each clothing piece</small></span><em>${inr(d.offerTot)}</em></label>
+    <label class="opt${m==="b3g1"?" on":""}"><input type="radio" name="deal" value="b3g1"${m==="b3g1"?" checked":""}><span>Buy 3, Get 1 Free<small>Regular prices · ${d.n} Offer Pick${d.n>1?"s":""} free</small></span><em>${inr(d.b3Tot)}</em></label>
+    ${save>0?`<p class="save">You save ${inr(save)} 🎉</p>`:""}</div>`;
+}
+function wireDeal(root,redraw){root.querySelectorAll('input[name="deal"]').forEach(r=>r.onchange=()=>{dealMode=r.value;redraw();});}
+function dealMsg(d){
+  if(!SALE_ON) return "";
+  if(d.hl5) return `\nDiwali Sale: 5% off Home & Lifestyle order (${inr(d.hl5)} off)`;
+  if(modeOf(d)==="b3g1") return `\nDiwali Sale: Buy 3 Get 1 Free (regular prices; free: ${d.rows.filter(r=>r.free).map(r=>r.code).join(", ")})`;
+  return d.origTot>d.offerTot?`\nDiwali Sale: offer prices (you save ${inr(d.origTot-d.offerTot)})`:"";
+}
 const DISC_MIN=4; /* special discount on more than 3 pieces in one order */
 function discNote(n){return n>=DISC_MIN?`<p class="disc-ok">🎉 You've unlocked a <b>special discount</b>! We'll share your discounted total on WhatsApp.</p>`:`<p class="disc-hint">✨ Add <b>${DISC_MIN-n} more piece${DISC_MIN-n===1?"":"s"}</b> to unlock a <b>special discount</b> on this order.</p>`;}
 function emptyCartNote(){
@@ -1791,7 +2232,7 @@ function openHow(){
       <li><b>Send</b><span>Add address &amp; phone, send on WhatsApp</span></li>
       <li><b>Review</b><span>After delivery, post a genuine review ★</span></li>
     </ol>
-    <p class="disc">✨ Special discount on more than 3 pieces in one order</p>
+    <p class="disc">${SALE_ON?"✨ Diwali Sale is on: tap <b>How the offers work</b> in the banner":"✨ Special discount on more than 3 pieces in one order"}</p>
     <div class="acts"><button class="btn pri" type="button" id="howOk">Start shopping</button></div></div>`;
   sc.onclick=e=>{if(e.target===sc)close();}; document.addEventListener("keydown",kd);
   document.body.appendChild(sc); sc.querySelector("#howOk").onclick=close;
@@ -1818,13 +2259,14 @@ function openFilter(){
 }
 let stuckObs=null;
 function renderList(keepPos){
+  if(fTab==="keep"&&!tabItems(fCat,"keep").length) fTab="new";
   clearBar(); ensureFab(); updateCounts(); paintHeader();
   const cover=k=>{const c=CATALOGUES.filter(c=>c.type===k.id&&!isOut(c)).sort(newest)[0]||CATALOGUES.find(c=>c.type===k.id);return c?c.cover:"";};
   const nColl=id=>tabItems(fCat,fTab).filter(c=>collOf(c)===id).length;
   app.innerHTML=`
     <div class="filt">
-    <div class="catbar"><nav aria-label="Categories">${ACTIVE_CATS.map(k=>`<button type="button" class="cb${fCat===k.id?" on":""}" data-cat="${k.id}" aria-pressed="${fCat===k.id}"><span>${(({dm:["Dress","Materials"],hl:["Home &amp;","Living"],mw:["Menswear","Exclusive"],cb:["Cloth","Bags"]})[k.id]||[esc(k.label)]).map(w=>`<i>${w}</i>`).join(" ")}</span></button>`).join("")}</nav></div>
-        <div class="stabs" role="tablist" aria-label="Stock">${TABS.map(t=>`<button type="button" role="tab" class="stab t-${t.id}${fTab===t.id?" on":""}" data-tab="${t.id}" aria-selected="${fTab===t.id}"><b>${t.label.split(" ").map(w=>`<i>${esc(w)}</i>`).join(" ")}</b><span>${(n=>`${n} catalogue${n===1?"":"s"}`)(tabItems(fCat,t.id).length)}</span></button>`).join("")}</div>
+    <div class="catbar"><nav aria-label="Categories" style="--nc:${ACTIVE_CATS.length}">${ACTIVE_CATS.map(k=>`<button type="button" class="cb${fCat===k.id?" on":""}" data-cat="${k.id}" aria-pressed="${fCat===k.id}"><span>${(({dm:["Dress","Materials"],hl:["Home &amp;","Lifestyle"],mw:["Menswear","Exclusive"],cb:["Cloth","Bags"]})[k.id]||[esc(k.label)]).map(w=>`<i>${w}</i>`).join(" ")}</span></button>`).join("")}</nav></div>
+        <div class="stabs" role="tablist" aria-label="Stock">${TABS.filter(t=>t.id!=="keep"||tabItems(fCat,"keep").length).map(t=>`<button type="button" role="tab" class="stab t-${t.id}${fTab===t.id?" on":""}" data-tab="${t.id}" aria-selected="${fTab===t.id}"><b>${t.label.split(" ").map(w=>`<i>${esc(w)}</i>`).join(" ")}</b><span>${(n=>`${n} catalogue${n===1?"":"s"}`)(tabItems(fCat,t.id).length)}</span></button>`).join("")}</div>
         <p class="tabnote">${esc(TABS.find(t=>t.id===fTab).note)}</p>
         <div class="pchips" aria-label="Price">${COLLECTIONS.map(k=>{const n=k.id==="all"?1:nColl(k.id);return `<button type="button" class="pchip k-${k.id}${fColl===k.id?" on":""}${n?"":" zero"}" data-coll="${k.id}" aria-pressed="${fColl===k.id}"><span class="pl">${k.label.split(" ").map((w,j)=>`<i>${esc(w)}</i>`).join(" ")}</span><small>${esc(k.note)}</small></button>`;}).join("")}</div>
     </div>
@@ -1943,7 +2385,7 @@ function renderDetail(c,pre,keep){
         <div class="dhead">
           <span class="ccode">${c.code} · ${TYPE_NAME[c.type]}</span>${k?`<span class="pbadge k-${k.id}">${k.id==="premium"?"✦ ":""}${esc(k.label)}</span>`:""}
           <h2>${esc(c.name)}</h2>
-          <p class="dprice">${out?`<span class="no">Out of stock</span>`:`<b>${inr(price)}</b><span>Free delivery</span>`}</p>
+          <p class="dprice">${out?`<span class="no">Out of stock</span>`:`<b>${inr(price)}</b>${SALE_ON&&NO_OFFER(c)?`<span class="dl">Diwali: 5% off Home &amp; Lifestyle-only orders</span>`:""}${price<origOf(c)?`<s class="was">${inr(origOf(c))}</s><span class="dl">Diwali offer price</span>`:""}<span>Free delivery</span>`}</p>
           <p class="lead">${c.colours.length>1?`${c.colours.length} shades/designs · swipe the photo or tap a ${word} below`:"One of a kind"}</p>
         </div>
         <div class="picked">
@@ -1995,7 +2437,7 @@ function renderDetail(c,pre,keep){
     document.getElementById("barTh").src=x.img;
     ["waBtn","barCart"].forEach(id=>document.getElementById(id).setAttribute("aria-disabled",String(!!x.soldOut)));
     document.getElementById("barCode").textContent=code+(size?` · ${size}`:"");
-    document.getElementById("barHint").textContent=x.soldOut?"Sold out · explore similar pieces below":needSize&&!size?"Pick your size to order":`${inr(priceFor(c,size))} · free delivery`;
+    document.getElementById("barHint").textContent=x.soldOut?"Sold out · explore similar pieces below":needSize&&!size?"Pick your size to order":`${inr(priceFor(c,size))}${SALE_ON&&priceFor(c,size)<origFor(c,size)?" Diwali offer":""} · free delivery`;
   }
   function select(i,fromScroll){
     cur=i; const x=c.colours[i], code=`${c.code}-${x.sub}`;
@@ -2012,11 +2454,11 @@ function renderDetail(c,pre,keep){
     if(V&&x.sizes&&x.sizes.length&&!x.soldOut){
       sizesEl.hidden=false;
       const draw=()=>{size=bsize?`${bsize} · ${V[vset].label}`:"";
-        sizesEl.innerHTML=`<h3>Choose your set</h3><div class="szrow vset">${V.map((o,k)=>`<button class="sz vs" type="button" data-v="${k}" aria-pressed="${k===vset}">${esc(o.label)}<small>${inr(o.price)}</small></button>`).join("")}</div>
+        sizesEl.innerHTML=`<h3>Choose your set</h3><div class="szrow vset">${V.map((o,k)=>`<button class="sz vs" type="button" data-v="${k}" aria-pressed="${k===vset}">${esc(o.label)}<small>${SALE_ON&&VOFFER[c.code]?`<s>${inr(o.price)}</s> `:""}${inr(vPrice(c,k))}</small></button>`).join("")}</div>
           <h3 style="margin-top:14px">Size <small>choose one</small></h3><div class="szrow">${x.sizes.map(z=>`<button class="sz sb" type="button" aria-pressed="${z===bsize}">${esc(z)}</button>`).join("")}</div>`;
         sizesEl.querySelectorAll(".vs").forEach(b=>b.onclick=()=>{vset=+b.dataset.v;draw();});
         sizesEl.querySelectorAll(".sb").forEach(b=>b.onclick=()=>{bsize=b.textContent;draw();});
-        const dp=app.querySelector(".dprice b"); if(dp) dp.textContent=inr(V[vset].price);
+        const dp=app.querySelector(".dprice b"); if(dp) dp.textContent=inr(vPrice(c,vset)); const dw=app.querySelector(".dprice .was"); if(dw) dw.textContent=inr(V[vset].price);
         paintBar(); refreshSaved();};
       draw();
     }else if(x.sizes&&x.sizes.length&&!x.soldOut){
