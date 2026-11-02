@@ -885,6 +885,38 @@ footer .terms li span{color:var(--muted)}
  border-right:1.5px solid #d9b66a;border-bottom:1.5px solid #d9b66a;transform:translateY(-70%) rotate(45deg)!important}
 .fdd .dd .chev::after{display:none}
 }
+
+/* ===== Category band + "Choose your category" (all devices) ===== */
+.filt .catbar,.catbar{display:none!important}
+.filt .stabs,.filt .pchips{display:none!important}
+.fdd{display:grid!important;grid-template-columns:1fr auto;gap:8px;align-items:stretch;max-width:720px;margin:0 auto;padding:2px 12px 0}
+.catband{margin:0 calc(50% - 50vw);padding:10px 12px 11px;overflow:hidden;text-align:center;background:linear-gradient(180deg,#2a0719,#1f0613);border-top:1px solid rgba(217,182,106,.35);border-bottom:1px solid rgba(217,182,106,.35)}
+.catband .cbt{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#9c8d76;margin-bottom:4px}
+.catband p{margin:0 auto;width:max-content;max-width:none;white-space:nowrap;display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:0 .55em;font-family:var(--display);font-size:clamp(.78rem,3.3vw,1rem);color:#f3e3c4;letter-spacing:.04em}
+.catband i{font-style:normal;color:#d9b66a;font-size:.6em}
+.ccat{display:flex;align-items:center;gap:10px;max-width:720px;margin:0 auto;padding:10px 12px 8px}
+.ccat label{flex:none;font-family:var(--display);font-size:.86rem;color:#d9b66a;letter-spacing:.03em}
+.ccat .dd{flex:1;position:relative;display:flex;align-items:center;min-height:40px;padding:4px 28px 4px 12px;border-radius:10px;border:1px solid rgba(217,182,106,.45);background:linear-gradient(180deg,#25101b,#1b0c14)}
+.ccat .dd b{font-family:var(--display);font-size:.92rem;color:#f6dc98;font-weight:600}
+.ccat .dd .chev{position:absolute!important;right:11px;top:50%;width:8px!important;height:8px!important;border-radius:0!important;background:none!important;box-shadow:none!important;animation:none!important;border-right:1.5px solid #d9b66a;border-bottom:1.5px solid #d9b66a;transform:translateY(-70%) rotate(45deg)!important}
+.ccat .dd .chev::after{display:none!important}
+.ccat .dd{padding:4px 28px 4px 12px!important;min-height:40px!important}
+.ccat .dd select{position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:16px;cursor:pointer}
+@media (min-width:761px){
+.fchips{display:flex;gap:0;padding:3px;border-radius:10px;border:1px solid rgba(217,182,106,.38);background:linear-gradient(180deg,#25101b,#1b0c14)}
+.fc{flex:1 1 auto;min-height:40px;padding:3px 14px;border:0;border-radius:7px;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:#cdbb98;cursor:pointer;font:inherit}
+.fc .fl{font-family:var(--display);font-size:.9rem;font-weight:600;color:inherit;display:block;white-space:nowrap}
+.fc .fl i{font-style:normal}
+.fc em{font-style:normal;font-size:.62rem;letter-spacing:.06em;color:#9c8d76;text-transform:uppercase}
+.fc.on{background:linear-gradient(180deg,rgba(243,212,138,.22),rgba(217,182,106,.10));box-shadow:inset 0 0 0 1px rgba(230,199,125,.7)}
+.fc.on .fl{color:#f6dc98}.fc.on em{color:#d9b66a}
+.fdd .dd{position:relative;display:flex;align-items:center;min-width:180px;padding:4px 28px 4px 12px;border-radius:10px;border:1px solid rgba(217,182,106,.38);background:linear-gradient(180deg,#25101b,#1b0c14)}
+.fdd .dd .dv{display:flex;flex-direction:column;line-height:1.2}
+.fdd .dd small{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#9c8d76}
+.fdd .dd b{font-family:var(--display);font-size:.9rem;color:#f6dc98}
+.fdd .dd .chev{position:absolute;right:11px;top:50%;width:8px;height:8px;border-right:1.5px solid #d9b66a;border-bottom:1.5px solid #d9b66a;transform:translateY(-70%) rotate(45deg)}
+.fdd .dd select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+}
 </style>
 
 <div class="topbar" id="topbar"></div>
@@ -2067,9 +2099,9 @@ const unitOf=c=>{const b=c._base||c; if(b._unit) return b._unit; if(UNIT_OVERRID
   return b._unit=(["cb","hl"].includes(b.type)||r>=.5)?"design":"shade";};
 const wordOf=(c,n)=>n===1?"shade/design":"shades/designs";
 
-let fCat="sr", fColl="all", fSort="new", fTab="new", q="";
-try{const s=JSON.parse(localStorage.getItem("va_filters")||"{}"); if(s.cat&&CAT[s.cat]) fCat=s.cat; if(s.coll&&(s.coll==="all"||COLL[s.coll])) fColl=s.coll; if(s.tab&&TABS.some(t=>t.id===s.tab)) fTab=s.tab;}catch(e){}
-if(!ACTIVE_CATS.some(k=>k.id===fCat)) fCat="sr";
+let fCat="all", fColl="all", fSort="new", fTab="new", q="";
+try{const s=JSON.parse(localStorage.getItem("va_filters")||"{}"); if(s.cat&&(s.cat==="all"||CAT[s.cat])) fCat=s.cat; if(s.coll&&(s.coll==="all"||COLL[s.coll])) fColl=s.coll; if(s.tab&&TABS.some(t=>t.id===s.tab)) fTab=s.tab;}catch(e){}
+if(fCat!=="all"&&!ACTIVE_CATS.some(k=>k.id===fCat)) fCat="all";
 const saveFilters=()=>{try{localStorage.setItem("va_filters",JSON.stringify({cat:fCat,coll:fColl,sort:fSort,tab:fTab}));}catch(e){}};
 let bar=null, fab=null;
 
@@ -2405,14 +2437,20 @@ function openFilter(){
   document.addEventListener("keydown",kd); draw(); document.body.appendChild(sc); setTimeout(()=>sc.classList.add("drawn"),400);
 }
 let stuckObs=null;
+function fitBand(){const p=document.querySelector(".catband p");if(!p)return;const box=p.parentElement;
+  p.style.fontSize="20px";const avail=box.clientWidth-parseFloat(getComputedStyle(box).paddingLeft)*2, w=p.scrollWidth;
+  if(w&&avail) p.style.fontSize=Math.max(10,Math.min(17,20*avail*0.98/w)).toFixed(2)+"px";}
+addEventListener("resize",()=>fitBand()); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>fitBand());
 function renderList(keepPos){
-  if(fTab==="sold"&&matchMedia("(max-width:760px)").matches) fTab="new";
+  if(fTab==="sold") fTab="new";
   if(fTab==="keep"&&!tabItems(fCat,"keep").length) fTab="new";
   clearBar(); ensureFab(); updateCounts(); paintHeader();
   const cover=k=>{const c=CATALOGUES.filter(c=>c.type===k.id&&!isOut(c)).sort(newest)[0]||CATALOGUES.find(c=>c.type===k.id);return c?c.cover:"";};
   const nColl=id=>tabItems(fCat,fTab).filter(c=>collOf(c)===id).length;
   app.innerHTML=`
+    <div class="catband" aria-label="Our categories"><span class="cbt">Our Collections</span><p>${ACTIVE_CATS.map(k=>`<span>${esc(k.id==="mw"?"Menswear":k.label)}</span>`).join('<i aria-hidden="true">✦</i>')}</p></div>
     <div class="filt">
+    <div class="ccat"><label for="ddCat">Choose your category</label><div class="dd ddc"><span class="dv"><b>${fCat==="all"?"All categories":esc(CAT[fCat].label)}</b></span><i class="chev" aria-hidden="true"></i><select id="ddCat" aria-label="Choose your category"><option value="all"${fCat==="all"?" selected":""}>All categories</option>${ACTIVE_CATS.map(k=>`<option value="${k.id}"${fCat===k.id?" selected":""}>${esc(k.label)}</option>`).join("")}</select></div></div>
     <div class="catbar"><nav aria-label="Categories" style="--nc:${ACTIVE_CATS.length}">${ACTIVE_CATS.map(k=>`<button type="button" class="cb${fCat===k.id?" on":""}" data-cat="${k.id}" aria-pressed="${fCat===k.id}"><span>${(({dm:["Dress","Materials"],hl:["Home &amp;","Lifestyle"],mw:["Menswear","Exclusive"],cb:["Cloth","Bags"]})[k.id]||[esc(k.label)]).map(w=>`<i>${w}</i>`).join(" ")}</span></button>`).join("")}</nav></div>
         <div class="stabs" role="tablist" aria-label="Stock">${TABS.filter(t=>t.id!=="keep"||tabItems(fCat,"keep").length).map(t=>`<button type="button" role="tab" class="stab t-${t.id}${fTab===t.id?" on":""}" data-tab="${t.id}" aria-selected="${fTab===t.id}"><b>${t.label.split(" ").map(w=>`<i>${esc(w)}</i>`).join(" ")}</b><span>${(n=>`${n} catalogue${n===1?"":"s"}`)(tabItems(fCat,t.id).length)}</span></button>`).join("")}</div>
         <p class="tabnote">${esc(TABS.find(t=>t.id===fTab).note)}</p>
@@ -2432,11 +2470,12 @@ function renderList(keepPos){
   app.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{if(q){q="";const i=document.getElementById("q");if(i){i.value="";document.getElementById("qclr").hidden=true;}}fCat=b.dataset.cat;fColl="all";saveFilters();renderList(true);const cb=app.querySelector(".cb.on");if(cb)cb.scrollIntoView({inline:"center",block:"nearest"});});
   app.querySelectorAll(".stab").forEach(b=>b.onclick=()=>{fTab=b.dataset.tab;fColl="all";saveFilters();renderList(true);});
   {const dt=app.querySelector("#ddTab"), dc=app.querySelector("#ddColl");
+   const dcat=app.querySelector("#ddCat"); if(dcat) dcat.onchange=()=>{if(q){q="";const i=document.getElementById("q");if(i){i.value="";document.getElementById("qclr").hidden=true;}}fCat=dcat.value;fColl="all";saveFilters();renderList(true);};
    if(dt) dt.onchange=()=>{fTab=dt.value;fColl="all";saveFilters();renderList(true);toResults();};
    app.querySelectorAll(".fc[data-tab]").forEach(b=>b.onclick=()=>{fTab=b.dataset.tab;fColl="all";saveFilters();renderList(true);});
    if(dc) dc.onchange=()=>{fColl=dc.value;saveFilters();renderList(true);toResults();};}
   app.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>{const v=b.dataset.coll;fColl=(fColl===v||v==="all")?"all":v;saveFilters();renderList(true);});
-  renderGrid(); updateCounts();
+  renderGrid(); updateCounts(); fitBand();
   app.querySelectorAll(".filt [data-cat],.filt [data-tab],.filt [data-coll]").forEach(b=>b.addEventListener("click",toResults));
 }
 function toResults(){const f=document.querySelector(".filt"),r=document.querySelector(".reshead");if(!f||!r)return;
