@@ -993,6 +993,9 @@ footer .terms li span{color:var(--muted)}
 .ccat.two .dv small{font-size:.54rem;line-height:1.1}
 .ccat.two .dv b{font-size:.8rem;line-height:1.2}
 @media (max-width:760px){.filt{padding-top:4px!important;padding-bottom:5px!important}.filt .ccat{padding-top:2px!important;padding-bottom:2px!important}}
+
+/* sold single designs match the SOLD OUT stamp */
+.stamp span{color:#fff!important;background:#eb1a1a!important;border:2px solid #fff!important;box-shadow:0 0 0 2px #eb1a1a;text-transform:uppercase;letter-spacing:.08em;font-weight:800!important}
 </style>
 
 <div class="topbar" id="topbar"></div>
@@ -2207,6 +2210,8 @@ const COLLECTIONS=[
 /* Whole catalogues that are out of stock (no ordering) */
 /* Recently sold: still shown in the listing with a red SOLD OUT stamp */
 const SHOW_SOLD=new Set(["RM-065","RM-062","RM-051","RM-049","RM-054"]);
+/* Recently sold single designs: shown as their own SOLD OUT cards in View all */
+const SHOW_SOLD_SHADES=["RM-040-D","BQ-001-AX"];
 const OUT_OF_STOCK=new Set(["RM-006","RM-016","RM-017","RM-018","RM-019","RM-020","RM-021","RM-022","RM-023","DM-001","DM-006","DM-010","DM-011","DM-037","DM-044"]);
 /* Published customer reviews: {name, place, date:"2026-10-25", stars:1-5, items:[["SR-022-AC","Excellent"]], note:""} */
 const REVIEWS=[];
@@ -2443,7 +2448,7 @@ function card(c,x){
   const extra=(c.type==="rm"||c.type==="mw")?sizeRange(c)+(VARIANTS[c.code]?" · with pyjama "+inr(vPrice(c,1)):""):"";
   return `<button class="card" type="button" data-open="${href}"${!x&&c._part?` data-tab="${c._view}"`:""}>
     <div class="frame${out?" out":""}"><img src="${x?x.img:c.cover}" alt="${esc(c.name)}${x?" in "+esc(x.name):""}" loading="lazy" style="object-position:${x?"50% 50%":(c.coverPos||"50% 50%")}">
-      ${!x&&!c._view&&NEW_SET.has(c.code)?`<span class="ribbon">New</span>`:""}${!x&&!out&&c._view==="new"&&!c._part?`<span class="newtag">NEW</span>`:""}${!x&&c._view==="new"&&c._part?`<span class="newtag">${n} NEW</span>`:""}${out?`<span class="oos">${SHOW_SOLD.has(c.code)?"Sold Out":"Out of stock"}</span>`:""}
+      ${!x&&!c._view&&NEW_SET.has(c.code)?`<span class="ribbon">New</span>`:""}${!x&&!out&&c._view==="new"&&!c._part?`<span class="newtag">NEW</span>`:""}${!x&&c._view==="new"&&c._part?`<span class="newtag">${n} NEW</span>`:""}${out?`<span class="oos">${x||SHOW_SOLD.has(c.code)?"Sold Out":"Out of stock"}</span>`:""}
       ${!out&&k&&k.id!=="everyday"?`<span class="ktag k-${k.id}">${k.id==="premium"?"Premium":"Offer Pick"}</span>`:""}</div>
     <div class="meta"><div class="mrow"><span class="ccode">${href}</span><span class="price">${isOut(c)?inr(origOf(c)):priceHTML(origOf(c),priceOf(c))}</span></div><span class="cname">${esc(c.name)}</span>
       ${x?`<span class="csub">${esc(x.name)}</span>`:`<span class="dots">${dots}<span>${n} ${wordOf(c,n)}</span></span>${extra?`<span class="csub">${esc(extra)}</span>`:""}`}</div>
@@ -2475,9 +2480,10 @@ function renderGrid(){
       fitRows(); startRows(); return;
     }
     fTab=fGrid; const all=tabItems(fCat,fGrid).filter(inP);
+    const soldX=SHOW_SOLD_SHADES.map(id=>{const i=id.lastIndexOf("-"),c=CATALOGUES.find(z=>z.code===id.slice(0,i)),x=c&&c.colours.find(y=>y.sub===id.slice(i+1));return c&&x&&x.soldOut&&(fCat==="all"||c.type===fCat)&&inP(c)&&(!!x.isNew===(fGrid==="new"))?[c,x]:null;}).filter(Boolean);
     hint.innerHTML=`<b>${TL[fGrid]}</b> · ${esc(label)}${ck?` · ${esc(ck.label)}`:""} · ${all.length} catalogue${all.length===1?"":"s"}`;
     grid.classList.remove("grouped");
-    html=`<div class="vback"><button type="button" class="vb">‹ Back</button><b>${TL[fGrid]}${ck?` <small>${esc(ck.label)} · ${esc(ck.note)}</small>`:""}</b></div>`+(all.length?all.map(c=>card(c)).join(""):`<div class="empty"><h3>Nothing here just yet</h3><p>Try another category or price.</p></div>`);
+    html=`<div class="vback"><button type="button" class="vb">‹ Back</button><b>${TL[fGrid]}${ck?` <small>${esc(ck.label)} · ${esc(ck.note)}</small>`:""}</b></div>`+(all.length||soldX.length?all.map(c=>card(c)).join("")+soldX.map(([c,x])=>card(c,x)).join(""):`<div class="empty"><h3>Nothing here just yet</h3><p>Try another category or price.</p></div>`);
   }else{
     const pc=parseCode(s), norm=s.toUpperCase().replace(/[^A-Z0-9]/g,""), low=s.toLowerCase();
     res=[];
@@ -2820,7 +2826,7 @@ function renderDetail(c,pre,keep){
       <div class="viewer">
         <div class="vwrap">
           <div class="gal" id="gal" aria-label="Photos, swipe to see more">
-            ${c.colours.map((x,i)=>`<div class="slide${x.soldOut?" sold":""}" data-i="${i}"><img src="${x.img}" alt="${esc(c.name)} in ${esc(x.name)}, code ${c.code}-${x.sub}" ${i>1?'loading="lazy"':""}><div class="stamp"><span>Out of stock</span></div></div>`).join("")}
+            ${c.colours.map((x,i)=>`<div class="slide${x.soldOut?" sold":""}" data-i="${i}"><img src="${x.img}" alt="${esc(c.name)} in ${esc(x.name)}, code ${c.code}-${x.sub}" ${i>1?'loading="lazy"':""}><div class="stamp"><span>Sold Out</span></div></div>`).join("")}
           </div>
           ${c.colours.length>1?`<span class="pos" id="pos"></span><button class="arr l" type="button" id="prev" aria-label="Previous ${word}">‹</button><button class="arr r" type="button" id="next" aria-label="Next ${word}">›</button>`:""}
           <span class="zhint">Tap to zoom</span>
@@ -2843,7 +2849,7 @@ function renderDetail(c,pre,keep){
         <div class="swatches">
           ${c.colours.map((x,i)=>{const code=`${c.code}-${x.sub}`;return `
           <button class="sw${x.soldOut?" sold":""}" type="button" aria-pressed="false" data-i="${i}" aria-label="${code}, ${esc(x.name)}${x.soldOut?", out of stock":""}">
-            <div class="ph"><img src="${x.img}" alt="" loading="lazy"><div class="stamp"><span>Out of stock</span></div><span class="saved">${CART_DONE}</span></div>
+            <div class="ph"><img src="${x.img}" alt="" loading="lazy"><div class="stamp"><span>Sold Out</span></div><span class="saved">${CART_DONE}</span></div>
             <span class="lbl"><b>${code}</b>${esc(x.name)}</span>
           </button>`}).join("")}
         </div></div>`:""}
@@ -2875,7 +2881,7 @@ function renderDetail(c,pre,keep){
     app.querySelectorAll(".sw").forEach(b=>b.classList.toggle("is-saved",codeInList(`${c.code}-${c.colours[+b.dataset.i].sub}`)));
     const x=c.colours[cur], code=`${c.code}-${x.sub}`, inC=inList(code,size);
     heart.setAttribute("aria-pressed",String(inC)); heart.disabled=!!x.soldOut;
-    heart.innerHTML=x.soldOut?`${CART_ICON}<span>Out of stock</span>`:inC?`${CART_DONE}<span>In cart</span>`:`${CART_ADD}<span>Add to cart</span>`;
+    heart.innerHTML=x.soldOut?`${CART_ICON}<span>Sold out</span>`:inC?`${CART_DONE}<span>In cart</span>`:`${CART_ADD}<span>Add to cart</span>`;
     barCart.innerHTML=inC?CART_DONE:CART_ADD; barCart.classList.toggle("in",inC); barCart.setAttribute("aria-label",inC?"Remove from cart":"Add to cart");
   }
   function paintBar(){
