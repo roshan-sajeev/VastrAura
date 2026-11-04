@@ -2521,10 +2521,10 @@ function startRows(){
   rowIO=("IntersectionObserver" in window)?new IntersectionObserver(es=>es.forEach(e=>{const s=ROWS.find(x=>x.row===e.target);if(s)s.vis=e.isIntersecting;}),{threshold:.1}):null;
   rows.forEach((row,i)=>{
     const t=row.querySelector(".rtrack"), bar=row.querySelector(".rbar i"), s={row,t,bar,vis:true,hold:0};
-    const run=()=>{bar.classList.remove("run","hold");void bar.offsetWidth;bar.classList.add("run");};
+    const run=()=>{bar.classList.remove("run","hold");void bar.offsetWidth;bar.classList.add("run");}; s.run=run;
     const tick=()=>{
       if(!row.isConnected){stopRows();return;}
-      if(document.hidden||!s.vis||Date.now()<s.hold){bar.classList.add("hold");return;}
+      if(!ROW_GO||document.hidden||!s.vis||Date.now()<s.hold){bar.classList.add("hold");return;}
       if(s.hold){s.hold=0;const c0=t.querySelector(".rc");if(c0){const w0=c0.getBoundingClientRect().width+10;t.scrollTo({left:Math.round(t.scrollLeft/w0)*w0});}}
       const c=t.querySelector(".rc"); if(!c) return;
       const step=c.getBoundingClientRect().width+parseFloat(getComputedStyle(t).columnGap||8), max=t.scrollWidth-t.clientWidth;
@@ -2537,10 +2537,17 @@ function startRows(){
     t.addEventListener("touchmove",e=>{if(dir)return;const p=e.touches[0],dx=Math.abs(p.clientX-sx),dy=Math.abs(p.clientY-sy);if(dx<8&&dy<8)return;dir=dx>dy?1:2;if(dir===1)pause();},{passive:true});
     t.addEventListener("wheel",e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY))pause();},{passive:true});
     t.addEventListener("mousedown",pause);
-    s.a=setTimeout(()=>{run();s.b=setInterval(tick,ROW_SEC);},i*1000);
+    s.a=setTimeout(()=>{if(ROW_GO)run();else bar.classList.add("hold");s.b=setInterval(tick,ROW_SEC);},i*1000);
     ROWS.push(s); if(rowIO) rowIO.observe(row);
   });
+  ROW_GO=false; setTimeout(rowCheck,400);
 }
+let ROW_GO=false, rowLastY=scrollY, rowDir=0, rowT=0;
+function rowsReached(){const g=document.getElementById("grid");if(!g||!g.classList.contains("rows"))return false;const r=g.getBoundingClientRect();return r.top<innerHeight*.55&&r.bottom>innerHeight*.3;}
+function rowCheck(){ if(ROW_GO||rowDir<0||!rowsReached()) return; ROW_GO=true; ROWS.forEach(s=>s.run&&s.run()); }
+addEventListener("scroll",()=>{const y=scrollY,dy=y-rowLastY;rowLastY=y;if(Math.abs(dy)<2)return;rowDir=dy>0?1:-1;
+  if(rowDir<0&&ROW_GO){ROW_GO=false;ROWS.forEach(s=>s.bar&&s.bar.classList.add("hold"));}
+  clearTimeout(rowT);rowT=setTimeout(rowCheck,300);},{passive:true});
 /* ---------- Top header (search, filter, reviews, cart, place order) ---------- */
 const HDR_SEARCH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
 const HDR_FILTER='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>';
@@ -2574,10 +2581,10 @@ function initHeader(){
   const setH=()=>document.documentElement.style.setProperty("--tbh",h.offsetHeight+"px"); setH(); addEventListener("resize",setH);
   const mq=matchMedia("(max-width:640px)");
   const mini=()=>{const b=document.querySelector(".banner"), lim=b?b.offsetTop+b.offsetHeight:300;
-    const on=mq.matches&&!location.hash&&scrollY>lim&&!q&&document.activeElement!==inp;
-    if(on===h.classList.contains("mini")) return;
-    const h0=h.offsetHeight; h.classList.toggle("mini",on); const d=h0-h.offsetHeight; setH();
-    if(d) scrollBy(0,-d); if(on&&typeof fitRows==="function") fitRows();};
+    const cur=h.classList.contains("mini"), ok=mq.matches&&!location.hash&&!q&&document.activeElement!==inp;
+    const on=ok&&(cur?scrollY>lim-140:scrollY>lim+40);
+    if(on===cur) return;
+    h.classList.toggle("mini",on); setH();};
   addEventListener("scroll",mini,{passive:true}); addEventListener("hashchange",()=>setTimeout(mini,0));
   inp.addEventListener("blur",()=>setTimeout(mini,150));
   document.getElementById("hSearch").onclick=()=>{const h0=h.offsetHeight;h.classList.remove("mini");const d=h0-h.offsetHeight;setH();if(d)scrollBy(0,-d);inp.focus();};
