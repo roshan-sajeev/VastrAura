@@ -996,6 +996,64 @@ footer .terms li span{color:var(--muted)}
 
 /* sold single designs match the SOLD OUT stamp */
 .stamp span{color:#fff!important;background:#eb1a1a!important;border:2px solid #fff!important;box-shadow:0 0 0 2px #eb1a1a;text-transform:uppercase;letter-spacing:.08em;font-weight:800!important}
+
+/* ---- collage cards in auto-scroll rows ---- */
+.rcol{position:absolute;inset:0;display:grid;gap:2px;background:var(--surface)}
+.rcol.g4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.rcol.g2{grid-template-columns:1fr 1fr}
+.rcol img{width:100%;height:100%;object-fit:cover;display:block;min-height:0}
+.rmore{position:absolute;top:6px;right:6px;z-index:2;font-size:.66rem;font-weight:800;padding:2px 7px;border-radius:999px;background:rgba(26,5,16,.72);color:#f6dc98;letter-spacing:.02em}
+.rf .newtag{z-index:2}.rf .rm{z-index:2}
+
+/* ---- Timeless row: smaller, single photo, manual swipe only ---- */
+.prow.t-keep .rf{height:var(--rih2,150px)}
+.prow.t-keep .rc{flex-basis:var(--rw2,130px);width:var(--rw2,130px)}
+.prow.t-keep .rbar{display:none}
+.prow.t-keep .rf .rm{padding:16px 6px 5px}
+.prow.t-keep .rf .rm .price{font-size:.76rem}.prow.t-keep .rf .rm .rn{font-size:.64rem}
+
+/* ===== Luxe polish: same wine & gold, richer finish ===== */
+:root{--zari:linear-gradient(100deg,#b8862e 0%,#f6dc8c 24%,#c9952f 42%,#fff1bf 52%,#b8862e 70%,#e9c565 100%);--hair:linear-gradient(90deg,transparent,#d9ae52 18%,#f6dc8c 50%,#d9ae52 82%,transparent)}
+html:root,html:root body{background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cg fill='none' stroke='%23e6c77d' stroke-width='.6' opacity='.07'%3E%3Cpath d='M36 4 L68 36 L36 68 L4 36Z'/%3E%3Ccircle cx='36' cy='36' r='3'/%3E%3C/g%3E%3C/svg%3E"),
+  radial-gradient(120% 60% at 50% 0%,#2a0f1e 0%,transparent 70%),
+  linear-gradient(180deg,#170a12 0%,#11070d 100%)!important;background-attachment:fixed!important}
+.topbar{background:linear-gradient(180deg,rgba(32,12,24,.97),rgba(22,9,17,.95))!important;border-bottom:0!important;box-shadow:0 10px 24px -18px rgba(0,0,0,.9)}
+.topbar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--hair)}
+.tb-brand{color:#f7e3b0!important;-webkit-text-fill-color:#f7e3b0;font-weight:600;letter-spacing:.05em;text-shadow:0 0 10px rgba(246,220,140,.35),0 1px 0 rgba(0,0,0,.6)}.tb-brand i{color:#ffd97e!important;-webkit-text-fill-color:#ffd97e}
+.banner::after{content:"";position:absolute;left:8%;right:8%;bottom:0;height:1px;background:var(--hair);opacity:.9}
+.catband{background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.05))!important;position:relative}
+.catband::after{content:"";position:absolute;left:12%;right:12%;bottom:0;height:1px;background:var(--hair);opacity:.6}
+.filt{background:transparent!important;box-shadow:none!important;border-bottom:0!important}
+.ccat.two .dd{background:linear-gradient(180deg,rgba(255,236,190,.07),rgba(0,0,0,.25))!important;border:1px solid rgba(217,174,82,.55)!important;box-shadow:inset 0 1px 0 rgba(255,236,190,.08),0 6px 14px -10px rgba(0,0,0,.9)}
+.ccat.two .dv small{letter-spacing:.14em!important;color:#d9ae52!important}
+.ccat.two .dv b{color:#f3e3bd!important;font-family:var(--display);font-weight:500}
+.rh{align-items:center}
+.rh .rl{font-family:var(--display);font-size:1.1rem;letter-spacing:.03em;background:var(--zari);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent}
+.rh .rl small{-webkit-text-fill-color:#bfa77a;font-family:var(--body);font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
+.rh .rl::before{content:"\25C6";font-size:.55em;margin-right:6px;vertical-align:.25em;-webkit-text-fill-color:#d9ae52}
+.va{background:transparent!important;border:1px solid rgba(217,174,82,.6)!important;color:#f3e3bd!important;letter-spacing:.06em;font-weight:600!important}
+.va b{color:#f6dc8c!important}
+.rbar{height:1.5px!important;background:rgba(217,174,82,.14)!important}
+.rbar i{background:var(--zari)!important;box-shadow:0 0 6px rgba(246,220,140,.6)}
+.rf{border:1px solid rgba(217,174,82,.55)!important;border-radius:14px!important;box-shadow:0 0 0 1px rgba(0,0,0,.6),0 14px 24px -14px rgba(0,0,0,.95),inset 0 0 0 1px rgba(255,236,190,.06)!important}
+.rcol{gap:1.5px!important;background:rgba(217,174,82,.35)!important}
+.rf .rm{background:linear-gradient(to bottom,transparent,rgba(20,6,14,.6) 38%,rgba(14,4,10,.95))!important}
+.rf .rm .price{background:var(--zari);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;letter-spacing:.02em}
+.rf .rm .price s{-webkit-text-fill-color:rgba(243,227,189,.55)}
+.rf .rm .rn{color:#f3e3bd!important;font-family:var(--display);letter-spacing:.01em}
+.newtag,.rf .newtag{background:var(--zari)!important;color:#2a0e05!important;font-weight:800!important;letter-spacing:.1em;box-shadow:0 2px 8px -2px rgba(0,0,0,.7)}
+.rmore{background:rgba(14,4,10,.78)!important;color:#f6dc8c!important;border:1px solid rgba(217,174,82,.6)}
+.prow.t-new{position:relative;padding-bottom:10px}
+.prow.t-new::after{content:"\25C6";position:absolute;left:0;right:0;bottom:-2px;text-align:center;font-size:.55rem;color:#d9ae52;background:linear-gradient(90deg,transparent 10%,rgba(217,174,82,.5) 40%,transparent 46%,transparent 54%,rgba(217,174,82,.5) 60%,transparent 90%) center/100% 1px no-repeat;line-height:8px}
+.card .frame{border:1px solid rgba(217,174,82,.4)}
+.card .price{background:var(--zari);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* Our Collections band: same silver shimmer as the tagline */
+.catband .cbt,.catband p span{display:inline-block;background:linear-gradient(110deg,#c8b9a0 0%,#d1c3ab 40%,#fff9ea 46%,#ffffff 50%,#fff9ea 54%,#d1c3ab 60%,#c8b9a0 100%);background-size:260% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;animation:silver 3.6s ease-in-out infinite,glow 3.6s ease-in-out infinite}
+.catband .cbt{display:block;width:max-content;margin-inline:auto}
+.catband p i{-webkit-text-fill-color:#e7bb5c}
+@media (prefers-reduced-motion:reduce){.catband .cbt,.catband p span{animation:none;background-position:50% 0}}
 </style>
 
 <div class="topbar" id="topbar"></div>
@@ -2591,7 +2649,7 @@ function renderGrid(){
     if(!fGrid){
       grid.classList.remove("grouped"); grid.classList.add("rows"); hint.hidden=true;
       html=["new","keep"].map(t=>{const items=tabItems(fCat,t).filter(c=>inP(c)&&!isOut(c));if(!items.length)return "";
-        return `<section class="prow t-${t}" aria-label="${TL[t]}"><h3 class="rh"><span class="rl">${TL[t]}<small>${items.length} catalogue${items.length===1?"":"s"}</small></span><button type="button" class="va" data-va="${t}">View all <b aria-hidden="true">›</b></button></h3><div class="rbar"><i></i></div><div class="rtrack">${items.map(rcard).join("")}</div></section>`;}).join("")
+        return `<section class="prow t-${t}" aria-label="${TL[t]}"><h3 class="rh"><span class="rl">${TL[t]}<small>${items.length} catalogue${items.length===1?"":"s"}</small></span><button type="button" class="va" data-va="${t}">View all <b aria-hidden="true">›</b></button></h3><div class="rbar"><i></i></div><div class="rtrack">${items.map(c=>rcard(c,t==="new")).join("")}</div></section>`;}).join("")
         ||`<div class="empty"><h3>New pieces are on their way</h3><p>Nothing in this price range just yet. Try another category or price.</p></div>`;
       grid.innerHTML=html; wireCards(grid);
       grid.querySelectorAll("[data-va]").forEach(b=>b.onclick=()=>{fGrid=b.dataset.va;fTab=fGrid;renderList(true);toResults();});
@@ -2621,8 +2679,14 @@ function renderGrid(){
   const vb=grid.querySelector(".vb"); if(vb) vb.onclick=()=>{fGrid=null;renderList(true);toResults();};
 }
 /* ---------- Auto-scrolling price rows ---------- */
-function rcard(c){
-  return `<button class="rc" type="button" data-open="${c.code}"${c._part?` data-tab="${c._view}"`:""}><div class="rf"><img src="${c.cover}" alt="${esc(c.name)}" loading="lazy" style="object-position:${c.coverPos||"50% 50%"}">${c._view==="new"&&!c._part?`<span class="newtag">NEW</span>`:""}${c._view==="new"&&c._part?`<span class="newtag">${c.colours.length} NEW</span>`:""}<div class="rm"><span class="price">${priceHTML(origOf(c),priceOf(c))}</span><span class="rn">${esc(c.name)}</span></div></div></button>`;
+function rcol(c){
+  const live=c.colours.filter(x=>!x.soldOut), pics=(live.length?live:c.colours).map(x=>x.img);
+  if(pics.length<2) return `<img src="${c.cover}" alt="${esc(c.name)}" loading="lazy" style="object-position:${c.coverPos||"50% 50%"}">`;
+  const n=pics.length>=4?4:2, cls=n===4?"g4":"g2";
+  return `<div class="rcol ${cls}">${pics.slice(0,n).map((s,i)=>`<img src="${s}" alt="${i?"":esc(c.name)}" loading="lazy">`).join("")}</div>`+(pics.length>n?`<span class="rmore">+${pics.length-n}</span>`:"");
+}
+function rcard(c,col){
+  return `<button class="rc" type="button" data-open="${c.code}"${c._part?` data-tab="${c._view}"`:""}><div class="rf">${col?rcol(c):`<img src="${c.cover}" alt="${esc(c.name)}" loading="lazy" style="object-position:${c.coverPos||"50% 50%"}">`}${c._view==="new"&&!c._part?`<span class="newtag">NEW</span>`:""}${c._view==="new"&&c._part?`<span class="newtag">${c.colours.length} NEW</span>`:""}<div class="rm"><span class="price">${priceHTML(origOf(c),priceOf(c))}</span><span class="rn">${esc(c.name)}</span></div></div></button>`;
 }
 let ROWS=[], rowIO=null;
 const ROW_SEC=3000, ROW_HOLD=6000;
@@ -2633,15 +2697,16 @@ function fitRows(){const g=document.getElementById("grid");if(!g||!g.classList.c
   if(top&&matchMedia("(max-width:640px)").matches&&!top.classList.contains("mini")&&sb) tb=Math.max(44,tb-sb.offsetHeight-6);
   const row=g.querySelector(".prow"); if(!row) return;
   const rf=row.querySelector(".rf"), oh=row.offsetHeight+parseFloat(getComputedStyle(row).marginBottom||0)-(rf?rf.offsetHeight:0);
-  const avail=innerHeight-tb-(f?f.offsetHeight:0)-6, per=avail/2;
-  const img=Math.max(150,Math.min(440,Math.floor(per-oh))), tw=(row.querySelector(".rtrack")||g).clientWidth;
+  const nr=g.querySelectorAll(".prow").length||1, avail=innerHeight-tb-(f?f.offsetHeight:0)-6, tot=avail-nr*oh+(nr>1?7:0);
+  const share=nr>1?.6:1, img=Math.max(150,Math.min(480,Math.floor(tot*share))), img2=Math.max(110,Math.floor(tot-img)), tw=(row.querySelector(".rtrack")||g).clientWidth;
+  g.style.setProperty("--rih2",img2+"px"); g.style.setProperty("--rw2",Math.round(Math.min(tw/2.4,img2*.8))+"px");
   const tr=[...g.querySelectorAll(".rtrack")].map(t=>{const c=t.querySelector(".rc");return [t,c?Math.round(t.scrollLeft/(c.getBoundingClientRect().width+10)):0];});
   g.style.setProperty("--rih",img+"px"); g.style.setProperty("--rw",Math.round(Math.min(tw/1.6,img*.9))+"px");
   tr.forEach(([t,i])=>{const c=t.querySelector(".rc");if(c)t.scrollTo({left:i*(c.getBoundingClientRect().width+10)});});}
 addEventListener("resize",()=>fitRows());
 function startRows(){
   stopRows(); if(reduce) return;
-  const rows=[...document.querySelectorAll("#grid .prow")];
+  const rows=[...document.querySelectorAll("#grid .prow.t-new")];
   rowIO=("IntersectionObserver" in window)?new IntersectionObserver(es=>es.forEach(e=>{const s=ROWS.find(x=>x.row===e.target);if(s)s.vis=e.isIntersecting;}),{threshold:.1}):null;
   rows.forEach((row,i)=>{
     const t=row.querySelector(".rtrack"), bar=row.querySelector(".rbar i"), s={row,t,bar,vis:true,hold:0};
