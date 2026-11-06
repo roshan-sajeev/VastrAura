@@ -1054,6 +1054,14 @@ html:root,html:root body{background:
 .catband .cbt{display:block;width:max-content;margin-inline:auto}
 .catband p i{-webkit-text-fill-color:#e7bb5c}
 @media (prefers-reduced-motion:reduce){.catband .cbt,.catband p span{animation:none;background-position:50% 0}}
+
+/* In-House Stock stamp */
+.ihs{position:absolute;left:6px;bottom:6px;z-index:3;font-size:.56rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px 2px 5px;border-radius:4px;color:#1d3b17;background:linear-gradient(180deg,#e9f6d8,#c9e7a8);border:1px solid #6ea84a;box-shadow:0 2px 6px -2px rgba(0,0,0,.7);white-space:nowrap}
+.ihs::before{content:"\2714 ";color:#2f7d1e}
+.rf .ihs{bottom:auto;top:30px;left:6px}
+.frame .ihs{bottom:auto;top:26px;left:4px;font-size:.46rem;padding:1px 4px;letter-spacing:.03em;max-width:calc(100% - 8px);overflow:hidden;text-overflow:ellipsis}
+.card .price s{-webkit-text-fill-color:rgba(243,227,189,.55)}
+.ph .ihs.sm{font-size:.5rem;padding:1px 4px;top:4px;left:4px;bottom:auto}
 </style>
 
 <div class="topbar" id="topbar"></div>
@@ -2387,6 +2395,10 @@ const COLLECTIONS=[
 /* Recently sold: still shown in the listing with a red SOLD OUT stamp */
 const SHOW_SOLD=new Set(["RM-065","RM-062","RM-051","RM-049","RM-054"]);
 /* Recently sold single designs: shown as their own SOLD OUT cards in View all */
+/* In-house stock (held by VastrAura, not supplier) */
+const IN_HOUSE=new Set(["RM-061-A", "RM-063-A", "RM-064-A", "RM-034-A", "RM-035-A", "RM-036-A", "RM-037-A", "RM-042-A", "RM-043-A", "RM-044-A", "RM-045-A", "RM-046-A", "RM-047-A", "RM-048-A", "RM-050-A", "RM-052-A", "RM-053-A", "RM-055-A", "RM-056-A", "RM-057-A", "RM-058-A", "RM-059-A", "RM-060-A"]);
+const ihOf=c=>{const s=c.colours.filter(x=>!x.soldOut&&IN_HOUSE.has(c.code+"-"+x.sub));return !s.length?"":(s.length===c.colours.filter(x=>!x.soldOut).length?"In-House":"In-House · "+s.map(x=>x.sub).join(", "));};
+const IH_TAG=t=>t?`<span class="ihs">${t}</span>`:"";
 const SHOW_SOLD_SHADES=["RM-040-D","BQ-001-AX"];
 const OUT_OF_STOCK=new Set(["RM-006","RM-016","RM-017","RM-018","RM-019","RM-020","RM-021","RM-022","RM-023","DM-001","DM-006","DM-010","DM-011","DM-037","DM-044"]);
 /* Published customer reviews: {name, place, date:"2026-10-25", stars:1-5, items:[["SR-022-AC","Excellent"]], note:""} */
@@ -2625,7 +2637,7 @@ function card(c,x){
   return `<button class="card" type="button" data-open="${href}"${!x&&c._part?` data-tab="${c._view}"`:""}>
     <div class="frame${out?" out":""}"><img src="${x?x.img:c.cover}" alt="${esc(c.name)}${x?" in "+esc(x.name):""}" loading="lazy" style="object-position:${x?"50% 50%":(c.coverPos||"50% 50%")}">
       ${!x&&!c._view&&NEW_SET.has(c.code)?`<span class="ribbon">New</span>`:""}${!x&&!out&&c._view==="new"&&!c._part?`<span class="newtag">NEW</span>`:""}${!x&&c._view==="new"&&c._part?`<span class="newtag">${n} NEW</span>`:""}${out?`<span class="oos">${x||SHOW_SOLD.has(c.code)?"Sold Out":"Out of stock"}</span>`:""}
-      ${!out&&k&&k.id!=="everyday"?`<span class="ktag k-${k.id}">${k.id==="premium"?"Premium":"Offer Pick"}</span>`:""}</div>
+      ${!out&&k&&k.id!=="everyday"?`<span class="ktag k-${k.id}">${k.id==="premium"?"Premium":"Offer Pick"}</span>`:""}${!out?IH_TAG(x?(IN_HOUSE.has(c.code+"-"+x.sub)?"In-House":""):ihOf(c)):""}</div>
     <div class="meta"><div class="mrow"><span class="ccode">${href}</span><span class="price">${isOut(c)?inr(origOf(c)):priceHTML(origOf(c),priceOf(c))}</span></div><span class="cname">${esc(c.name)}</span>
       ${x?`<span class="csub">${esc(x.name)}</span>`:`<span class="dots">${dots}<span>${n} ${wordOf(c,n)}</span></span>${extra?`<span class="csub">${esc(extra)}</span>`:""}`}</div>
   </button>`;
@@ -2686,7 +2698,7 @@ function rcol(c){
   return `<div class="rcol ${cls}">${pics.slice(0,n).map((s,i)=>`<img src="${s}" alt="${i?"":esc(c.name)}" loading="lazy">`).join("")}</div>`+(pics.length>n?`<span class="rmore">+${pics.length-n}</span>`:"");
 }
 function rcard(c,col){
-  return `<button class="rc" type="button" data-open="${c.code}"${c._part?` data-tab="${c._view}"`:""}><div class="rf">${col?rcol(c):`<img src="${c.cover}" alt="${esc(c.name)}" loading="lazy" style="object-position:${c.coverPos||"50% 50%"}">`}${c._view==="new"&&!c._part?`<span class="newtag">NEW</span>`:""}${c._view==="new"&&c._part?`<span class="newtag">${c.colours.length} NEW</span>`:""}<div class="rm"><span class="price">${priceHTML(origOf(c),priceOf(c))}</span><span class="rn">${esc(c.name)}</span></div></div></button>`;
+  return `<button class="rc" type="button" data-open="${c.code}"${c._part?` data-tab="${c._view}"`:""}><div class="rf">${col?rcol(c):`<img src="${c.cover}" alt="${esc(c.name)}" loading="lazy" style="object-position:${c.coverPos||"50% 50%"}">`}${c._view==="new"&&!c._part?`<span class="newtag">NEW</span>`:""}${c._view==="new"&&c._part?`<span class="newtag">${c.colours.length} NEW</span>`:""}${IH_TAG(ihOf(c))}<div class="rm"><span class="price">${priceHTML(origOf(c),priceOf(c))}</span><span class="rn">${esc(c.name)}</span></div></div></button>`;
 }
 let ROWS=[], rowIO=null;
 const ROW_SEC=3000, ROW_HOLD=6000;
@@ -3032,7 +3044,7 @@ function renderDetail(c,pre,keep){
         <div class="swatches">
           ${c.colours.map((x,i)=>{const code=`${c.code}-${x.sub}`;return `
           <button class="sw${x.soldOut?" sold":""}" type="button" aria-pressed="false" data-i="${i}" aria-label="${code}, ${esc(x.name)}${x.soldOut?", out of stock":""}">
-            <div class="ph"><img src="${x.img}" alt="" loading="lazy"><div class="stamp"><span>Sold Out</span></div><span class="saved">${CART_DONE}</span></div>
+            <div class="ph"><img src="${x.img}" alt="" loading="lazy"><div class="stamp"><span>Sold Out</span></div>${!x.soldOut&&IN_HOUSE.has(c.code+"-"+x.sub)?'<span class="ihs sm">In-House</span>':""}<span class="saved">${CART_DONE}</span></div>
             <span class="lbl"><b>${code}</b>${esc(x.name)}</span>
           </button>`}).join("")}
         </div></div>`:""}
