@@ -2478,7 +2478,7 @@ const COLLECTIONS=[
 const SHOW_SOLD=new Set(["RM-065","RM-062","RM-051","RM-049","RM-054"]);
 /* Recently sold single designs: shown as their own SOLD OUT cards in View all */
 /* In-house stock (held by VastrAura, not supplier) */
-const IN_HOUSE=new Set(["SR-063-A", "SR-064-A", "SR-065-A", "SR-066-A", "SR-067-A", "SR-068-A", "SR-070-A", "SR-071-A", "SR-072-A", "SR-073-A", "RM-061-A", "RM-063-A", "RM-064-A", "RM-034-A", "RM-035-A", "RM-036-A", "RM-037-A", "RM-042-A", "RM-043-A", "RM-044-A", "RM-045-A", "RM-046-A", "RM-047-A", "RM-048-A", "RM-050-A", "RM-052-A", "RM-053-A", "RM-055-A", "RM-056-A", "RM-057-A", "RM-058-A", "RM-059-A", "RM-060-A"]);
+const IN_HOUSE=new Set(["SR-062-A", "SR-069-A", "SR-063-A", "SR-064-A", "SR-065-A", "SR-066-A", "SR-067-A", "SR-068-A", "SR-070-A", "SR-071-A", "SR-072-A", "SR-073-A", "RM-061-A", "RM-063-A", "RM-064-A", "RM-034-A", "RM-035-A", "RM-036-A", "RM-037-A", "RM-042-A", "RM-043-A", "RM-044-A", "RM-045-A", "RM-046-A", "RM-047-A", "RM-048-A", "RM-050-A", "RM-052-A", "RM-053-A", "RM-055-A", "RM-056-A", "RM-057-A", "RM-058-A", "RM-059-A", "RM-060-A"]);
 const ihOf=c=>{const s=c.colours.filter(x=>!x.soldOut&&IN_HOUSE.has(c.code+"-"+x.sub));return !s.length?"":(s.length===c.colours.filter(x=>!x.soldOut).length?"In-House":"In-House · "+s.map(x=>x.sub).join(", "));};
 const IH_TAG=t=>t?`<span class="ihs">${t}</span>`:"";
 const SHOW_SOLD_SHADES=["RM-040-D","BQ-001-AX"];
